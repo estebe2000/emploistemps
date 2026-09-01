@@ -32,8 +32,14 @@ Reprise du **déploiement** du microservice Emplois du Temps TC. Une **revue de 
 - Alignement des modèles **4 vs 6 créneaux** (solveur CP-SAT / iCal / copilote) → à arbitrer.
 - Verrouillage des fichiers JSON + gestion globale des erreurs → à durcir.
 
+## Sécurité / dépôt (session 09/2026)
+- ✅ Périmètre committé et poussé sur `origin/main` (`fcf9d77`) : **aucun secret** (`.env` et `rqcode-5545.png` gitignorés et absents).
+- ✅ **Hook pre-commit anti-fuite** : `.githooks/pre-commit` + `scripts/scan_secrets.py`. Active via `git config core.hooksPath .githooks`. Corrigé pour l'encodage cp1252 (émojis → ASCII) et ne scanne que les fichiers staged.
+- ✅ `ical/` : exemples SOAP officiels Index Education (PHP/PowerShell/Python/C#/Java) committés (hors binaires .jar/.exe/.wsdl et `nbproject/private/`).
+- ⚠️ **Clé API Albert toujours dans l'historique git** (commit `10b99a4`, déjà sur le remote) → **rotation obligatoire** sur Etalab ; une purge d'historique (force push) est à décider.
+
 ## Prochaines étapes (voir TASK.md)
-1. Rotation/révocation du jeton Albert sur Etalab.
-2. Aligner/déclarer les modèles 4 vs 6 créneaux.
-3. Durcir (verrou JSON, handler d'erreurs).
-4. Éventuellement : automatiser le rebuild/déploiement (CI) et documenter le reverse-proxy.
+1. Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (jamais ailleurs) → tester auth CAS + cartographier le portail mobile.
+2. Rotation du jeton Albert sur Etalab.
+3. Aligner/déclarer les modèles 4 vs 6 créneaux.
+4. Durcir (verrou JSON, handler d'erreurs).

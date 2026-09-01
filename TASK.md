@@ -14,11 +14,21 @@
 ## En cours
 - [ ] (aucune tâche bloquée — service Docker actif)
 
+## Terminé
+- [x] **Push de la version actuelle sur `origin/main`** (`fcf9d77`) — 76 fichiers, aucun secret.
+- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit` (scan des fichiers staged, `git config core.hooksPath .githooks`). Corrigé encodage cp1252.
+- [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`. `.env` et QR restent locaux.
+
+## Hyperplanning (phase 1 en cours)
+- [ ] Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (sécurisé, jamais commité).
+- [ ] Tester `cas_authenticate()` + `hyperplanning_client.py --main`.
+- [ ] Cartographier le portail mobile : endpoints EDT / ressources / iCal.
+- [ ] Déterminer la portée du jeton (une ressource vs tout le référentiel).
+
 ## Restant
-- [ ] **6. Aligner les modèles 4 vs 6 créneaux** (solveur / iCal / copilote) — unifier ou documenter.
-- [ ] **7. Durcir** : verrouillage des fichiers JSON (race), gestion globale des erreurs.
-- [ ] **9. Valider le déploiement de bout en bout** : ✅ fait en conteneur (revoir si arrêt/rebuild désiré).
-- [ ] Rotation du jeton Albert sur Etalab.
+- [ ] **Rotation du jeton Albert sur Etalab** (fuite historique commit `10b99a4`).
+- [ ] Aligner les modèles 4 vs 6 créneaux.
+- [ ] Durcir (verrou JSON, gestion erreurs).
 
 ## Discovered During Work
 - [ ] Révocation + rotation du jeton Albert sur Etalab (obligatoire).
