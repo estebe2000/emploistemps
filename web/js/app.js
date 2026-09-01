@@ -1395,7 +1395,9 @@
             for (let w = 1; w <= 15; w++) {
                 const btn = document.createElement('button');
                 btn.className = `week-toggle-btn ${activeWeeks.includes(w) ? 'active' : ''}`;
-                btn.textContent = `S${w}`;
+                const r = typeof getWeekDateRange === 'function' ? getWeekDateRange(w) : null;
+                btn.textContent = r ? `ISO ${r.iso}` : `S${w}`;
+                btn.title = r ? r.label : '';
                 btn.onclick = () => {
                     btn.classList.toggle('active');
                     if (!constraints.cohort_alternance_calendar) constraints.cohort_alternance_calendar = {};
@@ -1418,7 +1420,9 @@
             for (let w = 1; w <= 15; w++) {
                 const btn = document.createElement('button');
                 btn.className = `week-toggle-btn ${catchupList.includes(w) ? 'active' : ''}`;
-                btn.textContent = `S${w}`;
+                const r = typeof getWeekDateRange === 'function' ? getWeekDateRange(w) : null;
+                btn.textContent = r ? `ISO ${r.iso}` : `S${w}`;
+                btn.title = r ? r.label : '';
                 btn.onclick = () => {
                     btn.classList.toggle('active');
                     const idx = constraints.catchup_weeks.indexOf(w);
