@@ -750,6 +750,9 @@
             </div>
         </div>
         <div class="header-actions">
+            <button class="btn" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: #fbbf24; font-weight: 600;" onclick="openDeferredModal()">
+                ⏳ À Reprogrammer (<span id="deferred-count">0</span>)
+            </button>
             <button class="btn btn-workload" onclick="openWorkloadModal()">📊 Services Enseignants (HETD)</button>
             <button class="btn btn-admin" onclick="openAdminModal()">⚙️ Administration des Contraintes</button>
             <a href="/docs" target="_blank" class="btn">📚 OpenAPI</a>
@@ -757,6 +760,7 @@
             <button id="btn-generate" class="btn btn-primary" onclick="triggerSolver()">⚡ Optimiser (CP-SAT)</button>
         </div>
     </header>
+
 
     <!-- Main Body -->
     <div class="container">
@@ -889,14 +893,114 @@
 
     <!-- CONTEXT MENU (Clic Droit) -->
     <div id="context-menu" class="context-menu">
-        <div class="context-menu-item" onclick="contextAction('MOVE')">🔄 Déplacer vers un créneau libre...</div>
-        <div class="context-menu-item" onclick="contextAction('CHANGE_ROOM')">📍 Changer de salle...</div>
-        <div class="context-menu-item" onclick="contextAction('CHANGE_TEACHER')">👤 Changer d'enseignant...</div>
+        <div class="context-menu-item" onclick="openMoveModal()">🔄 Déplacer ce cours...</div>
+        <div class="context-menu-item" onclick="openChangeTeacherModal()">👤 Changer d'enseignant...</div>
+        <div class="context-menu-item" style="color: #fbbf24;" onclick="deferSelectedLesson()">⏳ À reprogrammer ultérieurement</div>
         <div class="context-menu-divider"></div>
         <div class="context-menu-item" onclick="contextAction('CONVERT_EVAL')">📝 Convertir en DS / Évaluation</div>
         <div class="context-menu-divider"></div>
-        <div class="context-menu-item" style="color:#f87171;" onclick="contextAction('CANCEL')">❌ Annuler cette séance</div>
+        <div class="context-menu-item" style="color:#f87171;" onclick="cancelSelectedLesson()">❌ Annuler cette séance</div>
     </div>
+
+    <!-- DEFERRED LESSONS MODAL -->
+    <div class="modal-overlay" id="deferred-modal">
+        <div class="admin-modal" style="width: 850px;">
+            <div class="admin-header">
+                <div>
+                    <h2 style="font-size: 1.2rem; font-weight: 700; color: #fbbf24;">⏳ File des Cours à Reprogrammer</h2>
+                    <p style="font-size: 0.78rem; color: var(--text-muted);">Cours décalés ou mis en attente à réinsérer dans l'emploi du temps</p>
+                </div>
+                <button class="btn" onclick="closeDeferredModal()">✕ Fermer</button>
+            </div>
+            <div class="admin-body">
+                <table class="data-table" id="deferred-table">
+                    <thead>
+                        <tr>
+                            <th>Matière</th>
+                            <th>Type</th>
+                            <th>Groupe</th>
+                            <th>Enseignant</th>
+                            <th>Durée</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deferred-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="admin-footer">
+                <button class="btn btn-primary" onclick="closeDeferredModal()">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOVE LESSON MODAL -->
+    <div class="modal-overlay" id="move-modal">
+        <div class="admin-modal" style="width: 550px;">
+            <div class="admin-header">
+                <div>
+                    <h2 style="font-size: 1.15rem; font-weight: 700;">🔄 Déplacer le Cours</h2>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);" id="move-lesson-title">Sélectionnez le nouveau créneau et la salle</p>
+                </div>
+                <button class="btn" onclick="closeMoveModal()">✕</button>
+            </div>
+            <div class="admin-body" style="display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouveau Jour :</label>
+                    <select id="move-target-day" style="width: 100%;">
+                        <option value="Lundi">Lundi</option>
+                        <option value="Mardi">Mardi</option>
+                        <option value="Mercredi">Mercredi</option>
+                        <option value="Jeudi">Jeudi (Matin uniquement)</option>
+                        <option value="Vendredi">Vendredi</option>
+                        <option value="Samedi">Samedi (Matin uniquement)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouveau Créneau Horaire :</label>
+                    <select id="move-target-slot" style="width: 100%;">
+                        <option value="0">🌅 M1 (08:00 - 09:30)</option>
+                        <option value="1">🌅 M2 (09:45 - 11:15)</option>
+                        <option value="2">🌇 S1 (13:30 - 15:00)</option>
+                        <option value="3">🌇 S2 (15:15 - 16:45)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouvelle Salle :</label>
+                    <select id="move-target-room" style="width: 100%;"></select>
+                </div>
+            </div>
+            <div class="admin-footer">
+                <button class="btn" onclick="closeMoveModal()">Annuler</button>
+                <button class="btn btn-primary" onclick="confirmMoveLesson()">Valider le Déplacement</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHANGE TEACHER MODAL -->
+    <div class="modal-overlay" id="change-teacher-modal">
+        <div class="admin-modal" style="width: 500px;">
+            <div class="admin-header">
+                <div>
+                    <h2 style="font-size: 1.15rem; font-weight: 700;">👤 Changer l'Enseignant</h2>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);" id="change-teacher-lesson-title">Sélectionnez le nouvel enseignant</p>
+                </div>
+                <button class="btn" onclick="closeChangeTeacherModal()">✕</button>
+            </div>
+            <div class="admin-body" style="display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Sélectionner un enseignant :</label>
+                    <select id="change-target-teacher" style="width: 100%;"></select>
+                </div>
+            </div>
+            <div class="admin-footer">
+                <button class="btn" onclick="closeChangeTeacherModal()">Annuler</button>
+                <button class="btn btn-primary" onclick="confirmChangeTeacher()">Enregistrer le Changement</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- WORKLOAD / SERVICES MODAL -->
     <div class="modal-overlay" id="workload-modal">
@@ -1184,9 +1288,11 @@
                 populateWeekSelector();
                 populateDropdowns();
                 updateWeekBadge();
+                updateDeferredBadge();
                 renderSchedule();
                 initAdminView();
                 initContextMenu();
+
             } catch (err) {
                 console.error("Erreur initialisation:", err);
             }
@@ -1514,19 +1620,215 @@
             document.getElementById('context-menu').style.display = 'none';
             if (!selectedLessonId) return;
 
-            if (action === 'CANCEL') {
-                if (confirm(`Confirmer l'annulation de la séance ${selectedLessonId} ?`)) {
-                    await sendQuickAction('CANCEL', { lesson_id: selectedLessonId });
-                }
-            } else if (action === 'CONVERT_EVAL') {
+            if (action === 'CONVERT_EVAL') {
                 await sendQuickAction('CONVERT_EVAL', { lesson_id: selectedLessonId });
-            } else if (action === 'MOVE') {
-                sendQuickPrompt(`Je souhaite déplacer le cours ${selectedLessonId}. Quels sont les créneaux libres compatibles ?`);
-            } else if (action === 'CHANGE_ROOM') {
-                sendQuickPrompt(`Quelles sont les autres salles disponibles pour le cours ${selectedLessonId} ?`);
-            } else if (action === 'CHANGE_TEACHER') {
-                sendQuickPrompt(`Qui d'autre dans l'équipe pédagogique peut assurer le cours ${selectedLessonId} ?`);
             }
+        }
+
+        async function deferSelectedLesson() {
+            document.getElementById('context-menu').style.display = 'none';
+            if (!selectedLessonId) return;
+            const ev = currentSchedule.find(e => e.lesson_id === selectedLessonId);
+            const title = ev ? ev.resource_name : selectedLessonId;
+            
+            if (confirm(`Mettre en attente le cours "${title}" pour reprogrammation ultérieure ?`)) {
+                await sendQuickAction('DEFER', { lesson_id: selectedLessonId });
+                updateDeferredBadge();
+            }
+        }
+
+        async function cancelSelectedLesson() {
+            document.getElementById('context-menu').style.display = 'none';
+            if (!selectedLessonId) return;
+            const ev = currentSchedule.find(e => e.lesson_id === selectedLessonId);
+            const title = ev ? ev.resource_name : selectedLessonId;
+
+            if (confirm(`⚠️ Confirmer l'annulation définitive de la séance "${title}" ?`)) {
+                await sendQuickAction('CANCEL', { lesson_id: selectedLessonId });
+            }
+        }
+
+        // --- MOVE MODAL ---
+        function openMoveModal() {
+            document.getElementById('context-menu').style.display = 'none';
+            if (!selectedLessonId) return;
+            const ev = currentSchedule.find(e => e.lesson_id === selectedLessonId);
+            if (ev) {
+                document.getElementById('move-lesson-title').textContent = `${ev.resource_name} (${ev.group_id}) - ${ev.teacher_name}`;
+                document.getElementById('move-target-day').value = ev.day;
+                document.getElementById('move-target-slot').value = ev.slot_idx;
+            }
+
+            const roomSelect = document.getElementById('move-target-room');
+            roomSelect.innerHTML = '';
+            (dataset.rooms || []).forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r.id;
+                opt.textContent = `${r.name} (${r.type})`;
+                if (ev && ev.room_id === r.id) opt.selected = true;
+                roomSelect.appendChild(opt);
+            });
+
+            document.getElementById('move-modal').style.display = 'flex';
+        }
+
+        function closeMoveModal() {
+            document.getElementById('move-modal').style.display = 'none';
+        }
+
+        async function confirmMoveLesson() {
+            const day = document.getElementById('move-target-day').value;
+            const slot = parseInt(document.getElementById('move-target-slot').value);
+            const room = document.getElementById('move-target-room').value;
+
+            if ((day === "Jeudi" || day === "Samedi") && slot >= 2) {
+                alert("❌ Impossible de déplacer sur ce créneau : Fermeture départementale IUT le Jeudi PM et Samedi PM.");
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/v1/schedule/quick-action', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'MOVE',
+                        lesson_id: selectedLessonId,
+                        target_day: day,
+                        target_slot_idx: slot,
+                        target_room_id: room
+                    })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail?.message || data.detail || "Conflit détecté");
+                alert("✅ " + data.message);
+                closeMoveModal();
+
+                const scRes = await fetch('/api/v1/schedule');
+                const scData = await scRes.json();
+                currentSchedule = scData.events || [];
+                renderSchedule();
+            } catch (err) {
+                alert("Erreur déplacement : " + err.message);
+            }
+        }
+
+        // --- CHANGE TEACHER MODAL ---
+        function openChangeTeacherModal() {
+            document.getElementById('context-menu').style.display = 'none';
+            if (!selectedLessonId) return;
+            const ev = currentSchedule.find(e => e.lesson_id === selectedLessonId);
+            if (ev) {
+                document.getElementById('change-teacher-lesson-title').textContent = `${ev.resource_name} (${ev.group_id}) - Actuel : ${ev.teacher_name}`;
+            }
+
+            const select = document.getElementById('change-target-teacher');
+            select.innerHTML = '';
+
+            const sortedTeachers = [...(dataset.teachers || [])].sort((a, b) => 
+                a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
+            );
+
+            sortedTeachers.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.name;
+                opt.textContent = `${t.name} (${t.statut})`;
+                if (ev && ev.teacher_name.toLowerCase() === t.name.toLowerCase()) opt.selected = true;
+                select.appendChild(opt);
+            });
+
+            document.getElementById('change-teacher-modal').style.display = 'flex';
+        }
+
+        function closeChangeTeacherModal() {
+            document.getElementById('change-teacher-modal').style.display = 'none';
+        }
+
+        async function confirmChangeTeacher() {
+            const newTeacher = document.getElementById('change-target-teacher').value;
+            if (!newTeacher) return;
+
+            try {
+                const res = await fetch('/api/v1/schedule/quick-action', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action: 'CHANGE_TEACHER',
+                        lesson_id: selectedLessonId,
+                        new_teacher: newTeacher
+                    })
+                });
+                const data = await res.json();
+                alert("✅ " + data.message);
+                closeChangeTeacherModal();
+
+                const scRes = await fetch('/api/v1/schedule');
+                const scData = await scRes.json();
+                currentSchedule = scData.events || [];
+                renderSchedule();
+            } catch (err) {
+                alert("Erreur changement enseignant : " + err.message);
+            }
+        }
+
+        // --- DEFERRED LESSONS MODAL ---
+        async function openDeferredModal() {
+            document.getElementById('deferred-modal').style.display = 'flex';
+            await loadDeferredTable();
+        }
+
+        function closeDeferredModal() {
+            document.getElementById('deferred-modal').style.display = 'none';
+        }
+
+        async function loadDeferredTable() {
+            const tbody = document.getElementById('deferred-table-body');
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">⏳ Chargement...</td></tr>';
+
+            try {
+                const res = await fetch('/api/v1/schedule/deferred');
+                const data = await res.json();
+                const list = data.deferred_events || [];
+                tbody.innerHTML = '';
+
+                document.getElementById('deferred-count').textContent = list.length;
+
+                if (list.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted); padding:1.5rem;">🎉 Aucun cours en attente de reprogrammation.</td></tr>';
+                    return;
+                }
+
+                list.forEach(ev => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-weight:600; color:#fbbf24;">${ev.resource_name}</td>
+                        <td><span class="event-badge badge-td">${ev.event_type}</span></td>
+                        <td>${ev.group_id}</td>
+                        <td>${ev.teacher_name}</td>
+                        <td>${ev.duration_hours}h</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="promptReprogramDeferred('${ev.lesson_id}')">📅 Reprogrammer</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="6" style="color:#ef4444;">Erreur : ${err}</td></tr>`;
+            }
+        }
+
+        async function promptReprogramDeferred(lessonId) {
+            closeDeferredModal();
+            selectedLessonId = lessonId;
+            openMoveModal();
+        }
+
+        async function updateDeferredBadge() {
+            try {
+                const res = await fetch('/api/v1/schedule/deferred');
+                const data = await res.json();
+                const count = (data.deferred_events || []).length;
+                document.getElementById('deferred-count').textContent = count;
+            } catch (err) {}
         }
 
         async function sendQuickAction(action, payload) {
@@ -1544,10 +1846,12 @@
                 const scData = await scRes.json();
                 currentSchedule = scData.events || [];
                 renderSchedule();
+                updateDeferredBadge();
             } catch (err) {
                 alert("Erreur action : " + err);
             }
         }
+
 
         // --- WORKLOAD MODAL ---
         async function openWorkloadModal() {

@@ -365,6 +365,68 @@ def record_teacher_absence(payload: dict):
     return {"status": "success", "message": f"Absence enregistrée pour {new_abs['teacher_name']}."}
 
 
+# --- DEFERRED LESSONS & QUICK ACTIONS ---
+
+@app.get("/api/v1/schedule/deferred", tags=["Planning"])
+def get_deferred_lessons():
+    """Récupère la liste des cours mis en attente à reprogrammer ultérieurement."""
+    sched = get_schedule()
+    return {"deferred_events": sched.get("deferred_events", [])}
+
+
+@app.post("/api/v1/schedule/reprogram", tags=["Planning"])
+def reprogram_lesson(payload: dict):
+    """Reprogramme un cours depuis la file d'attente vers un créneau et une salle cibles."""
+    lesson_id = payload.get("lesson_id")
+    target_day = payload.get("target_day")
+    target_slot_idx = int(payload.get("target_slot_idx", 0))
+    target_room_id = payload.get("target_room_id")
+    
+    sched = get_schedule()
+    deferred = sched.get("deferred_events", [])
+    target_evt = next((e for e in deferred if e["lesson_id"] == lesson_id), None)
+    
+    if not target_evt:
+        raise HTTPException(status_code=404, detail="Cours introuvable dans la file de reprogrammation.")
+        
+    # Check conflict
+    copilot = TimetableCopilot()
+    check = copilot.verifier_conflit_deplacement(
+        lesson_id=lesson_id,
+        cible_jour=target_day,
+        cible_creneau_idx=target_slot_idx,
+        cible_salle=target_room_id
+    )
+    if check.get("conflit"):
+        raise HTTPException(status_code=400, detail=check)
+        
+    dataset = get_dataset()
+    days = dataset["calendar_config"]["days"]
+    daily_slots = dataset["calendar_config"]["daily_slots"]
+    room_obj = next((r for r in dataset["rooms"] if r["id"] == target_room_id), None)
+    
+    # Update event
+    day_idx = days.index(target_day) if target_day in days else 0
+    target_evt["day"] = target_day
+    target_evt["day_idx"] = day_idx
+    target_evt["slot_idx"] = target_slot_idx
+    target_evt["slot_time"] = daily_slots[target_slot_idx]["time"]
+    target_evt["global_slot"] = day_idx * len(daily_slots) + target_slot_idx
+    if room_obj:
+        target_evt["room_id"] = room_obj["id"]
+        target_evt["room_name"] = room_obj["name"]
+        
+    # Move from deferred to active events
+    sched["deferred_events"] = [e for e in deferred if e["lesson_id"] != lesson_id]
+    sched["events"].append(target_evt)
+    sched["total_events"] = len(sched["events"])
+    
+    with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+        json.dump(sched, f, indent=2, ensure_ascii=False)
+        
+    return {"status": "success", "message": f"Cours {target_evt['resource_name']} reprogrammé le {target_day} à {target_evt['slot_time']}."}
+
+
 @app.post("/api/v1/schedule/quick-action", tags=["Planning"])
 def execute_quick_action(payload: dict):
     """
@@ -372,6 +434,7 @@ def execute_quick_action(payload: dict):
     - 'MOVE' : Déplacer vers créneau cible
     - 'CHANGE_ROOM' : Changer de salle
     - 'CHANGE_TEACHER' : Changer d'enseignant
+    - 'DEFER' : Mettre en attente (à reprogrammer ultérieurement)
     - 'CANCEL' : Annuler la séance
     - 'CONVERT_EVAL' : Transformer en DS/Évaluation
     """
@@ -389,7 +452,52 @@ def execute_quick_action(payload: dict):
         sched["total_events"] = len(sched["events"])
         with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
             json.dump(sched, f, indent=2, ensure_ascii=False)
-        return {"status": "success", "message": f"Séance {lesson_id} annulée."}
+        return {"status": "success", "message": f"Séance {lesson_id} annulée avec succès."}
+
+    elif action == "DEFER":
+        # Put into deferred_events queue
+        if "deferred_events" not in sched:
+            sched["deferred_events"] = []
+        sched["events"] = [e for e in events if e["lesson_id"] != lesson_id]
+        sched["deferred_events"].append(target_event)
+        sched["total_events"] = len(sched["events"])
+        with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+            json.dump(sched, f, indent=2, ensure_ascii=False)
+        return {"status": "success", "message": f"Cours '{target_event['resource_name']}' déplacé vers la liste des cours à reprogrammer."}
+        
+    elif action == "MOVE":
+        target_day = payload.get("target_day")
+        target_slot_idx = int(payload.get("target_slot_idx", 0))
+        target_room_id = payload.get("target_room_id")
+        
+        copilot = TimetableCopilot()
+        check = copilot.verifier_conflit_deplacement(
+            lesson_id=lesson_id,
+            cible_jour=target_day,
+            cible_creneau_idx=target_slot_idx,
+            cible_salle=target_room_id
+        )
+        if check.get("conflit"):
+            raise HTTPException(status_code=400, detail=check)
+            
+        dataset = get_dataset()
+        days = dataset["calendar_config"]["days"]
+        daily_slots = dataset["calendar_config"]["daily_slots"]
+        room_obj = next((r for r in dataset["rooms"] if r["id"] == target_room_id), None)
+        
+        day_idx = days.index(target_day) if target_day in days else 0
+        target_event["day"] = target_day
+        target_event["day_idx"] = day_idx
+        target_event["slot_idx"] = target_slot_idx
+        target_event["slot_time"] = daily_slots[target_slot_idx]["time"]
+        target_event["global_slot"] = day_idx * len(daily_slots) + target_slot_idx
+        if room_obj:
+            target_event["room_id"] = room_obj["id"]
+            target_event["room_name"] = room_obj["name"]
+            
+        with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+            json.dump(sched, f, indent=2, ensure_ascii=False)
+        return {"status": "success", "message": f"Cours déplacé au {target_day} à {target_event['slot_time']}."}
         
     elif action == "CHANGE_ROOM":
         new_room_id = payload.get("new_room_id")
@@ -417,6 +525,7 @@ def execute_quick_action(payload: dict):
         return {"status": "success", "message": "Séance convertie en Évaluation."}
         
     raise HTTPException(status_code=400, detail=f"Action inconnue : {action}")
+
 
 
 
