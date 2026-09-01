@@ -39,13 +39,14 @@ function getTeacherService(teacherName) {
 }
 
 // Calcule le total HETD planifié d'un enseignant (toutes semaines).
+// Utilise normalizeTeacherKey (app.js) pour un matching insensible à l'ordre
+// des noms (ex: "Steeve Pytel" ≈ "Pytel Steeve") et aux accents/bruit "Mémo:"/"Salles:".
 function computeTeacherHETD(teacherName) {
-    const t1 = String(teacherName || '').toLowerCase();
+    const norm = typeof normalizeTeacherKey === 'function' ? normalizeTeacherKey : (s => String(s || '').toLowerCase());
+    const want = norm(teacherName).split(' ').filter(Boolean);
     const events = (currentSchedule || []).filter(e => {
-        const t2 = (e.teacher_name || '').toLowerCase();
-        if (t2.includes(t1)) return true;
-        if (t1.includes(t2)) return true;
-        return false;
+        const evKey = norm(e.teacher_name);
+        return want.length && want.every(w => evKey.includes(w));
     });
     let total = 0;
     events.forEach(e => {
