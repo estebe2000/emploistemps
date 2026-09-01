@@ -272,6 +272,12 @@
         }
 
         function isPermanentClosure(day, sIdx) {
+            // Les cours du Jeudi/Samedi après-midi SONT possibles (données réelles),
+            // mais restent de moindre priorité ("dernier recours") géré côté solveur.
+            return false;
+        }
+        // Signale un créneau de "dernier recours" (Jeudi/Samedi après-midi) à l'affichage.
+        function isLowPrioritySlot(day, sIdx) {
             if (day === "Jeudi" && sIdx >= 3) return true;
             if (day === "Samedi" && sIdx >= 3) return true;
             return false;
@@ -361,7 +367,11 @@
                     } else {
                         const cellEvents = filtered.filter(e => e.day_idx === dIdx && e.slot_idx === sIdx);
 
-                        
+                        // Créneau "dernier recours" (Jeudi/Samedi AM) : fond jaune discret si occupé
+                        if (isLowPrioritySlot(day, sIdx) && cellEvents.length > 0) {
+                            cell.style.background = 'rgba(245, 158, 11, 0.06)';
+                        }
+
                         const nonTpEvents = cellEvents.filter(e => e.event_type !== 'TP');
                         const tpEvents = cellEvents.filter(e => e.event_type === 'TP');
 
@@ -1176,24 +1186,24 @@
                 matrix.appendChild(createDiv('matrix-day', period.label));
 
                 DAYS.forEach(day => {
-                    const isClosed = (day === "Jeudi" && period.id === "APRES_MIDI") || (day === "Samedi" && period.id === "APRES_MIDI");
+                    const isLow = (day === "Jeudi" && period.id === "APRES_MIDI") || (day === "Samedi" && period.id === "APRES_MIDI");
 
                     const cell = document.createElement('div');
-                    if (isClosed) {
-                        cell.className = 'matrix-cell';
-                        cell.style.background = 'rgba(239, 68, 68, 0.08)';
-                        cell.style.borderColor = 'rgba(239, 68, 68, 0.2)';
-                        cell.style.color = '#f87171';
-                        cell.style.cursor = 'not-allowed';
-                        cell.innerHTML = '🔒 Fermé';
-                    } else {
-                        const dayUnavail = unavails.find(u => u.day.toLowerCase() === day.toLowerCase());
-                        const isBlocked = dayUnavail && period.slots.some(s => dayUnavail.slots.includes(s));
+                    const dayUnavail = unavails.find(u => u.day.toLowerCase() === day.toLowerCase());
+                    const isBlocked = dayUnavail && period.slots.some(s => dayUnavail.slots.includes(s));
 
-                        cell.className = `matrix-cell ${isBlocked ? 'unavailable' : ''}`;
+                    cell.className = `matrix-cell ${isBlocked ? 'unavailable' : ''}`;
+                    if (isLow && !isBlocked) {
+                        // Créneau de dernier recours (Jeudi/Samedi après-midi) : sélectionnable,
+                        // signalé par une teinte ambre discrète.
+                        cell.style.background = 'rgba(245, 158, 11, 0.10)';
+                        cell.style.borderColor = 'rgba(245, 158, 11, 0.35)';
+                        cell.style.color = '#fbbf24';
+                        cell.textContent = isBlocked ? '⛔ Bloqué' : '🟠 Dernier recours';
+                    } else {
                         cell.textContent = isBlocked ? '⛔ Bloqué' : '✅ Dispo';
-                        cell.onclick = () => toggleTeacherHalfDay(teacherName, day, period.slots, cell);
                     }
+                    cell.onclick = () => toggleTeacherHalfDay(teacherName, day, period.slots, cell);
                     matrix.appendChild(cell);
                 });
             });

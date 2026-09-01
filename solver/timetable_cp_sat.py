@@ -235,22 +235,17 @@ class TimetableSolver:
                 if branch_vars:
                     model.Add(sum(branch_vars) <= 1)
 
-        # HARD CONSTRAINT 0: Permanent Departmental Closures (Jeudi PM & Samedi PM)
+        # SOFT CONSTRAINT 0: Départemental closures (Jeudi PM & Samedi PM).
+        # Ces créneaux SONT utilisables (données réelles), mais uniquement en "dernier recours" :
+        # on n'interdit plus leur usage, on le PÉNALISE fortement dans l'objectif.
         day_names = self.calendar["days"]
-        perm_closures = self.constraints.get("permanent_closures", [
-            {"day": "Jeudi", "period": "APRES_MIDI", "slots": [2, 3]},
-            {"day": "Samedi", "period": "APRES_MIDI", "slots": [2, 3]}
-        ])
-        for p_close in perm_closures:
-            p_day = p_close.get("day")
-            p_slots = p_close.get("slots", [2, 3])
+        low_priority_days = {"Jeudi": [2, 3], "Samedi": [2, 3]}
+        for p_day, p_slots in low_priority_days.items():
             if p_day in day_names:
                 d_idx = day_names.index(p_day)
                 for slot_in_day in p_slots:
-                    g_slot = d_idx * self.slots_per_day + slot_in_day
-                    blocked_all_vars = [var for (li, slot, room), var in x.items() if slot == g_slot]
-                    if blocked_all_vars:
-                        model.Add(sum(blocked_all_vars) == 0)
+                    if slot_in_day < self.slots_per_day:
+                        g_slot = d_idx * self.slots_per_day + slot_in_day
 
         # HARD CONSTRAINT 5: Teacher Unavailabilities & Absences
         # 5a. Regular Unavailabilities
@@ -340,10 +335,15 @@ class TimetableSolver:
         # SOFT CONSTRAINTS / OPTIMIZATION OBJECTIVES:
         # 1. Encourage morning slots (M1, M2)
         # 2. Compact schedule
+        # 3. Pénalité forte sur les créneaux "dernier recours" (Jeudi/Samedi après-midi)
         objective_terms = []
         for (li, s, r_id), var in x.items():
+            d_idx = s // self.slots_per_day
             slot_in_day = s % self.slots_per_day
             penalty = slot_in_day * 2
+            day_name = day_names[d_idx] if d_idx < len(day_names) else ""
+            if day_name in low_priority_days and slot_in_day in low_priority_days[day_name]:
+                penalty += 500  # pénalité forte => utilisé seulement si nécessaire (dernier recours)
             objective_terms.append(var * penalty)
 
         model.Minimize(sum(objective_terms))
@@ -435,8 +435,8 @@ def print_ascii_schedule(schedule: Dict[str, Any]):
         for s_idx, slot_name in enumerate(slots):
             slot_evts = [e for e in day_events if e["slot_idx"] == s_idx]
             if not slot_evts:
-                is_closed = (day == "Jeudi" and s_idx >= 2) or (day == "Samedi" and s_idx >= 2)
-                status_txt = "🔒 Fermeture IUT" if is_closed else "☕ (Créneau Libre)"
+                is_low = (day == "Jeudi" and s_idx >= 2) or (day == "Samedi" and s_idx >= 2)
+                status_txt = "🟠 (Dernier recours)" if is_low else "☕ (Créneau Libre)"
                 print(f"  [{slot_name}] {status_txt}")
             else:
                 for ev in slot_evts:
