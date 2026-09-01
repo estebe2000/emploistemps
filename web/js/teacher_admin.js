@@ -48,14 +48,19 @@ function computeTeacherHETD(teacherName) {
         const evKey = norm(e.teacher_name);
         return want.length && want.every(w => evKey.includes(w));
     });
-    let total = 0;
+    let hetd = 0, autres = 0, autresNb = 0;
     events.forEach(e => {
         const dur = e.duration_hours || 1.5;
-        if (e.event_type === 'CM') total += dur * 1.5;
-        else if (e.event_type === 'TP') total += dur * 0.75;
-        else total += dur * 1.0;
+        if (e.is_other || e.event_type === 'AUTRE') {
+            autres += dur;
+            autresNb += 1;
+            return;
+        }
+        if (e.event_type === 'CM') hetd += dur * 1.5;
+        else if (e.event_type === 'TP') hetd += dur * 0.75;
+        else hetd += dur * 1.0;
     });
-    return Math.round(total * 10) / 10;
+    return { hetdCours: Math.round(hetd * 10) / 10, heuresAutres: Math.round(autres * 10) / 10, nbAutres: autresNb, nbCours: events.length - autresNb };
 }
 
 // Rend le panneau "Service déclaré" pour l'enseignant sélectionné.
@@ -68,7 +73,11 @@ function renderTeacherService(teacherName) {
     }
 
     const svc = getTeacherService(teacherName);
-    const plannedHETD = computeTeacherHETD(teacherName);
+    const compute = computeTeacherHETD(teacherName);
+    const plannedHETD = compute.hetdCours;
+    const heuresAutres = compute.heuresAutres;
+    const nbAutres = compute.nbAutres;
+    const nbCours = compute.nbCours;
     const delta = Math.round((plannedHETD - svc.hetd) * 10) / 10;
     const statusColor = delta > 15 ? '#fb7185' : (delta < -15 ? '#fbbf24' : '#34d399');
     const statusLabel = delta > 15 ? 'Heures sup' : (delta < -15 ? 'Sous-service' : 'Équilibré');
@@ -96,10 +105,16 @@ function renderTeacherService(teacherName) {
             <div style="margin-top:8px; border-top:1px solid var(--border-color); padding-top:8px;">
                 <div style="font-size:0.75rem; color:var(--text-muted);">Bilan planifié (HETD) :</div>
                 <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
-                    <span>Planifié</span><strong>${plannedHETD} h</strong>
+                    <span>Planifié (cours)</span><strong>${plannedHETD} h</strong>
                 </div>
                 <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:${statusColor};">
                     <span>Δ vs service</span><strong>${delta>0?'+':''}${delta} h (${statusLabel})</strong>
+                </div>
+            </div>
+            <div style="margin-top:8px; border-top:1px dashed var(--border-color); padding-top:8px;">
+                <div style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Autre (hors cours / HETD)</div>
+                <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:var(--text-muted);">
+                    <span>Réunions / co-encadrements (${nbAutres})</span><strong>${heuresAutres} h</strong>
                 </div>
             </div>
         </div>`;

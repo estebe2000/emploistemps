@@ -79,6 +79,11 @@ def get_teachers_workload():
         td_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TD"), 1)
         tp_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TP"), 1)
         eval_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "EVAL" or e.get("is_evaluation")), 1)
+        # Heures « autres » (réunions, matière à préciser, co-encadrements) : hors HETD.
+        other_events = [e for e in t_events if e.get("is_other") or e.get("event_type") == "AUTRE"]
+        other_hours = round(sum(e.get("duration_hours", 1.5) for e in other_events), 1)
+        # Cours pédagogiques = tous sauf autres, absences, évals ? On exclut uniquement 'AUTRE'
+        cours_events = [e for e in t_events if not (e.get("is_other") or e.get("event_type") == "AUTRE")]
 
         total_hetd = round((cm_hours * 1.5) + (td_hours * 1.0) + (tp_hours * 0.75) + (eval_hours * 1.0), 1)
 
@@ -112,7 +117,9 @@ def get_teachers_workload():
             "total_hetd": total_hetd,
             "delta_hetd": delta,
             "status": status,
-            "nb_cours_planifies": len(t_events)
+            "heures_autres": other_hours,
+            "nb_autres": len(other_events),
+            "nb_cours_planifies": len(cours_events)
         })
 
     workload_summary.sort(key=lambda x: x["teacher_name"])

@@ -101,6 +101,24 @@ def map_time_to_slot(dt_local: datetime) -> int:
         return 5
 
 
+def extract_all_teachers(desc: str, summary: str) -> list:
+    """
+    Extrait TOUTES les enseignants listés dans la DESCRIPTION (format Hyperplanning :
+    'Enseignants : A\\, B\\, C' ou 'Enseignant : X'). Retourne une liste de noms nettoyés.
+    """
+    m = re.search(r'Enseignants?\s*:\s*([^\n\\;<]+)', desc, re.IGNORECASE)
+    if m:
+        raw = m.group(1).replace(r'\,', ',').replace(r'\\n', ' ').strip()
+        raw = raw.split('TD :')[0].split('Type :')[0].split('Salle :')[0]
+        names = [p.strip() for p in raw.split(',') if p.strip()]
+        # nettoie préfixes civilité
+        names = [re.sub(r'^(?:Mme|M\.|M)\s+', '', n).strip() for n in names]
+        return [n for n in names if n]
+    # Fallback : un seul enseignant
+    single = extract_teacher_name(desc, summary)
+    return [single] if single and single != "Enseignant TC" else []
+
+
 def extract_teacher_name(desc: str, summary: str) -> str:
     m = re.search(r'Enseignant[s]?\s*:\s*([^\n\\;<]+)', desc, re.IGNORECASE)
     if m:
@@ -124,6 +142,9 @@ def extract_teacher_name(desc: str, summary: str) -> str:
 
 def extract_event_type(desc: str, summary: str) -> str:
     text = (desc + " " + summary).upper()
+    # Événements « autres » : réunions / "matière à préciser" / sans type pédagogique clair.
+    if "MATIÈRE À PRÉCISER" in text or "MATIERE A PRECISER" in text or "RÉUNION" in text or "REUNION" in text:
+        return "AUTRE"
     if "PARTIEL" in text or "EXAM" in text or "DS " in text or "EVAL" in text:
         return "EVAL"
     if "CM" in text:
@@ -348,6 +369,11 @@ def import_all_schedules():
         ev_type = extract_event_type(desc, summary)
         primary_group, matching_groups = extract_groups_and_hierarchy(desc, summary, e["_source_promo"])
         room_id, room_name = clean_room_name(loc)
+        is_other = (ev_type == "AUTRE")
+
+        # Pour les événements « autres » (réunions / co-encadrements), on attribue à TOUS
+        # les enseignants listés. Pour les cours, on garde l'enseignant principal.
+        teachers = extract_all_teachers(desc, summary) if is_other else ([teacher] if teacher and teacher != "Enseignant TC" else [])
 
         # Resource title extraction
         res_code = "R1.01"
@@ -360,47 +386,57 @@ def import_all_schedules():
 
         duration_mins = int((dt_end - dt_start).total_seconds() / 60)
         dur_hours = round(duration_mins / 60, 2)
-        if dur_hours < 0.5 or dur_hours > 5.0:
+        # Les réunions / événements « autres » peuvent dépasser 5h : on garde la durée réelle.
+        # Seuls les cours pédagogiques anormaux (< 0.5h ou absurdes) sont ramenés à 1.5h.
+        if not is_other and (dur_hours < 0.5 or dur_hours > 5.0):
             dur_hours = 1.5
 
-        hetd_coeff = 1.5 if ev_type == "CM" else (0.75 if ev_type == "TP" else 1.0)
+        hetd_coeff = 0.0 if ev_type == "AUTRE" else (1.5 if ev_type == "CM" else (0.75 if ev_type == "TP" else 1.0))
         hetd_hours = round(dur_hours * hetd_coeff, 2)
-
-        # Robust cross-file deduplication (same week, day, slot, and (same room OR same teacher OR same group))
-        dedup_key = (acad_week, weekday_idx, slot_idx, primary_group, room_id)
-        teacher_key = (acad_week, weekday_idx, slot_idx, teacher)
-        if dedup_key in seen_keys or (teacher != "Enseignant TC" and teacher_key in seen_keys):
-            continue
-        seen_keys.add(dedup_key)
-        if teacher != "Enseignant TC":
-            seen_keys.add(teacher_key)
-
-
-        lesson_id = f"REAL_{acad_week}_{weekday_idx}_{slot_idx}_{len(processed_events)+1}"
 
         slot_info = DAILY_SLOTS[slot_idx]
 
-        processed_events.append({
-            "lesson_id": lesson_id,
-            "resource_code": res_code,
-            "resource_name": summary or res_name,
-            "event_type": ev_type,
-            "group_id": primary_group,
-            "matching_groups": matching_groups,
-            "teacher_name": teacher,
-            "room_id": room_id,
-            "room_name": room_name,
-            "week": acad_week,
-            "day": day_name,
-            "day_idx": weekday_idx,
-            "slot_idx": slot_idx,
-            "slot_time": slot_info["time"],
-            "date": dt_start.date().isoformat(),          # date calendaire réelle (YYYY-MM-DD)
-            "duration_hours": dur_hours,
-            "hetd_hours": hetd_hours,
-            "is_evaluation": ev_type == "EVAL",
-            "global_slot": weekday_idx * len(DAILY_SLOTS) + slot_idx
-        })
+        # Génère un événement par enseignant (si plusieurs, pour les co-encadrements / réunions).
+        for tch in teachers:
+            teacher = tch
+
+            # Robust cross-file deduplication. Pour les événements « autres » (réunions),
+            # on dédoublonne par (créneau + enseignant) afin de garder tous les co-encodeurs.
+            if is_other:
+                dedup_key = (acad_week, weekday_idx, slot_idx, teacher)
+            else:
+                dedup_key = (acad_week, weekday_idx, slot_idx, primary_group, room_id)
+            teacher_key = (acad_week, weekday_idx, slot_idx, teacher)
+            if dedup_key in seen_keys or (teacher != "Enseignant TC" and teacher_key in seen_keys):
+                continue
+            seen_keys.add(dedup_key)
+            if teacher != "Enseignant TC":
+                seen_keys.add(teacher_key)
+
+            lesson_id = f"REAL_{acad_week}_{weekday_idx}_{slot_idx}_{len(processed_events)+1}_{teacher.replace(' ','_')}"
+
+            processed_events.append({
+                "lesson_id": lesson_id,
+                "resource_code": res_code,
+                "resource_name": summary or res_name,
+                "event_type": ev_type,
+                "group_id": primary_group,
+                "matching_groups": matching_groups,
+                "teacher_name": teacher,
+                "room_id": room_id,
+                "room_name": room_name,
+                "week": acad_week,
+                "day": day_name,
+                "day_idx": weekday_idx,
+                "slot_idx": slot_idx,
+                "slot_time": slot_info["time"],
+                "date": dt_start.date().isoformat(),          # date calendaire réelle (YYYY-MM-DD)
+                "duration_hours": dur_hours,
+                "hetd_hours": hetd_hours,
+                "is_evaluation": ev_type == "EVAL",
+                "is_other": is_other,
+                "global_slot": weekday_idx * len(DAILY_SLOTS) + slot_idx
+            })
 
     processed_events.sort(key=lambda x: (x["week"], x["day_idx"], x["slot_idx"]))
 
