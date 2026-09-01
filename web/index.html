@@ -328,6 +328,19 @@
             user-select: none;
         }
 
+        .tp-split-row {
+            display: flex;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .tp-split-row .event-card {
+            flex: 1;
+            min-width: 0;
+            padding: 6px 8px;
+            font-size: 0.72rem;
+        }
+
         .event-card:hover {
             transform: scale(1.02);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
@@ -337,6 +350,7 @@
         .event-td { background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.1)); border-color: var(--accent-td); }
         .event-tp { background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.1)); border-color: var(--accent-tp); }
         .event-eval { background: linear-gradient(135deg, rgba(244, 63, 94, 0.3), rgba(244, 63, 94, 0.1)); border-color: var(--accent-eval); }
+
 
         .event-header {
             display: flex;
@@ -1398,49 +1412,76 @@
                         cell.innerHTML = `<span style="font-size:0.7rem; color:#f87171; font-weight:600;">🔒 Fermeture</span>`;
                     } else {
                         const cellEvents = filtered.filter(e => e.day_idx === dIdx && e.slot_idx === sIdx);
-                        cellEvents.forEach(ev => {
-                            const card = document.createElement('div');
-                            let typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
-                            let badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
-                            let badgeLabel = ev.event_type;
 
-                            if (ev.is_evaluation || ev.event_type === 'EVAL') {
-                                typeClass = 'event-eval';
-                                badgeClass = 'badge-eval';
-                                badgeLabel = 'DS/EVAL';
-                            }
+                        
+                        const nonTpEvents = cellEvents.filter(e => e.event_type !== 'TP');
+                        const tpEvents = cellEvents.filter(e => e.event_type === 'TP');
 
-                            card.className = `event-card ${typeClass}`;
-                            card.innerHTML = `
-                                <div class="event-header">
-                                    <span>${ev.resource_code}</span>
-                                    <span class="event-badge ${badgeClass}">${badgeLabel}</span>
-                                </div>
-                                <div class="event-title" title="${ev.resource_name}">${ev.resource_name}</div>
-                                <div class="event-footer">
-                                    <span>${ev.teacher_name}</span>
-                                    <span class="event-room">${ev.room_name.replace('IUTC-', '')}</span>
-                                </div>
-                            `;
-
-                            // Right-click context menu handler
-                            card.oncontextmenu = (e) => {
-                                e.preventDefault();
-                                openContextMenu(e, ev.lesson_id);
-                            };
-
-                            // Left click quick prompt
-                            card.onclick = () => {
-                                sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} vers un autre créneau sans conflit ?`);
-                            };
-                            cell.appendChild(card);
+                        // 1. Render Non-TP events (CM, TD, EVAL) full width
+                        nonTpEvents.forEach(ev => {
+                            cell.appendChild(createCardElement(ev));
                         });
+
+                        // 2. Render TP events side-by-side (2 per row: Group A & Group B)
+                        for (let i = 0; i < tpEvents.length; i += 2) {
+                            const row = document.createElement('div');
+                            row.className = 'tp-split-row';
+
+                            const evA = tpEvents[i];
+                            row.appendChild(createCardElement(evA, true));
+
+                            if (i + 1 < tpEvents.length) {
+                                const evB = tpEvents[i + 1];
+                                row.appendChild(createCardElement(evB, true));
+                            }
+                            cell.appendChild(row);
+                        }
                     }
 
                     grid.appendChild(cell);
                 });
             });
         }
+
+        function createCardElement(ev, isHalf = false) {
+            const card = document.createElement('div');
+            let typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
+            let badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
+            let badgeLabel = ev.group_id || ev.event_type;
+
+            if (ev.is_evaluation || ev.event_type === 'EVAL') {
+                typeClass = 'event-eval';
+                badgeClass = 'badge-eval';
+                badgeLabel = 'DS/EVAL';
+            }
+
+            card.className = `event-card ${typeClass}`;
+            card.innerHTML = `
+                <div class="event-header">
+                    <span style="font-weight:700;">${ev.resource_code}</span>
+                    <span class="event-badge ${badgeClass}">${badgeLabel}</span>
+                </div>
+                <div class="event-title" title="${ev.resource_name}">${ev.resource_name}</div>
+                <div class="event-footer">
+                    <span>${ev.teacher_name}</span>
+                    <span class="event-room">${ev.room_name.replace('IUTC-', '')}</span>
+                </div>
+            `;
+
+            // Right-click context menu handler
+            card.oncontextmenu = (e) => {
+                e.preventDefault();
+                openContextMenu(e, ev.lesson_id);
+            };
+
+            // Left click quick prompt
+            card.onclick = () => {
+                sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} (${ev.group_id}) vers un autre créneau sans conflit ?`);
+            };
+
+            return card;
+        }
+
 
         // --- CONTEXT MENU (Clic Droit) ---
         function initContextMenu() {
