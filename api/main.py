@@ -88,10 +88,106 @@ def health_check():
     }
 
 
+# --- ADMIN & CONSTRAINTS ENDPOINTS ---
+
+CONSTRAINTS_PATH = os.path.join(BASE_DIR, "data", "constraints.json")
+
+def get_constraints_data():
+    if not os.path.exists(CONSTRAINTS_PATH):
+        return {
+            "department": "TC",
+            "max_hours_per_day_teacher": 6,
+            "max_hours_per_day_student": 8,
+            "catchup_weeks": [8, 15],
+            "teacher_unavailabilities": [],
+            "room_closures_or_reservations": [],
+            "cohort_alternance_calendar": {}
+        }
+    with open(CONSTRAINTS_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_constraints_data(data: dict):
+    with open(CONSTRAINTS_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+def save_dataset_data(data: dict):
+    with open(DATASET_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+@app.get("/api/v1/admin/constraints", tags=["Administration"])
+def get_admin_constraints():
+    """Récupère l'ensemble des contraintes configurées."""
+    return get_constraints_data()
+
+
+@app.post("/api/v1/admin/constraints", tags=["Administration"])
+def save_admin_constraints(constraints: dict):
+    """Enregistre l'ensemble des contraintes départementales."""
+    save_constraints_data(constraints)
+    return {"status": "success", "message": "Contraintes enregistrées avec succès."}
+
+
+@app.post("/api/v1/admin/teacher/unavailability", tags=["Administration"])
+def update_teacher_unavailability(payload: dict):
+    """Ajoute ou met à jour l'indisponibilité d'un enseignant."""
+    c = get_constraints_data()
+    t_name = payload.get("teacher_name")
+    unavails = c.get("teacher_unavailabilities", [])
+    # Filter out existing unavailabilities for this teacher if full replacement is passed
+    if payload.get("replace"):
+        unavails = [u for u in unavails if u.get("teacher_name", "").lower() != t_name.lower()]
+    
+    new_unavail = {
+        "teacher_name": t_name,
+        "day": payload.get("day"),
+        "slots": payload.get("slots", []),
+        "reason": payload.get("reason", "Indisponibilité")
+    }
+    unavails.append(new_unavail)
+    c["teacher_unavailabilities"] = unavails
+    save_constraints_data(c)
+    return {"status": "success", "message": f"Indisponibilité enregistrée pour {t_name}."}
+
+
+@app.post("/api/v1/admin/room/closure", tags=["Administration"])
+def update_room_closure(payload: dict):
+    """Ajoute une fermeture ou réservation de salle."""
+    c = get_constraints_data()
+    closures = c.get("room_closures_or_reservations", [])
+    closures.append({
+        "room_id": payload.get("room_id"),
+        "week": payload.get("week"),
+        "day": payload.get("day"),
+        "slots": payload.get("slots", []),
+        "reason": payload.get("reason", "Réservation")
+    })
+    c["room_closures_or_reservations"] = closures
+    save_constraints_data(c)
+    return {"status": "success", "message": "Fermeture/Réservation de salle enregistrée."}
+
+
+@app.post("/api/v1/admin/cohort/alternance", tags=["Administration"])
+def update_cohort_alternance(payload: dict):
+    """Met à jour le calendrier d'alternance pour une cohorte (semaines entreprise)."""
+    c = get_constraints_data()
+    cohort_id = payload.get("cohort_id")
+    weeks = payload.get("company_weeks", [])
+    if "cohort_alternance_calendar" not in c:
+        c["cohort_alternance_calendar"] = {}
+    c["cohort_alternance_calendar"][cohort_id] = {
+        "company_weeks": weeks,
+        "comment": payload.get("comment", "Semaines en entreprise")
+    }
+    save_constraints_data(c)
+    return {"status": "success", "message": f"Calendrier d'alternance mis à jour pour {cohort_id}."}
+
+
 @app.get("/api/v1/dataset", tags=["Données"])
 def read_full_dataset():
     """Renvoie l'ensemble du dataset départemental TC (enseignants, ressources, salles, cohortes)."""
     return get_dataset()
+
 
 
 @app.get("/api/v1/teachers", tags=["Données"])

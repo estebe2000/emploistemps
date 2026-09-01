@@ -29,7 +29,6 @@
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 18px;
-            --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.15);
         }
 
         * {
@@ -53,10 +52,10 @@
 
         /* Top Navbar */
         header {
-            background: rgba(19, 27, 46, 0.8);
+            background: rgba(19, 27, 46, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+            padding: 0.85rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,41 +71,41 @@
         }
 
         .brand-logo {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, var(--accent-primary), #06b6d4);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: #fff;
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
         }
 
         .brand-text h1 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
 
         .brand-text p {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
         }
 
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .btn {
             background: var(--bg-card);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            padding: 0.6rem 1.1rem;
+            padding: 0.55rem 1rem;
             border-radius: var(--radius-sm);
             font-weight: 500;
             font-size: 0.85rem;
@@ -122,6 +121,18 @@
             border-color: var(--accent-primary);
             box-shadow: 0 0 12px var(--accent-glow);
             transform: translateY(-1px);
+        }
+
+        .btn-admin {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+            border-color: rgba(245, 158, 11, 0.35);
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        .btn-admin:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
         }
 
         .btn-primary {
@@ -146,11 +157,11 @@
             display: grid;
             grid-template-columns: 1fr 380px;
             gap: 1.5rem;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 2rem;
             flex: 1;
         }
 
-        /* Left Section: Filters & Schedule */
+        /* Left Section: Controls & Schedule */
         .main-panel {
             display: flex;
             flex-direction: column;
@@ -161,7 +172,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1rem 1.25rem;
+            padding: 0.85rem 1.25rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -188,7 +199,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 0.5rem 0.8rem;
+            padding: 0.45rem 0.8rem;
             border-radius: var(--radius-sm);
             font-size: 0.85rem;
             outline: none;
@@ -203,7 +214,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 0.4rem 0.8rem;
+            padding: 0.35rem 0.8rem;
             background: rgba(16, 185, 129, 0.1);
             border: 1px solid rgba(16, 185, 129, 0.25);
             border-radius: 20px;
@@ -231,7 +242,7 @@
 
         .schedule-grid {
             display: grid;
-            grid-template-columns: 120px repeat(5, minmax(180px, 1fr));
+            grid-template-columns: 120px repeat(5, minmax(170px, 1fr));
             gap: 8px;
         }
 
@@ -312,20 +323,9 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        .event-cm {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.1));
-            border-color: var(--accent-cm);
-        }
-
-        .event-td {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.1));
-            border-color: var(--accent-td);
-        }
-
-        .event-tp {
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.1));
-            border-color: var(--accent-tp);
-        }
+        .event-cm { background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.1)); border-color: var(--accent-cm); }
+        .event-td { background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.1)); border-color: var(--accent-td); }
+        .event-tp { background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.1)); border-color: var(--accent-tp); }
 
         .event-header {
             display: flex;
@@ -378,9 +378,9 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            height: calc(100vh - 120px);
+            height: calc(100vh - 110px);
             position: sticky;
-            top: 90px;
+            top: 85px;
         }
 
         .copilot-header {
@@ -447,7 +447,7 @@
             flex: 1;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            padding: 0.6rem 0.9rem;
+            padding: 0.55rem 0.9rem;
             border-radius: var(--radius-sm);
             color: white;
             font-size: 0.85rem;
@@ -477,28 +477,184 @@
             border-color: var(--accent-primary);
         }
 
-        /* Modal */
+        /* ADMIN MODAL / VIEW */
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
+            background: rgba(5, 8, 16, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            padding: 2rem;
         }
 
-        .modal-card {
+        .admin-modal {
             background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            width: 420px;
-            max-width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            width: 1100px;
+            max-width: 95vw;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .admin-header {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 2rem 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-muted);
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .admin-body {
+            padding: 1.5rem 2rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Unavailability Matrix */
+        .unavail-matrix {
+            display: grid;
+            grid-template-columns: 180px repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .matrix-header {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .matrix-day {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .matrix-cell {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .matrix-cell.unavailable {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+        }
+
+        .matrix-cell:hover {
+            border-color: var(--accent-primary);
+        }
+
+        /* Tables in Admin */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-top: 0.5rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .admin-footer {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* Weeks Selector Badges */
+        .week-toggle-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.15s;
+        }
+
+        .week-toggle-btn.active {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            color: #000;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
         }
     </style>
 </head>
@@ -514,7 +670,8 @@
             </div>
         </div>
         <div class="header-actions">
-            <a href="/docs" target="_blank" class="btn">📚 OpenAPI Swagger</a>
+            <button class="btn btn-admin" onclick="openAdminModal()">⚙️ Administration des Contraintes</button>
+            <a href="/docs" target="_blank" class="btn">📚 OpenAPI</a>
             <a href="/api/v1/export/ical" class="btn btn-success">📥 Exporter iCal (.ics)</a>
             <button id="btn-generate" class="btn btn-primary" onclick="triggerSolver()">⚡ Optimiser (CP-SAT)</button>
         </div>
@@ -577,7 +734,7 @@
 
             <div class="chat-container" id="chat-box">
                 <div class="chat-bubble bubble-ai">
-                    Bonjour ! Je suis votre copilote d'emploi du temps pour le département TC. Je peux vérifier les conflits de salles, trouver des créneaux de rattrapage ou déplacer des cours sur simple demande.
+                    Bonjour ! Je suis votre copilote d'emploi du temps pour le département TC. Vous pouvez me demander de vérifier des conflits, planifier des rattrapages ou déplacer des cours en langage naturel.
                 </div>
             </div>
 
@@ -595,6 +752,162 @@
 
     </div>
 
+    <!-- ADMIN & CONSTRAINTS FULL MODAL -->
+    <div class="modal-overlay" id="admin-modal">
+        <div class="admin-modal">
+            <div class="admin-header">
+                <div>
+                    <h2 style="font-size: 1.2rem; font-weight: 700;">⚙️ Administration & Gestion des Contraintes</h2>
+                    <p style="font-size: 0.78rem; color: var(--text-muted);">Définissez les indisponibilités, fermetures de salles, calendriers d'alternance et quotas</p>
+                </div>
+                <button class="btn" onclick="closeAdminModal()">✕ Fermer</button>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="switchTab('tab-teachers')">👤 Enseignants & Indisponibilités</button>
+                <button class="tab-btn" onclick="switchTab('tab-rooms')">📍 Salles & Fermetures</button>
+                <button class="tab-btn" onclick="switchTab('tab-alternance')">🎓 Alternance & Semaines Banalisées</button>
+                <button class="tab-btn" onclick="switchTab('tab-quotas')">⚙️ Quotas & Paramètres</button>
+            </div>
+
+            <div class="admin-body">
+                
+                <!-- TAB 1: Teachers & Unavailabilities -->
+                <div class="tab-pane active" id="tab-teachers">
+                    <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                        <div style="width: 320px; display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Sélectionner un enseignant :</label>
+                            <select id="admin-select-teacher" onchange="loadTeacherMatrix()" style="width: 100%;">
+                                <!-- populated via JS -->
+                            </select>
+                            
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px;">
+                                <h4 style="font-size: 0.85rem; margin-bottom: 6px;">Affectations de la ressource :</h4>
+                                <div id="teacher-assigned-list" style="font-size: 0.78rem; color: var(--text-muted);">
+                                    Sélectionnez un enseignant pour voir ses matières.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 0.95rem; font-weight: 600;">Grille d'Indisponibilités Hebdomadaire</h3>
+                            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Cliquez sur un créneau pour le bloquer (Rouge = Indisponible pour les cours).</p>
+
+                            <div class="unavail-matrix" id="teacher-matrix">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Rooms & Closures -->
+                <div class="tab-pane" id="tab-rooms">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 0.95rem; font-weight: 600;">Inventaire des Salles & Équipements</h3>
+                    </div>
+                    <table class="data-table" id="rooms-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom de la Salle</th>
+                                <th>Type</th>
+                                <th>Capacité</th>
+                                <th>Équipements</th>
+                                <th>État / Fermetures</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rooms-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                        <h4 style="font-size: 0.88rem; margin-bottom: 0.75rem;">➕ Ajouter une fermeture temporaire ou réservation de salle</h4>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Salle :</label>
+                                <select id="closure-room-select"></select>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Semaine :</label>
+                                <input type="number" id="closure-week" min="1" max="15" value="1" style="width: 70px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Jour :</label>
+                                <select id="closure-day">
+                                    <option value="Lundi">Lundi</option>
+                                    <option value="Mardi">Mardi</option>
+                                    <option value="Mercredi">Mercredi</option>
+                                    <option value="Jeudi">Jeudi</option>
+                                    <option value="Vendredi">Vendredi</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Motif :</label>
+                                <input type="text" id="closure-reason" placeholder="Ex: Maintenance info" style="width: 180px;">
+                            </div>
+                            <button class="btn btn-primary" onclick="addRoomClosure()">Ajouter Réservation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Alternance & Semaines Banalisées -->
+                <div class="tab-pane" id="tab-alternance">
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem;">Calendrier d'Alternance (Semaines en Entreprise)</h3>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem;">Sélectionnez les semaines où la cohorte est en entreprise (aucun cours ne sera planifié sur ces semaines).</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                            <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #fbbf24;">🎓 BUT 2 TC — Formation en Alternance (FA)</h4>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="fa-weeks-but2">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                            <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #fbbf24;">🎓 BUT 3 TC — Formation en Alternance (FA)</h4>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="fa-weeks-but3">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                            <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #34d399;">🛑 Semaines Banalisées (Examens / Rattrapages / Partiels)</h4>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="catchup-weeks-container">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: Quotas & Paramètres -->
+                <div class="tab-pane" id="tab-quotas">
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem;">Quotas Journaliers & Paramètres du Solveur</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 12px;">
+                            <label style="font-size: 0.85rem; font-weight: 600;">Heures d'enseignement max / jour (Enseignant) :</label>
+                            <input type="number" id="quota-teacher-hours" value="6" min="2" max="10" style="width: 100px;">
+                            <p style="font-size: 0.75rem; color: var(--text-muted);">Empêche la surcharge d'un enseignant sur une même journée.</p>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 12px;">
+                            <label style="font-size: 0.85rem; font-weight: 600;">Heures de cours max / jour (Étudiant) :</label>
+                            <input type="number" id="quota-student-hours" value="8" min="4" max="10" style="width: 100px;">
+                            <p style="font-size: 0.75rem; color: var(--text-muted);">Garantit le respect des rythmes universitaires étudiants.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="admin-footer">
+                <button class="btn" onclick="closeAdminModal()">Annuler</button>
+                <button class="btn btn-primary" onclick="saveAllConstraints()">💾 Enregistrer les Contraintes</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
         const SLOTS = [
@@ -606,33 +919,51 @@
 
         let currentSchedule = [];
         let dataset = {};
+        let constraints = {};
 
         async function init() {
             try {
-                // 1. Load dataset
-                const dsRes = await fetch('/api/v1/dataset');
-                dataset = await dsRes.json();
-                populateDropdowns();
+                // 1. Load dataset & constraints
+                const [dsRes, scRes, cRes] = await Promise.all([
+                    fetch('/api/v1/dataset'),
+                    fetch('/api/v1/schedule'),
+                    fetch('/api/v1/admin/constraints')
+                ]);
 
-                // 2. Load schedule
-                const scRes = await fetch('/api/v1/schedule');
+                dataset = await dsRes.json();
                 const scData = await scRes.json();
                 currentSchedule = scData.events || [];
+                constraints = await cRes.json();
+
+                populateDropdowns();
                 renderSchedule();
+                initAdminView();
             } catch (err) {
-                console.error("Erreur chargement:", err);
+                console.error("Erreur initialisation:", err);
             }
         }
 
         function populateDropdowns() {
             const teachSelect = document.getElementById('filter-teacher');
             const roomSelect = document.getElementById('filter-room');
+            const adminTeachSelect = document.getElementById('admin-select-teacher');
+            const closureRoomSelect = document.getElementById('closure-room-select');
+
+            teachSelect.innerHTML = '<option value="">👤 Tous les enseignants</option>';
+            roomSelect.innerHTML = '<option value="">📍 Toutes les salles</option>';
+            adminTeachSelect.innerHTML = '';
+            closureRoomSelect.innerHTML = '';
 
             (dataset.teachers || []).forEach(t => {
-                const opt = document.createElement('option');
-                opt.value = t.name;
-                opt.textContent = t.name;
-                teachSelect.appendChild(opt);
+                const opt1 = document.createElement('option');
+                opt1.value = t.name;
+                opt1.textContent = t.name;
+                teachSelect.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = t.name;
+                opt2.textContent = t.name;
+                adminTeachSelect.appendChild(opt2);
             });
 
             (dataset.rooms || []).forEach(r => {
@@ -640,6 +971,11 @@
                 opt.value = r.name;
                 opt.textContent = `${r.name} (${r.type})`;
                 roomSelect.appendChild(opt);
+
+                const opt2 = document.createElement('option');
+                opt2.value = r.id;
+                opt2.textContent = `${r.name} (${r.type})`;
+                closureRoomSelect.appendChild(opt2);
             });
         }
 
@@ -735,7 +1071,7 @@
                 currentSchedule = data.events || [];
                 renderSchedule();
                 document.getElementById('metrics-text').textContent = `0 Conflit | Résolu en ${data.solve_time_sec?.toFixed(2)}s`;
-                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! 100% des contraintes sont respectées.`);
+                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! Toutes les contraintes d'indisponibilités et de salles sont vérifiées.`);
             } catch (err) {
                 alert("Erreur solveur : " + err);
             } finally {
@@ -763,7 +1099,7 @@
                 const data = await res.json();
                 aiBubble.textContent = data.response || "Aucune réponse reçue.";
 
-                // Refresh schedule in case a move was applied
+                // Refresh schedule
                 const scRes = await fetch('/api/v1/schedule');
                 const scData = await scRes.json();
                 currentSchedule = scData.events || [];
@@ -790,6 +1126,205 @@
 
         function handleKey(e) {
             if (e.key === 'Enter') sendMessage();
+        }
+
+        // --- ADMIN MODAL FUNCTIONS ---
+
+        function openAdminModal() {
+            document.getElementById('admin-modal').style.display = 'flex';
+            loadTeacherMatrix();
+            loadRoomsTable();
+            loadAlternanceWeeks();
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').style.display = 'none';
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function initAdminView() {
+            document.getElementById('quota-teacher-hours').value = constraints.max_hours_per_day_teacher || 6;
+            document.getElementById('quota-student-hours').value = constraints.max_hours_per_day_student || 8;
+        }
+
+        function loadTeacherMatrix() {
+            const teacherName = document.getElementById('admin-select-teacher').value;
+            const matrix = document.getElementById('teacher-matrix');
+            matrix.innerHTML = '';
+
+            const teacherObj = (dataset.teachers || []).find(t => t.name === teacherName);
+            const assignedList = document.getElementById('teacher-assigned-list');
+            if (teacherObj && teacherObj.assigned_resources?.length) {
+                assignedList.innerHTML = teacherObj.assigned_resources.map(r => `<span style="display:inline-block; margin:2px 4px; padding:2px 6px; background:rgba(99,102,241,0.2); border-radius:4px; font-weight:600;">${r}</span>`).join(' ');
+            } else {
+                assignedList.textContent = 'Aucune ressource affectée.';
+            }
+
+            // Headers
+            matrix.appendChild(createDiv('matrix-header', 'Jour / Créneau'));
+            SLOTS.forEach(s => matrix.appendChild(createDiv('matrix-header', `${s.name}<br><small>${s.time}</small>`)));
+
+            const unavails = (constraints.teacher_unavailabilities || []).filter(u => u.teacher_name.toLowerCase() === teacherName.toLowerCase());
+
+            DAYS.forEach(day => {
+                matrix.appendChild(createDiv('matrix-day', day));
+                const dayUnavail = unavails.find(u => u.day.toLowerCase() === day.toLowerCase());
+                const blockedSlots = dayUnavail ? dayUnavail.slots : [];
+
+                SLOTS.forEach((slot, sIdx) => {
+                    const isBlocked = blockedSlots.includes(sIdx);
+                    const cell = document.createElement('div');
+                    cell.className = `matrix-cell ${isBlocked ? 'unavailable' : ''}`;
+                    cell.textContent = isBlocked ? '⛔ Bloqué' : '✅ Dispo';
+                    cell.onclick = () => toggleTeacherSlot(teacherName, day, sIdx, cell);
+                    matrix.appendChild(cell);
+                });
+            });
+        }
+
+        function toggleTeacherSlot(teacherName, day, slotIdx, cellElement) {
+            if (!constraints.teacher_unavailabilities) constraints.teacher_unavailabilities = [];
+
+            let unavail = constraints.teacher_unavailabilities.find(
+                u => u.teacher_name.toLowerCase() === teacherName.toLowerCase() && u.day.toLowerCase() === day.toLowerCase()
+            );
+
+            if (!unavail) {
+                unavail = { teacher_name: teacherName, day: day, slots: [], reason: "Indisponibilité" };
+                constraints.teacher_unavailabilities.push(unavail);
+            }
+
+            if (unavail.slots.includes(slotIdx)) {
+                unavail.slots = unavail.slots.filter(s => s !== slotIdx);
+                cellElement.className = 'matrix-cell';
+                cellElement.textContent = '✅ Dispo';
+            } else {
+                unavail.slots.push(slotIdx);
+                cellElement.className = 'matrix-cell unavailable';
+                cellElement.textContent = '⛔ Bloqué';
+            }
+        }
+
+        function loadRoomsTable() {
+            const tbody = document.getElementById('rooms-table-body');
+            tbody.innerHTML = '';
+
+            (dataset.rooms || []).forEach(r => {
+                const closures = (constraints.room_closures_or_reservations || []).filter(c => c.room_id === r.id);
+                const closureText = closures.length > 0 
+                    ? closures.map(c => `🔴 S${c.week} ${c.day} (${c.reason})`).join(', ')
+                    : '🟢 Disponible';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-family:'JetBrains Mono'">${r.id}</td>
+                    <td style="font-weight:600;">${r.name}</td>
+                    <td><span class="event-badge badge-td">${r.type}</span></td>
+                    <td>${r.capacity} places</td>
+                    <td style="color:var(--text-muted); font-size:0.75rem;">${r.equipments.join(', ')}</td>
+                    <td style="font-size:0.75rem;">${closureText}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function addRoomClosure() {
+            const roomId = document.getElementById('closure-room-select').value;
+            const week = parseInt(document.getElementById('closure-week').value) || 1;
+            const day = document.getElementById('closure-day').value;
+            const reason = document.getElementById('closure-reason').value || "Fermeture";
+
+            if (!constraints.room_closures_or_reservations) constraints.room_closures_or_reservations = [];
+            constraints.room_closures_or_reservations.push({
+                room_id: roomId,
+                week: week,
+                day: day,
+                slots: [0, 1, 2, 3],
+                reason: reason
+            });
+
+            loadRoomsTable();
+            alert(`Fermeture enregistrée pour la salle ${roomId} en Semaine ${week} (${day}).`);
+        }
+
+        function loadAlternanceWeeks() {
+            renderWeekToggles('fa-weeks-but2', 'BUT2_FA', [2, 4, 6, 8, 10, 12, 14]);
+            renderWeekToggles('fa-weeks-but3', 'BUT3_FA', [1, 3, 5, 7, 9, 11, 13]);
+            renderCatchupToggles('catchup-weeks-container', constraints.catchup_weeks || [8, 15]);
+        }
+
+        function renderWeekToggles(containerId, cohortId, defaultWeeks) {
+            const c = document.getElementById(containerId);
+            c.innerHTML = '';
+            const activeWeeks = constraints.cohort_alternance_calendar?.[cohortId]?.company_weeks || defaultWeeks;
+
+            for (let w = 1; w <= 15; w++) {
+                const btn = document.createElement('button');
+                btn.className = `week-toggle-btn ${activeWeeks.includes(w) ? 'active' : ''}`;
+                btn.textContent = `S${w}`;
+                btn.onclick = () => {
+                    btn.classList.toggle('active');
+                    if (!constraints.cohort_alternance_calendar) constraints.cohort_alternance_calendar = {};
+                    if (!constraints.cohort_alternance_calendar[cohortId]) {
+                        constraints.cohort_alternance_calendar[cohortId] = { company_weeks: [], comment: "Semaines entreprise" };
+                    }
+                    const list = constraints.cohort_alternance_calendar[cohortId].company_weeks;
+                    const idx = list.indexOf(w);
+                    if (idx > -1) list.splice(idx, 1);
+                    else list.push(w);
+                };
+                c.appendChild(btn);
+            }
+        }
+
+        function renderCatchupToggles(containerId, catchupList) {
+            const c = document.getElementById(containerId);
+            c.innerHTML = '';
+
+            for (let w = 1; w <= 15; w++) {
+                const btn = document.createElement('button');
+                btn.className = `week-toggle-btn ${catchupList.includes(w) ? 'active' : ''}`;
+                btn.textContent = `S${w}`;
+                btn.onclick = () => {
+                    btn.classList.toggle('active');
+                    const idx = constraints.catchup_weeks.indexOf(w);
+                    if (idx > -1) constraints.catchup_weeks.splice(idx, 1);
+                    else constraints.catchup_weeks.push(w);
+                };
+                c.appendChild(btn);
+            }
+        }
+
+        async function saveAllConstraints() {
+            constraints.max_hours_per_day_teacher = parseInt(document.getElementById('quota-teacher-hours').value) || 6;
+            constraints.max_hours_per_day_student = parseInt(document.getElementById('quota-student-hours').value) || 8;
+
+            try {
+                const res = await fetch('/api/v1/admin/constraints', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(constraints)
+                });
+                const data = await res.json();
+                alert("✅ " + data.message);
+                closeAdminModal();
+            } catch (err) {
+                alert("Erreur enregistrement : " + err);
+            }
+        }
+
+        function createDiv(className, htmlContent) {
+            const d = document.createElement('div');
+            d.className = className;
+            d.innerHTML = htmlContent;
+            return d;
         }
 
         window.onload = init;
