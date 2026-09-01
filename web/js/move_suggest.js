@@ -10,8 +10,10 @@ const MOVE_SLOT_TIMES = {
 };
 const MOVE_DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 
-function _evtBusy(ev, dayIdx, slot) {
-    return ev.day_idx === dayIdx && ev.slot_idx === slot;
+function _evtBusy(ev, week, dayIdx, slot) {
+    // cohérence semaine (ou si l'événement est marqué 'a week' ou non renseigné)
+    const evWeek = ev.week || week;
+    return evWeek === week && ev.day_idx === dayIdx && ev.slot_idx === slot;
 }
 
 // Convertit un nom de jour (Lundi..Samedi) en date précise dans la semaine `week`.
@@ -35,28 +37,31 @@ function getDayDateLabel(week, dIdx) {
     } catch (e) { return MOVE_DAYS[dIdx] || ''; }
 }
 
-// Calcule les créneaux compatibles pour déplacer `ev`.
-// Respecte : groupe libre, enseignant libre, salle dispo.
-function computeMoveSuggestions(ev) {
+// Calcule les créneaux compatibles pour déplacer `ev` dans la semaine `targetWeek`
+// (défaut = semaine du cours). Respecte : groupe libre, enseignant libre, salle dispo.
+// Jeudi après-midi et Samedi après-midi sont ABSENTS (IUT fermé).
+function computeMoveSuggestions(ev, targetWeek) {
+    const tWeek = targetWeek || ev.week || 1;
     const suggestions = [];
     const events = currentSchedule || [];
     const rooms = dataset.rooms || [];
 
     for (let dIdx = 0; dIdx < 6; dIdx++) {
         for (let s = 0; s < 6; s++) {
-            if (dIdx === ev.day_idx && s === ev.slot_idx) continue;
-            const groupBusy = events.some(o => _evtBusy(o, dIdx, s) && o.group_id === ev.group_id);
-            if (groupBusy) continue;
-            const teacherBusy = events.some(o => _evtBusy(o, dIdx, s) && o.teacher_name === ev.teacher_name);
-            if (teacherBusy) continue;
-            const freeRooms = rooms.filter(r => !events.some(o => _evtBusy(o, dIdx, s) && o.room_id === r.id));
-            if (!freeRooms.length) continue;
+            if (dIdx === ev.day_idx && s === ev.slot_idx && tWeek === (ev.week || tWeek)) continue;
             const dayName = MOVE_DAYS[dIdx];
-            const isLow = (dayName === "Jeudi" && s >= 3) || (dayName === "Samedi" && s >= 3);
-            suggestions.push({ dIdx, s, dayName, dateLabel: getDayDateLabel(ev.week, dIdx), slotTime: MOVE_SLOT_TIMES[s], freeRooms: freeRooms.slice(0, 3), isLow });
+            // IUT fermé l'après-midi du jeudi et du samedi => interdits.
+            if ((dayName === "Jeudi" && s >= 3) || (dayName === "Samedi" && s >= 3)) continue;
+            const groupBusy = events.some(o => _evtBusy(o, tWeek, dIdx, s) && o.group_id === ev.group_id);
+            if (groupBusy) continue;
+            const teacherBusy = events.some(o => _evtBusy(o, tWeek, dIdx, s) && o.teacher_name === ev.teacher_name);
+            if (teacherBusy) continue;
+            const freeRooms = rooms.filter(r => !events.some(o => _evtBusy(o, tWeek, dIdx, s) && o.room_id === r.id));
+            if (!freeRooms.length) continue;
+            suggestions.push({ dIdx, s, dayName, week: tWeek, dateLabel: getDayDateLabel(tWeek, dIdx), slotTime: MOVE_SLOT_TIMES[s], freeRooms: freeRooms.slice(0, 3), isLow: false });
         }
     }
-    suggestions.sort((a, b) => (a.dIdx * 10 + a.s + (a.isLow ? 100 : 0)) - (b.dIdx * 10 + b.s + (b.isLow ? 100 : 0)));
+    suggestions.sort((a, b) => (a.dIdx * 10 + a.s) - (b.dIdx * 10 + b.s));
     return suggestions.slice(0, 15);
 }
 
@@ -87,20 +92,40 @@ function buildMoveMail(ev, dayName, slotIdx, roomId, roomName) {
 function populateMoveModal(ev) {
     const suggestList = document.getElementById('move-suggest-list');
     if (!suggestList) return;
-    const sug = computeMoveSuggestions(ev);
+    window._moveBaseWeek = ev.week || 1;
+    if (window._moveTargetWeek === undefined) window._moveTargetWeek = window._moveBaseWeek;
+    const tWeek = window._moveTargetWeek;
+    highlightMoveWeekButton();
+    const sug = computeMoveSuggestions(ev, tWeek);
+
+    // Barre de navigation : semaines (repousser le cours plus tard si besoin)
+    const nav = document.createElement('div');
+    nav.style.cssText = 'display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-bottom:8px;';
+    nav.innerHTML = `<span style="font-size:0.78rem; color:var(--text-muted);">Semaine :</span>
+        <button class="btn" onclick="movePrevWeek()">◀ Préc.</button>
+        <span id="move-week-label" style="font-size:0.85rem; font-weight:600;"></span>
+        <button class="btn" onclick="moveNextWeek()">Suiv. ▶</button>
+        <button class="btn btn-primary" onclick="moveLaterWeek(3)">Repousser +3 sem.</button>
+        <button class="btn btn-primary" onclick="moveLaterWeek(5)">Repousser +5 sem.</button>`;
+    suggestList.appendChild(nav);
+    const label = document.getElementById('move-week-label');
+    const r = (typeof getWeekDateRange === 'function') ? getWeekDateRange(tWeek) : null;
+    label.textContent = r ? `ISO ${r.iso} (${r.label})` : `Semaine ${tWeek}`;
 
     if (!sug.length) {
-        suggestList.innerHTML = '<div style="color:var(--text-muted); font-size:0.8rem;">Aucun créneau compatible trouvé (tous occupés / contraintes).</div>';
+        const empty = document.createElement('div');
+        empty.style.cssText = 'color:var(--text-muted); font-size:0.8rem;';
+        empty.textContent = 'Aucun créneau compatible dans cette semaine (occupés / IUT fermé). Essayez une autre semaine.';
+        suggestList.appendChild(empty);
         return;
     }
 
-    suggestList.innerHTML = '';
     sug.forEach(s => {
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.style.cssText = 'text-align:left; justify-content:space-between; width:100%;';
         btn.innerHTML = `<span style="font-size:0.78rem;">🗓️ ${s.dateLabel} · ${s.slotTime}</span>
-            <span style="font-size:0.72rem; color:var(--text-muted);">${s.freeRooms.map(r=>r.name).join(', ')}${s.isLow?' · (recours)':''}</span>`;
+            <span style="font-size:0.72rem; color:var(--text-muted);">${s.freeRooms.map(r=>r.name).join(', ')}</span>`;
         btn.onclick = () => {
             document.getElementById('move-target-day').value = s.dayName;
             document.getElementById('move-target-slot').value = s.s;
@@ -108,12 +133,32 @@ function populateMoveModal(ev) {
             for (let i=0;i<roomSel.options.length;i++){
                 if (roomSel.options[i].value === s.freeRooms[0].id) { roomSel.selectedIndex=i; break; }
             }
+            window._moveTargetWeek = s.week;
             refreshMoveMail(ev);
-            suggestList.querySelectorAll('button').forEach(b=>b.classList.remove('btn-primary'));
+            suggestList.querySelectorAll('button[data-sug]').forEach(b=>b.classList.remove('btn-primary'));
             btn.classList.add('btn-primary');
         };
+        btn.setAttribute('data-sug', '1');
         suggestList.appendChild(btn);
     });
+}
+
+function movePrevWeek() { window._moveTargetWeek = Math.max(1, (window._moveTargetWeek||1) - 1); reopenMoveSuggest(); }
+function moveNextWeek() { window._moveTargetWeek = Math.min(15, (window._moveTargetWeek||1) + 1); reopenMoveSuggest(); }
+function moveLaterWeek(n) { window._moveTargetWeek = (window._moveTargetWeek||1) + n; reopenMoveSuggest(); }
+
+function highlightMoveWeekButton() {
+    const nav = document.querySelector('#move-suggest-list > div');
+    if (nav) nav.style.border = '1px solid var(--border-color)';
+}
+
+function reopenMoveSuggest() {
+    const ev = currentSchedule.find(e => e.lesson_id === selectedLessonId);
+    if (!ev) return;
+    const suggestList = document.getElementById('move-suggest-list');
+    suggestList.innerHTML = '';
+    populateMoveModal(ev);
+    refreshMoveMail(ev);
 }
 
 // Met à jour le textarea mail selon le créneau sélectionné.
