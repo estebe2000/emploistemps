@@ -192,6 +192,20 @@ async function saveAllServicesSilent() {
     try { await saveTeacherServices(); } catch (e) {}
 }
 
+// Recharge les services déclarés à CHAQUE ouverture de l'admin (persistance réelle),
+// pour que le panneau "Service déclaré" reflète l'état sauvegardé.
+const _origOpenAdmin = window.openAdminModal;
+if (typeof _origOpenAdmin === 'function') {
+    window.openAdminModal = async function (...args) {
+        const r = _origOpenAdmin.apply(this, args);
+        try { await loadTeacherServices(); } catch (e) {}
+        const sel = document.getElementById('admin-select-teacher');
+        if (sel) renderTeacherService(sel.value || '');
+        if (typeof renderHETDTable === 'function') renderHETDTable();
+        return r;
+    };
+}
+
 // Charge les services au démarrage puis re-rend sur l'enseignant sélectionné.
 document.addEventListener('DOMContentLoaded', () => {
     initHETDTableSort();
