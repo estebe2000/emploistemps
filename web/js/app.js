@@ -1265,6 +1265,17 @@
             });
         }
 
+        // Formate une semaine d'évaluation avec sa date réelle (via getWeekDateRange).
+        function evFmtWeek(week) {
+            try {
+                if (typeof getWeekDateRange === 'function') {
+                    const r = getWeekDateRange(week);
+                    if (r && r.label) return `S${week} (${r.label})`;
+                }
+            } catch (e) {}
+            return `S${week}`;
+        }
+
         function loadEvaluationsTable() {
             const tbody = document.getElementById('evals-table-body');
             tbody.innerHTML = '';
@@ -1281,7 +1292,7 @@
                     <td style="font-weight:600; color:#fb7185;">📝 ${ev.title}</td>
                     <td><span class="event-badge badge-cm">${ev.resource_code}</span></td>
                     <td>${ev.target_group}</td>
-                    <td>S${ev.week} - ${ev.day}</td>
+                    <td>${evFmtWeek(ev.week)} - ${ev.day}</td>
                     <td style="font-family:'JetBrains Mono';">${ev.room_id}</td>
                     <td style="color:var(--text-muted); font-size:0.75rem;">${ev.invigilators.join(', ')}</td>
                 `;
@@ -1317,8 +1328,8 @@
                     })
                 });
                 const data = await res.json();
-                alert("✅ " + data.message);
-                
+                alert("✅ " + data.message + ` (${evFmtWeek(week)})`);
+
                 const cRes = await fetch('/api/v1/admin/constraints');
                 constraints = await cRes.json();
                 loadEvaluationsTable();
