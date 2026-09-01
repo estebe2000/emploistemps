@@ -1357,6 +1357,12 @@
                 filtered = filtered.filter(e => e.room_name.toLowerCase().includes(filterRoom.toLowerCase()) || e.room_id.toLowerCase().includes(filterRoom.toLowerCase()));
             }
 
+            const metrics = document.getElementById('metrics-text');
+            if (metrics) {
+                metrics.textContent = `${filtered.length} cours affichés | Semaine ${currentWeek}`;
+            }
+
+
 
             // Fill rows per slot
             SLOTS.forEach((slot, sIdx) => {
