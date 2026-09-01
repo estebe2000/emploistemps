@@ -987,10 +987,13 @@
                     <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouveau Créneau Horaire :</label>
                     <select id="move-target-slot" style="width: 100%;">
                         <option value="0">🌅 M1 (08:00 - 09:30)</option>
-                        <option value="1">🌅 M2 (09:45 - 11:15)</option>
-                        <option value="2">🌇 S1 (13:30 - 15:00)</option>
-                        <option value="3">🌇 S2 (15:15 - 16:45)</option>
+                        <option value="1">🌅 M2 (09:30 - 11:00)</option>
+                        <option value="2">🌅 M3 (11:00 - 12:30)</option>
+                        <option value="3">🌇 S1 (13:30 - 15:00)</option>
+                        <option value="4">🌇 S2 (15:00 - 16:30)</option>
+                        <option value="5">🌇 S3 (16:30 - 18:00)</option>
                     </select>
+
                 </div>
                 <div>
                     <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouvelle Salle :</label>
@@ -1287,9 +1290,11 @@
         const DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
         const SLOTS = [
             { id: 0, name: "M1", time: "08:00 - 09:30", period: "MATIN" },
-            { id: 1, name: "M2", time: "09:45 - 11:15", period: "MATIN" },
-            { id: 2, name: "S1", time: "13:30 - 15:00", period: "APRES_MIDI" },
-            { id: 3, name: "S2", time: "15:15 - 16:45", period: "APRES_MIDI" }
+            { id: 1, name: "M2", time: "09:30 - 11:00", period: "MATIN" },
+            { id: 2, name: "M3", time: "11:00 - 12:30", period: "MATIN" },
+            { id: 3, name: "S1", time: "13:30 - 15:00", period: "APRES_MIDI" },
+            { id: 4, name: "S2", time: "15:00 - 16:30", period: "APRES_MIDI" },
+            { id: 5, name: "S3", time: "16:30 - 18:00", period: "APRES_MIDI" }
         ];
 
         let currentSchedule = [];
@@ -1297,6 +1302,7 @@
         let constraints = {};
         let selectedLessonId = null;
         let currentWeek = 1;
+
 
         async function init() {
             try {
@@ -1476,10 +1482,11 @@
         }
 
         function isPermanentClosure(day, sIdx) {
-            if (day === "Jeudi" && (sIdx === 2 || sIdx === 3)) return true;
-            if (day === "Samedi" && (sIdx === 2 || sIdx === 3)) return true;
+            if (day === "Jeudi" && sIdx >= 3) return true;
+            if (day === "Samedi" && sIdx >= 3) return true;
             return false;
         }
+
 
         function renderSchedule() {
             const grid = document.getElementById('grid');
