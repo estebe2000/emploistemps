@@ -72,6 +72,8 @@
                     first.setDate(first.getDate() - first.getDay()); // dim->...; ramène au lundi
                     SEMESTER_START = first;
                 }
+                // Expose le début de semestre au reste des modules (rooms_admin.js, etc.)
+                window.SEMESTER_START = SEMESTER_START;
                 populateWeekSelector();
                 populateDropdowns();
                 updateWeekBadge();

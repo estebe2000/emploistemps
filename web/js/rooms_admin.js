@@ -123,3 +123,103 @@ if (typeof _origOpenAdminR === 'function') {
 document.addEventListener('DOMContentLoaded', () => {
     loadRoomsConfig();
 });
+// --- Fermeture ponctuelle : vue calendrier (date début / fin) ---
+
+const DAYS_FR_L = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+
+// Convertit une date ISO (yyyy-mm-dd) => { week (péd. 1..15), day (Lundi..Samedi), isoWeek }.
+function dateToWeekDay(dateStr, SEMESTER_START_FUNC) {
+    const d = new Date(dateStr + 'T00:00:00');
+    if (isNaN(d)) return null;
+    const dayIdx = d.getDay(); // 0=Dim..6=Sam
+    const dayNames = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+    const day = dayIdx >= 1 && dayIdx <= 6 ? dayNames[dayIdx-1] : null;
+    // base du semestre : window.SEMESTER_START (exposé par app.js) sinon fallback
+    const base = typeof window !== 'undefined' && window.SEMESTER_START ? new Date(window.SEMESTER_START) : new Date(2026, 7, 31);
+    const diffDays = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - new Date(base.getFullYear(), base.getMonth(), base.getDate())) / 86400000);
+    const week = Math.floor(diffDays / 7) + 1;
+    let iso = week;
+    try {
+        if (typeof getWeekDateRange === 'function') iso = getWeekDateRange(week < 1 ? 1 : (week > 15 ? 15 : week)).iso;
+        else if (typeof isoWeekOf === 'function') iso = isoWeekOf(d);
+    } catch (e) {}
+    return { date: dateStr, week, day, iso, dayName: DAYS_FR_L[dayIdx] };
+}
+
+function dateISO(d) {
+            const p = n => String(n).padStart(2, '0');
+            return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+        }
+
+// Affiche l'aperçu calendrier de la plage (Du/Au) sélectionnée.
+function renderClosureCalendarPreview() {
+    const el = document.getElementById('closure-cal-preview');
+    if (!el) return;
+    const start = document.getElementById('closure-start').value;
+    const end = document.getElementById('closure-end').value;
+    if (!start || !end) { el.innerHTML = 'Sélectionnez une plage de dates pour afficher l\'aperçu.'; return; }
+    const s = new Date(start + 'T00:00:00'), e = new Date(end + 'T00:00:00');
+    if (e < s) { el.innerHTML = '<span style="color:#fb7185;">⚠️ La date de fin précède le début.</span>'; return; }
+    let tmp = new Date(s), cells = [], count = 0;
+    while (tmp <= e) {
+        const cs = dateISO(tmp);
+        const info = dateToWeekDay(cs, SEMESTER_START);
+        const bg = info && info.day !== null ? 'rgba(245,158,11,0.25)' : 'rgba(100,116,139,0.15)';
+        const dcol = info && info.day !== null ? '#fbbf24' : 'var(--text-muted)';
+        cells.push(`<span title="${info ? info.iso+' · '+info.dayName : ''}" style="display:inline-block; width:46px; text-align:center; margin:2px; padding:4px 0; border-radius:4px; background:${bg}; color:${dcol};">${cs.slice(8,10)}/${cs.slice(5,7)}</span>`);
+        count++;
+        tmp.setDate(tmp.getDate() + 1);
+    }
+    const infoStart = dateToWeekDay(start, SEMESTER_START);
+    const infoEnd = dateToWeekDay(end, SEMESTER_START);
+    el.innerHTML = `<div style="font-weight:600; margin-bottom:6px;">Aperçu (${count} jour${count>1?'s':''})</div>
+        <div style="display:flex; flex-wrap:wrap; gap:2px;">${cells.join('')}</div>
+        <div style="margin-top:6px; font-size:0.75rem;">${infoStart?'Début : Sem. ISO '+infoStart.iso+' ('+infoStart.dayName+')' : ''}${infoEnd && infoEnd.date!==start?' &nbsp;·&nbsp; Fin : Sem. ISO '+infoEnd.iso+' ('+infoEnd.dayName+')':''}</div>`;
+}
+
+// Surcharge addRoomClosure (app.js) : gère une plage de dates (Du/Au) + sauvegarde.
+const _origAddClosure = window.addRoomClosure;
+if (typeof _origAddClosure === 'function') {
+    window.addRoomClosure = async function () {
+        const roomId = document.getElementById('closure-room-select').value;
+        const reason = document.getElementById('closure-reason').value || "Fermeture";
+        const start = document.getElementById('closure-start').value;
+        const end = document.getElementById('closure-end').value;
+        if (!start || !end) { alert("Veuillez sélectionner une plage de dates (Du / Au)."); return; }
+        const s = new Date(start + 'T00:00:00'), e = new Date(end + 'T00:00:00');
+        if (e < s) { alert("La date de fin précède le début."); return; }
+
+        if (!constraints.room_closures_or_reservations) constraints.room_closures_or_reservations = [];
+        let tmp = new Date(s), n = 0;
+        while (tmp <= e) {
+            const cs = dateISO(tmp);
+            const info = dateToWeekDay(cs);
+            if (info && info.day !== null) {
+                constraints.room_closures_or_reservations.push({ room_id: roomId, week: info.week, day: info.day, slots: [0,1,2,3], reason, date: cs });
+                n++;
+            }
+            tmp.setDate(tmp.getDate() + 1);
+        }
+        // Sauvegarde réelle sur le backend (constraints.json).
+        try {
+            await fetch('/api/v1/admin/constraints', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(constraints)
+            });
+        } catch (err) { /* ignore */ }
+        if (typeof loadRoomsTable === 'function') loadRoomsTable();
+        const d1 = dateToWeekDay(start), d2 = dateToWeekDay(end);
+        alert(`Fermeture enregistrée pour ${roomId} du ${d1?('Semaine ISO '+d1.iso):start} au ${d2?('Semaine ISO '+d2.iso):end} (${n} jour de cours concerné${n>1?'s':''}).`);
+    };
+}
+
+// Met à jour l'aperçu à la saisie des dates.
+document.addEventListener('DOMContentLoaded', () => {
+    const ss = document.getElementById('closure-start');
+    const se = document.getElementById('closure-end');
+    if (ss && se) {
+        ss.addEventListener('change', renderClosureCalendarPreview);
+        se.addEventListener('change', renderClosureCalendarPreview);
+    }
+});

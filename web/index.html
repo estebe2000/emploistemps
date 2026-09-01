@@ -459,35 +459,29 @@
 
                     <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
                         <h4 style="font-size: 0.88rem; margin-bottom: 0.75rem;">➕ Ajouter une fermeture ponctuelle de salle</h4>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;">
                             <div>
                                 <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Salle :</label>
                                 <select id="closure-room-select"></select>
                             </div>
                             <div>
-                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Semaine de :</label>
-                                <input type="number" id="closure-week" min="1" max="15" value="1" style="width: 70px;">
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Du (début) :</label>
+                                <input type="date" id="closure-start" style="width: 150px;">
                             </div>
                             <div>
-                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">à :</label>
-                                <input type="number" id="closure-week-end" min="1" max="15" value="1" style="width: 70px;">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Jour :</label>
-                                <select id="closure-day">
-                                    <option value="Lundi">Lundi</option>
-                                    <option value="Mardi">Mardi</option>
-                                    <option value="Mercredi">Mercredi</option>
-                                    <option value="Jeudi">Jeudi</option>
-                                    <option value="Vendredi">Vendredi</option>
-                                    <option value="Samedi">Samedi</option>
-                                </select>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Au (fin) :</label>
+                                <input type="date" id="closure-end" style="width: 150px;">
                             </div>
                             <div>
                                 <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Motif :</label>
                                 <input type="text" id="closure-reason" placeholder="Ex: Maintenance réseau" style="width: 180px;">
                             </div>
                             <button class="btn btn-primary" onclick="addRoomClosure()">Ajouter Fermeture</button>
+                        </div>
+
+                        <!-- Aperçu calendrier de la plage sélectionnée -->
+                        <div id="closure-cal-preview" style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted);">
+                            Sélectionnez une plage de dates pour afficher l'aperçu.
                         </div>
                     </div>
                 </div>
