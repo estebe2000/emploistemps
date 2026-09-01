@@ -6,7 +6,9 @@ Full REST API with OpenAPI documentation, CP-SAT solver triggering, and Albert A
 import os
 import sys
 import json
+import re
 from typing import Optional, List, Dict, Any
+
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -31,10 +33,18 @@ app = FastAPI(
 )
 
 # Enable CORS for frontend / external services
+# Sécurité : origines restreintes (configurable via CORS_ALLOW_ORIGINS).
+# Le front étant servi same-origin, seul le développement et d'éventuelles sources externes ET
+# de confiance sont autorisées. allow_credentials=False (compatible liste d'origines explicite).
+_CORS_ALLOW_ORIGINS = [
+    o.strip()
+    for o in os.environ.get("CORS_ALLOW_ORIGINS", "http://127.0.0.1:8000,http://localhost:8000").split(",")
+    if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=_CORS_ALLOW_ORIGINS,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -260,6 +270,83 @@ def get_current_schedule(
         "total_events": len(events),
         "events": events
     }
+
+
+# --- SCHEDULE: MOVE / VERIFY-CONFLICT / FREE-SLOTS ---
+# Ces endpoints réconcilient le contrat public (README) et le SDK Go
+# (client.go : MoveLesson, VerifyConflict, FindFreeSlots).
+
+@app.post("/api/v1/schedule/verify-conflict", tags=["Planning"])
+def verify_schedule_conflict(payload: dict):
+    """
+    Vérifie si déplacer une séance vers un jour/créneau/salle cible provoque un conflit
+    (salle / enseignant / groupe). Ne modifie pas le planning.
+    """
+    copilot = TimetableCopilot()
+    check = copilot.verifier_conflit_deplacement(
+        lesson_id=payload.get("lesson_id"),
+        cible_jour=payload.get("target_day", payload.get("cible_jour")),
+        cible_creneau_idx=int(payload.get("target_slot_idx", payload.get("cible_creneau_idx", 0))),
+        cible_salle=payload.get("target_room_id", payload.get("cible_salle"))
+    )
+    # Forme attendue par le SDK Go (ConflictCheckResponse)
+    return {
+        "conflit": check.get("conflit", True),
+        "raisons": check.get("raisons", []),
+        "autorise": check.get("autorise", not check.get("conflit", True)),
+        "message": check.get("message", "Vérification effectuée.")
+    }
+
+
+@app.post("/api/v1/schedule/move", tags=["Planning"])
+def move_schedule_lesson(payload: dict):
+    """
+    Déplace une séance vers un jour/créneau cible (et éventuellement une autre salle),
+    après vérification des conflits. Compatible SDK Go (MoveLesson).
+    """
+    lesson_id = payload.get("lesson_id")
+    target_day = payload.get("target_day", payload.get("cible_jour"))
+    target_slot_idx = int(payload.get("target_slot_idx", payload.get("cible_creneau_idx", 0)))
+    target_room_id = payload.get("target_room_id", payload.get("cible_salle"))
+
+    if not lesson_id or not target_day:
+        raise HTTPException(status_code=400, detail="lesson_id et target_day sont requis.")
+
+    copilot = TimetableCopilot()
+    check = copilot.verifier_conflit_deplacement(
+        lesson_id=lesson_id,
+        cible_jour=target_day,
+        cible_creneau_idx=target_slot_idx,
+        cible_salle=target_room_id
+    )
+    if check.get("conflit"):
+        raise HTTPException(status_code=400, detail=check)
+
+    # Effectue le déplacement via le copilote (met à jour schedule_result.json)
+    result = copilot.deplacer_cours(
+        lesson_id=lesson_id,
+        cible_jour=target_day,
+        cible_creneau_idx=target_slot_idx,
+        cible_salle=target_room_id
+    )
+    return {
+        "conflit": False,
+        "raisons": [],
+        "message": result.get("message", f"Cours {lesson_id} déplacé avec succès.")
+    }
+
+
+@app.get("/api/v1/schedule/free-slots", tags=["Planning"])
+def get_free_slots(
+    teacher: str = Query(..., description="Enseignant pour lequel chercher des créneaux libres"),
+    group_id: str = Query(..., description="Groupe d'étudiants visé (ex: 'BUT1_TD1')")
+):
+    """
+    Retourne les créneaux de la semaine où un enseignant ET un groupe sont
+    simultanément libres. Compatible SDK Go (FindFreeSlots) → []FreeSlot.
+    """
+    copilot = TimetableCopilot()
+    return copilot.trouver_creneaux_libres(enseignant=teacher, groupe_id=group_id)
 
 
 # --- WORKLOAD & SERVICES HETD ENDPOINT ---

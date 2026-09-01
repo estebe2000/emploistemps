@@ -1,0 +1,21 @@
+#!/bin/sh
+# Hook Git pre-commit : refuse tout commit contenant un secret (env, token, mot de passe).
+# Activez avec :  git config core.hooksPath .githooks
+set -e
+PY=$(command -v python || command -v python3 || true)
+if [ -z "$PY" ]; then
+    echo "pre-commit: python introuvable, scan ignoré" >&2
+    exit 0
+fi
+# Ne scanner que les fichiers staged (ajoutés/copiés/modifiés), jamais .env (ignoré).
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+if [ -z "$STAGED" ]; then
+    exit 0
+fi
+if "$PY" scripts/scan_secrets.py $STAGED >/dev/null 2>&1; then
+    exit 0
+else
+    echo "pre-commit: secret(s) détecté(s), commit annulé." >&2
+    echo "Lancez : python scripts/scan_secrets.py" >&2
+    exit 1
+fi

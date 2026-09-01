@@ -1,5 +1,27 @@
 __pycache__/
 *.pyc
 .env
+.env.*
+!.env.example
 .idea/
 .vscode/
+*.log
+
+# Secrets / jetons sensibles — ne jamais committer
+*.pem
+*.key
+id_rsa
+id_ed25519
+rqcode-*.png
+.env
+
+# Artefacts / binaires des exemples Hyperplanning (téléchargeables via package managers)
+*.jar
+*.class
+*.exe
+*.dll
+*.lnk
+*.wsdl
+nbproject/
+nbproject/private/
+**/nbproject/private/

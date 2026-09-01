@@ -1,0 +1,23 @@
+# Déploiement du microservice Emplois du Temps TC sur Docker.
+# Usage :
+#   docker compose up -d --build
+# Sécurité : fournir le jeton Albert via un fichier .env (voir .env.example) :
+#   ALBERT_API_TOKEN=votre_jeton
+services:
+  emploistemps:
+    build: .
+    image: emploistemps-tc:latest
+    container_name: emploistemps-tc
+    restart: unless-stopped
+    ports:
+      # Hôte:Conteneur — modifier le port hôte (à gauche) si 8000 est pris.
+      - "8000:8000"
+    environment:
+      # Optionnel : ces variables sont lues dans le code. Renseigner depuis .env.
+      - ALBERT_API_URL=${ALBERT_API_URL:-https://albert.api.etalab.gouv.fr/v1}
+      - ALBERT_MODEL=${ALBERT_MODEL:-mistral-small-3-2-24b-instruct-2506}
+      # Le jeton n'est pris que s'il est défini dans l'environnement (jamais en dur).
+      - ALBERT_API_TOKEN=${ALBERT_API_TOKEN:-}
+    volumes:
+      # Persiste les données modifiées par l'API (schedule_result.json, constraints.json).
+      - ./data:/app/data

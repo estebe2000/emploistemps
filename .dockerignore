@@ -1,0 +1,23 @@
+# Contrôle / IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Environnement & secrets (jamais dans l'image)
+.env
+.env.*
+!.env.example
+
+# Artefacts Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Tests & outils de dev (non requis en runtime)
+tests/
+conftest.py
+requirements-dev.txt
+
+# Artefacts Windows
+*.log

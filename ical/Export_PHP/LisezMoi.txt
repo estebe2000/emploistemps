@@ -1,0 +1,10 @@
+Depuis la version 5, PHP intègre l’extension SOAP qui permet de facilement créer et interroger un service web.
+Vérifier que l’extension soap est activée dans le fichier php.ini (--enable-soap)
+Ici, nous avons créé un client soap qui permet d’interroger le service WEB Hyperplanning.
+
+Copier le fichier SoapClientPHP.php dans votre répertoire root (par défaut www/).
+Ce répertoire est défini par DocumentRoot dans le fichier httpd.conf.
+Modifier les constantes $WSDL, $LOGIN, $PASS.
+
+Lancer le fichier depuis votre navigateur internet : http://localhost/SoapClientPHP.php
+Ce script affiche le nombre d’enseignants ainsi que leur nom et prénom. 

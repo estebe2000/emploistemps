@@ -53,6 +53,44 @@ uvicorn api.main:app --host 127.0.0.1 --port 8000 --reload
 * **Documentation OpenAPI / Swagger :** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 * **Documentation Redoc :** [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
+### 🔐 Configuration & Sécurité
+Le copilote IA requiert le jeton d'API Albert (Etalab). **Ne jamais le coder en dur.**
+1. Copier `.env.example` vers `.env` et renseigner `ALBERT_API_TOKEN`.
+2. Exposer la variable dans l'environnement du processus (le serveur lit `os.environ`).
+   ```powershell
+   $env:ALBERT_API_TOKEN = "votre_jeton"
+   uvicorn api.main:app --host 127.0.0.1 --port 8000
+   ```
+3. ⚠️ **Recommandation forte** : un ancien jeton a été poussé par erreur dans l'historique git — révoquez-le et régénérez-en un sur la plateforme Etalab.
+
+Autres variables : `ALBERT_API_URL`, `ALBERT_MODEL`, `CORS_ALLOW_ORIGINS` (défaut = localhost uniquement).
+
+### 🐳 Déploiement Docker
+L'image `emploistemps-tc` est construite via le `Dockerfile` et orchestrée par `docker-compose.yml`.
+
+```powershell
+# 1. (Optionnel) Fournir le jeton Albert via un .env : copier .env.example vers .env
+#    puis renseigner ALBERT_API_TOKEN. Sans jeton, le copilote répond en mode protégé.
+
+# 2. Construire l'image et démarrer le service
+docker compose up -d --build
+
+# 3. Vérifier
+docker compose ps
+docker logs -f emploistemps-tc
+```
+
+* **Interface Web :** http://127.0.0.1:8000
+* **OpenAPI :** http://127.0.0.1:8000/docs
+
+Le dossier local `./data` est **monté** dans le conteneur (`/app/data`) : les modifications apportées par l'API (`schedule_result.json`, `constraints.json`) sont persistées sur l'hôte. Le port exposé se règle dans `docker-compose.yml` (`"8000:8000"`).
+
+### ✅ Tests
+```powershell
+pip install -r requirements-dev.txt
+python -m pytest tests/ -v
+```
+
 ---
 
 ## 🐹 Intégration Go (Golang SDK)

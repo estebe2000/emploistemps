@@ -1,0 +1,20 @@
+NOM_ENS	PRENOM_ENS	DATE_ENS	PROP_ENS	EMAIL_ENS	IDENT_ENS	CODE_ENS	CIV_ENS	ADR1_ENS	ADR2_ENS	CODEPOSTAL_ENS	VILLE_ENS
+ANTAR	Naftali	01/05/1965	SPR	ANTAR@mail.fr			M.	Adresse 1	Adresse 2	13008	Marseille
+AUDIBERT	Roger	12/10/1973	SPR	AUDIBERT@mail.fr;Identi2;;M.;;;;
+BEAUREGARD	Hélène;25/04/1977;SPR;BEAUREGARD@mail.fr;Identi3;;Mme;;;;
+BRIAND	Pierre-Jacques;08/02/1965;SPR;BRIAND@mail.fr;Identi4;;M.;;;;
+CARLE-PONTE;Anna;10/09/1968;SPR;CARLE-PONTE@mail.fr;Identi5;;Mme;;;;
+CHABERT;Claude;15/11/1960;SPR;CHABERT@mail.fr;Identi6;;M.;;;;
+CONSIGLIO;Juan;12/07/1965;SPR;CONSIGLIO@mail.fr;Identi7;;M.;;;;
+CRASSIER;Michel;02/02/1964;SPR;CRASSIER@mail.fr;Identi8;;M.;;;;
+DIDIER;Régis;01/12/1975;SPR;DIDIER@mail.fr;Identi9;;M.;;;;
+DUMONT;André;11/05/1965;SPR;DUMONT@mail.fr;Identi10;;M.;;;;
+EUSTACHE;Jean;22/03/1967;SPR;EUSTACHE@mail.fr;Identi11;;M.;;;;
+FARDOUX;François;27/01/1962;SPR;FARDOUX@mail.fr;Identi12;;M.;;;;
+FENDER;David;19/06/1966;SPR;FENDER@mail.fr;Identi13;;M.;;;;
+FRANCESCHINI;Isabelle;13/09/1970;SPR;FRANCESCHINI@mail.fr;Identi14;;Mme;;;;
+JEANNOT;Florence;15/08/1975;SPR;JEANNOT@mail.fr;Identi15;;Mme;;;;
+MERCIER;Daniel;26/05/1965;SPR;MERCIER@mail.fr;Identi16;;M.;;;;
+MORAND;Juliette;24/04/1972;SPR;MORAND@mail.fr;Identi17;;Mme;;;;
+PECUCHET;Pierette;09/02/1955;SPR;PECUCHET@mail.fr;Identi18;;Mme;;;;
+RICHIEZ;Vincent;18/01/1968;SPR;RICHIEZ@mail.fr;Identi19;;M.;;;;

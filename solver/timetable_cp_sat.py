@@ -307,6 +307,36 @@ class TimetableSolver:
                         if blocked_room_vars:
                             model.Add(sum(blocked_room_vars) == 0)
 
+        # HARD CONSTRAINT 8: Daily workload ceilings (max_hours_per_day_*
+        # Valeurs définies dans constraints.json, appliquées ici en nombre de séances max / jour
+        # (durée référence des créneaux : 1.5 h).
+        max_teach_h = float(self.constraints.get("max_hours_per_day_teacher", 6))
+        max_stud_h = float(self.constraints.get("max_hours_per_day_student", 8))
+        max_teach_sessions = max(1, int(max_teach_h // 1.5))  # 6h -> 4 séances
+        max_stud_sessions = max(1, int(max_stud_h // 1.5))    # 8h -> 5 séances
+
+        # 8a. Par enseignant, plafond de séances par jour
+        for day in range(self.num_days):
+            day_slots = [day * self.slots_per_day + s for s in range(self.slots_per_day)]
+            for teacher in teachers_list:
+                tday_vars = [
+                    var for (li, slot, room), var in x.items()
+                    if slot in day_slots and week_lessons[li].teacher_name == teacher
+                ]
+                if tday_vars:
+                    model.Add(sum(tday_vars) <= max_teach_sessions)
+
+        # 8b. Par branche / groupe étudiant, plafond de séances par jour
+        for day in range(self.num_days):
+            day_slots = [day * self.slots_per_day + s for s in range(self.slots_per_day)]
+            for branch in student_branches:
+                bday_vars = [
+                    var for (li, slot, room), var in x.items()
+                    if slot in day_slots and week_lessons[li].group_id in branch
+                ]
+                if bday_vars:
+                    model.Add(sum(bday_vars) <= max_stud_sessions)
+
         # SOFT CONSTRAINTS / OPTIMIZATION OBJECTIVES:
         # 1. Encourage morning slots (M1, M2)
         # 2. Compact schedule

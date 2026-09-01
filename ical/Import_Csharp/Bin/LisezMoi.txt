@@ -1,0 +1,60 @@
+Fonction : 
+--------
+Importer dans Hyperplanning, à partir de fichiers .txt :
+   - des professeurs  (nom, prénom, identifiant, date de naissance, code, propriétaire, e-mail, civilité et adresse),
+   - des étudiants (nom, prénom, identifiant, date de naissance, sexe, propriétaire, e-mail, numéro national, diplôme/TD/Option (Code, libellé et identifiant).
+   
+Execution :
+---------
+ - HpSvcWDotNet.exe : saisir l'URL (ex : localhost), le port (ex : 80), la racine (ex : hpsv), login (ex : SW) et mot de passe (ex : SwSw).
+ - ExecuteImport.bat que vous devez modifier en passant les champs ci-dessus en paramètres de HpSvcWDotNet.exe.
+
+Format de MiseAJourEnseignant.txt :
+---------------------------------
+La première ligne indique l'ordre des colonnes.
+Elle doit être composée des champs suivants, séparés par des virgules, des points virgules ou des tabulations.
+IDENT_ENS      : identifiant de l'enseignant
+CODE_ENS       : code de l'enseignant
+NOM_ENS        : nom de l'enseignant
+PRENOM_ENS     : prénom de l'enseignant
+DATE_ENS       : date de naissance de l'enseignant
+PROP_ENS       : propriétaire de l'enseignant
+EMAIL_ENS      : e-mail de l'enseignant
+CIV_ENS        : civilité de l'enseignant
+ADR1_ENS       : adresse1 de l'enseignant
+ADR2_ENS       : adresse2 de l'enseignant
+CODEPOSTAL_ENS : code postal de l'enseignant
+VILLE_ENS      : ville de l'enseignant
+
+Format de MiseAJourEtudiant.txt :
+-------------------------------
+La premiere ligne indique l'ordre des colonnes.
+Elle doit être composée des champs suivants, séparés par des virgules, des points virgules ou des tabulations.
+IDENT_ETU      : identifiant de l'étudiant
+NOM_ETU        : nom de l'étudiant
+PRENOM_ETU     : prénom de l'étudiant
+DATE_ETU       : date de naissance de l'étudiant 
+PROP_ETU       : propriétaire de l'étudiant
+IDENT_DIP      : identifiant du diplôme, TD ou option(*)
+CODE_DIP       : code du diplôme, TD ou option(*)
+NOM_DIP        : nom du diplôme, TD ou option(*)
+PROP_DIP       : propriétaire du diplôme, TD ou option
+NUMERONAT_ETU  : numéro national de l'étudiant
+EMAIL_ETU      : e-mail de l'étudiant
+SEXE_ETU       : sexe de l'étudiant
+
+
+(*) Remarques :
+-------------
+- Pour importer un étudiant dans un TD :
+Mettre dans la colonne NOM_DIP, suivant la syntaxe : <nom_du_diplôme><nom_de_la_partition>nom_du_TD
+Mettre dans la colonne CODE_DIP, suivant la syntaxe : <code_du_diplôme><nom_de_la_partition>code_du_TD
+Mettre dans la colonne IDENT_DIP, suivant la syntaxe : <identifiant_du_diplôme><nom_de_la_partition>identifiant_du_TD
+
+- Pour importer un étudiant dans une option :
+Mettre dans la colonne NOM_DIP, suivant la syntaxe : <nom_du_diplôme>nom_de_l_option
+Mettre dans la colonne CODE_DIP, suivant la syntaxe : <code_du_diplôme>code_de_l_option
+Mettre dans la colonne IDENT_DIP, suivant la syntaxe : <identifiant_du_diplôme>identifiant_de_l_option
+
+
+

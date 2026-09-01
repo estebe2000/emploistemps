@@ -13,11 +13,11 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 # Albert API Configuration
+# ⚠️ SÉCURITÉ : le jeton ne doit JAMAIS être codé en dur.
+# Il est obligatoirement fourni par la variable d'environnement ALBERT_API_TOKEN
+# (voir `.env` / `.env.example`). Aucune valeur par défaut ne doit être embarquée.
 ALBERT_API_URL = os.environ.get("ALBERT_API_URL", "https://albert.api.etalab.gouv.fr/v1")
-ALBERT_API_TOKEN = os.environ.get(
-    "ALBERT_API_TOKEN",
-    "sk-RETIRE_SECRET_ALBERT"
-)
+ALBERT_API_TOKEN = os.environ.get("ALBERT_API_TOKEN", "")
 ALBERT_MODEL = os.environ.get("ALBERT_MODEL", "mistral-small-3-2-24b-instruct-2506")
 
 SCHEDULE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "schedule_result.json")
@@ -52,7 +52,7 @@ class TimetableCopilot:
         events = self.schedule.get("events", [])
         target_event = next((e for e in events if e["lesson_id"] == lesson_id), None)
         if not target_event:
-            return {"conflit": True, "raison": f"Cours avec l'identifiant {lesson_id} introuvable."}
+            return {"conflit": True, "raisons": [f"Cours avec l'identifiant {lesson_id} introuvable."], "message": f"❌ Cours avec l'identifiant {lesson_id} introuvable."}
 
         teacher = target_event["teacher_name"]
         group = target_event["group_id"]
@@ -238,6 +238,10 @@ class TimetableCopilot:
         }
 
         messages = [system_msg, {"role": "user", "content": user_prompt}]
+
+        if not ALBERT_API_TOKEN:
+            return ("⚠️ Assistant IA non configuré : la variable d'environnement "
+                    "`ALBERT_API_TOKEN` est absente. Ajoutez-la (voir `.env.example`) pour activer le copilote Albert.")
 
         headers = {
             "Authorization": f"Bearer {ALBERT_API_TOKEN}",

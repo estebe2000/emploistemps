@@ -1,0 +1,3 @@
+# orthools & libs runtime (voir requirements.txt)
+# Développement / test
+pytest>=8.0
