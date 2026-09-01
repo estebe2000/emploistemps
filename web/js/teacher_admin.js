@@ -128,6 +128,7 @@ function setTeacherServiceMode(teacherName, mode) {
     else if (mode === 'DEMI') hetd = SERVICE_DEMI_HETD;
     teacherServices[teacherName] = { mode: mode, hetd: hetd };
     renderTeacherService(teacherName);
+    if (typeof renderHETDTable === 'function') renderHETDTable();
     // Auto-sauvegarde immédiate pour ne rien perdre (même sans clic sur "Enregistrer").
     saveTeacherServices().then(r => {
         const svcMsg = document.getElementById('teacher-svc-msg');
@@ -144,6 +145,7 @@ function setTeacherServiceHETD(teacherName) {
     if (!isNaN(val)) {
         teacherServices[teacherName] = { mode: mode, hetd: val };
         renderTeacherService(teacherName);
+        if (typeof renderHETDTable === 'function') renderHETDTable();
         saveTeacherServices().then(r => {
             const svcMsg = document.getElementById('teacher-svc-msg');
             if (svcMsg) { svcMsg.textContent = '✅ Enregistré'; svcMsg.style.color = '#34d399'; setTimeout(() => svcMsg.textContent = '', 2500); }
