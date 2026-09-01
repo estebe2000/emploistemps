@@ -8,7 +8,7 @@ import json
 from fastapi import APIRouter
 
 from ..storage import (get_constraints_data, save_constraints_data,
-                       HP_SOURCES_PATH, BASE_DIR)
+                       HP_SOURCES_PATH, BASE_DIR, get_constraints_path)
 
 router = APIRouter(prefix="/api/v1/admin", tags=["Administration"])
 
@@ -141,6 +141,26 @@ def update_cohort_alternance(payload: dict):
     }
     save_constraints_data(c)
     return {"status": "success", "message": f"Calendrier d'alternance mis à jour pour {cohort_id}."}
+
+
+@router.get("/teacher-services")
+def get_teacher_services():
+    """Récupère les services déclarés des enseignants (mode + heures HETD)."""
+    data = get_constraints_data()
+    return data.get("teacher_services", {})
+
+
+@router.post("/teacher-services")
+def save_teacher_services(payload: dict):
+    """
+    Enregistre les services déclarés des enseignants.
+    Format attendu : { "services": { "<Nom enseignant>": {"mode": "PLAIN|DEMI|CUSTOM", "hetd": 384} } }
+    """
+    services = payload.get("services", {})
+    data = get_constraints_data()
+    data["teacher_services"] = services
+    save_constraints_data(data)
+    return {"status": "success", "message": f"{len(services)} service(s) enseignant mis à jour."}
 
 
 # Évaluations & absences : ces routes sont sous /api/v1 (pas /api/v1/admin) pour

@@ -6,7 +6,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Query
 
-from ..storage import get_dataset, get_schedule
+from ..storage import get_dataset, get_schedule, get_constraints_data
 
 router = APIRouter(prefix="/api/v1", tags=["Données"])
 
@@ -66,6 +66,8 @@ def get_teachers_workload():
     dataset = get_dataset()
     sched = get_schedule()
     events = sched.get("events", [])
+    # Service déclaré (mode + HETD) pour chaque enseignant, stocké dans constraints.json.
+    teacher_services = get_constraints_data().get("teacher_services", {})
 
     workload_summary = []
 
@@ -80,7 +82,16 @@ def get_teachers_workload():
 
         total_hetd = round((cm_hours * 1.5) + (td_hours * 1.0) + (tp_hours * 0.75) + (eval_hours * 1.0), 1)
 
-        statutaire = t.get("service_statutaire_hetd", 192)
+        # Service déclaré (priorité) sinon statutaire du dataset.
+        svc = teacher_services.get(t_name)
+        if svc:
+            statutaire = float(svc.get("hetd", 0))
+            mode = svc.get("mode", "DEMI")
+            statut_display = {"PLAIN": "TITULAIRE", "DEMI": "DEMI-SERVICE", "CUSTOM": "CUSTOM"}.get(mode, svc.get("mode", "VACATAIRE"))
+        else:
+            statutaire = float(t.get("service_statutaire_hetd", 192))
+            mode = None
+            statut_display = t.get("statut", "PRAG" if statutaire >= 384 else ("MCF" if statutaire >= 192 else "VACATAIRE"))
         delta = round(total_hetd - statutaire, 1)
 
         status = "ÉQUILIBRÉ"
@@ -92,8 +103,9 @@ def get_teachers_workload():
         workload_summary.append({
             "teacher_id": t["id"],
             "teacher_name": t_name,
-            "statut": t.get("statut", "PRAG" if statutaire >= 384 else ("MCF" if statutaire >= 192 else "VACATAIRE")),
+            "statut": statut_display,
             "service_statutaire_hetd": statutaire,
+            "service_mode": mode or t.get("statut", "VACATAIRE"),
             "total_heures_cm": cm_hours,
             "total_heures_td": td_hours,
             "total_heures_tp": tp_hours,

@@ -1385,6 +1385,9 @@
             // Sauvegarde d'abord les sources iCal (si l'onglet est présent dans le DOM)
             try { await saveIcalSources(true); } catch (e) { /* ignore */ }
 
+            // Sauvegarde les services déclarés des enseignants (définie dans teacher_admin.js)
+            try { if (typeof saveTeacherServices === 'function') await saveTeacherServices(); } catch (e) { /* ignore */ }
+
             try {
                 const res = await fetch('/api/v1/admin/constraints', {
                     method: 'POST',

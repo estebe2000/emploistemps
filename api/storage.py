@@ -54,6 +54,10 @@ def get_constraints_data():
         return json.load(f)
 
 
+def get_constraints_path():
+    return CONSTRAINTS_PATH
+
+
 def save_constraints_data(data: dict):
     with open(CONSTRAINTS_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
