@@ -1,25 +1,28 @@
 {
   "version": "2022.0.5.0",
   "param": "643d5b312e2e36325d2666683d3126663d3131303030",
-  "description": "Sources iCal Hyperplanning (Université Le Havre). URLs de téléchargement permanent : /Telechargements/ical/<file>.ics?idICal=<id>&param=<param>",
+  "base_url": "https://hplanning.univ-lehavre.fr",
   "sources": [
     {
       "key": "BUT1",
-      "label": "IUT 1ERE ANNEE TECH DE COMMERCIALISATION",
+      "label": "BUT1",
       "file": "Edt_IUT_1ERE_ANNEE_TECH_DE_COMMERCIALISATION.ics",
-      "idICal": "0C887FFAD3CF63913F1C9DE8B45B312D"
+      "idICal": "0C887FFAD3CF63913F1C9DE8B45B312D",
+      "url": "https://hplanning.univ-lehavre.fr/Telechargements/ical/Edt_IUT_1ERE_ANNEE_TECH_DE_COMMERCIALISATION.ics?version=2022.0.5.0&idICal=0C887FFAD3CF63913F1C9DE8B45B312D&param=643d5b312e2e36325d2666683d3126663d3131303030"
     },
     {
       "key": "BUT2",
-      "label": "IUT 2EME ANNEE TC",
+      "label": "BUT2",
       "file": "Edt_IUT_2EME_ANNEE_TC.ics",
-      "idICal": "BA786493500B7E239390B83AE6BD0406"
+      "idICal": "BA786493500B7E239390B83AE6BD0406",
+      "url": "https://hplanning.univ-lehavre.fr/Telechargements/ical/Edt_IUT_2EME_ANNEE_TC.ics?version=2022.0.5.0&idICal=BA786493500B7E239390B83AE6BD0406&param=643d5b312e2e36325d2666683d3126663d3131303030"
     },
     {
       "key": "BUT3",
-      "label": "IUT 3EME ANNEE TC",
+      "label": "BUT3",
       "file": "Edt_IUT_3EME_ANNEE_TC.ics",
-      "idICal": "8155C05B09DB93C2905E139EDCD84827"
+      "idICal": "8155C05B09DB93C2905E139EDCD84827",
+      "url": "https://hplanning.univ-lehavre.fr/Telechargements/ical/Edt_IUT_3EME_ANNEE_TC.ics?version=2022.0.5.0&idICal=8155C05B09DB93C2905E139EDCD84827&param=643d5b312e2e36325d2666683d3126663d3131303030"
     }
   ]
 }

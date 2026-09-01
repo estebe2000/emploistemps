@@ -284,9 +284,31 @@ def import_all_schedules():
                 pass
 
     if earliest_date:
-        start_monday = earliest_date - timedelta(days=earliest_date.weekday())
+        # On écarte les artefacts isolés (quelques cours hors-semestre) pour trouver le
+        # VRAI début pédagogique : la première semaine (ISO) ayant un volume de cours cohérent.
+        week_counts = {}
+        for ev in all_raw_events:
+            try:
+                dt_local, _ = to_paris_local_time(ev['DTSTART'])
+            except Exception:
+                continue
+            if dt_local.year < 2025:
+                continue
+            key = dt_local.date() - timedelta(days=dt_local.weekday())  # lundi de la semaine
+            week_counts[key] = week_counts.get(key, 0) + 1
+        dense = sorted(k for k, v in week_counts.items() if v >= 20)
+        # Choix : la première semaine dense >= 20 cours (début du semestre pédagogique).
+        # On travaille ensuite en datetime pour rester homogène avec dt_start.
+        first_dense = dense[0] if dense else earliest_date
+        start_monday = first_dense - timedelta(days=first_dense.weekday())
+        if not isinstance(start_monday, datetime):
+            start_monday = datetime(start_monday.year, start_monday.month, start_monday.day)
     else:
         start_monday = datetime(2026, 9, 1)
+
+    sm = start_monday
+    sm_str = sm.isoformat() if hasattr(sm, 'isoformat') else str(sm)
+    print(f"🗓️  Début du semestre pédagogique (semaine 1) : {sm_str}")
 
     processed_events = []
     seen_keys = set()
@@ -300,11 +322,13 @@ def import_all_schedules():
 
         days_diff = (dt_start.date() - start_monday.date()).days
         if days_diff < 0:
-            acad_week = 1
-        else:
-            acad_week = (days_diff // 7) + 1
-            if acad_week > 15:
-                acad_week = ((acad_week - 1) % 15) + 1
+            # Événement antérieur au début pédagogique (artefact isolé) → ignoré.
+            continue
+        acad_week = (days_diff // 7) + 1
+        # On ne retient que les 15 semaines du semestre courant ; les suivantes (semestre
+        # suivant / artefacts) sont ignorées pour éviter tout chevauchement de dates.
+        if acad_week > 15:
+            continue
 
         weekday_idx = dt_start.weekday()
         if weekday_idx > 5:
@@ -371,6 +395,7 @@ def import_all_schedules():
             "day_idx": weekday_idx,
             "slot_idx": slot_idx,
             "slot_time": slot_info["time"],
+            "date": dt_start.date().isoformat(),          # date calendaire réelle (YYYY-MM-DD)
             "duration_hours": dur_hours,
             "hetd_hours": hetd_hours,
             "is_evaluation": ev_type == "EVAL",
@@ -382,6 +407,7 @@ def import_all_schedules():
     schedule_output = {
         "semester": "S1",
         "week": 1,
+        "semester_start": start_monday.date().isoformat(),  # lundi de la semaine 1 (source vérité : iCal)
         "status": "ACTUAL_ICS_IMPORTED_6_SLOTS",
         "solve_time_sec": 0.05,
         "total_events": len(processed_events),
@@ -392,6 +418,8 @@ def import_all_schedules():
         json.dump(schedule_output, f, indent=2, ensure_ascii=False)
 
     print(f"✅ Ingestion terminée : {len(processed_events)} cours positionnés sans collision sur 6 créneaux journaliers.")
+
+    return schedule_output
 
 
 if __name__ == "__main__":

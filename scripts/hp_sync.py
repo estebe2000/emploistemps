@@ -56,6 +56,87 @@ def download_source(source: dict, cfg: dict, base_url: str, out_dir: str) -> str
     return target
 
 
+def run_sync(sources_keys=None, out_dir=None, do_import=True, base_url=None) -> dict:
+    """
+    Exécute la synchronisation iCal Hyperplanning (téléchargement + import optionnel).
+
+    Args:
+        sources_keys (list, optional): clés des sources à synchroniser (toutes si None).
+        out_dir (str, optional): dossier de sortie des .ics.
+        do_import (bool): ingère ensuite dans schedule_result.json.
+        base_url (str, optional): URL du serveur HP.
+
+    Returns:
+        dict: résultat (succès, message, sources, total_events).
+    """
+    cfg = load_sources()
+    b = (base_url or _base(HP_BASE_URL)).rstrip('/')
+    out = out_dir or DEFAULT_ICAL_DIR
+    os.makedirs(out, exist_ok=True)
+    keys = sources_keys if sources_keys is not None else None
+    bset = set(keys) if keys else None
+
+    # chemin vers le fichier de statut
+    meta_path = os.path.join(os.path.dirname(SOURCES_PATH), "hp_last_sync.json")
+    started_at = datetime.datetime.now().isoformat(timespec="seconds")
+
+    def _write_status(payload):
+        try:
+            with open(meta_path, "w", encoding="utf-8") as f:
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass
+
+    # Marquage "en cours"
+    _write_status({"status": "running", "running": True, "started_at": started_at, "server": b})
+
+    downloaded = []
+    errors = []
+    for src in cfg["sources"]:
+        if bset and src["key"] not in bset:
+            continue
+        try:
+            target = download_source(src, cfg, b, out)
+            size = os.path.getsize(target)
+            downloaded.append({"key": src["key"], "file": src["file"], "size": size})
+        except Exception as e:
+            errors.append({"key": src.get("key"), "error": str(e)})
+
+    if not downloaded:
+        _write_status({"status": "error", "running": False, "started_at": started_at,
+                       "finished_at": datetime.datetime.now().isoformat(timespec="seconds"),
+                       "server": b, "message": "Aucun iCal téléchargé.", "errors": errors})
+        return {"success": False, "message": "Aucun iCal téléchargé. Vérifiez les sources et l'accès réseau.", "errors": errors}
+
+    total_events = None
+    if do_import:
+        from data.import_ical_schedule import import_all_schedules
+        sched = import_all_schedules()
+        total_events = sched.get("total_events") if isinstance(sched, dict) else None
+
+    finished_at = datetime.datetime.now().isoformat(timespec="seconds")
+    meta = {"status": "success", "running": False,
+            "last_sync": finished_at,
+            "started_at": started_at,
+            "finished_at": finished_at,
+            "server": b,
+            "downloaded": len(downloaded),
+            "total_events": total_events,
+            "sources": [s["key"] for s in downloaded],
+            "errors": errors}
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(meta, f, indent=2, ensure_ascii=False)
+
+    return {
+        "success": True,
+        "last_sync": meta["last_sync"],
+        "downloaded": downloaded,
+        "imported": bool(do_import),
+        "total_events": total_events,
+        "errors": errors,
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sources", default=None,
@@ -66,43 +147,22 @@ def main():
     ap.add_argument("--base-url", default=None, help="URL du serveur HP (défaut: déduite du .env)")
     args = ap.parse_args()
 
-    cfg = load_sources()
-    base_url = (args.base_url or _base(HP_BASE_URL)).rstrip('/')
     keys = [k.strip() for k in args.sources.split(",")] if args.sources else None
+    result = run_sync(sources_keys=keys, out_dir=args.out, do_import=bool(args.do_import), base_url=args.base_url)
 
-    os.makedirs(args.out, exist_ok=True)
-    downloaded = []
-    for src in cfg["sources"]:
-        if keys and src["key"] not in keys:
-            continue
-        try:
-            target = download_source(src, cfg, base_url, args.out)
-            size = os.path.getsize(target)
-            downloaded.append((src["key"], target, size))
-            print(f"✅ {src['key']} ({src['label']}) -> {os.path.basename(target)} ({size} octets)")
-        except Exception as e:
-            print(f"⚠️  {src['key']} ÉCHEC: {e}")
-
-    if not downloaded:
-        print("Aucun flux téléchargé.")
+    if result.get("success"):
+        for d in result["downloaded"]:
+            print(f"✅ {d['key']} → {d['file']} ({d['size']} octets)")
+        print(f"\n→ {len(result['downloaded'])} iCal téléchargé(s) dans {args.out}")
+        if result.get("imported"):
+            print(f"\n✅ Ingestion terminée : {result.get('total_events')} cours ingérés.")
+        print(f"→ dernière synchro enregistrée : {result.get('last_sync')}")
+        return 0
+    else:
+        print(f"⚠️  {result.get('message')}")
+        for e in result.get("errors", []):
+            print(f"  - {e.get('key')}: {e.get('error')}")
         return 1
-
-    print(f"\n→ {len(downloaded)} iCal téléchargé(s) dans {args.out}")
-
-    if args.do_import:
-        print("\nIngestion dans schedule_result.json...")
-        from data.import_ical_schedule import import_all_schedules
-        result = import_all_schedules()
-        print("Fin de l'ingestion.")
-
-    # Note de dernière synchro
-    meta = {"last_sync": datetime.datetime.now().isoformat(timespec="seconds"),
-            "server": base_url, "sources": [k for k in keys] if keys else [s["key"] for s in cfg["sources"]]}
-    meta_path = os.path.join(os.path.dirname(SOURCES_PATH), "hp_last_sync.json")
-    with open(meta_path, "w", encoding="utf-8") as f:
-        json.dump(meta, f, indent=2, ensure_ascii=False)
-    print(f"→ dernière synchro enregistrée: {meta_path}")
-    return 0
 
 
 if __name__ == "__main__":
