@@ -232,24 +232,28 @@
 
     <!-- MOVE LESSON MODAL -->
     <div class="modal-overlay" id="move-modal">
-        <div class="admin-modal" style="width: 550px;">
+        <div class="admin-modal" style="width: 720px;">
             <div class="admin-header">
                 <div>
                     <h2 style="font-size: 1.15rem; font-weight: 700;">🔄 Déplacer le Cours</h2>
-                    <p style="font-size: 0.75rem; color: var(--text-muted);" id="move-lesson-title">Sélectionnez le nouveau créneau et la salle</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);" id="move-lesson-title">Sélectionnez un créneau suggéré compatible</p>
                 </div>
                 <button class="btn" onclick="closeMoveModal()">✕</button>
             </div>
-            <div class="admin-body" style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="admin-body" style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 6px;">Créneaux suggérés (contraintes + EDT groupe + salle dispo) :</label>
+                    <div id="move-suggest-list" style="display:flex; flex-direction:column; gap:6px; max-height:220px; overflow-y:auto;"></div>
+                </div>
                 <div>
                     <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouveau Jour :</label>
                     <select id="move-target-day" style="width: 100%;">
                         <option value="Lundi">Lundi</option>
                         <option value="Mardi">Mardi</option>
                         <option value="Mercredi">Mercredi</option>
-                        <option value="Jeudi">Jeudi (Matin uniquement)</option>
+                        <option value="Jeudi">Jeudi</option>
                         <option value="Vendredi">Vendredi</option>
-                        <option value="Samedi">Samedi (Matin uniquement)</option>
+                        <option value="Samedi">Samedi</option>
                     </select>
                 </div>
                 <div>
@@ -262,11 +266,15 @@
                         <option value="4">🌇 S2 (15:00 - 16:30)</option>
                         <option value="5">🌇 S3 (16:30 - 18:00)</option>
                     </select>
-
                 </div>
                 <div>
                     <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouvelle Salle :</label>
                     <select id="move-target-room" style="width: 100%;"></select>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">📧 Texte pour le responsable EDT (copier / coller) :</label>
+                    <textarea id="move-mail-text" rows="7" readonly style="width:100%; font-family:'Courier New',monospace; font-size:0.75rem; background:rgba(0,0,0,0.2); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px; padding:8px;"></textarea>
+                    <button class="btn" onclick="copyMoveMail()" style="margin-top:6px;">📋 Copier le texte</button>
                 </div>
             </div>
             <div class="admin-footer">
@@ -606,5 +614,6 @@
         <script src="/js/app.js"></script>
         <script src="/js/teacher_admin.js"></script>
         <script src="/js/rooms_admin.js"></script>
+        <script src="/js/move_suggest.js"></script>
 </body>
 </html>
