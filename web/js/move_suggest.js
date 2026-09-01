@@ -69,10 +69,14 @@ function computeMoveSuggestions(ev, targetWeek) {
     return suggestions.slice(0, 15);
 }
 
-// Génère le texte de mail à partir de l'événement et du créneau choisi.
-function buildMoveMail(ev, dayName, slotIdx, roomId, roomName) {
-    const r = (typeof getWeekDateRange === 'function') ? getWeekDateRange(ev.week || 1) : null;
-    const weekLabel = r ? `Semaine ISO ${r.iso} (${r.label})` : `Semaine ${ev.week}`;
+// Génère le texte de mail à partir de l'événement, de la semaine cible et du créneau choisi.
+function buildMoveMail(ev, targetWeek, dayName, slotIdx, roomId, roomName) {
+    const curR = (typeof getWeekDateRange === 'function') ? getWeekDateRange(ev.week || 1) : null;
+    const curWeekLabel = curR ? `Semaine ISO ${curR.iso} (${curR.label})` : `Semaine ${ev.week}`;
+    // Date du nouveau créneau : dans la semaine CIBLE (targetWeek), pas la semaine d'origine.
+    const newDateLabel = buildSuggestionDateLabel(targetWeek, dayName);
+    const newR = (typeof getWeekDateRange === 'function') ? getWeekDateRange(targetWeek) : null;
+    const newWeekLabel = newR ? `Semaine ISO ${newR.iso}` : `Semaine ${targetWeek}`;
     const lines = [
         "Bonjour,",
         "",
@@ -81,11 +85,11 @@ function buildMoveMail(ev, dayName, slotIdx, roomId, roomName) {
         `• Cours : ${ev.resource_name} (${ev.resource_code || ''})`,
         `• Groupe : ${ev.group_id}`,
         `• Enseignant : ${ev.teacher_name}`,
-        `• Actuellement : ${weekLabel} - ${ev.day} ${MOVE_SLOT_TIMES[ev.slot_idx] || ''} - Salle ${ev.room_name}`,
+        `• Actuellement : ${curWeekLabel} - ${ev.day} ${MOVE_SLOT_TIMES[ev.slot_idx] || ''} - Salle ${ev.room_name}`,
         "",
         "Proposition de nouveau créneau :",
         "",
-        `• Nouveau créneau : ${buildSuggestionDateLabel(ev.week, dayName)} ${MOVE_SLOT_TIMES[slotIdx] || ''} - Salle ${roomName || roomId}`,
+        `• Nouveau créneau : ${newWeekLabel} - ${newDateLabel} ${MOVE_SLOT_TIMES[slotIdx] || ''} - Salle ${roomName || roomId}`,
         "",
         "Merci de confirmer la disponibilité et de mettre à jour l'emploi du temps.",
         "Cordialement."
@@ -175,14 +179,15 @@ function reopenMoveSuggest() {
     refreshMoveMail(ev);
 }
 
-// Met à jour le textarea mail selon le créneau sélectionné.
+// Met à jour le textarea mail selon le créneau sélectionné (dans la semaine cible).
 function refreshMoveMail(ev) {
     const day = document.getElementById('move-target-day').value;
     const slot = parseInt(document.getElementById('move-target-slot').value) || 0;
     const roomSel = document.getElementById('move-target-room');
     const roomId = roomSel.value;
     const roomName = roomSel.options[roomSel.selectedIndex] ? roomSel.options[roomSel.selectedIndex].text : roomId;
-    document.getElementById('move-mail-text').value = buildMoveMail(ev, day, slot, roomId, roomName);
+    const targetWeek = window._moveTargetWeek || ev.week || 1;
+    document.getElementById('move-mail-text').value = buildMoveMail(ev, targetWeek, day, slot, roomId, roomName);
 }
 
 function copyMoveMail() {
