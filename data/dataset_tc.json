@@ -2350,32 +2350,57 @@
       "Mardi",
       "Mercredi",
       "Jeudi",
-      "Vendredi"
+      "Vendredi",
+      "Samedi"
     ],
     "daily_slots": [
       {
         "id": 0,
         "name": "M1",
         "time": "08:00 - 10:00",
+        "period": "MATIN",
         "duration_hours": 2
       },
       {
         "id": 1,
         "name": "M2",
         "time": "10:15 - 12:15",
+        "period": "MATIN",
         "duration_hours": 2
       },
       {
         "id": 2,
         "name": "S1",
         "time": "13:30 - 15:30",
+        "period": "APRES_MIDI",
         "duration_hours": 2
       },
       {
         "id": 3,
         "name": "S2",
         "time": "15:45 - 17:45",
+        "period": "APRES_MIDI",
         "duration_hours": 2
+      }
+    ],
+    "permanent_closures": [
+      {
+        "day": "Jeudi",
+        "period": "APRES_MIDI",
+        "slots": [
+          2,
+          3
+        ],
+        "reason": "Fermeture Jeudi Après-midi (Sport / Vie étudiante)"
+      },
+      {
+        "day": "Samedi",
+        "period": "APRES_MIDI",
+        "slots": [
+          2,
+          3
+        ],
+        "reason": "Fermeture Samedi Après-midi"
       }
     ]
   }

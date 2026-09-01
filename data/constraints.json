@@ -3,16 +3,32 @@
   "max_hours_per_day_teacher": 6,
   "max_hours_per_day_student": 8,
   "catchup_weeks": [8, 15],
+  "permanent_closures": [
+    {
+      "day": "Jeudi",
+      "period": "APRES_MIDI",
+      "slots": [2, 3],
+      "reason": "Fermeture Jeudi Après-midi (Sport / Vie Universitaire)"
+    },
+    {
+      "day": "Samedi",
+      "period": "APRES_MIDI",
+      "slots": [2, 3],
+      "reason": "Fermeture Samedi Après-midi"
+    }
+  ],
   "teacher_unavailabilities": [
     {
       "teacher_name": "Bruno Cardinale",
       "day": "Vendredi",
+      "period": "APRES_MIDI",
       "slots": [2, 3],
-      "reason": "Recherche / Réunion extérieure"
+      "reason": "Recherche / Déplacement extérieur"
     },
     {
       "teacher_name": "Cedric Jeanne",
       "day": "Mercredi",
+      "period": "MATIN",
       "slots": [0, 1],
       "reason": "Indisponibilité matinée"
     }
@@ -22,7 +38,7 @@
       "room_id": "AMPHI_1",
       "week": 5,
       "day": "Jeudi",
-      "slots": [2, 3],
+      "slots": [0, 1],
       "reason": "Conférence plénière IUT"
     },
     {
@@ -42,12 +58,5 @@
       "company_weeks": [1, 3, 5, 7, 9, 11, 13],
       "comment": "Semaines en entreprise"
     }
-  },
-  "course_preferences": [
-    {
-      "resource_code": "R1.01",
-      "preferred_days": ["Lundi", "Mardi"],
-      "comment": "Cours magistral d'introduction en début de semaine"
-    }
-  ]
+  }
 }

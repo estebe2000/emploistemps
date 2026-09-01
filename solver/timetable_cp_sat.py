@@ -191,12 +191,37 @@ class TimetableSolver:
                 if branch_vars:
                     model.Add(sum(branch_vars) <= 1)
 
-        # HARD CONSTRAINT 5: Teacher Unavailabilities
+        # HARD CONSTRAINT 0: Permanent Departmental Closures (Jeudi PM & Samedi PM)
         day_names = self.calendar["days"]
+        perm_closures = self.constraints.get("permanent_closures", [
+            {"day": "Jeudi", "period": "APRES_MIDI", "slots": [2, 3]},
+            {"day": "Samedi", "period": "APRES_MIDI", "slots": [2, 3]}
+        ])
+        for p_close in perm_closures:
+            p_day = p_close.get("day")
+            p_slots = p_close.get("slots", [2, 3])
+            if p_day in day_names:
+                d_idx = day_names.index(p_day)
+                for slot_in_day in p_slots:
+                    g_slot = d_idx * self.slots_per_day + slot_in_day
+                    blocked_all_vars = [var for (li, slot, room), var in x.items() if slot == g_slot]
+                    if blocked_all_vars:
+                        model.Add(sum(blocked_all_vars) == 0)
+
+        # HARD CONSTRAINT 5: Teacher Unavailabilities (Half-days / slots)
         for unavail in self.constraints.get("teacher_unavailabilities", []):
             t_name = unavail.get("teacher_name")
             u_day = unavail.get("day")
             u_slots = unavail.get("slots", [])
+            # Support half-day keyword
+            if not u_slots:
+                if unavail.get("period") == "MATIN":
+                    u_slots = [0, 1]
+                elif unavail.get("period") == "APRES_MIDI":
+                    u_slots = [2, 3]
+                else:
+                    u_slots = [0, 1, 2, 3]
+
             if u_day in day_names:
                 d_idx = day_names.index(u_day)
                 for slot_in_day in u_slots:
@@ -207,6 +232,7 @@ class TimetableSolver:
                     ]
                     if blocked_vars:
                         model.Add(sum(blocked_vars) == 0)
+
 
         # HARD CONSTRAINT 6: Room Closures / Reservations
         for closure in self.constraints.get("room_closures_or_reservations", []):

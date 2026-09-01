@@ -188,18 +188,23 @@ def build_dataset():
         }
     ]
 
-    # 5. Calendar constraints (15 teaching weeks per semester, standard slots: 8h-10h, 10h15-12h15, 13h30-15h30, 15h45-17h45)
+    # 5. Calendar constraints (15 teaching weeks per semester, 6 days Lun..Sam, 4 slots/day)
     calendar_config = {
         "weeks_per_semester": 15,
         "catchup_weeks": [8, 15], # Semaines de rattrapage / partiels
-        "days": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"],
+        "days": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
         "daily_slots": [
-            {"id": 0, "name": "M1", "time": "08:00 - 10:00", "duration_hours": 2},
-            {"id": 1, "name": "M2", "time": "10:15 - 12:15", "duration_hours": 2},
-            {"id": 2, "name": "S1", "time": "13:30 - 15:30", "duration_hours": 2},
-            {"id": 3, "name": "S2", "time": "15:45 - 17:45", "duration_hours": 2}
+            {"id": 0, "name": "M1", "time": "08:00 - 10:00", "period": "MATIN", "duration_hours": 2},
+            {"id": 1, "name": "M2", "time": "10:15 - 12:15", "period": "MATIN", "duration_hours": 2},
+            {"id": 2, "name": "S1", "time": "13:30 - 15:30", "period": "APRES_MIDI", "duration_hours": 2},
+            {"id": 3, "name": "S2", "time": "15:45 - 17:45", "period": "APRES_MIDI", "duration_hours": 2}
+        ],
+        "permanent_closures": [
+            {"day": "Jeudi", "period": "APRES_MIDI", "slots": [2, 3], "reason": "Fermeture Jeudi Après-midi (Sport / Vie étudiante)"},
+            {"day": "Samedi", "period": "APRES_MIDI", "slots": [2, 3], "reason": "Fermeture Samedi Après-midi"}
         ]
     }
+
 
     dataset = {
         "department": "Techniques de Commercialisation (TC)",

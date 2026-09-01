@@ -909,12 +909,12 @@
     </div>
 
     <script>
-        const DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
+        const DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
         const SLOTS = [
-            { id: 0, name: "M1", time: "08:00 - 10:00" },
-            { id: 1, name: "M2", time: "10:15 - 12:15" },
-            { id: 2, name: "S1", time: "13:30 - 15:30" },
-            { id: 3, name: "S2", time: "15:45 - 17:45" }
+            { id: 0, name: "M1", time: "08:00 - 10:00", period: "MATIN" },
+            { id: 1, name: "M2", time: "10:15 - 12:15", period: "MATIN" },
+            { id: 2, name: "S1", time: "13:30 - 15:30", period: "APRES_MIDI" },
+            { id: 3, name: "S2", time: "15:45 - 17:45", period: "APRES_MIDI" }
         ];
 
         let currentSchedule = [];
@@ -923,7 +923,6 @@
 
         async function init() {
             try {
-                // 1. Load dataset & constraints
                 const [dsRes, scRes, cRes] = await Promise.all([
                     fetch('/api/v1/dataset'),
                     fetch('/api/v1/schedule'),
@@ -979,9 +978,16 @@
             });
         }
 
+        function isPermanentClosure(day, sIdx) {
+            if (day === "Jeudi" && (sIdx === 2 || sIdx === 3)) return true;
+            if (day === "Samedi" && (sIdx === 2 || sIdx === 3)) return true;
+            return false;
+        }
+
         function renderSchedule() {
             const grid = document.getElementById('grid');
             grid.innerHTML = '';
+            grid.style.gridTemplateColumns = `120px repeat(${DAYS.length}, minmax(160px, 1fr))`;
 
             const filterGroup = document.getElementById('filter-group').value;
             const filterTeacher = document.getElementById('filter-teacher').value;
@@ -1021,35 +1027,43 @@
                 timeLabel.innerHTML = `<span class="slot-name">${slot.name}</span><span>${slot.time}</span>`;
                 grid.appendChild(timeLabel);
 
-                // 5 Days cells
+                // 6 Days cells
                 DAYS.forEach((day, dIdx) => {
                     const cell = document.createElement('div');
                     cell.className = 'slot-cell';
                     cell.id = `cell-${dIdx}-${sIdx}`;
 
-                    const cellEvents = filtered.filter(e => e.day_idx === dIdx && e.slot_idx === sIdx);
-                    cellEvents.forEach(ev => {
-                        const card = document.createElement('div');
-                        const typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
-                        const badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
+                    if (isPermanentClosure(day, sIdx)) {
+                        cell.style.background = 'rgba(239, 68, 68, 0.04)';
+                        cell.style.border = '1px dashed rgba(239, 68, 68, 0.2)';
+                        cell.style.alignItems = 'center';
+                        cell.style.justifyContent = 'center';
+                        cell.innerHTML = `<span style="font-size:0.7rem; color:#f87171; font-weight:600;">🔒 Fermeture</span>`;
+                    } else {
+                        const cellEvents = filtered.filter(e => e.day_idx === dIdx && e.slot_idx === sIdx);
+                        cellEvents.forEach(ev => {
+                            const card = document.createElement('div');
+                            const typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
+                            const badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
 
-                        card.className = `event-card ${typeClass}`;
-                        card.innerHTML = `
-                            <div class="event-header">
-                                <span>${ev.resource_code}</span>
-                                <span class="event-badge ${badgeClass}">${ev.event_type}</span>
-                            </div>
-                            <div class="event-title" title="${ev.resource_name}">${ev.resource_name}</div>
-                            <div class="event-footer">
-                                <span>${ev.teacher_name}</span>
-                                <span class="event-room">${ev.room_name.replace('Amphithéâtre', 'Amphi')}</span>
-                            </div>
-                        `;
-                        card.onclick = () => {
-                            sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} vers un autre créneau ?`);
-                        };
-                        cell.appendChild(card);
-                    });
+                            card.className = `event-card ${typeClass}`;
+                            card.innerHTML = `
+                                <div class="event-header">
+                                    <span>${ev.resource_code}</span>
+                                    <span class="event-badge ${badgeClass}">${ev.event_type}</span>
+                                </div>
+                                <div class="event-title" title="${ev.resource_name}">${ev.resource_name}</div>
+                                <div class="event-footer">
+                                    <span>${ev.teacher_name}</span>
+                                    <span class="event-room">${ev.room_name.replace('Amphithéâtre', 'Amphi')}</span>
+                                </div>
+                            `;
+                            card.onclick = () => {
+                                sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} vers un autre créneau ?`);
+                            };
+                            cell.appendChild(card);
+                        });
+                    }
 
                     grid.appendChild(cell);
                 });
@@ -1071,7 +1085,7 @@
                 currentSchedule = data.events || [];
                 renderSchedule();
                 document.getElementById('metrics-text').textContent = `0 Conflit | Résolu en ${data.solve_time_sec?.toFixed(2)}s`;
-                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! Toutes les contraintes d'indisponibilités et de salles sont vérifiées.`);
+                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! 100% des contraintes sont respectées (Fermetures Jeudi/Samedi PM et indisponibilités enseignants).`);
             } catch (err) {
                 alert("Erreur solveur : " + err);
             } finally {
@@ -1158,6 +1172,7 @@
             const teacherName = document.getElementById('admin-select-teacher').value;
             const matrix = document.getElementById('teacher-matrix');
             matrix.innerHTML = '';
+            matrix.style.gridTemplateColumns = `160px repeat(${DAYS.length}, 1fr)`;
 
             const teacherObj = (dataset.teachers || []).find(t => t.name === teacherName);
             const assignedList = document.getElementById('teacher-assigned-list');
@@ -1168,28 +1183,44 @@
             }
 
             // Headers
-            matrix.appendChild(createDiv('matrix-header', 'Jour / Créneau'));
-            SLOTS.forEach(s => matrix.appendChild(createDiv('matrix-header', `${s.name}<br><small>${s.time}</small>`)));
+            matrix.appendChild(createDiv('matrix-header', 'Période'));
+            DAYS.forEach(day => matrix.appendChild(createDiv('matrix-header', day)));
 
             const unavails = (constraints.teacher_unavailabilities || []).filter(u => u.teacher_name.toLowerCase() === teacherName.toLowerCase());
 
-            DAYS.forEach(day => {
-                matrix.appendChild(createDiv('matrix-day', day));
-                const dayUnavail = unavails.find(u => u.day.toLowerCase() === day.toLowerCase());
-                const blockedSlots = dayUnavail ? dayUnavail.slots : [];
+            const PERIODS = [
+                { id: "MATIN", label: "🌅 Matin<br><small>08:00 - 12:15</small>", slots: [0, 1] },
+                { id: "APRES_MIDI", label: "🌇 Après-midi<br><small>13:30 - 17:45</small>", slots: [2, 3] }
+            ];
 
-                SLOTS.forEach((slot, sIdx) => {
-                    const isBlocked = blockedSlots.includes(sIdx);
+            PERIODS.forEach(period => {
+                matrix.appendChild(createDiv('matrix-day', period.label));
+
+                DAYS.forEach(day => {
+                    const isClosed = (day === "Jeudi" && period.id === "APRES_MIDI") || (day === "Samedi" && period.id === "APRES_MIDI");
+
                     const cell = document.createElement('div');
-                    cell.className = `matrix-cell ${isBlocked ? 'unavailable' : ''}`;
-                    cell.textContent = isBlocked ? '⛔ Bloqué' : '✅ Dispo';
-                    cell.onclick = () => toggleTeacherSlot(teacherName, day, sIdx, cell);
+                    if (isClosed) {
+                        cell.className = 'matrix-cell';
+                        cell.style.background = 'rgba(239, 68, 68, 0.08)';
+                        cell.style.borderColor = 'rgba(239, 68, 68, 0.2)';
+                        cell.style.color = '#f87171';
+                        cell.style.cursor = 'not-allowed';
+                        cell.innerHTML = '🔒 Fermé';
+                    } else {
+                        const dayUnavail = unavails.find(u => u.day.toLowerCase() === day.toLowerCase());
+                        const isBlocked = dayUnavail && period.slots.some(s => dayUnavail.slots.includes(s));
+
+                        cell.className = `matrix-cell ${isBlocked ? 'unavailable' : ''}`;
+                        cell.textContent = isBlocked ? '⛔ Bloqué' : '✅ Dispo';
+                        cell.onclick = () => toggleTeacherHalfDay(teacherName, day, period.slots, cell);
+                    }
                     matrix.appendChild(cell);
                 });
             });
         }
 
-        function toggleTeacherSlot(teacherName, day, slotIdx, cellElement) {
+        function toggleTeacherHalfDay(teacherName, day, slots, cellElement) {
             if (!constraints.teacher_unavailabilities) constraints.teacher_unavailabilities = [];
 
             let unavail = constraints.teacher_unavailabilities.find(
@@ -1197,16 +1228,22 @@
             );
 
             if (!unavail) {
-                unavail = { teacher_name: teacherName, day: day, slots: [], reason: "Indisponibilité" };
+                unavail = { teacher_name: teacherName, day: day, slots: [], reason: "Indisponibilité demi-journée" };
                 constraints.teacher_unavailabilities.push(unavail);
             }
 
-            if (unavail.slots.includes(slotIdx)) {
-                unavail.slots = unavail.slots.filter(s => s !== slotIdx);
+            const currentlyBlocked = slots.some(s => unavail.slots.includes(s));
+
+            if (currentlyBlocked) {
+                // Unblock this half day
+                unavail.slots = unavail.slots.filter(s => !slots.includes(s));
                 cellElement.className = 'matrix-cell';
                 cellElement.textContent = '✅ Dispo';
             } else {
-                unavail.slots.push(slotIdx);
+                // Block this half day
+                slots.forEach(s => {
+                    if (!unavail.slots.includes(s)) unavail.slots.push(s);
+                });
                 cellElement.className = 'matrix-cell unavailable';
                 cellElement.textContent = '⛔ Bloqué';
             }
@@ -1329,5 +1366,6 @@
 
         window.onload = init;
     </script>
+
 </body>
 </html>
