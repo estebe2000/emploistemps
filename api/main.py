@@ -7,6 +7,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 from .storage import BASE_DIR
 from .routers import admin, data, solver, schedule, ai
@@ -51,6 +52,12 @@ app.include_router(data.router)
 app.include_router(solver.router)
 app.include_router(schedule.router)
 app.include_router(ai.router)
+
+# Fichiers statiques de l'interface (CSS / JS extraits de web/index.html)
+_web_dir = os.path.join(BASE_DIR, "web")
+if os.path.isdir(_web_dir):
+    app.mount("/css", StaticFiles(directory=os.path.join(_web_dir, "css")), name="css")
+    app.mount("/js", StaticFiles(directory=os.path.join(_web_dir, "js")), name="js")
 
 
 @app.get("/", response_class=HTMLResponse, tags=["Interface Web"])
