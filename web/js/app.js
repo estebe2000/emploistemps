@@ -1243,16 +1243,22 @@
             (dataset.rooms || []).forEach(r => {
                 const closures = (constraints.room_closures_or_reservations || []).filter(c => c.room_id === r.id);
                 const closureText = closures.length > 0 
-                    ? closures.map(c => `🔴 S${c.week} ${c.day} (${c.reason})`).join(', ')
+                    ? closures.map(c => `🔴 S${c.week} ${c.day} (${c.reason || ''})`).join(', ')
                     : '🟢 Disponible';
+
+                const eq = (r.equipments || []).map(x => String(x).toUpperCase());
+                // Informatique = équipé de postes/COMPUTERS ; Labo lang = type TP_LANG ou casques
+                const isInfo = eq.includes('COMPUTERS') || eq.includes('POSTES');
+                const isLang = r.type === 'TP_LANG' || eq.includes('HEADSETS') || (eq.includes('AUDIO') && eq.includes('CASQUES'));
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td style="font-family:'JetBrains Mono'">${r.id}</td>
                     <td style="font-weight:600;">${r.name}</td>
                     <td><span class="event-badge badge-td">${r.type}</span></td>
-                    <td>${r.capacity} places</td>
-                    <td style="color:var(--text-muted); font-size:0.75rem;">${r.equipments.join(', ')}</td>
+                    <td style="font-weight:600;">${r.capacity ?? '—'} places</td>
+                    <td>${isInfo ? '🖥️ Oui' : '<span style="color:var(--text-muted);">Non</span>'}</td>
+                    <td>${isLang ? '🎧 Oui' : '<span style="color:var(--text-muted);">Non</span>'}</td>
                     <td style="font-size:0.75rem;">${closureText}</td>
                 `;
                 tbody.appendChild(tr);
@@ -1324,20 +1330,26 @@
         function addRoomClosure() {
             const roomId = document.getElementById('closure-room-select').value;
             const week = parseInt(document.getElementById('closure-week').value) || 1;
+            const weekEnd = parseInt(document.getElementById('closure-week-end').value) || week;
             const day = document.getElementById('closure-day').value;
             const reason = document.getElementById('closure-reason').value || "Fermeture";
 
             if (!constraints.room_closures_or_reservations) constraints.room_closures_or_reservations = [];
-            constraints.room_closures_or_reservations.push({
-                room_id: roomId,
-                week: week,
-                day: day,
-                slots: [0, 1, 2, 3],
-                reason: reason
-            });
+            const wStart = Math.min(week, weekEnd), wEnd = Math.max(week, weekEnd);
+            // Ajoute une fermeture pour chaque semaine de la plage.
+            for (let w = wStart; w <= wEnd; w++) {
+                constraints.room_closures_or_reservations.push({
+                    room_id: roomId,
+                    week: w,
+                    day: day,
+                    slots: [0, 1, 2, 3],
+                    reason: reason
+                });
+            }
 
             loadRoomsTable();
-            alert(`Fermeture enregistrée pour la salle ${roomId} en Semaine ${week} (${day}).`);
+            const n = wEnd - wStart + 1;
+            alert(`Fermeture enregistrée pour ${roomId} (${day}) sur ${n} semaine${n>1?'s':''} : S${wStart}→S${wEnd}.`);
         }
 
         function loadAlternanceWeeks() {

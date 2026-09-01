@@ -446,8 +446,9 @@
                                 <th>ID</th>
                                 <th>Nom de la Salle</th>
                                 <th>Type</th>
-                                <th>Capacité</th>
-                                <th>Équipements</th>
+                                <th>Nb places</th>
+                                <th>Informatique</th>
+                                <th>Labo lang</th>
                                 <th>État / Fermetures</th>
                             </tr>
                         </thead>
@@ -464,8 +465,12 @@
                                 <select id="closure-room-select"></select>
                             </div>
                             <div>
-                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Semaine :</label>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Semaine de :</label>
                                 <input type="number" id="closure-week" min="1" max="15" value="1" style="width: 70px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">à :</label>
+                                <input type="number" id="closure-week-end" min="1" max="15" value="1" style="width: 70px;">
                             </div>
                             <div>
                                 <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Jour :</label>
