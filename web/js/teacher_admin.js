@@ -99,6 +99,7 @@ function renderTeacherService(teacherName) {
             </label>
             <input type="number" id="teacher-svc-hetd" value="${svc.hetd}" min="0" step="1"
                 onchange="setTeacherServiceHETD('${safe}')" style="width:110px; padding:0.3rem 0.5rem;" />
+            <div id="teacher-svc-msg" style="font-size:0.72rem; min-height:14px;"></div>
             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px;">
                 Mode actuel : <strong>${modeName}</strong> · HETD : <strong>${svc.hetd} h</strong>
             </div>
@@ -127,6 +128,11 @@ function setTeacherServiceMode(teacherName, mode) {
     else if (mode === 'DEMI') hetd = SERVICE_DEMI_HETD;
     teacherServices[teacherName] = { mode: mode, hetd: hetd };
     renderTeacherService(teacherName);
+    // Auto-sauvegarde immédiate pour ne rien perdre (même sans clic sur "Enregistrer").
+    saveTeacherServices().then(r => {
+        const svcMsg = document.getElementById('teacher-svc-msg');
+        if (svcMsg) { svcMsg.textContent = '✅ Enregistré'; svcMsg.style.color = '#34d399'; setTimeout(() => svcMsg.textContent = '', 2500); }
+    }).catch(() => {});
 }
 
 // Met à jour le HETD (custom) depuis le champ.
@@ -137,6 +143,12 @@ function setTeacherServiceHETD(teacherName) {
     const mode = getTeacherService(teacherName).mode;
     if (!isNaN(val)) {
         teacherServices[teacherName] = { mode: mode, hetd: val };
+        renderTeacherService(teacherName);
+        saveTeacherServices().then(r => {
+            const svcMsg = document.getElementById('teacher-svc-msg');
+            if (svcMsg) { svcMsg.textContent = '✅ Enregistré'; svcMsg.style.color = '#34d399'; setTimeout(() => svcMsg.textContent = '', 2500); }
+        }).catch(() => {});
+        return;
     }
     renderTeacherService(teacherName);
 }
