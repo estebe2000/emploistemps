@@ -1,0 +1,25 @@
+{
+  "version": "2022.0.5.0",
+  "param": "643d5b312e2e36325d2666683d3126663d3131303030",
+  "description": "Sources iCal Hyperplanning (Université Le Havre). URLs de téléchargement permanent : /Telechargements/ical/<file>.ics?idICal=<id>&param=<param>",
+  "sources": [
+    {
+      "key": "BUT1",
+      "label": "IUT 1ERE ANNEE TECH DE COMMERCIALISATION",
+      "file": "Edt_IUT_1ERE_ANNEE_TECH_DE_COMMERCIALISATION.ics",
+      "idICal": "0C887FFAD3CF63913F1C9DE8B45B312D"
+    },
+    {
+      "key": "BUT2",
+      "label": "IUT 2EME ANNEE TC",
+      "file": "Edt_IUT_2EME_ANNEE_TC.ics",
+      "idICal": "BA786493500B7E239390B83AE6BD0406"
+    },
+    {
+      "key": "BUT3",
+      "label": "IUT 3EME ANNEE TC",
+      "file": "Edt_IUT_3EME_ANNEE_TC.ics",
+      "idICal": "8155C05B09DB93C2905E139EDCD84827"
+    }
+  ]
+}

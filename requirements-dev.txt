@@ -1,3 +1,4 @@
 # orthools & libs runtime (voir requirements.txt)
 # Développement / test
 pytest>=8.0
+python-dotenv>=1.0

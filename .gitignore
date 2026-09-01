@@ -25,3 +25,6 @@ rqcode-*.png
 nbproject/
 nbproject/private/
 **/nbproject/private/
+
+# État de synchronisation local (régénéré à chaque exécution)
+data/hp_last_sync.json

@@ -21,16 +21,21 @@
 - [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`.
 - [x] ✅ **IMPORTANT utilisateur** : `.env` et QR restent locaux (jamais commités).
 
-## Hyperplanning (phase 1 en cours)
-- [ ] Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (sécurisé, jamais commité).
-- [ ] Tester `cas_authenticate()` + `hyperplanning_client.py --main`.
-- [ ] Cartographier le portail mobile : endpoints EDT / ressources / iCal.
-- [ ] Déterminer la portée du jeton (une ressource vs tout le référentiel).
+## Hyperplanning (en cours)
+- [x] **Authentification CAS** fonctionnelle (`cas_authenticate`, login en `.env`).
+- [x] **Accès iCal permanent** découvert + **synchro implémentée** :
+  - `scripts/hp_sync.py` (télécharge les iCal, `--import` pour ingérer).
+  - `data/hp_ical_sources.json` (3 promos BUT TC).
+  - Résultat : **2573 cours** synchronisés depuis Hyperplanning, servis par l'API Docker.
+  - Tests `tests/test_hp_sync.py` (3).
+- [ ] Étendre les sources (enseignants, salles, groupes TD/TP) via `scripts/hp_explore.py`.
+- [ ] Planifier la synchro périodique (cron/APScheduler) et/ou au démarrage Docker.
 
-## Restant
-- [ ] **Rotation du jeton Albert sur Etalab** (fuite historique commit `10b99a4`).
-- [ ] Aligner les modèles 4 vs 6 créneaux.
-- [ ] Durcir (verrou JSON, gestion erreurs).
+## Terminé
+- [x] **Option B : purge de la clé Albert** de l'historique git (force-push, vérifié clone frais).
+- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit`.
+- [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`, `data/hp_last_sync.json`.
+- [x] ✅ `.env` et QR restent locaux (jamais commités).
 
 ## Discovered During Work
 - [ ] Révocation + rotation du jeton Albert sur Etalab (obligatoire).

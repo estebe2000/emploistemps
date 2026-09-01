@@ -21,3 +21,7 @@ services:
     volumes:
       # Persiste les données modifiées par l'API (schedule_result.json, constraints.json).
       - ./data:/app/data
+      - ./ical:/app/ical
+    # Optionnel : synchroniser Hyperplanning au démarrage du conteneur.
+    # Définir command à : ["sh","-c","python scripts/hp_sync.py --import && exec uvicorn api.main:app --host 0.0.0.0 --port 8000"]
+    # pour télécharger puis ingérer les iCal avant de servir. (Par défaut : serveur seul.)

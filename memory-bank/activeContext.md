@@ -32,16 +32,20 @@ Reprise du **déploiement** du microservice Emplois du Temps TC. Une **revue de 
 - Alignement des modèles **4 vs 6 créneaux** (solveur CP-SAT / iCal / copilote) → à arbitrer.
 - Verrouillage des fichiers JSON + gestion globale des erreurs → à durcir.
 
+## Problèmes traités cette session (09/2026) — suite Hyperplanning
+- ✅ **Authentification CAS** : `cas_authenticate()` fonctionne avec les identifiants `.env` (login `pytels`). Accès à l'espace web enseignant (`UNIVERSITE DU HAVRE 2026-2027 - HYPERPLANNING`).
+- ✅ **Accès iCal permanent (voie B réussie)** : découverte du format `/Telechargements/ical/<res>.ics?idICal=<hash>&param=<hex>`. Le `param` décodé = `d=[1..62]&fh=1&f=11000` (commun à toutes les ressources, = ce que `composeHREFICal()` du JS construisait). Les 3 promos BUT TC fournies par l'utilisateur.
+- ✅ **Synchronisation fonctionnelle** : `scripts/hp_sync.py` télécharge les iCal (0 auth) puis les ingère via `import_ical_schedule.py` → `schedule_result.json`. Résultat : **2573 cours** (6 créneaux) servi par l'API Docker.
+- ✅ Config sources : `data/hp_ical_sources.json` ; tests `tests/test_hp_sync.py` (3) ; suite totale 13 tests OK.
+- 🔍 Autres ressources (enseignants/salles/groupes) : `scripts/hp_explore.py` (Playwright + Edge) pour capturer les `idICal` via le portail connecté (à finaliser).
+
 ## Sécurité / dépôt (session 09/2026)
-- ✅ **Purge de l'historique (option B) de la clé Albert** : réécriture via `git filter-repo --replace-text` (installé via `pip install git-filter-repo`), substitution `→ sk-RETIRE_SECRET_ALBERT`, force-push vers `origin/main` (`a9629cf...c436906`). Vérifié sur **clone frais du remote** : secret absent. GC + reflog expiré localement.
-- ⚠️ La clé était déjà exposée publiquement (historique mais aussi éventuels forks/caches). **Rotation obligatoire sur Etalab** recommandée malgré la purge.
-- ✅ Périmètre committé et poussé : `.dockerignore`/`.env.example`/Docker/docker-compose/scan_secrets/hook pre-commit/memory-bank.
-- ✅ **Hook pre-commit anti-fuite** : `.githooks/pre-commit` + `scripts/scan_secrets.py` (scanner fichiers staged, encodage cp1252 corrigé).
-- ✅ `ical/` : exemples SOAP officiels Index Education committés (hors binaires `.jar/.exe/.wsdl` et `nbproject/private/`).
-- Sécurité applicative : jeton Albert retiré du code (`ALBERT_API_TOKEN` via `.env`), CORS restreint, contraintes `max_hours_per_day_*` au CP-SAT, endpoints move/verify-conflict/free-slots implémentés.
+- ✅ **Purge de l'historique (option B) de la clé Albert** (git filter-repo, force-push `a9629cf...c436906`, vérifié clone frais).
+- ⚠️ Rotation du jeton Albert sur Etalab recommandée (exposition historique).
+- ✅ Hook pre-commit anti-fuite + `.gitignore` renforcé (`.env`, `rqcode-*.png`, binaires, `data/hp_last_sync.json`).
 
 ## Prochaines étapes (voir TASK.md)
-1. Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (jamais ailleurs) → tester auth CAS + cartographier le portail mobile Hyperplanning.
-2. Rotation du jeton Albert sur Etalab (recommandé malgré la purge).
-3. Aligner/déclarer les modèles 4 vs 6 créneaux.
-4. Durcir (verrou JSON, handler d'erreurs).
+1. Étendre la liste des sources iCal (enseignants, salles, groupes TD/TP) → `hp_explore.py` + compléter `hp_ical_sources.json`.
+2. Planifier la synchro périodique (cron/Windows Task Scheduler ou APScheduler) et/ou au démarrage Docker.
+3. Durcir (verrou JSON, handler d'erreurs).
+4. Aligner les modèles 4 vs 6 créneaux (solveur CP-SAT vs iCal).

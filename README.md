@@ -85,6 +85,23 @@ docker logs -f emploistemps-tc
 
 Le dossier local `./data` est **monté** dans le conteneur (`/app/data`) : les modifications apportées par l'API (`schedule_result.json`, `constraints.json`) sont persistées sur l'hôte. Le port exposé se règle dans `docker-compose.yml` (`"8000:8000"`).
 
+### 🔄 Synchronisation Hyperplanning (Université Le Havre)
+Le planning peut être synchronisé **en direct** depuis Hyperplanning (PRONOTE Campus) via les liens iCal permanents des ressources.
+
+Configurer les sources dans `data/hp_ical_sources.json` (nom + `idICal` de chaque ressource). Le `param` (encodé en hex) décrit les préférences d'export (`d=[1..62]&fh=1&f=11000`) et est commun à toutes les ressources.
+
+```powershell
+# Télécharger les iCal (ici les 3 promos BUT TC) puis les ingérer dans le planning
+python scripts/hp_sync.py --sources BUT1,BUT2,BUT3 --import
+
+# Ou tout synchroniser/ingérer
+python scripts/hp_sync.py --import
+```
+
+Le flux : `Hyperplanning /Telechargements/ical/<res>.ics?idICal=...` → `ical/*.ics` → `data/import_ical_schedule.py` → `data/schedule_result.json` (6 créneaux/jour, fuseau Europe/Paris).
+
+Pour trouver les `idICal` d'autres ressources (enseignants, salles, groupes), utiliser `scripts/hp_explore.py` qui explore le portail connecté (identifiants CAS depuis `.env`) afin de capturer les liens iCal.
+
 ### ✅ Tests
 ```powershell
 pip install -r requirements-dev.txt
