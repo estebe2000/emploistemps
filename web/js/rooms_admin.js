@@ -41,9 +41,9 @@ if (typeof _origRoomsTable === 'function') {
         (dataset.rooms || []).forEach(r => {
             const closures = (constraints.room_closures_or_reservations || []).filter(c => c.room_id === r.id);
             const info = getRoomInfo(r.id, r);
-            // Correction des semaines : affiche la date réelle de la semaine.
+            // Correction des semaines : affiche le numéro ISO réel + date de la semaine.
             const closureText = closures.length > 0
-                ? closures.map(c => `🔴 S${c.week} (${fmtWeekShort(c.week)}) ${c.day}${c.reason?` (${c.reason})`:''}`).join(' · ')
+                ? closures.map(c => `🔴 Sem. ISO ${fmtWeekISO(c.week)} (${fmtWeekShort(c.week)}) ${c.day}${c.reason?` (${c.reason})`:''}`).join(' · ')
                 : '🟢 Disponible';
 
             const tr = document.createElement('tr');
@@ -78,6 +78,15 @@ function fmtWeekShort(week) {
         // ex: "31 août → 6 sept"
         return String(r.label || '');
     } catch (e) { return ''; }
+}
+
+// Numéro de semaine ISO réel d'une semaine (via getWeekDateRange).
+function fmtWeekISO(week) {
+    if (typeof getWeekDateRange !== 'function') return week;
+    try {
+        const r = getWeekDateRange(week);
+        return r && r.iso ? r.iso : week;
+    } catch (e) { return week; }
 }
 
 // Met à jour roomsConfig depuis un input/checkbox puis sauvegarde (auto-save).

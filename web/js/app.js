@@ -20,17 +20,32 @@
         const MONTHS_FR = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
         const DAYS_FR = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
 
-        // Retourne le lundi de début de la semaine X (1..15) et le dimanche de fin.
+        // Numéro de semaine ISO réel (algorithme MDN, fuseau local).
+        function isoWeekOf(d) {
+            const t = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+            const dayNum = (t.getDay() + 6) % 7; // lun=0
+            t.setDate(t.getDate() - dayNum + 3); // jeudi de la semaine
+            const firstThursday = t.getTime();
+            t.setMonth(0, 1); // 1er janvier
+            if (t.getDay() !== 4) {
+                t.setMonth(0, 1 + ((4 - t.getDay()) + 7) % 7);
+            }
+            return 1 + Math.ceil((firstThursday - t) / 604800000);
+        }
+
+        // Retourne le lundi de début de la semaine X (1..15) et le dimanche de fin,
+        // avec le numéro de semaine ISO réel (celui du calendrier universitaire officiel).
         function getWeekDateRange(week) {
             const start = new Date(SEMESTER_START);
             start.setDate(start.getDate() + (week - 1) * 7);
             const end = new Date(start);
             end.setDate(end.getDate() + 6);
+            const iso = isoWeekOf(start); // numéro ISO réel (semaine 1 péd. = ISO 36)
             const fmt = (d, withDay) => {
                 const day = withDay ? DAYS_FR[d.getDay()] + " " : "";
                 return day + d.getDate() + " " + MONTHS_FR[d.getMonth()];
             };
-            return { start, end, label: `${fmt(start, true)} → ${fmt(end, false)} ${start.getFullYear()}` };
+            return { start, end, iso, label: `${fmt(start, true)} → ${fmt(end, false)} ${start.getFullYear()}` };
         }
 
 
@@ -83,7 +98,7 @@
                 const opt = document.createElement('option');
                 opt.value = w;
                 const range = getWeekDateRange(w);
-                let label = `Semaine ${w} — ${range.label}`;
+                let label = `Semaine ISO ${range.iso} — ${range.label}`;
 
                 let tags = [];
                 if (catchupWeeks.includes(w)) tags.push("🛑 Banalisée / Partiels");
@@ -123,28 +138,28 @@
             const fa2Weeks = constraints.cohort_alternance_calendar?.BUT2_FA?.company_weeks || [2, 4, 6, 8, 10, 12, 14];
             const fa3Weeks = constraints.cohort_alternance_calendar?.BUT3_FA?.company_weeks || [1, 3, 5, 7, 9, 11, 13];
             const range = getWeekDateRange(currentWeek);
-            const datePrefix = `📅 <small style="opacity:0.75; font-weight:400;">${range.label}</small> — `;
+            const datePrefix = `📅 <small style="opacity:0.75; font-weight:400;">Semaine ISO ${range.iso} · ${range.label}</small> — `;
 
             if (catchupWeeks.includes(currentWeek)) {
                 badge.style.background = 'rgba(244, 63, 94, 0.15)';
                 badge.style.borderColor = 'rgba(244, 63, 94, 0.4)';
                 badge.style.color = '#fb7185';
-                badge.innerHTML = `${datePrefix}<strong>Semaine ${currentWeek} : Banalisée (Partiels / Rattrapages)</strong>`;
+                badge.innerHTML = `${datePrefix}<strong>Banalisée (Partiels / Rattrapages)</strong>`;
             } else if (fa2Weeks.includes(currentWeek) || fa3Weeks.includes(currentWeek)) {
                 badge.style.background = 'rgba(245, 158, 11, 0.15)';
                 badge.style.borderColor = 'rgba(245, 158, 11, 0.4)';
                 badge.style.color = '#fbbf24';
                 const who = fa2Weeks.includes(currentWeek) ? 'BUT2' : 'BUT3';
-                badge.innerHTML = `${datePrefix}<strong>Semaine ${currentWeek} : ${who} Alternance en Entreprise</strong>`;
+                badge.innerHTML = `${datePrefix}<strong>${who} Alternance en Entreprise</strong>`;
             } else {
                 badge.style.background = 'rgba(255, 255, 255, 0.05)';
                 badge.style.borderColor = 'var(--border-color)';
                 badge.style.color = 'var(--text-muted)';
-                badge.innerHTML = `${datePrefix}<strong>Semaine ${currentWeek} : Cours & TD/TP Normaux</strong>`;
+                badge.innerHTML = `${datePrefix}<strong>Cours & TD/TP Normaux</strong>`;
             }
 
             if (metrics) {
-                metrics.textContent = `Semaine ${currentWeek} (S1) | 0 Conflit`;
+                metrics.textContent = `Semaine ISO ${range.iso} (S1) | 0 Conflit`;
             }
         }
 
@@ -1265,12 +1280,12 @@
             });
         }
 
-        // Formate une semaine d'évaluation avec sa date réelle (via getWeekDateRange).
+        // Formate une semaine d'évaluation avec le numéro ISO réel + date (via getWeekDateRange).
         function evFmtWeek(week) {
             try {
                 if (typeof getWeekDateRange === 'function') {
                     const r = getWeekDateRange(week);
-                    if (r && r.label) return `S${week} (${r.label})`;
+                    if (r && r.label) return `Semaine ISO ${r.iso} (${r.label})`;
                 }
             } catch (e) {}
             return `S${week}`;
