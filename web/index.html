@@ -378,16 +378,16 @@
                 <!-- TAB 1: Teachers & Unavailabilities -->
                 <div class="tab-pane" id="tab-teachers">
                     <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
-                        <div style="width: 300px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; max-height: 100%;">
+                        <div style="width: 300px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; height: calc(100vh - 250px); min-height: 420px;">
                             <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Rechercher un enseignant (A-Z) :</label>
                             <input type="text" id="admin-teacher-search" placeholder="🔍 Taper un nom (ex: Pytel, Tabellion...)" oninput="filterAdminTeacherList(true)" style="width: 100%;">
-                            <select id="admin-select-teacher" onchange="loadTeacherMatrix()" multiple size="12" style="width: 100%; flex: 1; min-height: 220px; overflow-y: auto;">
+                            <select id="admin-select-teacher" onchange="loadTeacherMatrix()" multiple size="20" style="width: 100%; flex: 1; min-height: 300px; overflow-y: auto;">
                                 <!-- populated via JS -->
                             </select>
                             
                             <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 12px; flex-shrink: 0;">
                                 <div style="font-size: 0.8rem; font-weight: 600; margin-bottom: 6px;">📚 Matières affectées</div>
-                                <div id="teacher-assigned-list" style="font-size: 0.75rem; color: var(--text-muted); max-height: 90px; overflow-y: auto;">
+                                <div id="teacher-assigned-list" style="font-size: 0.75rem; color: var(--text-muted); max-height: 110px; overflow-y: auto;">
                                     Sélectionnez un enseignant.
                                 </div>
                             </div>
