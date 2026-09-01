@@ -1349,7 +1349,8 @@
 
             loadRoomsTable();
             const n = wEnd - wStart + 1;
-            alert(`Fermeture enregistrée pour ${roomId} (${day}) sur ${n} semaine${n>1?'s':''} : S${wStart}→S${wEnd}.`);
+            const fmtWk = (w) => { try { const r = getWeekDateRange(w); return r ? ' (' + r.label + ')' : ''; } catch(e){ return ''; } };
+            alert(`Fermeture enregistrée pour ${roomId} (${day}) sur ${n} semaine${n>1?'s':''} : S${wStart}${fmtWk(wStart)} → S${wEnd}${fmtWk(wEnd)}.`);
         }
 
         function loadAlternanceWeeks() {

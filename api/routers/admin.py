@@ -163,6 +163,23 @@ def save_teacher_services(payload: dict):
     return {"status": "success", "message": f"{len(services)} service(s) enseignant mis à jour."}
 
 
+@router.get("/rooms")
+def get_admin_rooms():
+    """Récupère les salles avec leurs infos éditables (nb_places, informatique, labo_lang)."""
+    data = get_constraints_data()
+    return data.get("rooms_config", {})
+
+
+@router.post("/rooms")
+def save_admin_rooms(payload: dict):
+    """Enregistre les infos éditables des salles (nb_places, informatique, labo_lang)."""
+    rooms = payload.get("rooms", {})
+    data = get_constraints_data()
+    data["rooms_config"] = rooms
+    save_constraints_data(data)
+    return {"status": "success", "message": f"{len(rooms)} salle(s) mise(s) à jour."}
+
+
 # Évaluations & absences : ces routes sont sous /api/v1 (pas /api/v1/admin) pour
 # préserver le contrat existant, mais relèvent de l'administration.
 router_root = APIRouter(prefix="/api/v1", tags=["Administration"])
