@@ -132,27 +132,66 @@ def extract_groups_and_hierarchy(desc: str, summary: str, default_promo: str) ->
         if re.search(rf'\b{td_str}\b', text, re.IGNORECASE):
             return td_str, ["BUT1_PROMO", td_str, f"TP{i}A", f"TP{i}B"]
 
-    # BUT 2 & BUT 3 Parcours
-    if "TC2 G1" in text or "BDMRC" in text and "2" in default_promo:
-        return "TC2_G1_BDMRC", ["TC2_FI_PROMO", "TC2_G1_BDMRC", "TC2_TP1A", "TC2_TP1B"]
-    if "TC2 G2" in text or "MDEE" in text and "2" in default_promo:
-        return "TC2_G2_MDEE", ["TC2_FI_PROMO", "TC2_G2_MDEE", "TC2_TP2A", "TC2_TP2B"]
-    if "TC2 G3" in text or "MMPV" in text and "2" in default_promo:
-        return "TC2_G3_MMPV", ["TC2_FI_PROMO", "TC2_G3_MMPV", "TC2_TP3A", "TC2_TP3B"]
-    if "TC2 FA" in text or "FA BUT2" in text:
-        return "TC2_FA_BUT2", ["TC2_FA_PROMO", "TC2_FA_BUT2", "TC2_FA_TP1", "TC2_FA_TP2"]
+    # BUT 2 Specific TD & TP A/B
+    if "TC2" in text or "2" in default_promo:
+        # G1 BDMRC
+        if "BDMRC" in text or "G1" in text:
+            if "G1 A" in text or "G1A" in text or ("A" in text and "TP" in text and "G1" in text):
+                return "TC2_G1A_BDMRC", ["TC2_PROMO", "TC2_G1_BDMRC", "TC2_G1A_BDMRC"]
+            if "G1 B" in text or "G1B" in text or ("B" in text and "TP" in text and "G1" in text):
+                return "TC2_G1B_BDMRC", ["TC2_PROMO", "TC2_G1_BDMRC", "TC2_G1B_BDMRC"]
+            return "TC2_G1_BDMRC", ["TC2_PROMO", "TC2_G1_BDMRC", "TC2_G1A_BDMRC", "TC2_G1B_BDMRC"]
 
+        # G2 MDEE
+        if "MDEE" in text or "G2" in text:
+            if "G2 A" in text or "G2A" in text or ("A" in text and "TP" in text and "G2" in text):
+                return "TC2_G2A_MDEE", ["TC2_PROMO", "TC2_G2_MDEE", "TC2_G2A_MDEE"]
+            if "G2 B" in text or "G2B" in text or ("B" in text and "TP" in text and "G2" in text):
+                return "TC2_G2B_MDEE", ["TC2_PROMO", "TC2_G2_MDEE", "TC2_G2B_MDEE"]
+            return "TC2_G2_MDEE", ["TC2_PROMO", "TC2_G2_MDEE", "TC2_G2A_MDEE", "TC2_G2B_MDEE"]
+
+        # G3 MMPV
+        if "MMPV" in text or "G3" in text:
+            if "G3 A" in text or "G3A" in text or ("A" in text and "TP" in text and "G3" in text):
+                return "TC2_G3A_MMPV", ["TC2_PROMO", "TC2_G3_MMPV", "TC2_G3A_MMPV"]
+            if "G3 B" in text or "G3B" in text or ("B" in text and "TP" in text and "G3" in text):
+                return "TC2_G3B_MMPV", ["TC2_PROMO", "TC2_G3_MMPV", "TC2_G3B_MMPV"]
+            return "TC2_G3_MMPV", ["TC2_PROMO", "TC2_G3_MMPV", "TC2_G3A_MMPV", "TC2_G3B_MMPV"]
+
+        if "FA" in text or "FA BUT2" in text:
+            return "TC2_FA_BUT2", ["TC2_PROMO", "TC2_FA_BUT2"]
+
+    # BUT 3 Specific TD & TP A/B
     if "TC3" in text or "3" in default_promo:
-        if "BDMRC" in text:
-            grp = "TC3_FA_G1_BDMRC" if "FA" in text else "TC3_FI_G1_BDMRC"
-            return grp, ["TC3_PROMO", grp]
-        if "MDEE" in text:
-            grp = "TC3_FA_G2_MDEE" if "FA" in text else "TC3_FI_G2_MDEE"
-            return grp, ["TC3_PROMO", grp]
-        if "MMPV" in text:
-            grp = "TC3_FA_G3_MMPV" if "FA" in text else "TC3_FI_G3_MMPV"
-            return grp, ["TC3_PROMO", grp]
+        if "BDMRC" in text or "G1" in text:
+            if "FA" in text:
+                return "TC3_FA_G1_BDMRC", ["TC3_PROMO", "TC3_FA_G1_BDMRC"]
+            if "G1 A" in text or "G1A" in text or ("A" in text and "TP" in text and "G1" in text):
+                return "TC3_FI_G1A_BDMRC", ["TC3_PROMO", "TC3_FI_G1_BDMRC", "TC3_FI_G1A_BDMRC"]
+            if "G1 B" in text or "G1B" in text or ("B" in text and "TP" in text and "G1" in text):
+                return "TC3_FI_G1B_BDMRC", ["TC3_PROMO", "TC3_FI_G1_BDMRC", "TC3_FI_G1B_BDMRC"]
+            return "TC3_FI_G1_BDMRC", ["TC3_PROMO", "TC3_FI_G1_BDMRC", "TC3_FI_G1A_BDMRC", "TC3_FI_G1B_BDMRC"]
+
+        if "MDEE" in text or "G2" in text:
+            if "FA" in text:
+                return "TC3_FA_G2_MDEE", ["TC3_PROMO", "TC3_FA_G2_MDEE"]
+            if "G2 A" in text or "G2A" in text or ("A" in text and "TP" in text and "G2" in text):
+                return "TC3_FI_G2A_MDEE", ["TC3_PROMO", "TC3_FI_G2_MDEE", "TC3_FI_G2A_MDEE"]
+            if "G2 B" in text or "G2B" in text or ("B" in text and "TP" in text and "G2" in text):
+                return "TC3_FI_G2B_MDEE", ["TC3_PROMO", "TC3_FI_G2_MDEE", "TC3_FI_G2B_MDEE"]
+            return "TC3_FI_G2_MDEE", ["TC3_PROMO", "TC3_FI_G2_MDEE", "TC3_FI_G2A_MDEE", "TC3_FI_G2B_MDEE"]
+
+        if "MMPV" in text or "G3" in text:
+            if "FA" in text:
+                return "TC3_FA_G3_MMPV", ["TC3_PROMO", "TC3_FA_G3_MMPV"]
+            if "G3 A" in text or "G3A" in text or ("A" in text and "TP" in text and "G3" in text):
+                return "TC3_FI_G3A_MMPV", ["TC3_PROMO", "TC3_FI_G3_MMPV", "TC3_FI_G3A_MMPV"]
+            if "G3 B" in text or "G3B" in text or ("B" in text and "TP" in text and "G3" in text):
+                return "TC3_FI_G3B_MMPV", ["TC3_PROMO", "TC3_FI_G3_MMPV", "TC3_FI_G3B_MMPV"]
+            return "TC3_FI_G3_MMPV", ["TC3_PROMO", "TC3_FI_G3_MMPV", "TC3_FI_G3A_MMPV", "TC3_FI_G3B_MMPV"]
+
         return f"{default_promo}_PROMO", [f"{default_promo}_PROMO"]
+
 
     return f"{default_promo}_PROMO", [f"{default_promo}_PROMO"]
 
