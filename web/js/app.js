@@ -1398,6 +1398,12 @@
             // Sauvegarde les services déclarés des enseignants (définie dans teacher_admin.js)
             try { if (typeof saveTeacherServices === 'function') await saveTeacherServices(); } catch (e) { /* ignore */ }
 
+            // IMPORTANT : le POST /constraints réécrit tout constraints.json. On doit donc
+            // y injecter les teacher_services à jour, sinon le POST les écraserait (vide).
+            try { if (typeof window !== 'undefined' && typeof window.__getTeacherServices === 'function') {
+                constraints.teacher_services = window.__getTeacherServices();
+            } } catch (e) {} // old path: teacherServices global manquant
+
             try {
                 const res = await fetch('/api/v1/admin/constraints', {
                     method: 'POST',

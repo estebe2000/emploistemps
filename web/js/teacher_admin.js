@@ -16,12 +16,18 @@ const MODE_LABELS = { PLAIN: 'Service plein (384 h)', DEMI: 'Demi-service (192 h
 
 
 // Charge les services déclarés depuis le backend (constraints.json).
+// FUSIONNE avec l'état en mémoire pour ne PAS écraser d'éventuelles modifications
+// locales en cours (évite que des fetchs async tardifs ne vident les clés éditées).
 async function loadTeacherServices() {
     try {
         const r = await fetch('/api/v1/admin/teacher-services');
-        teacherServices = (await r.json()) || {};
+        const loaded = (await r.json()) || {};
+        teacherServices = teacherServices || {};
+        for (const k in loaded) {
+            if (teacherServices[k] === undefined) teacherServices[k] = loaded[k];
+        }
     } catch (e) {
-        teacherServices = {};
+        teacherServices = teacherServices || {};
     }
     return teacherServices;
 }
@@ -165,6 +171,10 @@ async function saveTeacherServices() {
     return res.json();
 }
 
+// Expose l'état courant des services au code de app.js (saveAllConstraints) qui doit
+// les injecter dans le payload /constraints pour éviter que le POST ne les efface.
+window.__getTeacherServices = () => Object.assign({}, teacherServices);
+
 // Enrichit loadTeacherMatrix (définie dans app.js) pour rendre le panneau service.
 const _origLoadTeacherMatrix = window.loadTeacherMatrix;
 if (typeof _origLoadTeacherMatrix === 'function') {
@@ -190,20 +200,6 @@ if (typeof _origFilterAdmin === 'function') {
 // Sauvegarde les services lors de l'enregistrement des contraintes (bouton global).
 async function saveAllServicesSilent() {
     try { await saveTeacherServices(); } catch (e) {}
-}
-
-// Recharge les services déclarés à CHAQUE ouverture de l'admin (persistance réelle),
-// pour que le panneau "Service déclaré" reflète l'état sauvegardé.
-const _origOpenAdmin = window.openAdminModal;
-if (typeof _origOpenAdmin === 'function') {
-    window.openAdminModal = async function (...args) {
-        const r = _origOpenAdmin.apply(this, args);
-        try { await loadTeacherServices(); } catch (e) {}
-        const sel = document.getElementById('admin-select-teacher');
-        if (sel) renderTeacherService(sel.value || '');
-        if (typeof renderHETDTable === 'function') renderHETDTable();
-        return r;
-    };
 }
 
 // Charge les services au démarrage puis re-rend sur l'enseignant sélectionné.
