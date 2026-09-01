@@ -29,6 +29,10 @@ SKIP_EXT = {".jar", ".class", ".exe", ".dll", ".lnk", ".png", ".jpg", ".jpeg", "
 # Fichiers « modèles » autorisés (placeholders vides, jamais de valeur réelle).
 KNOWN_SAFE = {"SoapClientPHP.php", ".env.example", ".env.dist", ".env.sample", "docker-compose.yml"}
 
+# Placeholder explicite de substitution utilisé lors de la purge d'historique (option B).
+# Ce n'est PAS un vrai secret ; on l'autorise uniquement sous cette forme exacte.
+PLACEHOLDER_SUBSTITUTION = "sk-RETIRE_SECRET_ALBERT"
+
 # Fragments présents dans une ligne suspectée qui indiquent un *accès* à une variable
 # (et non une valeur en dur) → on ignore le hit.
 CODE_ACCESS = (
@@ -71,6 +75,9 @@ def scan_file(path: str) -> list:
     for lineno, raw in enumerate(lines, 1):
         line = raw.rstrip("\r\n")
         if _is_code_access(line):
+            continue
+        # Autoriser le placeholder de substitution exact (ex. mémoire/trace de purge).
+        if PLACEHOLDER_SUBSTITUTION in line:
             continue
         for pat in SECRET_PATTERNS:
             if pat.search(line):

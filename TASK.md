@@ -15,9 +15,11 @@
 - [ ] (aucune tâche bloquée — service Docker actif)
 
 ## Terminé
-- [x] **Push de la version actuelle sur `origin/main`** (`fcf9d77`) — 76 fichiers, aucun secret.
-- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit` (scan des fichiers staged, `git config core.hooksPath .githooks`). Corrigé encodage cp1252.
-- [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`. `.env` et QR restent locaux.
+- [x] **Push de la version actuelle sur `origin/main`** — 76 fichiers, aucun secret.
+- [x] **Option B : purge de la clé Albert de l'historique git** : `git filter-repo --replace-text`, force-push (`a9629cf...c436906`), vérifié sur clone frais du remote (secret absent). GC + reflog purgés.
+- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit`.
+- [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`.
+- [x] ✅ **IMPORTANT utilisateur** : `.env` et QR restent locaux (jamais commités).
 
 ## Hyperplanning (phase 1 en cours)
 - [ ] Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (sécurisé, jamais commité).

@@ -33,13 +33,15 @@ Reprise du **déploiement** du microservice Emplois du Temps TC. Une **revue de 
 - Verrouillage des fichiers JSON + gestion globale des erreurs → à durcir.
 
 ## Sécurité / dépôt (session 09/2026)
-- ✅ Périmètre committé et poussé sur `origin/main` (`fcf9d77`) : **aucun secret** (`.env` et `rqcode-5545.png` gitignorés et absents).
-- ✅ **Hook pre-commit anti-fuite** : `.githooks/pre-commit` + `scripts/scan_secrets.py`. Active via `git config core.hooksPath .githooks`. Corrigé pour l'encodage cp1252 (émojis → ASCII) et ne scanne que les fichiers staged.
-- ✅ `ical/` : exemples SOAP officiels Index Education (PHP/PowerShell/Python/C#/Java) committés (hors binaires .jar/.exe/.wsdl et `nbproject/private/`).
-- ⚠️ **Clé API Albert toujours dans l'historique git** (commit `10b99a4`, déjà sur le remote) → **rotation obligatoire** sur Etalab ; une purge d'historique (force push) est à décider.
+- ✅ **Purge de l'historique (option B) de la clé Albert** : réécriture via `git filter-repo --replace-text` (installé via `pip install git-filter-repo`), substitution `→ sk-RETIRE_SECRET_ALBERT`, force-push vers `origin/main` (`a9629cf...c436906`). Vérifié sur **clone frais du remote** : secret absent. GC + reflog expiré localement.
+- ⚠️ La clé était déjà exposée publiquement (historique mais aussi éventuels forks/caches). **Rotation obligatoire sur Etalab** recommandée malgré la purge.
+- ✅ Périmètre committé et poussé : `.dockerignore`/`.env.example`/Docker/docker-compose/scan_secrets/hook pre-commit/memory-bank.
+- ✅ **Hook pre-commit anti-fuite** : `.githooks/pre-commit` + `scripts/scan_secrets.py` (scanner fichiers staged, encodage cp1252 corrigé).
+- ✅ `ical/` : exemples SOAP officiels Index Education committés (hors binaires `.jar/.exe/.wsdl` et `nbproject/private/`).
+- Sécurité applicative : jeton Albert retiré du code (`ALBERT_API_TOKEN` via `.env`), CORS restreint, contraintes `max_hours_per_day_*` au CP-SAT, endpoints move/verify-conflict/free-slots implémentés.
 
 ## Prochaines étapes (voir TASK.md)
-1. Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (jamais ailleurs) → tester auth CAS + cartographier le portail mobile.
-2. Rotation du jeton Albert sur Etalab.
+1. Renseigner `CAS_USERNAME` / `CAS_PASSWORD` dans `.env` (jamais ailleurs) → tester auth CAS + cartographier le portail mobile Hyperplanning.
+2. Rotation du jeton Albert sur Etalab (recommandé malgré la purge).
 3. Aligner/déclarer les modèles 4 vs 6 créneaux.
 4. Durcir (verrou JSON, handler d'erreurs).
