@@ -264,10 +264,23 @@ def get_current_schedule(
 
 # --- WORKLOAD & SERVICES HETD ENDPOINT ---
 
+def _match_teacher_name(name1: str, name2: str) -> bool:
+    if not name1 or not name2:
+        return False
+    # Extract name tokens (min 3 chars)
+    toks1 = set(re.findall(r'[a-zA-ZÀ-ÿ]{3,}', name1.lower()))
+    toks2 = set(re.findall(r'[a-zA-ZÀ-ÿ]{3,}', name2.lower()))
+    toks1.discard("enseignant")
+    toks2.discard("enseignant")
+    toks1.discard("prof")
+    toks2.discard("prof")
+    return len(toks1.intersection(toks2)) >= 1
+
+
 @app.get("/api/v1/teachers/workload", tags=["Gestion des Services"])
 def get_teachers_workload():
     """
-    Calcule le bilan des services d'enseignement en Heures Équivalent TD (HETD)
+    Calcule le bilan réel des services d'enseignement en Heures Équivalent TD (HETD)
     selon la réglementation officielle (1h CM = 1.5h TD, 1h TD = 1.0h TD, 4h TP = 3.0h TD / ratio 0.75).
     """
     dataset = get_dataset()
@@ -278,46 +291,47 @@ def get_teachers_workload():
     
     for t in dataset.get("teachers", []):
         t_name = t["name"]
-        t_events = [e for e in events if e.get("teacher_name", "").lower() == t_name.lower()]
+        t_events = [e for e in events if _match_teacher_name(t_name, e.get("teacher_name", ""))]
         
-        cm_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "CM")
-        td_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TD")
-        tp_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TP")
-        eval_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "EVAL" or e.get("is_evaluation"))
+        cm_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "CM"), 1)
+        td_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TD"), 1)
+        tp_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TP"), 1)
+        eval_hours = round(sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "EVAL" or e.get("is_evaluation")), 1)
         
-        # Total HETD on planned week * 15 weeks semester estimate
-        week_hetd = (cm_hours * 1.5) + (td_hours * 1.0) + (tp_hours * 0.75) + (eval_hours * 1.0)
-        est_semester_hetd = round(week_hetd * 15, 1)
+        # Real semester HETD across all planned weeks
+        total_hetd = round((cm_hours * 1.5) + (td_hours * 1.0) + (tp_hours * 0.75) + (eval_hours * 1.0), 1)
+        
         statutaire = t.get("service_statutaire_hetd", 192)
+        delta = round(total_hetd - statutaire, 1)
         
-        delta = round(est_semester_hetd - statutaire, 1)
         status = "ÉQUILIBRÉ"
-        if delta > 10:
+        if delta > 15:
             status = "HEURES_SUP"
-        elif delta < -10:
+        elif delta < -15:
             status = "SOUS_SERVICE"
             
         workload_summary.append({
             "teacher_id": t["id"],
             "teacher_name": t_name,
-            "statut": t.get("statut", "MCF"),
+            "statut": t.get("statut", "PRAG" if statutaire >= 384 else ("MCF" if statutaire >= 192 else "VACATAIRE")),
             "service_statutaire_hetd": statutaire,
-            "semaine_heures_cm": cm_hours,
-            "semaine_heures_td": td_hours,
-            "semaine_heures_tp": tp_hours,
-            "semaine_total_hetd": round(week_hetd, 2),
-            "semestre_estime_hetd": est_semester_hetd,
+            "total_heures_cm": cm_hours,
+            "total_heures_td": td_hours,
+            "total_heures_tp": tp_hours,
+            "total_hetd": total_hetd,
             "delta_hetd": delta,
             "status": status,
             "nb_cours_planifies": len(t_events)
         })
         
-    # Sort by name
+    # Sort by name A-Z
     workload_summary.sort(key=lambda x: x["teacher_name"])
     return {
         "hetd_rule": "1h CM = 1.5h TD | 1h TD = 1.0h TD | 4h TP = 3h TD (ratio 0.75)",
+        "total_teachers": len(workload_summary),
         "teachers": workload_summary
     }
+
 
 
 # --- EVALUATIONS & ABSENCES MANAGEMENT ---

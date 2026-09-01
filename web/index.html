@@ -1047,15 +1047,16 @@
                         <tr>
                             <th>Enseignant</th>
                             <th>Statut</th>
+                            <th>Séances</th>
                             <th>H. CM</th>
                             <th>H. TD</th>
                             <th>H. TP</th>
-                            <th>HETD / Semaine</th>
-                            <th>HETD Semestre (Est.)</th>
+                            <th>HETD Cumulé</th>
                             <th>Service Dû</th>
                             <th>Bilan / Delta</th>
                         </tr>
                     </thead>
+
                     <tbody id="workload-table-body">
                         <!-- Populated by JS -->
                     </tbody>
@@ -1996,7 +1997,7 @@
         async function openWorkloadModal() {
             document.getElementById('workload-modal').style.display = 'flex';
             const tbody = document.getElementById('workload-table-body');
-            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:1.5rem;">⏳ Chargement du bilan HETD...</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:1.5rem;">⏳ Chargement du bilan HETD officiel...</td></tr>';
 
             try {
                 const res = await fetch('/api/v1/teachers/workload');
@@ -2005,21 +2006,21 @@
 
                 (data.teachers || []).forEach(t => {
                     const tr = document.createElement('tr');
-                    const fillPct = Math.min(100, Math.round((t.semestre_estime_hetd / t.service_statutaire_hetd) * 100));
+                    const fillPct = Math.min(100, Math.round((t.total_hetd / t.service_statutaire_hetd) * 100));
                     const barColor = t.status === 'HEURES_SUP' ? '#ef4444' : (t.status === 'SOUS_SERVICE' ? '#f59e0b' : '#10b981');
 
                     tr.innerHTML = `
                         <td style="font-weight:600;">${t.teacher_name}</td>
                         <td><span class="event-badge badge-td">${t.statut}</span></td>
-                        <td>${t.semaine_heures_cm}h</td>
-                        <td>${t.semaine_heures_td}h</td>
-                        <td>${t.semaine_heures_tp}h</td>
-                        <td style="font-weight:700; color:#38bdf8;">${t.semaine_total_hetd} HETD</td>
-                        <td style="font-weight:700;">${t.semestre_estime_hetd}h</td>
+                        <td style="text-align:center; font-weight:600;">${t.nb_cours_planifies}</td>
+                        <td>${t.total_heures_cm}h</td>
+                        <td>${t.total_heures_td}h</td>
+                        <td>${t.total_heures_tp}h</td>
+                        <td style="font-weight:700; color:#38bdf8;">${t.total_hetd} HETD</td>
                         <td style="color:var(--text-muted);">${t.service_statutaire_hetd}h</td>
                         <td>
                             <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${fillPct}%; background:${barColor};"></div></div>
-                            <span style="font-size:0.75rem; color:${barColor}; font-weight:700;">${t.delta_hetd > 0 ? '+' : ''}${t.delta_hetd}h</span>
+                            <span style="font-size:0.75rem; color:${barColor}; font-weight:700;">${t.delta_hetd > 0 ? '+' : ''}${t.delta_hetd}h (${fillPct}%)</span>
                         </td>
                     `;
                     tbody.appendChild(tr);
@@ -2028,6 +2029,7 @@
                 tbody.innerHTML = `<tr><td colspan="9" style="color:#ef4444;">Erreur : ${err}</td></tr>`;
             }
         }
+
 
         function closeWorkloadModal() {
             document.getElementById('workload-modal').style.display = 'none';
