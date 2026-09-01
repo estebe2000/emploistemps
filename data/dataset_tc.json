@@ -1,0 +1,2382 @@
+{
+  "department": "Techniques de Commercialisation (TC)",
+  "teachers": [
+    {
+      "id": "T_01",
+      "name": "Responsable de Ressource",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "ID"
+      ]
+    },
+    {
+      "id": "T_02",
+      "name": "Bruno Cardinale",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "1",
+        "97",
+        "128"
+      ]
+    },
+    {
+      "id": "T_03",
+      "name": "Cedric Jeanne",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "2",
+        "17"
+      ]
+    },
+    {
+      "id": "T_04",
+      "name": "Loic Bourillon",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "3",
+        "18",
+        "126"
+      ]
+    },
+    {
+      "id": "T_05",
+      "name": "Mickael Millet",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "4",
+        "19",
+        "119",
+        "91",
+        "93",
+        "82"
+      ]
+    },
+    {
+      "id": "T_06",
+      "name": "Marie Helene Mirebeau",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "5",
+        "10",
+        "25",
+        "35",
+        "60"
+      ]
+    },
+    {
+      "id": "T_07",
+      "name": "Armelle Motte",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "6",
+        "20",
+        "36",
+        "87"
+      ]
+    },
+    {
+      "id": "T_08",
+      "name": "Zahraa Khaled",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "7",
+        "21",
+        "37"
+      ]
+    },
+    {
+      "id": "T_09",
+      "name": "Sylvie Leber",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "8",
+        "22",
+        "38",
+        "95",
+        "62"
+      ]
+    },
+    {
+      "id": "T_10",
+      "name": "Tarik Ihsane",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "9",
+        "33",
+        "34",
+        "49",
+        "125",
+        "74"
+      ]
+    },
+    {
+      "id": "T_11",
+      "name": "Caroline Milcent Montier",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "11",
+        "26",
+        "40",
+        "51",
+        "54",
+        "63"
+      ]
+    },
+    {
+      "id": "T_12",
+      "name": "Thierry Tabellion",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "12",
+        "27",
+        "41",
+        "52"
+      ]
+    },
+    {
+      "id": "T_13",
+      "name": "Steeve Pytel",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "13",
+        "28",
+        "42",
+        "122",
+        "96",
+        "83"
+      ]
+    },
+    {
+      "id": "T_14",
+      "name": "Antoine Saudrais",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "14",
+        "15",
+        "29",
+        "30"
+      ]
+    },
+    {
+      "id": "T_15",
+      "name": "Emilie Hoellard",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "16",
+        "84"
+      ]
+    },
+    {
+      "id": "T_16",
+      "name": "Anne Claire Desson",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "23",
+        "121",
+        "59"
+      ]
+    },
+    {
+      "id": "T_17",
+      "name": "Alexandra Bourdon",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "24",
+        "39"
+      ]
+    },
+    {
+      "id": "T_18",
+      "name": "Maxime David",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "31",
+        "118",
+        "47",
+        "98",
+        "99",
+        "101"
+      ]
+    },
+    {
+      "id": "T_19",
+      "name": "Anthony Rodriguez",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "32",
+        "48",
+        "85"
+      ]
+    },
+    {
+      "id": "T_20",
+      "name": "Riva Vianney M Boumba M Boumba",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "43",
+        "44",
+        "53",
+        "65",
+        "66"
+      ]
+    },
+    {
+      "id": "T_21",
+      "name": "Frederik Noel",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "92",
+        "94",
+        "103"
+      ]
+    },
+    {
+      "id": "T_22",
+      "name": "Alain Favreau",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "78"
+      ]
+    },
+    {
+      "id": "T_23",
+      "name": "Professeur IUT LH",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "79"
+      ]
+    },
+    {
+      "id": "T_24",
+      "name": "Christophe Cahoreau",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "50",
+        "89"
+      ]
+    },
+    {
+      "id": "T_25",
+      "name": "Jasmine Le Mesle",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "120",
+        "58",
+        "75"
+      ]
+    },
+    {
+      "id": "T_26",
+      "name": "Caroline Lelievre",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "81"
+      ]
+    },
+    {
+      "id": "T_27",
+      "name": "Boubacar Diop",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "61"
+      ]
+    },
+    {
+      "id": "T_28",
+      "name": "Maurice Schuhmann",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "64"
+      ]
+    },
+    {
+      "id": "T_29",
+      "name": "Laurence Loisel",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "123",
+        "127"
+      ]
+    },
+    {
+      "id": "T_30",
+      "name": "Bastien Ponce",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "124"
+      ]
+    },
+    {
+      "id": "T_31",
+      "name": "Hamdi Radhoui",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "102"
+      ]
+    },
+    {
+      "id": "T_32",
+      "name": "Juliette Eglizeaud",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "86"
+      ]
+    },
+    {
+      "id": "T_33",
+      "name": "Aurelien Jayet",
+      "max_hours_per_day": 6,
+      "unavailabilities": [],
+      "assigned_resources": [
+        "90"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "code": "ID",
+      "label": "Code Ressource",
+      "semester": "S1",
+      "parcours": "Volume (h)",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Parcours",
+      "team": [
+        "Responsable de Ressource"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "1",
+      "label": "R1.01",
+      "semester": "S1",
+      "parcours": "35",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Bruno Cardinale"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "2",
+      "label": "R1.02",
+      "semester": "S1",
+      "parcours": "24",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Cedric Jeanne"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "3",
+      "label": "R1.03",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Loic Bourillon"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "4",
+      "label": "R1.04",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Mickael Millet"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "5",
+      "label": "R1.05",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Marie Helene Mirebeau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "6",
+      "label": "R1.06",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Armelle Motte"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "7",
+      "label": "R1.07",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Zahraa Khaled"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "8",
+      "label": "R1.08",
+      "semester": "S1",
+      "parcours": "12",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Sylvie Leber"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "9",
+      "label": "R1.09",
+      "semester": "S1",
+      "parcours": "12",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Tarik Ihsane"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "10",
+      "label": "R1.10",
+      "semester": "S1",
+      "parcours": "8",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Marie Helene Mirebeau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "11",
+      "label": "R1.11",
+      "semester": "S1",
+      "parcours": "20",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Caroline Milcent Montier"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "12",
+      "label": "R1.12",
+      "semester": "S1",
+      "parcours": "20",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Thierry Tabellion"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "13",
+      "label": "R1.13",
+      "semester": "S1",
+      "parcours": "20",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Steeve Pytel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "14",
+      "label": "R1.14",
+      "semester": "S1",
+      "parcours": "20",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Antoine Saudrais"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "15",
+      "label": "R1.15",
+      "semester": "S1",
+      "parcours": "14",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Antoine Saudrais"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "16",
+      "label": "R2.01",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Emilie Hoellard"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "17",
+      "label": "R2.02",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Cedric Jeanne"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "18",
+      "label": "R2.03",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Loic Bourillon"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "19",
+      "label": "R2.04",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Mickael Millet"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "20",
+      "label": "R2.05",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Armelle Motte"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "21",
+      "label": "R2.06",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Zahraa Khaled"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "22",
+      "label": "R2.07",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Sylvie Leber"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "23",
+      "label": "R2.08",
+      "semester": "S1",
+      "parcours": "14",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Anne Claire Desson"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "24",
+      "label": "R2.09",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Alexandra Bourdon"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "25",
+      "label": "R2.10",
+      "semester": "S1",
+      "parcours": "10",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Marie Helene Mirebeau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "26",
+      "label": "R2.11",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Caroline Milcent Montier"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "27",
+      "label": "R2.12",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Thierry Tabellion"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "28",
+      "label": "R2.13",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Steeve Pytel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "29",
+      "label": "R2.14",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Antoine Saudrais"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "30",
+      "label": "R2.15",
+      "semester": "S1",
+      "parcours": "10",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "Tronc Commun",
+      "team": [
+        "Antoine Saudrais"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "31",
+      "label": "R3.01",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Maxime David"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "32",
+      "label": "R3.02",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Anthony Rodriguez"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "33",
+      "label": "R3.03",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Tarik Ihsane"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "34",
+      "label": "R3.04",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Tarik Ihsane"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "35",
+      "label": "R3.05",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Marie Helene Mirebeau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "36",
+      "label": "R3.06",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Armelle Motte"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "37",
+      "label": "R3.07",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Zahraa Khaled"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "38",
+      "label": "R3.08",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Sylvie Leber"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "39",
+      "label": "R3.09",
+      "semester": "S1",
+      "parcours": "12",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Alexandra Bourdon"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "40",
+      "label": "R3.10",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Caroline Milcent Montier"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "41",
+      "label": "R3.11",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Thierry Tabellion"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "42",
+      "label": "R3.12",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Steeve Pytel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "43",
+      "label": "R3.13",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Riva Vianney M Boumba M Boumba"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "44",
+      "label": "R3.14",
+      "semester": "S1",
+      "parcours": "10",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Riva Vianney M Boumba M Boumba"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "118",
+      "label": "R3.BDMRC.15",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Maxime David"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "119",
+      "label": "R3.BDMRC.16",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Mickael Millet"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "91",
+      "label": "R3.MDEE.15",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Mickael Millet"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "92",
+      "label": "R3.MDEE.16",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Frederik Noel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "78",
+      "label": "R3.MMPV.15",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Alain Favreau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "79",
+      "label": "R3.MMPV.16",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Professeur IUT LH"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "47",
+      "label": "R4.01",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Maxime David"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "48",
+      "label": "R4.02",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Anthony Rodriguez"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "49",
+      "label": "R4.03",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Tarik Ihsane"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "50",
+      "label": "R4.04",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Christophe Cahoreau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "51",
+      "label": "R4.05",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Caroline Milcent Montier"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "52",
+      "label": "R4.06",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Thierry Tabellion"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "53",
+      "label": "R4.07",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Riva Vianney M Boumba M Boumba"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "54",
+      "label": "R4.08",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Caroline Milcent Montier"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "120",
+      "label": "R4.BDMRC.09",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Jasmine Le Mesle"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "121",
+      "label": "R4.BDMRC.10",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Anne Claire Desson"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "93",
+      "label": "R4.MDEE.09",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Mickael Millet"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "94",
+      "label": "R4.MDEE.10",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Frederik Noel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "95",
+      "label": "R4.MDEE.11",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Sylvie Leber"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "80",
+      "label": "R4.MMPV.09",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "81",
+      "label": "R4.MMPV.10",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Caroline Lelievre"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "82",
+      "label": "R4.MMPV.11",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Mickael Millet"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "58",
+      "label": "R5.01",
+      "semester": "S1",
+      "parcours": "16",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Jasmine Le Mesle"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "59",
+      "label": "R5.02",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Anne Claire Desson"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "60",
+      "label": "R5.03",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Marie Helene Mirebeau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "61",
+      "label": "R5.04",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Boubacar Diop"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "62",
+      "label": "R5.05",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Sylvie Leber"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "63",
+      "label": "R5.06",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Caroline Milcent Montier"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "64",
+      "label": "R5.07",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Maurice Schuhmann"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "65",
+      "label": "R5.08",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Riva Vianney M Boumba M Boumba"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "66",
+      "label": "R5.09",
+      "semester": "S1",
+      "parcours": "8",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Riva Vianney M Boumba M Boumba"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "122",
+      "label": "R5.BDMRC.10",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Steeve Pytel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "123",
+      "label": "R5.BDMRC.11",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Laurence Loisel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "124",
+      "label": "R5.BDMRC.12",
+      "semester": "S1",
+      "parcours": "21",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Bastien Ponce"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "125",
+      "label": "R5.BDMRC.13",
+      "semester": "S1",
+      "parcours": "25",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Tarik Ihsane"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "126",
+      "label": "R5.BDMRC.14",
+      "semester": "S1",
+      "parcours": "23",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Loic Bourillon"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "96",
+      "label": "R5.MDEE.10",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Steeve Pytel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "97",
+      "label": "R5.MDEE.11",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Bruno Cardinale"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "98",
+      "label": "R5.MDEE.12",
+      "semester": "S1",
+      "parcours": "16",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Maxime David"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "99",
+      "label": "R5.MDEE.13",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Maxime David"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "100",
+      "label": "R5.MDEE.14",
+      "semester": "S1",
+      "parcours": "16",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "101",
+      "label": "R5.MDEE.15",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Maxime David"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "102",
+      "label": "R5.MDEE.16",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Hamdi Radhoui"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "83",
+      "label": "R5.MMPV.10",
+      "semester": "S1",
+      "parcours": "13",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Steeve Pytel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "84",
+      "label": "R5.MMPV.11",
+      "semester": "S1",
+      "parcours": "26",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Emilie Hoellard"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "85",
+      "label": "R5.MMPV.12",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Anthony Rodriguez"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "86",
+      "label": "R5.MMPV.13",
+      "semester": "S1",
+      "parcours": "15",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Juliette Eglizeaud"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "87",
+      "label": "R5.MMPV.14",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Armelle Motte"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "88",
+      "label": "R5.MMPV.15",
+      "semester": "S1",
+      "parcours": "18",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "74",
+      "label": "R6.01",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Tarik Ihsane"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "75",
+      "label": "R6.02",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Jasmine Le Mesle"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "127",
+      "label": "R6.BDMRC.03",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Laurence Loisel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "128",
+      "label": "R6.BDMRC.04",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "BDMRC",
+      "team": [
+        "Bruno Cardinale"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "103",
+      "label": "R6.MDEE.03",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [
+        "Frederik Noel"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "104",
+      "label": "R6.MDEE.04",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MDEE",
+      "team": [],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "89",
+      "label": "R6.MMPV.03",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Christophe Cahoreau"
+      ],
+      "requires_computer_lab": false
+    },
+    {
+      "code": "90",
+      "label": "R6.MMPV.04",
+      "semester": "S1",
+      "parcours": "Tronc Commun",
+      "volume_total": 20,
+      "hours_split": {
+        "CM": 6,
+        "TD": 14,
+        "TP": 0,
+        "total": 20
+      },
+      "responsable": "MMPV",
+      "team": [
+        "Aurelien Jayet"
+      ],
+      "requires_computer_lab": false
+    }
+  ],
+  "rooms": [
+    {
+      "id": "AMPHI_1",
+      "name": "Amphithéâtre TC 1",
+      "capacity": 120,
+      "type": "AMPHI",
+      "equipments": [
+        "VIDEO",
+        "MIC"
+      ]
+    },
+    {
+      "id": "AMPHI_2",
+      "name": "Amphithéâtre TC 2",
+      "capacity": 80,
+      "type": "AMPHI",
+      "equipments": [
+        "VIDEO",
+        "MIC"
+      ]
+    },
+    {
+      "id": "SALLE_101",
+      "name": "Salle TD 101",
+      "capacity": 35,
+      "type": "TD",
+      "equipments": [
+        "VIDEO",
+        "BOARD"
+      ]
+    },
+    {
+      "id": "SALLE_102",
+      "name": "Salle TD 102",
+      "capacity": 35,
+      "type": "TD",
+      "equipments": [
+        "VIDEO",
+        "BOARD"
+      ]
+    },
+    {
+      "id": "SALLE_103",
+      "name": "Salle TD 103",
+      "capacity": 35,
+      "type": "TD",
+      "equipments": [
+        "VIDEO",
+        "BOARD"
+      ]
+    },
+    {
+      "id": "SALLE_104",
+      "name": "Salle TD 104",
+      "capacity": 35,
+      "type": "TD",
+      "equipments": [
+        "VIDEO",
+        "BOARD"
+      ]
+    },
+    {
+      "id": "LAB_INFO_1",
+      "name": "Lab Informatique 201",
+      "capacity": 20,
+      "type": "TP_INFO",
+      "equipments": [
+        "COMPUTERS",
+        "VIDEO"
+      ]
+    },
+    {
+      "id": "LAB_INFO_2",
+      "name": "Lab Informatique 202",
+      "capacity": 20,
+      "type": "TP_INFO",
+      "equipments": [
+        "COMPUTERS",
+        "VIDEO"
+      ]
+    },
+    {
+      "id": "LAB_NEGO_1",
+      "name": "Salle Négociation & Vente 301",
+      "capacity": 18,
+      "type": "TP_NEGO",
+      "equipments": [
+        "CAMERAS",
+        "AUDIO"
+      ]
+    },
+    {
+      "id": "LAB_LANG_1",
+      "name": "Labo de Langues 302",
+      "capacity": 20,
+      "type": "TP_LANG",
+      "equipments": [
+        "HEADSETS",
+        "AUDIO"
+      ]
+    }
+  ],
+  "cohorts": [
+    {
+      "id": "BUT1_FI",
+      "name": "BUT 1 TC (Formation Initiale)",
+      "level": "BUT1",
+      "mode": "FI",
+      "size": 80,
+      "groups_td": [
+        "BUT1_TD1",
+        "BUT1_TD2"
+      ],
+      "groups_tp": [
+        "BUT1_TP11",
+        "BUT1_TP12",
+        "BUT1_TP21",
+        "BUT1_TP22"
+      ],
+      "alternance_weeks": []
+    },
+    {
+      "id": "BUT2_FA",
+      "name": "BUT 2 TC (Alternance)",
+      "level": "BUT2",
+      "mode": "FA",
+      "size": 30,
+      "groups_td": [
+        "BUT2_FA_TD1"
+      ],
+      "groups_tp": [
+        "BUT2_FA_TP1",
+        "BUT2_FA_TP2"
+      ],
+      "alternance_weeks": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14
+      ]
+    }
+  ],
+  "calendar_config": {
+    "weeks_per_semester": 15,
+    "catchup_weeks": [
+      8,
+      15
+    ],
+    "days": [
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi"
+    ],
+    "daily_slots": [
+      {
+        "id": 0,
+        "name": "M1",
+        "time": "08:00 - 10:00",
+        "duration_hours": 2
+      },
+      {
+        "id": 1,
+        "name": "M2",
+        "time": "10:15 - 12:15",
+        "duration_hours": 2
+      },
+      {
+        "id": 2,
+        "name": "S1",
+        "time": "13:30 - 15:30",
+        "duration_hours": 2
+      },
+      {
+        "id": 3,
+        "name": "S2",
+        "time": "15:45 - 17:45",
+        "duration_hours": 2
+      }
+    ]
+  }
+}
