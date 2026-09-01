@@ -775,11 +775,13 @@
                 <!-- TAB 1: Teachers & Unavailabilities -->
                 <div class="tab-pane active" id="tab-teachers">
                     <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
-                        <div style="width: 320px; display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Sélectionner un enseignant :</label>
-                            <select id="admin-select-teacher" onchange="loadTeacherMatrix()" style="width: 100%;">
+                        <div style="width: 320px; display: flex; flex-direction: column; gap: 8px;">
+                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Rechercher / Sélectionner un enseignant :</label>
+                            <input type="text" id="admin-teacher-search" placeholder="🔍 Taper un nom (ex: Cardinale, Jeanne...)" oninput="filterAdminTeacherList()" style="width: 100%;">
+                            <select id="admin-select-teacher" onchange="loadTeacherMatrix()" size="8" style="width: 100%; height: 160px; overflow-y: auto;">
                                 <!-- populated via JS -->
                             </select>
+
                             
                             <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px;">
                                 <h4 style="font-size: 0.85rem; margin-bottom: 6px;">Affectations de la ressource :</h4>
@@ -948,12 +950,17 @@
             const adminTeachSelect = document.getElementById('admin-select-teacher');
             const closureRoomSelect = document.getElementById('closure-room-select');
 
-            teachSelect.innerHTML = '<option value="">👤 Tous les enseignants</option>';
+            teachSelect.innerHTML = '<option value="">👤 Tous les enseignants (A-Z)</option>';
             roomSelect.innerHTML = '<option value="">📍 Toutes les salles</option>';
             adminTeachSelect.innerHTML = '';
             closureRoomSelect.innerHTML = '';
 
-            (dataset.teachers || []).forEach(t => {
+            // Sort teachers alphabetically by name (French locale)
+            const sortedTeachers = [...(dataset.teachers || [])].sort((a, b) => 
+                a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
+            );
+
+            sortedTeachers.forEach(t => {
                 const opt1 = document.createElement('option');
                 opt1.value = t.name;
                 opt1.textContent = t.name;
@@ -965,7 +972,12 @@
                 adminTeachSelect.appendChild(opt2);
             });
 
-            (dataset.rooms || []).forEach(r => {
+            // Sort rooms alphabetically
+            const sortedRooms = [...(dataset.rooms || [])].sort((a, b) => 
+                a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
+            );
+
+            sortedRooms.forEach(r => {
                 const opt = document.createElement('option');
                 opt.value = r.name;
                 opt.textContent = `${r.name} (${r.type})`;
@@ -977,6 +989,33 @@
                 closureRoomSelect.appendChild(opt2);
             });
         }
+
+        function filterAdminTeacherList() {
+            const searchVal = document.getElementById('admin-teacher-search').value.toLowerCase().trim();
+            const select = document.getElementById('admin-select-teacher');
+            select.innerHTML = '';
+
+            const sortedTeachers = [...(dataset.teachers || [])].sort((a, b) => 
+                a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
+            );
+
+            const filtered = sortedTeachers.filter(t => t.name.toLowerCase().includes(searchVal));
+
+            filtered.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.name;
+                opt.textContent = t.name;
+                select.appendChild(opt);
+            });
+
+            if (filtered.length > 0) {
+                loadTeacherMatrix();
+            } else {
+                document.getElementById('teacher-matrix').innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem; padding:1rem;">Aucun enseignant trouvé.</p>';
+                document.getElementById('teacher-assigned-list').textContent = 'Aucun enseignant correspondant.';
+            }
+        }
+
 
         function isPermanentClosure(day, sIdx) {
             if (day === "Jeudi" && (sIdx === 2 || sIdx === 3)) return true;
@@ -1169,10 +1208,20 @@
         }
 
         function loadTeacherMatrix() {
-            const teacherName = document.getElementById('admin-select-teacher').value;
+            const select = document.getElementById('admin-select-teacher');
+            if (!select.value && select.options.length > 0) {
+                select.selectedIndex = 0;
+            }
+            const teacherName = select.value;
             const matrix = document.getElementById('teacher-matrix');
             matrix.innerHTML = '';
             matrix.style.gridTemplateColumns = `160px repeat(${DAYS.length}, 1fr)`;
+
+            if (!teacherName) {
+                document.getElementById('teacher-assigned-list').textContent = 'Sélectionnez un enseignant.';
+                return;
+            }
+
 
             const teacherObj = (dataset.teachers || []).find(t => t.name === teacherName);
             const assignedList = document.getElementById('teacher-assigned-list');
