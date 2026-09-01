@@ -42,6 +42,10 @@ function getDayDateLabel(week, dIdx) {
 // Jeudi après-midi et Samedi après-midi sont ABSENTS (IUT fermé).
 function computeMoveSuggestions(ev, targetWeek) {
     const tWeek = targetWeek || ev.week || 1;
+    // Politique : si la semaine cible est close, aucun créneau proposé.
+    if (typeof window._policyIsWeekOpen === 'function' && !window._policyIsWeekOpen(tWeek)) {
+        return [];
+    }
     const suggestions = [];
     const events = currentSchedule || [];
     const rooms = dataset.rooms || [];
@@ -98,6 +102,12 @@ function populateMoveModal(ev) {
     highlightMoveWeekButton();
     const sug = computeMoveSuggestions(ev, tWeek);
 
+    // Bandeau de politique de déplacement
+    const policyNote = document.createElement('div');
+    policyNote.style.cssText = 'font-size:0.72rem; color:var(--text-muted); background:rgba(99,102,241,0.08); border:1px dashed rgba(99,102,241,0.3); border-radius:6px; padding:6px 8px; margin-bottom:8px;';
+    policyNote.innerHTML = '📌 ' + (typeof window._policyMessage === 'function' ? window._policyMessage() : 'Déplacement à demander au gestionnaire EDT avant le jeudi pour la semaine suivante.');
+    suggestList.appendChild(policyNote);
+
     // Barre de navigation : semaines (repousser le cours plus tard si besoin)
     const nav = document.createElement('div');
     nav.style.cssText = 'display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin-bottom:8px;';
@@ -114,8 +124,12 @@ function populateMoveModal(ev) {
 
     if (!sug.length) {
         const empty = document.createElement('div');
-        empty.style.cssText = 'color:var(--text-muted); font-size:0.8rem;';
-        empty.textContent = 'Aucun créneau compatible dans cette semaine (occupés / IUT fermé). Essayez une autre semaine.';
+        empty.style.cssText = 'color:#fb7185; font-size:0.8rem;';
+        if (typeof window._policyIsWeekOpen === 'function' && !window._policyIsWeekOpen(tWeek)) {
+            empty.innerHTML = '🔒 Cette semaine est <strong>close</strong> (délai de demande dépassé : ' + (typeof window._policyMessage === 'function' ? window._policyMessage() : 'avant le jeudi 18h pour la semaine suivante') + '). Choisissez une semaine suivante.';
+        } else {
+            empty.textContent = 'Aucun créneau compatible dans cette semaine (occupés / IUT fermé). Essayez une autre semaine.';
+        }
         suggestList.appendChild(empty);
         return;
     }

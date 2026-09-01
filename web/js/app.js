@@ -1163,6 +1163,9 @@
         function initAdminView() {
             document.getElementById('quota-teacher-hours').value = constraints.max_hours_per_day_teacher || 6;
             document.getElementById('quota-student-hours').value = constraints.max_hours_per_day_student || 8;
+            // Charge la politique de déplacement depuis constraints dans le formulaire.
+            if (typeof window._applyMovePolicyFromConstraints === 'function') window._applyMovePolicyFromConstraints();
+            if (typeof window._applyMovePolicyToForm === 'function') window._applyMovePolicyToForm();
         }
 
         function loadTeacherMatrix() {
@@ -1436,6 +1439,9 @@
         async function saveAllConstraints() {
             constraints.max_hours_per_day_teacher = parseInt(document.getElementById('quota-teacher-hours').value) || 6;
             constraints.max_hours_per_day_student = parseInt(document.getElementById('quota-student-hours').value) || 8;
+
+            // Sauvegarde la politique de déplacement (section Quotas & Paramètres)
+            if (typeof window._applyMovePolicyFromForm === 'function') window._applyMovePolicyFromForm();
 
             // Sauvegarde d'abord les sources iCal (si l'onglet est présent dans le DOM)
             try { await saveIcalSources(true); } catch (e) { /* ignore */ }
