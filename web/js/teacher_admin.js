@@ -180,8 +180,105 @@ async function saveAllServicesSilent() {
 
 // Charge les services au démarrage puis re-rend sur l'enseignant sélectionné.
 document.addEventListener('DOMContentLoaded', () => {
+    initHETDTableSort();
+    renderHETDTable();
     loadTeacherServices().then(() => {
         const sel = document.getElementById('admin-select-teacher');
         if (sel) renderTeacherService(sel.value || '');
+        renderHETDTable();
     });
 });
+
+// La table HETD dépend de `dataset`/`currentSchedule` chargés par app.js (window.onload = init).
+// On s'ajoute à onload (sans remplacer init) pour re-rendre une fois les données prêtes.
+(function () {
+    const prev = window.onload;
+    window.onload = async function (ev) {
+        if (typeof prev === 'function') await prev.call(window, ev);
+        initHETDTableSort();
+        renderHETDTable();
+        if (typeof loadTeacherServices === 'function') await loadTeacherServices();
+        renderHETDTable();
+    };
+})();
+// --- Bilan HETD triable (tableau) ---
+let hetdSort = { key: 'name', asc: true };
+
+// Calcule le bilan HETD pour tous les enseignants du dataset.
+function computeAllTeacherHETD() {
+    const rows = (dataset.teachers || []).map(t => {
+        const compute = computeTeacherHETD(t.name);
+        const svc = getTeacherService(t.name);
+        const delta = Math.round((compute.hetdCours - svc.hetd) * 10) / 10;
+        const status = delta > 15 ? 'HEURES_SUP' : (delta < -15 ? 'SOUS_SERVICE' : 'EQUILIBRE');
+        return {
+            name: t.name,
+            hetd: compute.hetdCours,
+            service: svc.hetd,
+            delta: delta,
+            autres: compute.heuresAutres,
+            nbAutres: compute.nbAutres,
+            status: status,
+            mode: svc.mode,
+            nbCours: compute.nbCours
+        };
+    });
+    return rows;
+}
+
+function renderHETDTable() {
+    const tbody = document.getElementById('hetd-table-body');
+    if (!tbody) return;
+    let rows = computeAllTeacherHETD();
+
+    const { key, asc } = hetdSort;
+    rows.sort((a, b) => {
+        let va = a[key], vb = b[key];
+        if (typeof va === 'string') { va = va.toLowerCase(); vb = String(vb).toLowerCase(); }
+        if (va === vb) return 0;
+        const r = va < vb ? -1 : 1;
+        return asc ? r : -r;
+    });
+
+    tbody.innerHTML = rows.map(r => {
+        const stCol = r.status === 'HEURES_SUP' ? '#fb7185' : (r.status === 'SOUS_SERVICE' ? '#fbbf24' : '#34d399');
+        const modeLabel = MODE_LABELS[r.mode] ? r.mode : r.mode;
+        return `<tr style="cursor:pointer;" onclick="selectTeacherFromHETD('${String(r.name).replace(/'/g, "\\'")}')">
+            <td style="font-weight:600;">${r.name}</td>
+            <td>${r.hetd} h</td>
+            <td>${r.service} h</td>
+            <td style="color:${stCol};">${r.delta>0?'+':''}${r.delta} h</td>
+            <td>${r.autres} h (${r.nbAutres})</td>
+            <td style="color:${stCol};">${r.status.replace('_',' ')}</td>
+            <td>${modeLabel}</td>
+        </tr>`;
+    }).join('');
+}
+
+// Sélectionne un enseignant depuis la table HETD (met à jour dropdown + grille).
+function selectTeacherFromHETD(name) {
+    const sel = document.getElementById('admin-select-teacher');
+    const search = document.getElementById('admin-teacher-search');
+    if (search) search.value = name;
+    if (sel) {
+        for (let i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].value === name) { sel.selectedIndex = i; break; }
+        }
+    }
+    loadTeacherMatrix();
+}
+
+// Tri sur clic des en-têtes.
+function initHETDTableSort() {
+    const table = document.getElementById('hetd-table');
+    if (!table) return;
+    table.querySelectorAll('th[data-sort]').forEach(th => {
+        th.style.cursor = 'pointer';
+        th.onclick = () => {
+            const key = th.getAttribute('data-sort');
+            if (hetdSort.key === key) hetdSort.asc = !hetdSort.asc;
+            else { hetdSort.key = key; hetdSort.asc = key !== 'name'; }
+            renderHETDTable();
+        };
+    });
+}
