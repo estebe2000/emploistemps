@@ -1,7 +1,7 @@
 """
 Import and harmonization of real current schedules from all iCal (.ics) files in ical/
-Maps all 2,800+ real events into academic semester weeks (Week 1 to 15 for S1, 16 to 30 for S2)
-with real teachers, real rooms, real groups, and exact slot timings.
+Fully captures the hierarchical student tree (Promo -> TD -> TP A/B)
+and supports multi-group matching so that filtering by TD1 displays CM + TD1 + TP1A/TP1B.
 """
 
 import os
@@ -9,7 +9,7 @@ import sys
 import json
 import re
 from datetime import datetime, timedelta
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -22,20 +22,31 @@ DAYS_FR = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanch
 
 
 def parse_ics_file(file_path: str) -> List[Dict[str, str]]:
-    events = []
-    current = {}
     with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith('BEGIN:VEVENT'):
-                current = {}
-            elif line.startswith('END:VEVENT'):
-                if current and 'DTSTART' in current:
-                    events.append(current)
-            elif ':' in line:
-                key, val = line.split(':', 1)
-                main_key = key.split(';')[0]
-                current[main_key] = val
+        lines = f.readlines()
+    
+    # Unfold iCal lines
+    unfolded = []
+    for line in lines:
+        if (line.startswith(' ') or line.startswith('\t')) and unfolded:
+            unfolded[-1] = unfolded[-1].rstrip('\r\n') + line[1:]
+        else:
+            unfolded.append(line)
+            
+    events = []
+    cur = {}
+    for line in unfolded:
+        line = line.strip()
+        if line == 'BEGIN:VEVENT':
+            cur = {}
+        elif line == 'END:VEVENT':
+            if cur and 'DTSTART' in cur:
+                events.append(cur)
+        elif ':' in line:
+            k, v = line.split(':', 1)
+            k_clean = k.split(';')[0]
+            cur[k_clean] = v
+            
     return events
 
 
@@ -48,40 +59,34 @@ def parse_dt(dt_str: str) -> datetime:
 
 
 def map_time_to_slot(dt: datetime) -> int:
-    """
-    Maps start hour to M1 (0), M2 (1), S1 (2), S2 (3).
-    """
-    # Note: UTC time in ics may be UTC (e.g. 06h00/07h30 -> local 08h00/09h30)
+    """Maps start hour to M1 (0), M2 (1), S1 (2), S2 (3)."""
     hour = dt.hour
     minute = dt.minute
     total_mins = hour * 60 + minute
 
     # If UTC (starts around 6h-7h30 UTC = 8h-9h30 local):
-    if total_mins < 8 * 60 + 45: # ~08h00 - 09h30
+    if total_mins < 8 * 60 + 45:
         return 0
-    elif total_mins < 11 * 60 + 30: # ~09h45 - 12h15
+    elif total_mins < 11 * 60 + 30:
         return 1
-    elif total_mins < 14 * 60 + 30: # ~13h30 - 15h00
+    elif total_mins < 14 * 60 + 30:
         return 2
-    else: # ~15h15 - 18h00
+    else:
         return 3
 
 
 def extract_teacher_name(desc: str, summary: str) -> str:
-    # Try from description
     m = re.search(r'Enseignant[s]?\s*:\s*([^\n\\]+)', desc, re.IGNORECASE)
     if m:
         raw = m.group(1).replace(r'\,', ',').replace(r'\n', '').strip()
-        # Clean Mme / M. prefixes if desired or keep clean
         first_prof = raw.split(',')[0].strip()
         first_prof = re.sub(r'^(?:Mme|M\.|M)\s+', '', first_prof).strip()
         return first_prof
     
-    # Try from summary
     parts = summary.split('-')
     if len(parts) >= 2:
         candidate = parts[1].strip()
-        if any(w in candidate.lower() for w in ['mme', 'm.', 'pytel', 'tabellion', 'motte', 'leber', 'millet']):
+        if any(w in candidate.lower() for w in ['mme', 'm.', 'pytel', 'tabellion', 'motte', 'leber', 'millet', 'saudrais', 'cardinale', 'jeanne']):
             return re.sub(r'^(?:Mme|M\.|M)\s+', '', candidate).strip()
             
     return "Enseignant TC"
@@ -98,31 +103,58 @@ def extract_event_type(desc: str, summary: str) -> str:
     return "TD"
 
 
-def extract_group(desc: str, summary: str, default_promo: str) -> str:
-    text = (desc + " " + summary)
-    
-    # Specific TP sub-groups (TP1A, TP2B...)
-    tp_match = re.search(r'\b(TP\s*[1-5]\s*[AB]|TP[1-5][AB])\b', text, re.IGNORECASE)
-    if tp_match:
-        return tp_match.group(1).upper().replace(" ", "")
-        
-    # TD groups (TD1..TD5)
-    td_match = re.search(r'\b(TD\s*[1-5]|TD[1-5])\b', text, re.IGNORECASE)
-    if td_match:
-        return td_match.group(1).upper().replace(" ", "")
-        
-    # Parcours (BDMRC, MDEE, MMPV)
-    if "BDMRC" in text:
-        return "TC2_G1_BDMRC" if "2" in default_promo else "TC3_FI_G1_BDMRC"
-    if "MDEE" in text:
-        return "TC2_G2_MDEE" if "2" in default_promo else "TC3_FI_G2_MDEE"
-    if "MMPV" in text:
-        return "TC2_G3_MMPV" if "2" in default_promo else "TC3_FI_G3_MMPV"
-        
-    if "CM" in text or "PROMO" in text or "AMPHI" in text:
-        return f"{default_promo}_PROMO"
-        
-    return f"{default_promo}_TD1"
+def extract_groups_and_hierarchy(desc: str, summary: str, default_promo: str) -> Tuple[str, List[str]]:
+    """
+    Returns (primary_group_id, list_of_matching_groups)
+    Example:
+      'TD : TD1' -> ('TD1', ['BUT1_PROMO', 'TD1', 'TP1A', 'TP1B'])
+      'TD : TP1A' -> ('TP1A', ['BUT1_PROMO', 'TD1', 'TP1A'])
+      'TD : TD1, TD2, TD3, TD4, TD5' -> ('BUT1_PROMO', ['BUT1_PROMO', 'TD1', 'TD2', 'TD3', 'TD4', 'TD5', 'TP1A', 'TP1B', ...])
+    """
+    text = (desc + " " + summary).replace(r'\,', ',')
+
+    # All BUT 1 Promo
+    if "TD1, TD2, TD3, TD4, TD5" in text or "TD1,TD2,TD3,TD4,TD5" in text or "CM TC" in text:
+        all_but1 = ["BUT1_PROMO", "TD1", "TD2", "TD3", "TD4", "TD5",
+                    "TP1A", "TP1B", "TP2A", "TP2B", "TP3A", "TP3B", "TP4A", "TP4B", "TP5A", "TP5B"]
+        return "BUT1_PROMO", all_but1
+
+    # BUT 1 Specific TP
+    for i in range(1, 6):
+        for sub in ['A', 'B']:
+            tp_str = f"TP{i}{sub}"
+            if re.search(rf'\b{tp_str}\b', text, re.IGNORECASE):
+                return tp_str, ["BUT1_PROMO", f"TD{i}", tp_str]
+
+    # BUT 1 Specific TD
+    for i in range(1, 6):
+        td_str = f"TD{i}"
+        if re.search(rf'\b{td_str}\b', text, re.IGNORECASE):
+            return td_str, ["BUT1_PROMO", td_str, f"TP{i}A", f"TP{i}B"]
+
+    # BUT 2 & BUT 3 Parcours
+    if "TC2 G1" in text or "BDMRC" in text and "2" in default_promo:
+        return "TC2_G1_BDMRC", ["TC2_FI_PROMO", "TC2_G1_BDMRC", "TC2_TP1A", "TC2_TP1B"]
+    if "TC2 G2" in text or "MDEE" in text and "2" in default_promo:
+        return "TC2_G2_MDEE", ["TC2_FI_PROMO", "TC2_G2_MDEE", "TC2_TP2A", "TC2_TP2B"]
+    if "TC2 G3" in text or "MMPV" in text and "2" in default_promo:
+        return "TC2_G3_MMPV", ["TC2_FI_PROMO", "TC2_G3_MMPV", "TC2_TP3A", "TC2_TP3B"]
+    if "TC2 FA" in text or "FA BUT2" in text:
+        return "TC2_FA_BUT2", ["TC2_FA_PROMO", "TC2_FA_BUT2", "TC2_FA_TP1", "TC2_FA_TP2"]
+
+    if "TC3" in text or "3" in default_promo:
+        if "BDMRC" in text:
+            grp = "TC3_FA_G1_BDMRC" if "FA" in text else "TC3_FI_G1_BDMRC"
+            return grp, ["TC3_PROMO", grp]
+        if "MDEE" in text:
+            grp = "TC3_FA_G2_MDEE" if "FA" in text else "TC3_FI_G2_MDEE"
+            return grp, ["TC3_PROMO", grp]
+        if "MMPV" in text:
+            grp = "TC3_FA_G3_MMPV" if "FA" in text else "TC3_FI_G3_MMPV"
+            return grp, ["TC3_PROMO", grp]
+        return f"{default_promo}_PROMO", [f"{default_promo}_PROMO"]
+
+    return f"{default_promo}_PROMO", [f"{default_promo}_PROMO"]
 
 
 def clean_room_name(loc: str) -> (str, str):
@@ -165,7 +197,7 @@ def clean_room_name(loc: str) -> (str, str):
 
 
 def import_all_schedules():
-    print("🚀 Ingestion et conversion des emplois du temps réels (.ics)...")
+    print("🚀 Ingestion et extraction arborescente (CM / TD / TP) depuis les ical/...")
     
     files = [
         ("Edt_IUT_1ERE_ANNEE_TECH_DE_COMMERCIALISATION.ics", "BUT1"),
@@ -188,16 +220,13 @@ def import_all_schedules():
             try:
                 dt = parse_dt(e['DTSTART'])
                 if earliest_date is None or dt < earliest_date:
-                    if dt.year >= 2025: # filter valid dates
+                    if dt.year >= 2025:
                         earliest_date = dt
             except:
                 pass
 
-    print(f"  Total événements bruts extraits : {len(all_raw_events)}")
     if earliest_date:
-        # Align reference start to Monday of first week (Sept 2026/2025)
         start_monday = earliest_date - timedelta(days=earliest_date.weekday())
-        print(f"  Date de référence Semaine 1 : {start_monday.strftime('%d/%m/%Y')}")
     else:
         start_monday = datetime(2026, 9, 1)
 
@@ -218,17 +247,16 @@ def import_all_schedules():
         except Exception:
             continue
 
-        # Calculate Academic Week (1 to 15)
         days_diff = (dt_start.date() - start_monday.date()).days
         if days_diff < 0:
             acad_week = 1
         else:
             acad_week = (days_diff // 7) + 1
             if acad_week > 15:
-                acad_week = ((acad_week - 1) % 15) + 1 # wrap to 15 weeks semester cycle
+                acad_week = ((acad_week - 1) % 15) + 1
 
-        weekday_idx = dt_start.weekday() # 0 = Lundi, 5 = Samedi
-        if weekday_idx > 5: # Dimanche skip
+        weekday_idx = dt_start.weekday()
+        if weekday_idx > 5:
             continue
 
         day_name = DAYS_FR[weekday_idx]
@@ -243,7 +271,7 @@ def import_all_schedules():
 
         teacher = extract_teacher_name(desc, summary)
         ev_type = extract_event_type(desc, summary)
-        group = extract_group(desc, summary, e["_source_promo"])
+        primary_group, matching_groups = extract_groups_and_hierarchy(desc, summary, e["_source_promo"])
         room_id, room_name = clean_room_name(loc)
 
         # Resource title extraction
@@ -253,10 +281,8 @@ def import_all_schedules():
         if m_code:
             res_code = m_code.group(1).upper().replace(" ", "")
         else:
-            # Short clean code
             res_code = summary.split('-')[0].strip()[:10] if '-' in summary else summary[:10]
 
-        # Duration & HETD
         duration_mins = int((dt_end - dt_start).total_seconds() / 60)
         dur_hours = round(duration_mins / 60, 2)
         if dur_hours < 0.5 or dur_hours > 5.0:
@@ -265,8 +291,7 @@ def import_all_schedules():
         hetd_coeff = 1.5 if ev_type == "CM" else (0.75 if ev_type == "TP" else 1.0)
         hetd_hours = round(dur_hours * hetd_coeff, 2)
 
-        # Deduplicate identical events for same teacher/room/slot/week
-        dedup_key = (acad_week, weekday_idx, slot_idx, group, teacher, room_id)
+        dedup_key = (acad_week, weekday_idx, slot_idx, primary_group, teacher, room_id)
         if dedup_key in seen_keys:
             continue
         seen_keys.add(dedup_key)
@@ -278,7 +303,8 @@ def import_all_schedules():
             "resource_code": res_code,
             "resource_name": summary or res_name,
             "event_type": ev_type,
-            "group_id": group,
+            "group_id": primary_group,
+            "matching_groups": matching_groups,
             "teacher_name": teacher,
             "room_id": room_id,
             "room_name": room_name,
@@ -293,9 +319,6 @@ def import_all_schedules():
             "global_slot": weekday_idx * 4 + slot_idx
         })
 
-    print(f"✅ Total événements réels structurés par semaine (S1 à S15) : {len(processed_events)}")
-
-    # Sort chronologically by week, day, slot
     processed_events.sort(key=lambda x: (x["week"], x["day_idx"], x["slot_idx"]))
 
     schedule_output = {
@@ -310,14 +333,14 @@ def import_all_schedules():
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(schedule_output, f, indent=2, ensure_ascii=False)
 
-    print(f"💾 Emploi du temps réel sauvegardé dans {OUTPUT_PATH}")
+    print(f"✅ Ingestion terminée : {len(processed_events)} cours avec arborescence TD / TP.")
 
-    # Print breakdown per week
+    # Group counts
     from collections import Counter
-    weeks_count = Counter(e["week"] for e in processed_events)
-    print("\nRépartition des cours réels par Semaine :")
-    for w in range(1, 16):
-        print(f"  Semaine {w:02d} (S{w}) : {weeks_count.get(w, 0)} cours réels")
+    group_counts = Counter(e["group_id"] for e in processed_events)
+    print("\nRépartition par groupes :")
+    for g, c in sorted(group_counts.items()):
+        print(f"  • {g:16s} : {c:3d} cours")
 
 
 if __name__ == "__main__":

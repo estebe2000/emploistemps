@@ -767,31 +767,39 @@
                 <div class="filter-group">
                     <span class="filter-label">Filtres :</span>
                     <select id="filter-group" onchange="renderSchedule()">
-                        <option value="">👥 Tous les groupes</option>
-                        <optgroup label="🎓 BUT 1 (Tronc Commun)">
-                            <option value="BUT1_PROMO">Promo BUT 1 (CM Amphi 3)</option>
-                            <option value="TD1">Groupe TD 1</option>
-                            <option value="TD2">Groupe TD 2</option>
-                            <option value="TD3">Groupe TD 3</option>
-                            <option value="TD4">Groupe TD 4</option>
-                            <option value="TD5">Groupe TD 5</option>
-                            <option value="TP1A">Sous-groupe TP 1A</option>
-                            <option value="TP1B">Sous-groupe TP 1B</option>
-                            <option value="TP2A">Sous-groupe TP 2A</option>
-                            <option value="TP2B">Sous-groupe TP 2B</option>
+                        <option value="">👥 Tous les groupes (Promo, TD, TP)</option>
+                        <optgroup label="🎓 BUT 1 (Tronc Commun - 5 TD / 10 TP)">
+                            <option value="BUT1_PROMO">📢 Promo BUT 1 (CM Promo Amphi 3)</option>
+                            <option value="TD1">🔹 Groupe TD 1 (Inclus TP1A & TP1B)</option>
+                            <option value="TP1A">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 1A</option>
+                            <option value="TP1B">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 1B</option>
+                            <option value="TD2">🔹 Groupe TD 2 (Inclus TP2A & TP2B)</option>
+                            <option value="TP2A">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 2A</option>
+                            <option value="TP2B">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 2B</option>
+                            <option value="TD3">🔹 Groupe TD 3 (Inclus TP3A & TP3B)</option>
+                            <option value="TP3A">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 3A</option>
+                            <option value="TP3B">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 3B</option>
+                            <option value="TD4">🔹 Groupe TD 4 (Inclus TP4A & TP4B)</option>
+                            <option value="TP4A">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 4A</option>
+                            <option value="TP4B">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 4B</option>
+                            <option value="TD5">🔹 Groupe TD 5 (Inclus TP5A & TP5B)</option>
+                            <option value="TP5A">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 5A</option>
+                            <option value="TP5B">&nbsp;&nbsp;&nbsp;&nbsp;🔸 Sous-groupe TP 5B</option>
                         </optgroup>
-                        <optgroup label="🎓 BUT 2 (Parcours)">
-                            <option value="TC2_G1_BDMRC">BUT 2 - BDMRC (FI)</option>
-                            <option value="TC2_G2_MDEE">BUT 2 - MDEE (FI)</option>
-                            <option value="TC2_G3_MMPV">BUT 2 - MMPV (FI)</option>
-                            <option value="TC2_FA_BUT2">BUT 2 - Alternance (FA)</option>
+                        <optgroup label="🎓 BUT 2 (Parcours Spécialisés & FA)">
+                            <option value="TC2_G1_BDMRC">🏢 BUT 2 - BDMRC (Business Dév. & Relation Client)</option>
+                            <option value="TC2_G2_MDEE">💻 BUT 2 - MDEE (Marketing Digital & E-business)</option>
+                            <option value="TC2_G3_MMPV">🏪 BUT 2 - MMPV (Management Point de Vente)</option>
+                            <option value="TC2_FA_BUT2">🎓 BUT 2 - Alternance (FA)</option>
                         </optgroup>
-                        <optgroup label="🎓 BUT 3 (Parcours)">
-                            <option value="TC3_FI_G1_BDMRC">BUT 3 - BDMRC (FI)</option>
-                            <option value="TC3_FI_G2_MDEE">BUT 3 - MDEE (FI)</option>
-                            <option value="TC3_FI_G3_MMPV">BUT 3 - MMPV (FI)</option>
+                        <optgroup label="🎓 BUT 3 (Parcours Spécialisés & FA)">
+                            <option value="TC3_FI_G1_BDMRC">🏢 BUT 3 - BDMRC (FI)</option>
+                            <option value="TC3_FI_G2_MDEE">💻 BUT 3 - MDEE (FI)</option>
+                            <option value="TC3_FI_G3_MMPV">🏪 BUT 3 - MMPV (FI)</option>
+                            <option value="TC3_FA_G1_BDMRC">🎓 BUT 3 - BDMRC (Alternance FA)</option>
                         </optgroup>
                     </select>
+
 
                     <select id="filter-teacher" onchange="renderSchedule()">
                         <option value="">👤 Tous les enseignants (A-Z)</option>
@@ -1348,8 +1356,14 @@
             }
 
             if (filterGroup) {
-                filtered = filtered.filter(e => e.group_id === filterGroup || e.group_id.includes('PROMO'));
+                filtered = filtered.filter(e => {
+                    if (e.matching_groups && e.matching_groups.includes(filterGroup)) return true;
+                    if (e.group_id === filterGroup) return true;
+                    if (e.group_id.includes('PROMO') && (filterGroup.includes('TD') || filterGroup.includes('TP'))) return true;
+                    return false;
+                });
             }
+
             if (filterTeacher) {
                 filtered = filtered.filter(e => e.teacher_name.toLowerCase().includes(filterTeacher.toLowerCase()));
             }
