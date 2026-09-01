@@ -1,6 +1,7 @@
 """
 Constraint-based Timetable Solver for IUT TC using Google OR-Tools CP-SAT.
-Guarantees 100% hard constraint satisfaction and optimizes student/teacher schedules.
+Guarantees 100% hard constraint satisfaction, handles 5 TD / 10 TP subgroups,
+real room capacities/equipments, teacher service counting (HETD), absences, and evaluations.
 """
 
 import sys
@@ -19,11 +20,12 @@ class LessonToSchedule:
     id: str
     resource_code: str
     resource_name: str
-    event_type: str  # CM, TD, TP
-    group_id: str  # e.g., 'BUT1_PROMO', 'BUT1_TD1', 'BUT1_TP11'
+    event_type: str  # CM, TD, TP, EVAL
+    group_id: str  # e.g., 'BUT1_PROMO', 'TD1', 'TP1A', etc.
     teacher_name: str
-    required_room_type: str  # AMPHI, TD, TP_INFO, TP_NEGO
-    duration_slots: int = 1  # 1 slot = 2 hours
+    required_room_type: str  # AMPHI, TD, TP_INFO, TP_NEGO, TP_LANG
+    duration_hours: float = 1.5
+    is_evaluation: bool = False
 
 
 class TimetableSolver:
@@ -46,32 +48,38 @@ class TimetableSolver:
         self.cohorts = self.data["cohorts"]
         self.calendar = self.data["calendar_config"]
 
-
-        self.num_days = len(self.calendar["days"])  # 5 days: Lun..Ven
+        self.num_days = len(self.calendar["days"])  # 6 days: Lun..Sam
         self.slots_per_day = len(self.calendar["daily_slots"])  # 4 slots/day
-        self.total_slots_per_week = self.num_days * self.slots_per_day  # 20 slots
+        self.total_slots_per_week = self.num_days * self.slots_per_day  # 24 slots
         self.total_weeks = self.calendar["weeks_per_semester"]  # 15 weeks
-        self.catchup_weeks = set(self.calendar.get("catchup_weeks", [8, 15]))
 
     def generate_lessons_for_semester(self, semester: str = "S1") -> List[LessonToSchedule]:
         """
-        Generates individual 2h lesson sessions needed for a semester based on the PN.
+        Generates individual lesson sessions needed for BUT 1 TC (5 TD groups and 10 TP subgroups).
         """
         lessons = []
         sem_resources = [r for r in self.data["resources"] if r["semester"] == semester and "Tronc Commun" in str(r.get("parcours", ""))]
         
-        # If Tronc Commun list is small, take top 8 resources of the semester
         if len(sem_resources) < 6:
             sem_resources = [r for r in self.data["resources"] if r["semester"] == semester][:8]
 
-        for res in sem_resources[:8]:  # 8 active resources per week
+        td_groups = ["TD1", "TD2", "TD3", "TD4", "TD5"]
+        tp_groups = [
+            ("TP1A", "TP1B"),
+            ("TP2A", "TP2B"),
+            ("TP3A", "TP3B"),
+            ("TP4A", "TP4B"),
+            ("TP5A", "TP5B")
+        ]
+
+        for res in sem_resources[:6]:  # Core resources per week
             code = res["code"]
             name = res["label"]
             split = res["hours_split"]
             resp = res["responsable"] or (res["team"][0] if res["team"] else "Enseignant TC")
             team = res["team"] if res["team"] else [resp]
 
-            # 1. CM Session (Promo entière)
+            # 1. CM Session (Promo entière dans Amphi 3)
             if split.get("CM", 0) > 0:
                 lessons.append(LessonToSchedule(
                     id=f"{code}_CM",
@@ -81,12 +89,12 @@ class TimetableSolver:
                     group_id="BUT1_PROMO",
                     teacher_name=resp,
                     required_room_type="AMPHI",
-                    duration_slots=1
+                    duration_hours=1.5
                 ))
 
-            # 2. TD Sessions (TD1 and TD2)
+            # 2. TD Sessions (TD1 à TD5)
             if split.get("TD", 0) > 0:
-                for td_idx, td_grp in enumerate(["BUT1_TD1", "BUT1_TD2"]):
+                for td_idx, td_grp in enumerate(td_groups):
                     teach = team[td_idx % len(team)]
                     lessons.append(LessonToSchedule(
                         id=f"{code}_{td_grp}",
@@ -96,37 +104,66 @@ class TimetableSolver:
                         group_id=td_grp,
                         teacher_name=teach,
                         required_room_type="TD",
-                        duration_slots=1
+                        duration_hours=1.5
                     ))
 
-            # 3. TP Sessions (TP11, TP12, TP21, TP22) for practical resources
+            # 3. TP Sessions (TP1A..TP5B)
             if split.get("TP", 0) > 0:
-                for tp_idx, tp_grp in enumerate(["BUT1_TP11", "BUT1_TP12", "BUT1_TP21", "BUT1_TP22"]):
-                    teach = team[tp_idx % len(team)]
-                    room_req = "TP_INFO" if res.get("requires_computer_lab") else "TD"
+                for pair_idx, (tpA, tpB) in enumerate(tp_groups):
+                    teachA = team[(pair_idx * 2) % len(team)]
+                    teachB = team[(pair_idx * 2 + 1) % len(team)]
+                    room_req = "TP_INFO" if res.get("requires_computer_lab") else ("TP_NEGO" if "vente" in name.lower() or "nego" in name.lower() else "TD")
+                    
                     lessons.append(LessonToSchedule(
-                        id=f"{code}_{tp_grp}",
+                        id=f"{code}_{tpA}",
                         resource_code=code,
                         resource_name=name,
                         event_type="TP",
-                        group_id=tp_grp,
-                        teacher_name=teach,
+                        group_id=tpA,
+                        teacher_name=teachA,
                         required_room_type=room_req,
-                        duration_slots=1
+                        duration_hours=1.5
+                    ))
+                    lessons.append(LessonToSchedule(
+                        id=f"{code}_{tpB}",
+                        resource_code=code,
+                        resource_name=name,
+                        event_type="TP",
+                        group_id=tpB,
+                        teacher_name=teachB,
+                        required_room_type=room_req,
+                        duration_hours=1.5
                     ))
 
         return lessons
 
     def solve_weekly_pattern(self, target_week: int = 1, semester: str = "S1", time_limit_seconds: int = 15) -> Optional[Dict[str, Any]]:
         """
-        Solves a typical representative week timetable.
+        Solves weekly timetable under 100% hard constraints.
         """
         print(f"🧩 Initializing CP-SAT Model for Semester {semester} - Week {target_week}...")
         model = cp_model.CpModel()
 
         week_lessons = self.generate_lessons_for_semester(semester)
-        print(f"  Total lessons to schedule for Week {target_week}: {len(week_lessons)}")
+        
+        # Inject evaluations planned for this week
+        evaluations = self.constraints.get("evaluations", [])
+        for ev in evaluations:
+            if ev.get("week") == target_week:
+                invigs = ev.get("invigilators", ["Enseignant TC"])
+                week_lessons.append(LessonToSchedule(
+                    id=ev["id"],
+                    resource_code=ev["resource_code"],
+                    resource_name=ev["title"],
+                    event_type="EVAL",
+                    group_id=ev["target_group"],
+                    teacher_name=invigs[0],
+                    required_room_type="AMPHI" if "PROMO" in ev["target_group"] else "TD",
+                    duration_hours=ev.get("duration_hours", 1.5),
+                    is_evaluation=True
+                ))
 
+        print(f"  Total lessons & evaluations to schedule for Week {target_week}: {len(week_lessons)}")
 
         # Decision Variables:
         # x[lesson_idx, slot_idx, room_id] = 1 if lesson is scheduled at slot_idx in room_id
@@ -135,12 +172,14 @@ class TimetableSolver:
         room_ids = list(self.rooms.keys())
 
         for i, lesson in enumerate(week_lessons):
-            # Find compatible rooms
+            # Compatible rooms
             compat_rooms = [
                 r_id for r_id, r in self.rooms.items()
                 if (lesson.required_room_type == "AMPHI" and r["type"] == "AMPHI") or
                    (lesson.required_room_type == "TP_INFO" and r["type"] == "TP_INFO") or
-                   (lesson.required_room_type == "TD" and r["type"] in ["TD", "AMPHI"])
+                   (lesson.required_room_type == "TP_NEGO" and r["type"] in ["TP_NEGO", "TD"]) or
+                   (lesson.required_room_type == "TP_LANG" and r["type"] in ["TP_LANG", "TD"]) or
+                   (lesson.required_room_type == "TD" and r["type"] in ["TD", "TD_ACTIF", "AMPHI"])
             ]
             if not compat_rooms:
                 compat_rooms = room_ids
@@ -149,7 +188,7 @@ class TimetableSolver:
                 for r_id in compat_rooms:
                     x[(i, s, r_id)] = model.NewBoolVar(f"x_l{i}_s{s}_r{r_id}")
 
-        # HARD CONSTRAINT 1: Each lesson must be scheduled exactly once
+        # HARD CONSTRAINT 1: Each lesson scheduled exactly once
         for i, lesson in enumerate(week_lessons):
             relevant_vars = [var for (li, s, r_id), var in x.items() if li == i]
             model.Add(sum(relevant_vars) == 1)
@@ -173,13 +212,18 @@ class TimetableSolver:
                     model.Add(sum(teacher_vars) <= 1)
 
         # HARD CONSTRAINT 4: Group Hierarchy and No Student Overlap
-        # A student in TP11 is simultaneously in TD1 and PROMO.
-        # So in any slot s, (lessons for PROMO) + (lessons for TD1) + (lessons for TP11) <= 1.
+        # 10 Branches for BUT 1 TC : (PROMO) -> (TDk) -> (TPkA / TPkB)
         student_branches = [
-            ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP11"],
-            ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP12"],
-            ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP21"],
-            ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP22"]
+            ["BUT1_PROMO", "TD1", "TP1A"],
+            ["BUT1_PROMO", "TD1", "TP1B"],
+            ["BUT1_PROMO", "TD2", "TP2A"],
+            ["BUT1_PROMO", "TD2", "TP2B"],
+            ["BUT1_PROMO", "TD3", "TP3A"],
+            ["BUT1_PROMO", "TD3", "TP3B"],
+            ["BUT1_PROMO", "TD4", "TP4A"],
+            ["BUT1_PROMO", "TD4", "TP4B"],
+            ["BUT1_PROMO", "TD5", "TP5A"],
+            ["BUT1_PROMO", "TD5", "TP5B"]
         ]
 
         for s in slots:
@@ -208,19 +252,14 @@ class TimetableSolver:
                     if blocked_all_vars:
                         model.Add(sum(blocked_all_vars) == 0)
 
-        # HARD CONSTRAINT 5: Teacher Unavailabilities (Half-days / slots)
+        # HARD CONSTRAINT 5: Teacher Unavailabilities & Absences
+        # 5a. Regular Unavailabilities
         for unavail in self.constraints.get("teacher_unavailabilities", []):
             t_name = unavail.get("teacher_name")
             u_day = unavail.get("day")
             u_slots = unavail.get("slots", [])
-            # Support half-day keyword
             if not u_slots:
-                if unavail.get("period") == "MATIN":
-                    u_slots = [0, 1]
-                elif unavail.get("period") == "APRES_MIDI":
-                    u_slots = [2, 3]
-                else:
-                    u_slots = [0, 1, 2, 3]
+                u_slots = [0, 1] if unavail.get("period") == "MATIN" else ([2, 3] if unavail.get("period") == "APRES_MIDI" else [0, 1, 2, 3])
 
             if u_day in day_names:
                 d_idx = day_names.index(u_day)
@@ -233,14 +272,29 @@ class TimetableSolver:
                     if blocked_vars:
                         model.Add(sum(blocked_vars) == 0)
 
+        # 5b. Specific Week Absences
+        for abs_item in self.constraints.get("teacher_absences", []):
+            if abs_item.get("week") is None or abs_item.get("week") == target_week:
+                t_name = abs_item.get("teacher_name")
+                a_day = abs_item.get("day")
+                a_slots = abs_item.get("slots", [0, 1, 2, 3])
+                if a_day in day_names:
+                    d_idx = day_names.index(a_day)
+                    for slot_in_day in a_slots:
+                        g_slot = d_idx * self.slots_per_day + slot_in_day
+                        blocked_vars = [
+                            var for (li, slot, room), var in x.items()
+                            if slot == g_slot and week_lessons[li].teacher_name.lower() == t_name.lower()
+                        ]
+                        if blocked_vars:
+                            model.Add(sum(blocked_vars) == 0)
 
         # HARD CONSTRAINT 6: Room Closures / Reservations
         for closure in self.constraints.get("room_closures_or_reservations", []):
             r_id = closure.get("room_id")
             c_week = closure.get("week")
             c_day = closure.get("day")
-            c_slots = closure.get("slots", [])
-            # Apply if target_week matches or if closure is weekly
+            c_slots = closure.get("slots", [0, 1, 2, 3])
             if c_week is None or c_week == target_week:
                 if c_day in day_names:
                     d_idx = day_names.index(c_day)
@@ -254,13 +308,11 @@ class TimetableSolver:
                             model.Add(sum(blocked_room_vars) == 0)
 
         # SOFT CONSTRAINTS / OPTIMIZATION OBJECTIVES:
-        # 1. Encourage morning slots (M1, M2) over late afternoon (S2)
-        # 2. Keep schedule compact
+        # 1. Encourage morning slots (M1, M2)
+        # 2. Compact schedule
         objective_terms = []
-
         for (li, s, r_id), var in x.items():
             slot_in_day = s % self.slots_per_day
-            # Slight preference for slots 0 (M1), 1 (M2), 2 (S1) over 3 (S2 late afternoon)
             penalty = slot_in_day * 2
             objective_terms.append(var * penalty)
 
@@ -290,6 +342,10 @@ class TimetableSolver:
                     slot_in_day = s % self.slots_per_day
                     room = self.rooms[r_id]
 
+                    # Compute HETD for this session
+                    hetd_coeff = 1.5 if lesson.event_type == "CM" else (0.75 if lesson.event_type == "TP" else 1.0)
+                    hetd_hours = lesson.duration_hours * hetd_coeff
+
                     scheduled_events.append({
                         "lesson_id": lesson.id,
                         "resource_code": lesson.resource_code,
@@ -304,10 +360,12 @@ class TimetableSolver:
                         "day_idx": day_idx,
                         "slot_idx": slot_in_day,
                         "slot_time": daily_slots[slot_in_day]["time"],
+                        "duration_hours": lesson.duration_hours,
+                        "hetd_hours": round(hetd_hours, 2),
+                        "is_evaluation": lesson.is_evaluation,
                         "global_slot": s
                     })
 
-            # Sort chronologically
             scheduled_events.sort(key=lambda e: (e["day_idx"], e["slot_idx"]))
 
             output_schedule = {
@@ -331,11 +389,10 @@ class TimetableSolver:
             return None
 
 
-
 def print_ascii_schedule(schedule: Dict[str, Any]):
     events = schedule.get("events", [])
-    days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
-    slots = ["08:00 - 10:00", "10:15 - 12:15", "13:30 - 15:30", "15:45 - 17:45"]
+    days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+    slots = ["08:00 - 09:30", "09:45 - 11:15", "13:30 - 15:00", "15:15 - 16:45"]
 
     print("\n" + "="*80)
     print(f"📅 EMPLOI DU TEMPS TC - SEMAINE TYPE ({schedule['semester']}) - 0 CONFLIT GARANTI")
@@ -348,10 +405,13 @@ def print_ascii_schedule(schedule: Dict[str, Any]):
         for s_idx, slot_name in enumerate(slots):
             slot_evts = [e for e in day_events if e["slot_idx"] == s_idx]
             if not slot_evts:
-                print(f"  [{slot_name}] ☕ (Créneau Libre / Travail en autonomie)")
+                is_closed = (day == "Jeudi" and s_idx >= 2) or (day == "Samedi" and s_idx >= 2)
+                status_txt = "🔒 Fermeture IUT" if is_closed else "☕ (Créneau Libre)"
+                print(f"  [{slot_name}] {status_txt}")
             else:
                 for ev in slot_evts:
-                    print(f"  [{slot_name}] {ev['event_type']} {ev['resource_code']} ({ev['group_id']}) | Prof: {ev['teacher_name']} | 📍 {ev['room_name']}")
+                    badge = "📝 EVAL" if ev.get("is_evaluation") else ev['event_type']
+                    print(f"  [{slot_name}] {badge} {ev['resource_code']} ({ev['group_id']}) | Prof: {ev['teacher_name']} | 📍 {ev['room_name']}")
 
 
 if __name__ == "__main__":

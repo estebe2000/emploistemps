@@ -1,8 +1,6 @@
 """
-Extraction and harmonization of BUT TC pedagogical repository and teacher assignments.
-Combines:
-1. National Educational Program (PN) from referentiel_pn.json
-2. Departmental Teacher Assignments & Workloads from Export_Pilotage_Departemental_Stages_20260901_1907.xlsx
+Extraction and harmonization of BUT TC pedagogical repository, real room inventory,
+and teacher workloads according to official HETD regulations (4h TP = 3h TD).
 """
 
 import os
@@ -14,11 +12,20 @@ import openpyxl
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 EXCEL_PATH = os.path.join(os.path.dirname(DATA_DIR), "Export_Pilotage_Departemental_Stages_20260901_1907.xlsx")
 PN_JSON_PATH = os.path.join(DATA_DIR, "referentiel_pn.json")
 OUTPUT_PATH = os.path.join(DATA_DIR, "dataset_tc.json")
+
+
+def calculate_hetd(cm_hours: float, td_hours: float, tp_hours: float) -> float:
+    """
+    Calcule le volume en Heures Équivalent TD (HETD) selon la réglementation officielle :
+    - 1h CM = 1.5h TD
+    - 1h TD = 1.0h TD
+    - 1h TP = 0.75h TD (soit 4h TP = 3h TD)
+    """
+    return round((cm_hours * 1.5) + (td_hours * 1.0) + (tp_hours * 0.75), 2)
 
 
 def extract_semester_from_code(code: str) -> str:
@@ -31,9 +38,7 @@ def extract_semester_from_code(code: str) -> str:
 
 def parse_hours_distribution(total_hours: int, details_text: str = "") -> dict:
     """
-    Decomposes total hours into CM, TD, TP.
-    Example: '24 heures dont 20 heures de TP' -> {'CM': 0, 'TD': 4, 'TP': 20}
-    Standard default IUT ratio if unspecified: ~20% CM, 40% TD, 40% TP.
+    Decomposes total hours into CM, TD, TP and calculates statutory HETD.
     """
     tp = 0
     td = 0
@@ -59,17 +64,19 @@ def parse_hours_distribution(total_hours: int, details_text: str = "") -> dict:
         elif tp > 0 and cm == 0 and td == 0:
             td += remaining
         else:
-            # Default split: ~1/3 CM, 2/3 TD
             calc_cm = (remaining // 3)
             calc_td = remaining - calc_cm
             cm += calc_cm
             td += calc_td
 
+    hetd = calculate_hetd(cm, td, tp)
+
     return {
         "CM": cm,
         "TD": td,
         "TP": tp,
-        "total": total_hours
+        "total_heures_presentiel": total_hours,
+        "total_hetd": hetd
     }
 
 
@@ -81,18 +88,23 @@ def build_dataset():
     print(f"Loading Excel file from {EXCEL_PATH}...")
     wb = openpyxl.load_workbook(EXCEL_PATH, data_only=True)
 
-    # 1. Teachers extraction
+    # 1. Teachers extraction with statutory service quotas
     teachers = {}
     if "👥 Charge Enseignants" in wb.sheetnames:
         ws_teach = wb["👥 Charge Enseignants"]
         for row in ws_teach.iter_rows(min_row=5, values_only=True):
             if row and row[0]:
                 name = str(row[0]).strip()
+                # Default status: PRAG (384h) or MCF (192h)
+                statut = "PRAG" if any(k in name.lower() for k in ["tabellion", "pytel", "cardinale", "millet", "jeanne"]) else "MCF"
+                service_statutaire = 384 if statut == "PRAG" else 192
+                
                 teachers[name] = {
                     "id": f"T_{len(teachers)+1:02d}",
                     "name": name,
+                    "statut": statut,
+                    "service_statutaire_hetd": service_statutaire,
                     "max_hours_per_day": 6,
-                    "unavailabilities": [], # list of [day, slot]
                     "assigned_resources": []
                 }
 
@@ -123,11 +135,13 @@ def build_dataset():
                             teachers[clean_name] = {
                                 "id": f"T_{len(teachers)+1:02d}",
                                 "name": clean_name,
+                                "statut": "VACATAIRE",
+                                "service_statutaire_hetd": 100,
                                 "max_hours_per_day": 6,
-                                "unavailabilities": [],
                                 "assigned_resources": []
                             }
-                        teachers[clean_name]["assigned_resources"].append(code)
+                        if code not in teachers[clean_name]["assigned_resources"]:
+                            teachers[clean_name]["assigned_resources"].append(code)
 
             pn_info = pn_resources.get(code, {})
             hours_details = pn_info.get("hours_details", "")
@@ -147,64 +161,118 @@ def build_dataset():
                 "requires_computer_lab": hours_split["TP"] > 0
             }
 
-    # 3. Default Rooms setup for IUT TC
+    # 3. REAL ROOMS INVENTORY FROM IUT TC (.ICS DATA)
     rooms = [
-        {"id": "AMPHI_1", "name": "Amphithéâtre TC 1", "capacity": 120, "type": "AMPHI", "equipments": ["VIDEO", "MIC"]},
-        {"id": "AMPHI_2", "name": "Amphithéâtre TC 2", "capacity": 80, "type": "AMPHI", "equipments": ["VIDEO", "MIC"]},
-        {"id": "SALLE_101", "name": "Salle TD 101", "capacity": 35, "type": "TD", "equipments": ["VIDEO", "BOARD"]},
-        {"id": "SALLE_102", "name": "Salle TD 102", "capacity": 35, "type": "TD", "equipments": ["VIDEO", "BOARD"]},
-        {"id": "SALLE_103", "name": "Salle TD 103", "capacity": 35, "type": "TD", "equipments": ["VIDEO", "BOARD"]},
-        {"id": "SALLE_104", "name": "Salle TD 104", "capacity": 35, "type": "TD", "equipments": ["VIDEO", "BOARD"]},
-        {"id": "LAB_INFO_1", "name": "Lab Informatique 201", "capacity": 20, "type": "TP_INFO", "equipments": ["COMPUTERS", "VIDEO"]},
-        {"id": "LAB_INFO_2", "name": "Lab Informatique 202", "capacity": 20, "type": "TP_INFO", "equipments": ["COMPUTERS", "VIDEO"]},
-        {"id": "LAB_NEGO_1", "name": "Salle Négociation & Vente 301", "capacity": 18, "type": "TP_NEGO", "equipments": ["CAMERAS", "AUDIO"]},
-        {"id": "LAB_LANG_1", "name": "Labo de Langues 302", "capacity": 20, "type": "TP_LANG", "equipments": ["HEADSETS", "AUDIO"]}
+        # Amphithéâtre
+        {"id": "IUTC-amphi 3", "name": "IUTC-Amphi 3", "capacity": 150, "type": "AMPHI", "equipments": ["VIDEO", "MIC", "AMPHI"]},
+        
+        # Salles Informatiques (TP Info)
+        {"id": "IUTC-503 i", "name": "IUTC-503 (Info)", "capacity": 20, "type": "TP_INFO", "equipments": ["COMPUTERS", "VIDEO", "INTERNET"]},
+        {"id": "IUTC-506 i", "name": "IUTC-506 (Info)", "capacity": 20, "type": "TP_INFO", "equipments": ["COMPUTERS", "VIDEO", "INTERNET"]},
+        {"id": "IUTC-501/502 i", "name": "IUTC-501/502 (Info)", "capacity": 24, "type": "TP_INFO", "equipments": ["COMPUTERS", "VIDEO", "INTERNET"]},
+        
+        # Salle Négociation & Vente
+        {"id": "IUTC-524 n", "name": "IUTC-524 (Négociation & Vente)", "capacity": 20, "type": "TP_NEGO", "equipments": ["CAMERAS", "AUDIO", "VIDEO", "JEUX_DE_ROLES"]},
+        
+        # Salles de TD standard
+        {"id": "IUTC-514", "name": "IUTC-Salle 514 (TD)", "capacity": 32, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-515", "name": "IUTC-Salle 515 (TD)", "capacity": 32, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-516", "name": "IUTC-Salle 516 (TD)", "capacity": 32, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-518", "name": "IUTC-Salle 518 (TD)", "capacity": 32, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-519", "name": "IUTC-Salle 519 (TD)", "capacity": 32, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-513", "name": "IUTC-Salle 513 (TD)", "capacity": 30, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-311", "name": "IUTC-Salle 311 (TD)", "capacity": 30, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        {"id": "IUTC-322", "name": "IUTC-Salle 322 (TD)", "capacity": 28, "type": "TD", "equipments": ["VIDEO", "TABLEAU"]},
+        
+        # Laboratoires de Langues & Pédagogie active
+        {"id": "IUTC-LABO 309", "name": "IUTC-Labo Langues 309", "capacity": 20, "type": "TP_LANG", "equipments": ["HEADSETS", "AUDIO", "VIDEO"]},
+        {"id": "IUTC-102 - CLAAC", "name": "IUTC-102 (CLAAC Pédagogie Active)", "capacity": 30, "type": "TD_ACTIF", "equipments": ["ECRANS_MULTIPLES", "TABLES_MODULAIRES"]}
     ]
 
-    # 4. Cohorts setup (Initial training vs Work-study / Alternance)
-    # BUT1 (S1 & S2): 1 Promo CM (80 ét.) -> 2 TD (TD1, TD2 ~40 ét.) -> 4 TP (TP11, TP12, TP21, TP22 ~20 ét.)
-    # BUT2 FI & BUT2 FA (Alternance)
-    # BUT3 FI & BUT3 FA (Alternance)
+    # 4. REAL COHORTS HIERARCHY (3 PROMOTIONS TC)
+    # BUT 1: 5 TD (TD1..TD5) & 10 TP (TP1A, TP1B, TP2A, TP2B, TP3A, TP3B, TP4A, TP4B, TP5A, TP5B)
+    # BUT 2: Tronc commun + 3 Parcours (BDMRC, MDEE, MMPV) en FI & FA
+    # BUT 3: 3 Parcours (BDMRC, MDEE, MMPV) en FI & FA
     cohorts = [
         {
-            "id": "BUT1_FI",
-            "name": "BUT 1 TC (Formation Initiale)",
+            "id": "BUT1",
+            "name": "BUT 1 TC (Tronc Commun)",
             "level": "BUT1",
             "mode": "FI",
-            "size": 80,
-            "groups_td": ["BUT1_TD1", "BUT1_TD2"],
-            "groups_tp": ["BUT1_TP11", "BUT1_TP12", "BUT1_TP21", "BUT1_TP22"],
-            "alternance_weeks": [] # No company weeks
+            "size": 140,
+            "promo_group": "BUT1_PROMO",
+            "groups_td": ["TD1", "TD2", "TD3", "TD4", "TD5"],
+            "groups_tp": [
+                "TP1A", "TP1B",
+                "TP2A", "TP2B",
+                "TP3A", "TP3B",
+                "TP4A", "TP4B",
+                "TP5A", "TP5B"
+            ],
+            "alternance_weeks": []
+        },
+        {
+            "id": "BUT2_FI",
+            "name": "BUT 2 TC (Formation Initiale)",
+            "level": "BUT2",
+            "mode": "FI",
+            "size": 75,
+            "promo_group": "TC2_FI_PROMO",
+            "groups_td": ["TC2_G1_BDMRC", "TC2_G2_MDEE", "TC2_G3_MMPV"],
+            "groups_tp": ["TC2_TP1A", "TC2_TP1B", "TC2_TP2A", "TC2_TP2B", "TC2_TP3A", "TC2_TP3B"],
+            "alternance_weeks": []
         },
         {
             "id": "BUT2_FA",
-            "name": "BUT 2 TC (Alternance)",
+            "name": "BUT 2 TC (Formation en Alternance)",
             "level": "BUT2",
             "mode": "FA",
-            "size": 30,
-            "groups_td": ["BUT2_FA_TD1"],
-            "groups_tp": ["BUT2_FA_TP1", "BUT2_FA_TP2"],
-            "alternance_weeks": [2, 4, 6, 8, 10, 12, 14] # Alternating company weeks
+            "size": 35,
+            "promo_group": "TC2_FA_PROMO",
+            "groups_td": ["TC2_FA_BUT2"],
+            "groups_tp": ["TC2_FA_TP1", "TC2_FA_TP2"],
+            "alternance_weeks": [2, 4, 6, 8, 10, 12, 14]
+        },
+        {
+            "id": "BUT3_FI",
+            "name": "BUT 3 TC (Formation Initiale)",
+            "level": "BUT3",
+            "mode": "FI",
+            "size": 65,
+            "promo_group": "TC3_FI_PROMO",
+            "groups_td": ["TC3_FI_G1_BDMRC", "TC3_FI_G2_MDEE", "TC3_FI_G3_MMPV"],
+            "groups_tp": ["TC3_FI_TP1A", "TC3_FI_TP1B", "TC3_FI_TP2A", "TC3_FI_TP2B", "TC3_FI_TP3A", "TC3_FI_TP3B"],
+            "alternance_weeks": []
+        },
+        {
+            "id": "BUT3_FA",
+            "name": "BUT 3 TC (Formation en Alternance)",
+            "level": "BUT3",
+            "mode": "FA",
+            "size": 35,
+            "promo_group": "TC3_FA_PROMO",
+            "groups_td": ["TC3_FA_G1_BDMRC", "TC3_FA_G2_MDEE", "TC3_FA_G3_MMPV"],
+            "groups_tp": ["TC3_FA_TP1", "TC3_FA_TP2"],
+            "alternance_weeks": [1, 3, 5, 7, 9, 11, 13]
         }
     ]
 
-    # 5. Calendar constraints (15 teaching weeks per semester, 6 days Lun..Sam, 4 slots/day)
+    # 5. Real Calendar Structure (Lundi au Samedi, créneaux de 1h30)
     calendar_config = {
         "weeks_per_semester": 15,
-        "catchup_weeks": [8, 15], # Semaines de rattrapage / partiels
+        "catchup_weeks": [8, 15],
         "days": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
         "daily_slots": [
-            {"id": 0, "name": "M1", "time": "08:00 - 10:00", "period": "MATIN", "duration_hours": 2},
-            {"id": 1, "name": "M2", "time": "10:15 - 12:15", "period": "MATIN", "duration_hours": 2},
-            {"id": 2, "name": "S1", "time": "13:30 - 15:30", "period": "APRES_MIDI", "duration_hours": 2},
-            {"id": 3, "name": "S2", "time": "15:45 - 17:45", "period": "APRES_MIDI", "duration_hours": 2}
+            {"id": 0, "name": "M1", "time": "08:00 - 09:30", "period": "MATIN", "duration_hours": 1.5},
+            {"id": 1, "name": "M2", "time": "09:45 - 11:15", "period": "MATIN", "duration_hours": 1.5},
+            {"id": 2, "name": "S1", "time": "13:30 - 15:00", "period": "APRES_MIDI", "duration_hours": 1.5},
+            {"id": 3, "name": "S2", "time": "15:15 - 16:45", "period": "APRES_MIDI", "duration_hours": 1.5}
         ],
         "permanent_closures": [
             {"day": "Jeudi", "period": "APRES_MIDI", "slots": [2, 3], "reason": "Fermeture Jeudi Après-midi (Sport / Vie étudiante)"},
             {"day": "Samedi", "period": "APRES_MIDI", "slots": [2, 3], "reason": "Fermeture Samedi Après-midi"}
         ]
     }
-
 
     dataset = {
         "department": "Techniques de Commercialisation (TC)",
@@ -221,8 +289,8 @@ def build_dataset():
     print(f"✅ Successfully exported TC dataset to {OUTPUT_PATH}")
     print(f"  - Teachers extracted: {len(teachers)}")
     print(f"  - Pedagogical resources: {len(resources)}")
-    print(f"  - Rooms defined: {len(rooms)}")
-    print(f"  - Cohorts defined: {len(cohorts)}")
+    print(f"  - Real Rooms defined: {len(rooms)}")
+    print(f"  - Cohorts defined (3 Promos): {len(cohorts)}")
 
 
 if __name__ == "__main__":

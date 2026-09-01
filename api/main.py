@@ -262,41 +262,162 @@ def get_current_schedule(
     }
 
 
-@app.post("/api/v1/schedule/verify-conflict", tags=["Planning"])
-def verify_conflict(req: MoveLessonRequest):
-    """Vérifie si le déplacement d'un cours causerait un conflit sans modifier le planning."""
-    copilot = TimetableCopilot()
-    return copilot.verifier_conflit_deplacement(
-        lesson_id=req.lesson_id,
-        cible_jour=req.target_day,
-        cible_creneau_idx=req.target_slot_idx,
-        cible_salle=req.target_room_id
-    )
+# --- WORKLOAD & SERVICES HETD ENDPOINT ---
+
+@app.get("/api/v1/teachers/workload", tags=["Gestion des Services"])
+def get_teachers_workload():
+    """
+    Calcule le bilan des services d'enseignement en Heures Équivalent TD (HETD)
+    selon la réglementation officielle (1h CM = 1.5h TD, 1h TD = 1.0h TD, 4h TP = 3.0h TD / ratio 0.75).
+    """
+    dataset = get_dataset()
+    sched = get_schedule()
+    events = sched.get("events", [])
+    
+    workload_summary = []
+    
+    for t in dataset.get("teachers", []):
+        t_name = t["name"]
+        t_events = [e for e in events if e.get("teacher_name", "").lower() == t_name.lower()]
+        
+        cm_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "CM")
+        td_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TD")
+        tp_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "TP")
+        eval_hours = sum(e.get("duration_hours", 1.5) for e in t_events if e.get("event_type") == "EVAL" or e.get("is_evaluation"))
+        
+        # Total HETD on planned week * 15 weeks semester estimate
+        week_hetd = (cm_hours * 1.5) + (td_hours * 1.0) + (tp_hours * 0.75) + (eval_hours * 1.0)
+        est_semester_hetd = round(week_hetd * 15, 1)
+        statutaire = t.get("service_statutaire_hetd", 192)
+        
+        delta = round(est_semester_hetd - statutaire, 1)
+        status = "ÉQUILIBRÉ"
+        if delta > 10:
+            status = "HEURES_SUP"
+        elif delta < -10:
+            status = "SOUS_SERVICE"
+            
+        workload_summary.append({
+            "teacher_id": t["id"],
+            "teacher_name": t_name,
+            "statut": t.get("statut", "MCF"),
+            "service_statutaire_hetd": statutaire,
+            "semaine_heures_cm": cm_hours,
+            "semaine_heures_td": td_hours,
+            "semaine_heures_tp": tp_hours,
+            "semaine_total_hetd": round(week_hetd, 2),
+            "semestre_estime_hetd": est_semester_hetd,
+            "delta_hetd": delta,
+            "status": status,
+            "nb_cours_planifies": len(t_events)
+        })
+        
+    # Sort by name
+    workload_summary.sort(key=lambda x: x["teacher_name"])
+    return {
+        "hetd_rule": "1h CM = 1.5h TD | 1h TD = 1.0h TD | 4h TP = 3h TD (ratio 0.75)",
+        "teachers": workload_summary
+    }
 
 
-@app.post("/api/v1/schedule/move", tags=["Planning"])
-def move_lesson(req: MoveLessonRequest):
-    """Déplace un cours vers un nouveau créneau et/ou salle après vérification des conflits."""
-    copilot = TimetableCopilot()
-    res = copilot.deplacer_cours(
-        lesson_id=req.lesson_id,
-        cible_jour=req.target_day,
-        cible_creneau_idx=req.target_slot_idx,
-        cible_salle=req.target_room_id
-    )
-    if res.get("conflit"):
-        raise HTTPException(status_code=400, detail=res)
-    return res
+# --- EVALUATIONS & ABSENCES MANAGEMENT ---
+
+@app.post("/api/v1/evaluations", tags=["Administration"])
+def create_evaluation(payload: dict):
+    """Planifie une évaluation / partiel / DS."""
+    c = get_constraints_data()
+    evals = c.get("evaluations", [])
+    new_eval = {
+        "id": f"EVAL_{len(evals)+1:02d}",
+        "title": payload.get("title", "Évaluation"),
+        "resource_code": payload.get("resource_code", "R1.01"),
+        "target_group": payload.get("target_group", "BUT1_PROMO"),
+        "week": payload.get("week", 1),
+        "day": payload.get("day", "Lundi"),
+        "slot_idx": payload.get("slot_idx", 0),
+        "room_id": payload.get("room_id", "IUTC-amphi 3"),
+        "duration_hours": payload.get("duration_hours", 1.5),
+        "invigilators": payload.get("invigilators", [])
+    }
+    evals.append(new_eval)
+    c["evaluations"] = evals
+    save_constraints_data(c)
+    return {"status": "success", "message": f"Évaluation '{new_eval['title']}' planifiée.", "eval": new_eval}
 
 
-@app.get("/api/v1/schedule/free-slots", tags=["Planning"])
-def find_free_slots(
-    teacher: str = Query(..., description="Nom de l'enseignant"),
-    group_id: str = Query(..., description="ID du groupe d'étudiants (ex: 'BUT1_TD1')")
-):
-    """Recherche tous les créneaux communs libres pour un enseignant et un groupe d'étudiants."""
-    copilot = TimetableCopilot()
-    return copilot.trouver_creneaux_libres(teacher, group_id)
+@app.post("/api/v1/teachers/absence", tags=["Administration"])
+def record_teacher_absence(payload: dict):
+    """Enregistre une absence d'enseignant."""
+    c = get_constraints_data()
+    absences = c.get("teacher_absences", [])
+    new_abs = {
+        "id": f"ABS_{len(absences)+1:02d}",
+        "teacher_name": payload.get("teacher_name"),
+        "week": payload.get("week"),
+        "day": payload.get("day"),
+        "slots": payload.get("slots", [0, 1, 2, 3]),
+        "reason": payload.get("reason", "Absence"),
+        "needs_replacement": payload.get("needs_replacement", True)
+    }
+    absences.append(new_abs)
+    c["teacher_absences"] = absences
+    save_constraints_data(c)
+    return {"status": "success", "message": f"Absence enregistrée pour {new_abs['teacher_name']}."}
+
+
+@app.post("/api/v1/schedule/quick-action", tags=["Planning"])
+def execute_quick_action(payload: dict):
+    """
+    Exécute une action contextuelle (menu clic droit sur un cours) :
+    - 'MOVE' : Déplacer vers créneau cible
+    - 'CHANGE_ROOM' : Changer de salle
+    - 'CHANGE_TEACHER' : Changer d'enseignant
+    - 'CANCEL' : Annuler la séance
+    - 'CONVERT_EVAL' : Transformer en DS/Évaluation
+    """
+    action = payload.get("action")
+    lesson_id = payload.get("lesson_id")
+    sched = get_schedule()
+    events = sched.get("events", [])
+    
+    target_event = next((e for e in events if e["lesson_id"] == lesson_id), None)
+    if not target_event and action != "CREATE":
+        raise HTTPException(status_code=404, detail="Cours introuvable.")
+        
+    if action == "CANCEL":
+        sched["events"] = [e for e in events if e["lesson_id"] != lesson_id]
+        sched["total_events"] = len(sched["events"])
+        with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+            json.dump(sched, f, indent=2, ensure_ascii=False)
+        return {"status": "success", "message": f"Séance {lesson_id} annulée."}
+        
+    elif action == "CHANGE_ROOM":
+        new_room_id = payload.get("new_room_id")
+        dataset = get_dataset()
+        room_obj = next((r for r in dataset["rooms"] if r["id"] == new_room_id), None)
+        if room_obj:
+            target_event["room_id"] = room_obj["id"]
+            target_event["room_name"] = room_obj["name"]
+            with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+                json.dump(sched, f, indent=2, ensure_ascii=False)
+            return {"status": "success", "message": f"Salle modifiée vers {room_obj['name']}."}
+            
+    elif action == "CHANGE_TEACHER":
+        new_teacher = payload.get("new_teacher")
+        target_event["teacher_name"] = new_teacher
+        with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+            json.dump(sched, f, indent=2, ensure_ascii=False)
+        return {"status": "success", "message": f"Enseignant modifié vers {new_teacher}."}
+
+    elif action == "CONVERT_EVAL":
+        target_event["is_evaluation"] = True
+        target_event["event_type"] = "EVAL"
+        with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
+            json.dump(sched, f, indent=2, ensure_ascii=False)
+        return {"status": "success", "message": "Séance convertie en Évaluation."}
+        
+    raise HTTPException(status_code=400, detail=f"Action inconnue : {action}")
+
 
 
 @app.post("/api/v1/ai/chat", tags=["Assistant IA"])

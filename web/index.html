@@ -22,6 +22,7 @@
             --accent-success: #10b981;
             --accent-warning: #f59e0b;
             --accent-danger: #ef4444;
+            --accent-eval: #f43f5e;
             --accent-cm: #8b5cf6;
             --accent-td: #3b82f6;
             --accent-tp: #06b6d4;
@@ -55,7 +56,7 @@
             background: rgba(19, 27, 46, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            padding: 0.85rem 2rem;
+            padding: 0.75rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -133,6 +134,13 @@
         .btn-admin:hover {
             border-color: #f59e0b;
             box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-workload {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+            border-color: rgba(16, 185, 129, 0.35);
+            color: #34d399;
+            font-weight: 600;
         }
 
         .btn-primary {
@@ -242,7 +250,7 @@
 
         .schedule-grid {
             display: grid;
-            grid-template-columns: 120px repeat(5, minmax(170px, 1fr));
+            grid-template-columns: 120px repeat(6, minmax(160px, 1fr));
             gap: 8px;
         }
 
@@ -298,6 +306,7 @@
             flex-direction: column;
             gap: 6px;
             transition: all 0.2s;
+            position: relative;
         }
 
         .slot-cell:hover {
@@ -314,8 +323,9 @@
             gap: 4px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.15s, box-shadow 0.15s;
-            cursor: pointer;
+            cursor: context-menu;
             border-left: 4px solid #fff;
+            user-select: none;
         }
 
         .event-card:hover {
@@ -326,6 +336,7 @@
         .event-cm { background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.1)); border-color: var(--accent-cm); }
         .event-td { background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.1)); border-color: var(--accent-td); }
         .event-tp { background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.1)); border-color: var(--accent-tp); }
+        .event-eval { background: linear-gradient(135deg, rgba(244, 63, 94, 0.3), rgba(244, 63, 94, 0.1)); border-color: var(--accent-eval); }
 
         .event-header {
             display: flex;
@@ -346,6 +357,7 @@
         .badge-cm { background: var(--accent-cm); color: white; }
         .badge-td { background: var(--accent-td); color: white; }
         .badge-tp { background: var(--accent-tp); color: white; }
+        .badge-eval { background: var(--accent-eval); color: white; }
 
         .event-title {
             color: var(--text-main);
@@ -370,6 +382,41 @@
             color: #38bdf8;
         }
 
+        /* CONTEXT MENU (Clic Droit) */
+        .context-menu {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            min-width: 220px;
+            overflow: hidden;
+        }
+
+        .context-menu-item {
+            padding: 9px 14px;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .context-menu-item:hover {
+            background: rgba(99, 102, 241, 0.25);
+            color: #fff;
+        }
+
+        .context-menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 4px 0;
+        }
+
         /* Right Panel: AI Copilot */
         .copilot-panel {
             background: var(--bg-secondary);
@@ -378,9 +425,9 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            height: calc(100vh - 110px);
+            height: calc(100vh - 105px);
             position: sticky;
-            top: 85px;
+            top: 80px;
         }
 
         .copilot-header {
@@ -477,7 +524,7 @@
             border-color: var(--accent-primary);
         }
 
-        /* ADMIN MODAL / VIEW */
+        /* MODALS */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -557,7 +604,7 @@
         /* Unavailability Matrix */
         .unavail-matrix {
             display: grid;
-            grid-template-columns: 180px repeat(4, 1fr);
+            grid-template-columns: 160px repeat(6, 1fr);
             gap: 8px;
             margin-top: 1rem;
         }
@@ -578,19 +625,22 @@
             font-weight: 600;
             font-size: 0.85rem;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .matrix-cell {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
-            padding: 8px;
+            padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.15s;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
         .matrix-cell.unavailable {
@@ -636,7 +686,6 @@
             gap: 12px;
         }
 
-        /* Weeks Selector Badges */
         .week-toggle-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-color);
@@ -656,6 +705,23 @@
             color: #000;
             box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
         }
+
+        /* Progress Bar for Workload */
+        .progress-bar-bg {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            height: 8px;
+            width: 100px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -666,10 +732,11 @@
             <div class="brand-logo">TC</div>
             <div class="brand-text">
                 <h1>Emplois du Temps BUT TC</h1>
-                <p>Moteur Hybride : Google OR-Tools (CP-SAT) + IA Albert (Etalab)</p>
+                <p>Moteur Hybride CP-SAT & IA Albert | Règle officielle : 4h TP = 3h TD</p>
             </div>
         </div>
         <div class="header-actions">
+            <button class="btn btn-workload" onclick="openWorkloadModal()">📊 Services Enseignants (HETD)</button>
             <button class="btn btn-admin" onclick="openAdminModal()">⚙️ Administration des Contraintes</button>
             <a href="/docs" target="_blank" class="btn">📚 OpenAPI</a>
             <a href="/api/v1/export/ical" class="btn btn-success">📥 Exporter iCal (.ics)</a>
@@ -689,17 +756,33 @@
                     <span class="filter-label">Filtres :</span>
                     <select id="filter-group" onchange="renderSchedule()">
                         <option value="">👥 Tous les groupes</option>
-                        <option value="BUT1_PROMO">Promo BUT 1 (CM)</option>
-                        <option value="BUT1_TD1">Groupe TD 1</option>
-                        <option value="BUT1_TD2">Groupe TD 2</option>
-                        <option value="BUT1_TP11">Groupe TP 11</option>
-                        <option value="BUT1_TP12">Groupe TP 12</option>
-                        <option value="BUT1_TP21">Groupe TP 21</option>
-                        <option value="BUT1_TP22">Groupe TP 22</option>
+                        <optgroup label="🎓 BUT 1 (Tronc Commun)">
+                            <option value="BUT1_PROMO">Promo BUT 1 (CM Amphi 3)</option>
+                            <option value="TD1">Groupe TD 1</option>
+                            <option value="TD2">Groupe TD 2</option>
+                            <option value="TD3">Groupe TD 3</option>
+                            <option value="TD4">Groupe TD 4</option>
+                            <option value="TD5">Groupe TD 5</option>
+                            <option value="TP1A">Sous-groupe TP 1A</option>
+                            <option value="TP1B">Sous-groupe TP 1B</option>
+                            <option value="TP2A">Sous-groupe TP 2A</option>
+                            <option value="TP2B">Sous-groupe TP 2B</option>
+                        </optgroup>
+                        <optgroup label="🎓 BUT 2 (Parcours)">
+                            <option value="TC2_G1_BDMRC">BUT 2 - BDMRC (FI)</option>
+                            <option value="TC2_G2_MDEE">BUT 2 - MDEE (FI)</option>
+                            <option value="TC2_G3_MMPV">BUT 2 - MMPV (FI)</option>
+                            <option value="TC2_FA_BUT2">BUT 2 - Alternance (FA)</option>
+                        </optgroup>
+                        <optgroup label="🎓 BUT 3 (Parcours)">
+                            <option value="TC3_FI_G1_BDMRC">BUT 3 - BDMRC (FI)</option>
+                            <option value="TC3_FI_G2_MDEE">BUT 3 - MDEE (FI)</option>
+                            <option value="TC3_FI_G3_MMPV">BUT 3 - MMPV (FI)</option>
+                        </optgroup>
                     </select>
 
                     <select id="filter-teacher" onchange="renderSchedule()">
-                        <option value="">👤 Tous les enseignants</option>
+                        <option value="">👤 Tous les enseignants (A-Z)</option>
                     </select>
 
                     <select id="filter-room" onchange="renderSchedule()">
@@ -728,20 +811,20 @@
                 <div class="copilot-icon">🤖</div>
                 <div>
                     <h3 style="font-size: 0.95rem; font-weight: 700;">Assistant IA Albert</h3>
-                    <p style="font-size: 0.72rem; color: var(--text-muted);">Copilote conversationnel souverain & outillé</p>
+                    <p style="font-size: 0.72rem; color: var(--text-muted);">Copilote outillé & discret pour le département</p>
                 </div>
             </div>
 
             <div class="chat-container" id="chat-box">
                 <div class="chat-bubble bubble-ai">
-                    Bonjour ! Je suis votre copilote d'emploi du temps pour le département TC. Vous pouvez me demander de vérifier des conflits, planifier des rattrapages ou déplacer des cours en langage naturel.
+                    Bonjour ! Je suis votre copilote d'emploi du temps pour le département TC. Vous pouvez utiliser le <strong>clic droit</strong> directement sur un cours pour des actions rapides, ou me poser des questions complexes ici.
                 </div>
             </div>
 
             <div class="quick-prompts">
-                <button class="quick-btn" onclick="sendQuickPrompt('Trouve des créneaux libres pour Thierry Tabellion avec BUT1_TD1')">📅 Créneaux T. Tabellion</button>
-                <button class="quick-btn" onclick="sendQuickPrompt('Est-ce que je peux déplacer le cours 48_BUT1_TD1 au Lundi matin ?')">⚠️ Tester conflit</button>
-                <button class="quick-btn" onclick="sendQuickPrompt('Quels sont les cours prévus le Mardi après-midi ?')">🔍 Cours Mardi</button>
+                <button class="quick-btn" onclick="sendQuickPrompt('Quels sont les créneaux libres pour Thierry Tabellion avec le TD1 ?')">📅 Créneaux T. Tabellion</button>
+                <button class="quick-btn" onclick="sendQuickPrompt('Quels enseignants sont en sous-service sur le semestre ?')">📊 Bilan HETD</button>
+                <button class="quick-btn" onclick="sendQuickPrompt('Est-ce que la salle 503 i est libre le lundi matin ?')">📍 Dispo Salle Info</button>
             </div>
 
             <div class="chat-input-area">
@@ -752,21 +835,69 @@
 
     </div>
 
+    <!-- CONTEXT MENU (Clic Droit) -->
+    <div id="context-menu" class="context-menu">
+        <div class="context-menu-item" onclick="contextAction('MOVE')">🔄 Déplacer vers un créneau libre...</div>
+        <div class="context-menu-item" onclick="contextAction('CHANGE_ROOM')">📍 Changer de salle...</div>
+        <div class="context-menu-item" onclick="contextAction('CHANGE_TEACHER')">👤 Changer d'enseignant...</div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" onclick="contextAction('CONVERT_EVAL')">📝 Convertir en DS / Évaluation</div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" style="color:#f87171;" onclick="contextAction('CANCEL')">❌ Annuler cette séance</div>
+    </div>
+
+    <!-- WORKLOAD / SERVICES MODAL -->
+    <div class="modal-overlay" id="workload-modal">
+        <div class="admin-modal" style="width: 1000px;">
+            <div class="admin-header">
+                <div>
+                    <h2 style="font-size: 1.2rem; font-weight: 700;">📊 Bilan des Services Enseignants (Règle HETD)</h2>
+                    <p style="font-size: 0.78rem; color: var(--text-muted);">Calcul officiel : 1h CM = 1.5h TD | 1h TD = 1.0h TD | <strong>4h TP = 3.0h TD (ratio 0.75)</strong></p>
+                </div>
+                <button class="btn" onclick="closeWorkloadModal()">✕ Fermer</button>
+            </div>
+            <div class="admin-body">
+                <table class="data-table" id="workload-table">
+                    <thead>
+                        <tr>
+                            <th>Enseignant</th>
+                            <th>Statut</th>
+                            <th>H. CM</th>
+                            <th>H. TD</th>
+                            <th>H. TP</th>
+                            <th>HETD / Semaine</th>
+                            <th>HETD Semestre (Est.)</th>
+                            <th>Service Dû</th>
+                            <th>Bilan / Delta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="workload-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="admin-footer">
+                <button class="btn btn-primary" onclick="closeWorkloadModal()">Fermer</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ADMIN & CONSTRAINTS FULL MODAL -->
     <div class="modal-overlay" id="admin-modal">
         <div class="admin-modal">
             <div class="admin-header">
                 <div>
-                    <h2 style="font-size: 1.2rem; font-weight: 700;">⚙️ Administration & Gestion des Contraintes</h2>
-                    <p style="font-size: 0.78rem; color: var(--text-muted);">Définissez les indisponibilités, fermetures de salles, calendriers d'alternance et quotas</p>
+                    <h2 style="font-size: 1.2rem; font-weight: 700;">⚙️ Administration & Gestion des Contraintes TC</h2>
+                    <p style="font-size: 0.78rem; color: var(--text-muted);">Indisponibilités demi-journées, fermetures de salles, évaluations et absences</p>
                 </div>
                 <button class="btn" onclick="closeAdminModal()">✕ Fermer</button>
             </div>
 
             <div class="admin-tabs">
-                <button class="tab-btn active" onclick="switchTab('tab-teachers')">👤 Enseignants & Indisponibilités</button>
-                <button class="tab-btn" onclick="switchTab('tab-rooms')">📍 Salles & Fermetures</button>
-                <button class="tab-btn" onclick="switchTab('tab-alternance')">🎓 Alternance & Semaines Banalisées</button>
+                <button class="tab-btn active" onclick="switchTab('tab-teachers')">👤 Enseignants & Demi-Journées</button>
+                <button class="tab-btn" onclick="switchTab('tab-rooms')">📍 Salles Réelles & Fermetures</button>
+                <button class="tab-btn" onclick="switchTab('tab-evals')">📝 Évaluations & Partiels</button>
+                <button class="tab-btn" onclick="switchTab('tab-alternance')">🎓 Alternance (FA) & Examens</button>
                 <button class="tab-btn" onclick="switchTab('tab-quotas')">⚙️ Quotas & Paramètres</button>
             </div>
 
@@ -776,15 +907,14 @@
                 <div class="tab-pane active" id="tab-teachers">
                     <div style="display: flex; gap: 1.5rem; align-items: flex-start;">
                         <div style="width: 320px; display: flex; flex-direction: column; gap: 8px;">
-                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Rechercher / Sélectionner un enseignant :</label>
-                            <input type="text" id="admin-teacher-search" placeholder="🔍 Taper un nom (ex: Cardinale, Jeanne...)" oninput="filterAdminTeacherList()" style="width: 100%;">
+                            <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Rechercher un enseignant (A-Z) :</label>
+                            <input type="text" id="admin-teacher-search" placeholder="🔍 Taper un nom (ex: Pytel, Tabellion...)" oninput="filterAdminTeacherList()" style="width: 100%;">
                             <select id="admin-select-teacher" onchange="loadTeacherMatrix()" size="8" style="width: 100%; height: 160px; overflow-y: auto;">
                                 <!-- populated via JS -->
                             </select>
-
                             
                             <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; margin-top: 10px;">
-                                <h4 style="font-size: 0.85rem; margin-bottom: 6px;">Affectations de la ressource :</h4>
+                                <h4 style="font-size: 0.85rem; margin-bottom: 6px;">Matières affectées :</h4>
                                 <div id="teacher-assigned-list" style="font-size: 0.78rem; color: var(--text-muted);">
                                     Sélectionnez un enseignant pour voir ses matières.
                                 </div>
@@ -792,8 +922,8 @@
                         </div>
 
                         <div style="flex: 1;">
-                            <h3 style="font-size: 0.95rem; font-weight: 600;">Grille d'Indisponibilités Hebdomadaire</h3>
-                            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Cliquez sur un créneau pour le bloquer (Rouge = Indisponible pour les cours).</p>
+                            <h3 style="font-size: 0.95rem; font-weight: 600;">Grille d'Indisponibilités par Demi-Journée (Lun - Sam)</h3>
+                            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem;">Cliquez sur 🌅 Matin ou 🌇 Après-midi pour bloquer la demi-journée.</p>
 
                             <div class="unavail-matrix" id="teacher-matrix">
                                 <!-- Generated by JS -->
@@ -805,7 +935,7 @@
                 <!-- TAB 2: Rooms & Closures -->
                 <div class="tab-pane" id="tab-rooms">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h3 style="font-size: 0.95rem; font-weight: 600;">Inventaire des Salles & Équipements</h3>
+                        <h3 style="font-size: 0.95rem; font-weight: 600;">Inventaire des 15 Salles Réelles (IUT TC)</h3>
                     </div>
                     <table class="data-table" id="rooms-table">
                         <thead>
@@ -824,7 +954,7 @@
                     </table>
 
                     <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
-                        <h4 style="font-size: 0.88rem; margin-bottom: 0.75rem;">➕ Ajouter une fermeture temporaire ou réservation de salle</h4>
+                        <h4 style="font-size: 0.88rem; margin-bottom: 0.75rem;">➕ Ajouter une fermeture ponctuelle de salle</h4>
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
                             <div>
                                 <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Salle :</label>
@@ -842,49 +972,110 @@
                                     <option value="Mercredi">Mercredi</option>
                                     <option value="Jeudi">Jeudi</option>
                                     <option value="Vendredi">Vendredi</option>
+                                    <option value="Samedi">Samedi</option>
                                 </select>
                             </div>
                             <div>
                                 <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Motif :</label>
-                                <input type="text" id="closure-reason" placeholder="Ex: Maintenance info" style="width: 180px;">
+                                <input type="text" id="closure-reason" placeholder="Ex: Maintenance réseau" style="width: 180px;">
                             </div>
-                            <button class="btn btn-primary" onclick="addRoomClosure()">Ajouter Réservation</button>
+                            <button class="btn btn-primary" onclick="addRoomClosure()">Ajouter Fermeture</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 3: Alternance & Semaines Banalisées -->
+                <!-- TAB 3: Evaluations & DS -->
+                <div class="tab-pane" id="tab-evals">
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem;">Gestion des Évaluations & Partiels</h3>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">Les évaluations bloquent automatiquement la salle et le groupe et sont prioritaires pour le solveur.</p>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Titre Évaluation</th>
+                                <th>Ressource</th>
+                                <th>Groupe Cible</th>
+                                <th>Semaine / Jour</th>
+                                <th>Salle</th>
+                                <th>Surveillants</th>
+                            </tr>
+                        </thead>
+                        <tbody id="evals-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
+                        <h4 style="font-size: 0.88rem; margin-bottom: 0.75rem;">➕ Planifier une nouvelle évaluation / Partiel</h4>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Titre :</label>
+                                <input type="text" id="eval-title" placeholder="Ex: Partiel Marketing S1" style="width: 160px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Ressource :</label>
+                                <input type="text" id="eval-resource" placeholder="Ex: R1.01" style="width: 80px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Groupe :</label>
+                                <select id="eval-group">
+                                    <option value="BUT1_PROMO">Promo BUT 1</option>
+                                    <option value="TD1">TD 1</option>
+                                    <option value="TD2">TD 2</option>
+                                    <option value="TD3">TD 3</option>
+                                    <option value="TD4">TD 4</option>
+                                    <option value="TD5">TD 5</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Semaine :</label>
+                                <input type="number" id="eval-week" min="1" max="15" value="8" style="width: 60px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Jour :</label>
+                                <select id="eval-day">
+                                    <option value="Lundi">Lundi</option>
+                                    <option value="Mardi">Mardi</option>
+                                    <option value="Mercredi">Mercredi</option>
+                                    <option value="Jeudi">Jeudi</option>
+                                    <option value="Vendredi">Vendredi</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: var(--text-muted); display: block;">Salle :</label>
+                                <select id="eval-room"></select>
+                            </div>
+                            <button class="btn btn-primary" onclick="addEvaluation()">Planifier Évaluation</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: Alternance & Semaines Banalisées -->
                 <div class="tab-pane" id="tab-alternance">
-                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem;">Calendrier d'Alternance (Semaines en Entreprise)</h3>
-                    <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem;">Sélectionnez les semaines où la cohorte est en entreprise (aucun cours ne sera planifié sur ces semaines).</p>
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem;">Calendrier d'Alternance (Semaines Entreprise)</h3>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem;">Sélectionnez les semaines passées en entreprise pour les cohortes en alternance.</p>
 
                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                         <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
                             <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #fbbf24;">🎓 BUT 2 TC — Formation en Alternance (FA)</h4>
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="fa-weeks-but2">
-                                <!-- Generated by JS -->
-                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="fa-weeks-but2"></div>
                         </div>
 
                         <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
                             <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #fbbf24;">🎓 BUT 3 TC — Formation en Alternance (FA)</h4>
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="fa-weeks-but3">
-                                <!-- Generated by JS -->
-                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="fa-weeks-but3"></div>
                         </div>
 
                         <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem;">
-                            <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #34d399;">🛑 Semaines Banalisées (Examens / Rattrapages / Partiels)</h4>
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="catchup-weeks-container">
-                                <!-- Generated by JS -->
-                            </div>
+                            <h4 style="font-size: 0.88rem; margin-bottom: 0.5rem; color: #34d399;">🛑 Semaines Banalisées (Partiels / Rattrapages)</h4>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="catchup-weeks-container"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 4: Quotas & Paramètres -->
+                <!-- TAB 5: Quotas & Paramètres -->
                 <div class="tab-pane" id="tab-quotas">
-                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem;">Quotas Journaliers & Paramètres du Solveur</h3>
+                    <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem;">Quotas & Paramètres Généraux</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
                         <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; flex-direction: column; gap: 12px;">
@@ -913,15 +1104,16 @@
     <script>
         const DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
         const SLOTS = [
-            { id: 0, name: "M1", time: "08:00 - 10:00", period: "MATIN" },
-            { id: 1, name: "M2", time: "10:15 - 12:15", period: "MATIN" },
-            { id: 2, name: "S1", time: "13:30 - 15:30", period: "APRES_MIDI" },
-            { id: 3, name: "S2", time: "15:45 - 17:45", period: "APRES_MIDI" }
+            { id: 0, name: "M1", time: "08:00 - 09:30", period: "MATIN" },
+            { id: 1, name: "M2", time: "09:45 - 11:15", period: "MATIN" },
+            { id: 2, name: "S1", time: "13:30 - 15:00", period: "APRES_MIDI" },
+            { id: 3, name: "S2", time: "15:15 - 16:45", period: "APRES_MIDI" }
         ];
 
         let currentSchedule = [];
         let dataset = {};
         let constraints = {};
+        let selectedLessonId = null;
 
         async function init() {
             try {
@@ -939,6 +1131,7 @@
                 populateDropdowns();
                 renderSchedule();
                 initAdminView();
+                initContextMenu();
             } catch (err) {
                 console.error("Erreur initialisation:", err);
             }
@@ -949,13 +1142,14 @@
             const roomSelect = document.getElementById('filter-room');
             const adminTeachSelect = document.getElementById('admin-select-teacher');
             const closureRoomSelect = document.getElementById('closure-room-select');
+            const evalRoomSelect = document.getElementById('eval-room');
 
             teachSelect.innerHTML = '<option value="">👤 Tous les enseignants (A-Z)</option>';
             roomSelect.innerHTML = '<option value="">📍 Toutes les salles</option>';
             adminTeachSelect.innerHTML = '';
             closureRoomSelect.innerHTML = '';
+            evalRoomSelect.innerHTML = '';
 
-            // Sort teachers alphabetically by name (French locale)
             const sortedTeachers = [...(dataset.teachers || [])].sort((a, b) => 
                 a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
             );
@@ -972,7 +1166,6 @@
                 adminTeachSelect.appendChild(opt2);
             });
 
-            // Sort rooms alphabetically
             const sortedRooms = [...(dataset.rooms || [])].sort((a, b) => 
                 a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' })
             );
@@ -987,6 +1180,11 @@
                 opt2.value = r.id;
                 opt2.textContent = `${r.name} (${r.type})`;
                 closureRoomSelect.appendChild(opt2);
+
+                const opt3 = document.createElement('option');
+                opt3.value = r.id;
+                opt3.textContent = r.name;
+                evalRoomSelect.appendChild(opt3);
             });
         }
 
@@ -1015,7 +1213,6 @@
                 document.getElementById('teacher-assigned-list').textContent = 'Aucun enseignant correspondant.';
             }
         }
-
 
         function isPermanentClosure(day, sIdx) {
             if (day === "Jeudi" && (sIdx === 2 || sIdx === 3)) return true;
@@ -1060,13 +1257,11 @@
 
             // Fill rows per slot
             SLOTS.forEach((slot, sIdx) => {
-                // Time label
                 const timeLabel = document.createElement('div');
                 timeLabel.className = 'time-slot-label';
                 timeLabel.innerHTML = `<span class="slot-name">${slot.name}</span><span>${slot.time}</span>`;
                 grid.appendChild(timeLabel);
 
-                // 6 Days cells
                 DAYS.forEach((day, dIdx) => {
                     const cell = document.createElement('div');
                     cell.className = 'slot-cell';
@@ -1082,23 +1277,38 @@
                         const cellEvents = filtered.filter(e => e.day_idx === dIdx && e.slot_idx === sIdx);
                         cellEvents.forEach(ev => {
                             const card = document.createElement('div');
-                            const typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
-                            const badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
+                            let typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
+                            let badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
+                            let badgeLabel = ev.event_type;
+
+                            if (ev.is_evaluation || ev.event_type === 'EVAL') {
+                                typeClass = 'event-eval';
+                                badgeClass = 'badge-eval';
+                                badgeLabel = 'DS/EVAL';
+                            }
 
                             card.className = `event-card ${typeClass}`;
                             card.innerHTML = `
                                 <div class="event-header">
                                     <span>${ev.resource_code}</span>
-                                    <span class="event-badge ${badgeClass}">${ev.event_type}</span>
+                                    <span class="event-badge ${badgeClass}">${badgeLabel}</span>
                                 </div>
                                 <div class="event-title" title="${ev.resource_name}">${ev.resource_name}</div>
                                 <div class="event-footer">
                                     <span>${ev.teacher_name}</span>
-                                    <span class="event-room">${ev.room_name.replace('Amphithéâtre', 'Amphi')}</span>
+                                    <span class="event-room">${ev.room_name.replace('IUTC-', '')}</span>
                                 </div>
                             `;
+
+                            // Right-click context menu handler
+                            card.oncontextmenu = (e) => {
+                                e.preventDefault();
+                                openContextMenu(e, ev.lesson_id);
+                            };
+
+                            // Left click quick prompt
                             card.onclick = () => {
-                                sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} vers un autre créneau ?`);
+                                sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} vers un autre créneau sans conflit ?`);
                             };
                             cell.appendChild(card);
                         });
@@ -1107,6 +1317,101 @@
                     grid.appendChild(cell);
                 });
             });
+        }
+
+        // --- CONTEXT MENU (Clic Droit) ---
+        function initContextMenu() {
+            window.addEventListener('click', () => {
+                document.getElementById('context-menu').style.display = 'none';
+            });
+        }
+
+        function openContextMenu(e, lessonId) {
+            selectedLessonId = lessonId;
+            const menu = document.getElementById('context-menu');
+            menu.style.display = 'block';
+            menu.style.left = `${Math.min(e.clientX, window.innerWidth - 240)}px`;
+            menu.style.top = `${Math.min(e.clientY, window.innerHeight - 200)}px`;
+        }
+
+        async function contextAction(action) {
+            document.getElementById('context-menu').style.display = 'none';
+            if (!selectedLessonId) return;
+
+            if (action === 'CANCEL') {
+                if (confirm(`Confirmer l'annulation de la séance ${selectedLessonId} ?`)) {
+                    await sendQuickAction('CANCEL', { lesson_id: selectedLessonId });
+                }
+            } else if (action === 'CONVERT_EVAL') {
+                await sendQuickAction('CONVERT_EVAL', { lesson_id: selectedLessonId });
+            } else if (action === 'MOVE') {
+                sendQuickPrompt(`Je souhaite déplacer le cours ${selectedLessonId}. Quels sont les créneaux libres compatibles ?`);
+            } else if (action === 'CHANGE_ROOM') {
+                sendQuickPrompt(`Quelles sont les autres salles disponibles pour le cours ${selectedLessonId} ?`);
+            } else if (action === 'CHANGE_TEACHER') {
+                sendQuickPrompt(`Qui d'autre dans l'équipe pédagogique peut assurer le cours ${selectedLessonId} ?`);
+            }
+        }
+
+        async function sendQuickAction(action, payload) {
+            try {
+                const res = await fetch('/api/v1/schedule/quick-action', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: action, ...payload })
+                });
+                const data = await res.json();
+                alert("✅ " + data.message);
+                
+                // Refresh
+                const scRes = await fetch('/api/v1/schedule');
+                const scData = await scRes.json();
+                currentSchedule = scData.events || [];
+                renderSchedule();
+            } catch (err) {
+                alert("Erreur action : " + err);
+            }
+        }
+
+        // --- WORKLOAD MODAL ---
+        async function openWorkloadModal() {
+            document.getElementById('workload-modal').style.display = 'flex';
+            const tbody = document.getElementById('workload-table-body');
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:1.5rem;">⏳ Chargement du bilan HETD...</td></tr>';
+
+            try {
+                const res = await fetch('/api/v1/teachers/workload');
+                const data = await res.json();
+                tbody.innerHTML = '';
+
+                (data.teachers || []).forEach(t => {
+                    const tr = document.createElement('tr');
+                    const fillPct = Math.min(100, Math.round((t.semestre_estime_hetd / t.service_statutaire_hetd) * 100));
+                    const barColor = t.status === 'HEURES_SUP' ? '#ef4444' : (t.status === 'SOUS_SERVICE' ? '#f59e0b' : '#10b981');
+
+                    tr.innerHTML = `
+                        <td style="font-weight:600;">${t.teacher_name}</td>
+                        <td><span class="event-badge badge-td">${t.statut}</span></td>
+                        <td>${t.semaine_heures_cm}h</td>
+                        <td>${t.semaine_heures_td}h</td>
+                        <td>${t.semaine_heures_tp}h</td>
+                        <td style="font-weight:700; color:#38bdf8;">${t.semaine_total_hetd} HETD</td>
+                        <td style="font-weight:700;">${t.semestre_estime_hetd}h</td>
+                        <td style="color:var(--text-muted);">${t.service_statutaire_hetd}h</td>
+                        <td>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${fillPct}%; background:${barColor};"></div></div>
+                            <span style="font-size:0.75rem; color:${barColor}; font-weight:700;">${t.delta_hetd > 0 ? '+' : ''}${t.delta_hetd}h</span>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="9" style="color:#ef4444;">Erreur : ${err}</td></tr>`;
+            }
+        }
+
+        function closeWorkloadModal() {
+            document.getElementById('workload-modal').style.display = 'none';
         }
 
         async function triggerSolver() {
@@ -1124,7 +1429,7 @@
                 currentSchedule = data.events || [];
                 renderSchedule();
                 document.getElementById('metrics-text').textContent = `0 Conflit | Résolu en ${data.solve_time_sec?.toFixed(2)}s`;
-                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! 100% des contraintes sont respectées (Fermetures Jeudi/Samedi PM et indisponibilités enseignants).`);
+                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! 100% des contraintes sont respectées (Fermetures Jeudi/Samedi PM, 5 TD en parallèle, salles réelles et décomptes HETD).`);
             } catch (err) {
                 alert("Erreur solveur : " + err);
             } finally {
@@ -1187,6 +1492,7 @@
             document.getElementById('admin-modal').style.display = 'flex';
             loadTeacherMatrix();
             loadRoomsTable();
+            loadEvaluationsTable();
             loadAlternanceWeeks();
         }
 
@@ -1222,7 +1528,6 @@
                 return;
             }
 
-
             const teacherObj = (dataset.teachers || []).find(t => t.name === teacherName);
             const assignedList = document.getElementById('teacher-assigned-list');
             if (teacherObj && teacherObj.assigned_resources?.length) {
@@ -1238,8 +1543,8 @@
             const unavails = (constraints.teacher_unavailabilities || []).filter(u => u.teacher_name.toLowerCase() === teacherName.toLowerCase());
 
             const PERIODS = [
-                { id: "MATIN", label: "🌅 Matin<br><small>08:00 - 12:15</small>", slots: [0, 1] },
-                { id: "APRES_MIDI", label: "🌇 Après-midi<br><small>13:30 - 17:45</small>", slots: [2, 3] }
+                { id: "MATIN", label: "🌅 Matin<br><small>08:00 - 11:15</small>", slots: [0, 1] },
+                { id: "APRES_MIDI", label: "🌇 Après-midi<br><small>13:30 - 16:45</small>", slots: [2, 3] }
             ];
 
             PERIODS.forEach(period => {
@@ -1284,12 +1589,10 @@
             const currentlyBlocked = slots.some(s => unavail.slots.includes(s));
 
             if (currentlyBlocked) {
-                // Unblock this half day
                 unavail.slots = unavail.slots.filter(s => !slots.includes(s));
                 cellElement.className = 'matrix-cell';
                 cellElement.textContent = '✅ Dispo';
             } else {
-                // Block this half day
                 slots.forEach(s => {
                     if (!unavail.slots.includes(s)) unavail.slots.push(s);
                 });
@@ -1319,6 +1622,68 @@
                 `;
                 tbody.appendChild(tr);
             });
+        }
+
+        function loadEvaluationsTable() {
+            const tbody = document.getElementById('evals-table-body');
+            tbody.innerHTML = '';
+
+            const evals = constraints.evaluations || [];
+            if (evals.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="color:var(--text-muted); text-align:center;">Aucune évaluation planifiée.</td></tr>';
+                return;
+            }
+
+            evals.forEach(ev => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight:600; color:#fb7185;">📝 ${ev.title}</td>
+                    <td><span class="event-badge badge-cm">${ev.resource_code}</span></td>
+                    <td>${ev.target_group}</td>
+                    <td>S${ev.week} - ${ev.day}</td>
+                    <td style="font-family:'JetBrains Mono';">${ev.room_id}</td>
+                    <td style="color:var(--text-muted); font-size:0.75rem;">${ev.invigilators.join(', ')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function addEvaluation() {
+            const title = document.getElementById('eval-title').value.trim();
+            const resource = document.getElementById('eval-resource').value.trim();
+            const group = document.getElementById('eval-group').value;
+            const week = parseInt(document.getElementById('eval-week').value) || 1;
+            const day = document.getElementById('eval-day').value;
+            const room = document.getElementById('eval-room').value;
+
+            if (!title || !resource) {
+                alert("Veuillez renseigner le titre et le code ressource.");
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/v1/evaluations', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        title: title,
+                        resource_code: resource,
+                        target_group: group,
+                        week: week,
+                        day: day,
+                        room_id: room,
+                        invigilators: ["Enseignant TC"]
+                    })
+                });
+                const data = await res.json();
+                alert("✅ " + data.message);
+                
+                const cRes = await fetch('/api/v1/admin/constraints');
+                constraints = await cRes.json();
+                loadEvaluationsTable();
+            } catch (err) {
+                alert("Erreur création évaluation : " + err);
+            }
         }
 
         function addRoomClosure() {
@@ -1415,6 +1780,5 @@
 
         window.onload = init;
     </script>
-
 </body>
 </html>

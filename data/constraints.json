@@ -2,6 +2,12 @@
   "department": "TC",
   "max_hours_per_day_teacher": 6,
   "max_hours_per_day_student": 8,
+  "hetd_ratios": {
+    "CM": 1.5,
+    "TD": 1.0,
+    "TP": 0.75,
+    "rule_explanation": "1h CM = 1.5h TD, 1h TD = 1.0h TD, 4h TP = 3.0h TD (0.75 ratio)"
+  },
   "catchup_weeks": [8, 15],
   "permanent_closures": [
     {
@@ -33,20 +39,57 @@
       "reason": "Indisponibilité matinée"
     }
   ],
+  "teacher_absences": [
+    {
+      "id": "ABS_01",
+      "teacher_name": "Mickael Millet",
+      "week": 6,
+      "day": "Mardi",
+      "slots": [0, 1, 2, 3],
+      "reason": "Congé formation / Jury",
+      "needs_replacement": true
+    }
+  ],
   "room_closures_or_reservations": [
     {
-      "room_id": "AMPHI_1",
+      "room_id": "IUTC-amphi 3",
       "week": 5,
       "day": "Jeudi",
       "slots": [0, 1],
       "reason": "Conférence plénière IUT"
     },
     {
-      "room_id": "LAB_INFO_1",
+      "room_id": "IUTC-503 i",
       "week": 8,
       "day": "Lundi",
       "slots": [0, 1, 2, 3],
-      "reason": "Maintenance informatique"
+      "reason": "Maintenance informatique réseau"
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "EVAL_R101_S1",
+      "title": "Partiel S1 - R1.01 Marketing Fondamentaux",
+      "resource_code": "R1.01",
+      "target_group": "BUT1_PROMO",
+      "week": 8,
+      "day": "Mardi",
+      "slot_idx": 1,
+      "room_id": "IUTC-amphi 3",
+      "duration_hours": 1.5,
+      "invigilators": ["Bruno Cardinale", "Cedric Jeanne"]
+    },
+    {
+      "id": "EVAL_R102_TD",
+      "title": "DS Écrit - R1.02 Vente",
+      "resource_code": "R1.02",
+      "target_group": "TD1",
+      "week": 7,
+      "day": "Jeudi",
+      "slot_idx": 0,
+      "room_id": "IUTC-514",
+      "duration_hours": 1.5,
+      "invigilators": ["Cedric Jeanne"]
     }
   ],
   "cohort_alternance_calendar": {

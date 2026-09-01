@@ -1,111 +1,120 @@
 package emploistemps
 
-// Teacher represents a faculty member with teaching quotas and assignments.
-type Teacher struct {
-	ID                string   `json:"id"`
-	Name              string   `json:"name"`
-	MaxHoursPerDay    int      `json:"max_hours_per_day"`
-	AssignedResources []string `json:"assigned_resources"`
+// Event represents a single scheduled pedagogical lesson or evaluation in the timetable.
+type Event struct {
+	LessonID      string  `json:"lesson_id"`
+	ResourceCode  string  `json:"resource_code"`
+	ResourceName  string  `json:"resource_name"`
+	EventType     string  `json:"event_type"` // CM, TD, TP, EVAL
+	GroupID       string  `json:"group_id"`
+	TeacherName   string  `json:"teacher_name"`
+	RoomID        string  `json:"room_id"`
+	RoomName      string  `json:"room_name"`
+	Week          int     `json:"week"`
+	Day           string  `json:"day"`
+	DayIdx        int     `json:"day_idx"`
+	SlotIdx       int     `json:"slot_idx"`
+	SlotTime      string  `json:"slot_time"`
+	DurationHours float64 `json:"duration_hours"`
+	HetdHours     float64 `json:"hetd_hours"` // 1h CM = 1.5h TD, 4h TP = 3h TD (0.75 ratio)
+	IsEvaluation  bool    `json:"is_evaluation"`
+	GlobalSlot    int     `json:"global_slot"`
 }
 
-// Resource represents a pedagogical resource from the PN (e.g. R1.01).
-type Resource struct {
-	Code                string            `json:"code"`
-	Label               string            `json:"label"`
-	Semester            string            `json:"semester"`
-	Parcours            string            `json:"parcours"`
-	VolumeTotal         int               `json:"volume_total"`
-	HoursSplit          map[string]int    `json:"hours_split"`
-	Responsable         string            `json:"responsable"`
-	Team                []string          `json:"team"`
-	RequiresComputerLab bool              `json:"requires_computer_lab"`
+// ScheduleResponse / ScheduleResult represents solver generation response.
+type ScheduleResponse struct {
+	Semester     string  `json:"semester"`
+	Week         int     `json:"week"`
+	Status       string  `json:"status"` // OPTIMAL, FEASIBLE
+	SolveTimeSec float64 `json:"solve_time_sec"`
+	TotalEvents  int     `json:"total_events"`
+	Events       []Event `json:"events"`
 }
 
-// Room represents a classroom, amphi or lab.
-type Room struct {
-	ID         string   `json:"id"`
-	Name       string   `json:"name"`
-	Capacity   int      `json:"capacity"`
-	Type       string   `json:"type"`
-	Equipments []string `json:"equipments"`
-}
+type ScheduleResult = ScheduleResponse
 
-// Cohort represents a promo (FI or FA).
-type Cohort struct {
-	ID              string   `json:"id"`
-	Name            string   `json:"name"`
-	Level           string   `json:"level"`
-	Mode            string   `json:"mode"`
-	Size            int      `json:"size"`
-	GroupsTD        []string `json:"groups_td"`
-	GroupsTP        []string `json:"groups_tp"`
-	AlternanceWeeks []int    `json:"alternance_weeks"`
-}
-
-// ScheduledEvent represents an assigned course slot in the schedule.
-type ScheduledEvent struct {
-	LessonID     string `json:"lesson_id"`
-	ResourceCode string `json:"resource_code"`
-	ResourceName string `json:"resource_name"`
-	EventType    string `json:"event_type"`
-	GroupID      string `json:"group_id"`
-	TeacherName  string `json:"teacher_name"`
-	RoomID       string `json:"room_id"`
-	RoomName     string `json:"room_name"`
-	Week         int    `json:"week"`
-	Day          string `json:"day"`
-	DayIdx       int    `json:"day_idx"`
-	SlotIdx      int    `json:"slot_idx"`
-	SlotTime     string `json:"slot_time"`
-	GlobalSlot   int    `json:"global_slot"`
-}
-
-// ScheduleResult is the response from the CP-SAT solver or schedule query.
-type ScheduleResult struct {
-	Semester     string           `json:"semester"`
-	Week         int              `json:"week"`
-	Status       string           `json:"status"`
-	SolveTimeSec float64          `json:"solve_time_sec"`
-	TotalEvents  int              `json:"total_events"`
-	Events       []ScheduledEvent `json:"events"`
-}
-
-// GenerateRequest options for solving a schedule.
-type GenerateRequest struct {
+// SolverRequest / GenerateRequest configures a CP-SAT solving run.
+type SolverRequest struct {
 	Semester         string `json:"semester"`
 	Week             int    `json:"week"`
 	TimeLimitSeconds int    `json:"time_limit_seconds"`
 }
 
-// MoveLessonRequest represents a request to move an event.
+type GenerateRequest = SolverRequest
+
+// MoveLessonRequest represents a request to move or test moving an event.
 type MoveLessonRequest struct {
-	LessonID        string `json:"lesson_id"`
-	TargetDay       string `json:"target_day"`
-	TargetSlotIdx   int    `json:"target_slot_idx"`
-	TargetRoomID    string `json:"target_room_id,omitempty"`
+	LessonID       string `json:"lesson_id"`
+	TargetDay      string `json:"target_day"`
+	TargetSlotIdx  int    `json:"target_slot_idx"`
+	TargetRoomID   string `json:"target_room_id"`
 }
 
-// ConflictCheckResponse represents the outcome of a conflict verification.
+// ConflictCheckResponse is returned when checking or performing a move.
 type ConflictCheckResponse struct {
-	Conflit   bool     `json:"conflit"`
-	Autorise  bool     `json:"autorise"`
-	Raisons   []string `json:"raisons,omitempty"`
-	Message   string   `json:"message"`
+	Conflit bool     `json:"conflit"`
+	Raisons []string `json:"raisons,omitempty"`
+	Message string   `json:"message"`
 }
 
-// FreeSlot represents an available slot for a group and teacher.
+// FreeSlot represents an available slot for both teacher and student group.
 type FreeSlot struct {
 	Jour    string `json:"jour"`
-	SlotIdx int    `json:"slot_idx"`
 	Heure   string `json:"heure"`
+	SlotIdx int    `json:"slot_idx"`
 }
 
-// AIChatRequest represents a query to the AI assistant.
+// TeacherWorkloadItem contains statutory vs planned HETD breakdown for a teacher.
+type TeacherWorkloadItem struct {
+	TeacherID             string  `json:"teacher_id"`
+	TeacherName           string  `json:"teacher_name"`
+	Statut                string  `json:"statut"` // PRAG, MCF, VACATAIRE
+	ServiceStatutaireHetd float64 `json:"service_statutaire_hetd"`
+	SemaineHeuresCM       float64 `json:"semaine_heures_cm"`
+	SemaineHeuresTD       float64 `json:"semaine_heures_td"`
+	SemaineHeuresTP       float64 `json:"semaine_heures_tp"`
+	SemaineTotalHetd      float64 `json:"semaine_total_hetd"`
+	SemestreEstimeHetd    float64 `json:"semestre_estime_hetd"`
+	DeltaHetd             float64 `json:"delta_hetd"`
+	Status                string  `json:"status"` // ÉQUILIBRÉ, HEURES_SUP, SOUS_SERVICE
+	NbCoursPlanifies      int     `json:"nb_cours_planifies"`
+}
+
+// TeacherWorkloadResponse is the payload for GET /api/v1/teachers/workload.
+type TeacherWorkloadResponse struct {
+	HetdRule string                `json:"hetd_rule"`
+	Teachers []TeacherWorkloadItem `json:"teachers"`
+}
+
+// Evaluation represents a scheduled DS / Partiel / Exam.
+type Evaluation struct {
+	ID            string   `json:"id"`
+	Title         string   `json:"title"`
+	ResourceCode  string   `json:"resource_code"`
+	TargetGroup   string   `json:"target_group"`
+	Week          int      `json:"week"`
+	Day           string   `json:"day"`
+	SlotIdx       int      `json:"slot_idx"`
+	RoomID        string   `json:"room_id"`
+	DurationHours float64  `json:"duration_hours"`
+	Invigilators  []string `json:"invigilators"`
+}
+
+// QuickActionRequest represents contextual right-click actions on events.
+type QuickActionRequest struct {
+	Action     string `json:"action"` // MOVE, CHANGE_ROOM, CHANGE_TEACHER, CANCEL, CONVERT_EVAL
+	LessonID   string `json:"lesson_id"`
+	NewRoomID  string `json:"new_room_id,omitempty"`
+	NewTeacher string `json:"new_teacher,omitempty"`
+}
+
+// AIChatRequest is sent to the LLM copilot endpoint.
 type AIChatRequest struct {
 	Prompt string `json:"prompt"`
 }
 
-// AIChatResponse represents the response from the AI assistant.
+// AIChatResponse contains the assistant message.
 type AIChatResponse struct {
 	Response string `json:"response"`
+	Status   string `json:"status"`
 }

@@ -181,3 +181,24 @@ func (c *Client) AskAI(ctx context.Context, prompt string) (string, error) {
 	}
 	return res.Response, nil
 }
+
+// GetTeacherWorkload retrieves statutory vs planned HETD workloads for all teachers.
+func (c *Client) GetTeacherWorkload(ctx context.Context) (*TeacherWorkloadResponse, error) {
+	var res TeacherWorkloadResponse
+	err := c.doRequest(ctx, http.MethodGet, "/api/v1/teachers/workload", nil, &res)
+	if err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+// ExecuteQuickAction sends a contextual action (MOVE, CHANGE_ROOM, CHANGE_TEACHER, CANCEL, CONVERT_EVAL).
+func (c *Client) ExecuteQuickAction(ctx context.Context, req QuickActionRequest) (map[string]any, error) {
+	var res map[string]any
+	err := c.doRequest(ctx, http.MethodPost, "/api/v1/schedule/quick-action", req, &res)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+

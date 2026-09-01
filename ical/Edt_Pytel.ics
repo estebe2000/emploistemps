@@ -1,0 +1,2698 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID;LANGUAGE=fr:Copyright Index-Education - HYPERPLANNING 2026
+METHOD:PUBLISH
+X-CALSTART:20260817T000000Z
+X-CALEND:20270814T000000Z
+X-WR-CALNAME;LANGUAGE=fr:HYP - Pytel Steeve - du 17 août 2026 au 14 août 2027
+X-WR-CALDESC;LANGUAGE=fr:Emploi du temps de Pytel Steeve généré par le logiciel HP (©INDEX ÉDUCATION) le 01 sept. 2026 - UNIVERSITE LE HAVRE NORMANDIE - valable sur la période du 17 août 2026 au 14 août 2027 - Semaines : semaine 34 - 32
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260618T111843Z
+UID:Cours-1348263-9-Pytel_Steeve-Index-Education
+DTSTART:20261014T103000Z
+DTEND:20261014T180000Z
+SUMMARY;LANGUAGE=fr:matière à préciser - Milcent Montier Caroline\, Millet Mickael\, Saudrais Antoine\, Tabellion Thierry - ACD
+DESCRIPTION;LANGUAGE=fr:Matière : matière à préciser\nEnseignants : Milcent Montier Caroline\, Millet Mickael\, Pytel Steeve\, Saudrais Antoine\, Tabellion Thierry\nMémo : ACD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : matière à préciser<br/>Enseignants : Milcent Montier Caroline\, Millet Mickael\, Pytel Steeve\, Saudrais Antoine\, Tabellion Thierry<br/>Mémo : ACD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260618T111843Z
+UID:Cours-1348264-9-Pytel_Steeve-Index-Education
+DTSTART:20261015T120000Z
+DTEND:20261015T180000Z
+SUMMARY;LANGUAGE=fr:matière à préciser - Hoellard Emilie\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Saudrais Antoine - ACD
+DESCRIPTION;LANGUAGE=fr:Matière : matière à préciser\nEnseignants : Hoellard Emilie\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Pytel Steeve\, Saudrais Antoine\nMémo : ACD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : matière à préciser<br/>Enseignants : Hoellard Emilie\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Pytel Steeve\, Saudrais Antoine<br/>Mémo : ACD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260618T111843Z
+UID:Cours-1348265-9-Pytel_Steeve-Index-Education
+DTSTART:20261015T060000Z
+DTEND:20261015T120000Z
+SUMMARY;LANGUAGE=fr:matière à préciser - Hoellard Emilie\, Leber Sylvie\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Saudrais Antoine\, Tabellion Thierry - ACD
+DESCRIPTION;LANGUAGE=fr:Matière : matière à préciser\nEnseignants : Hoellard Emilie\, Leber Sylvie\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Pytel Steeve\, Saudrais Antoine\, Tabellion Thierry\nMémo : ACD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : matière à préciser<br/>Enseignants : Hoellard Emilie\, Leber Sylvie\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Pytel Steeve\, Saudrais Antoine\, Tabellion Thierry<br/>Mémo : ACD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-4-Pytel_Steeve-Index-Education
+DTSTART:20260908T130000Z
+DTEND:20260908T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-5-Pytel_Steeve-Index-Education
+DTSTART:20260915T130000Z
+DTEND:20260915T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-7-Pytel_Steeve-Index-Education
+DTSTART:20260929T130000Z
+DTEND:20260929T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-8-Pytel_Steeve-Index-Education
+DTSTART:20261006T130000Z
+DTEND:20261006T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-9-Pytel_Steeve-Index-Education
+DTSTART:20261013T130000Z
+DTEND:20261013T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-12-Pytel_Steeve-Index-Education
+DTSTART:20261103T140000Z
+DTEND:20261103T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-14-Pytel_Steeve-Index-Education
+DTSTART:20261117T140000Z
+DTEND:20261117T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-15-Pytel_Steeve-Index-Education
+DTSTART:20261124T140000Z
+DTEND:20261124T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-16-Pytel_Steeve-Index-Education
+DTSTART:20261201T140000Z
+DTEND:20261201T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T212515Z
+UID:Cours-1349057-17-Pytel_Steeve-Index-Education
+DTSTART:20261208T140000Z
+DTEND:20261208T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214848Z
+UID:Cours-1349066-4-Pytel_Steeve-Index-Education
+DTSTART:20260911T060000Z
+DTEND:20260911T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD3 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214848Z
+UID:Cours-1349066-5-Pytel_Steeve-Index-Education
+DTSTART:20260918T060000Z
+DTEND:20260918T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD3 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214848Z
+UID:Cours-1349066-7-Pytel_Steeve-Index-Education
+DTSTART:20261002T060000Z
+DTEND:20261002T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD3 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214848Z
+UID:Cours-1349066-8-Pytel_Steeve-Index-Education
+DTSTART:20261009T060000Z
+DTEND:20261009T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD3 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214848Z
+UID:Cours-1349066-9-Pytel_Steeve-Index-Education
+DTSTART:20261016T060000Z
+DTEND:20261016T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD3 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-4-Pytel_Steeve-Index-Education
+DTSTART:20260911T090000Z
+DTEND:20260911T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-7-Pytel_Steeve-Index-Education
+DTSTART:20261002T090000Z
+DTEND:20261002T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-8-Pytel_Steeve-Index-Education
+DTSTART:20261009T090000Z
+DTEND:20261009T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-12-Pytel_Steeve-Index-Education
+DTSTART:20261106T100000Z
+DTEND:20261106T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-13-Pytel_Steeve-Index-Education
+DTSTART:20261113T100000Z
+DTEND:20261113T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-16-Pytel_Steeve-Index-Education
+DTSTART:20261204T100000Z
+DTEND:20261204T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072616Z
+UID:Cours-1349123-17-Pytel_Steeve-Index-Education
+DTSTART:20261211T100000Z
+DTEND:20261211T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260901T125142Z
+UID:Cours-1352775-3-Pytel_Steeve-Index-Education
+DTSTART:20260903T114500Z
+DTEND:20260903T123000Z
+SUMMARY;LANGUAGE=fr:matière à préciser - David Maxime\, Ihsane Tarik\, Khaled Zahraa\, Leber Sylvie\, Lushchenko Marina\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Saudrais Antoine\, Tabellion Thierry - Commission report BUT 3 FI
+DESCRIPTION;LANGUAGE=fr:Matière : matière à préciser\nEnseignants : David Maxime\, Ihsane Tarik\, Khaled Zahraa\, Leber Sylvie\, Lushchenko Marina\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Pytel Steeve\, Saudrais Antoine\, Tabellion Thierry\nMémo : Commission report BUT 3 FI\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : matière à préciser<br/>Enseignants : David Maxime\, Ihsane Tarik\, Khaled Zahraa\, Leber Sylvie\, Lushchenko Marina\, M Boumba M Boumba Riva Vianney\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Pytel Steeve\, Saudrais Antoine\, Tabellion Thierry<br/>Mémo : Commission report BUT 3 FI<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260630T113343Z
+UID:Cours-1352777-3-Pytel_Steeve-Index-Education
+DTSTART:20260901T153000Z
+DTEND:20260901T174500Z
+SUMMARY;LANGUAGE=fr:matière à préciser - Advani Amit\, Andre Pierre\, Bourdon Alexandra\, Cahoreau Christophe\, Canu Richard\, Cardinale Bruno\, Cauchois Alexandre\, David Maxime\, Desson Anne Claire\, Diop Boubacar\, Dupont Jean\, Favreau Alain\, Follet Virginie\, Gaba Harold\, Halidi Kayisi\, Hardy Matthieu\, Hauchecorne Sandrine\, Ihsane Tarik\, Jayet Aurelien\, Khaled Zahraa\, Leber Sylvie\, Lushchenko Marina\, M Boumba M Boumba Riva Vianney\, Marchandise-Ruiz Anaide\, Marye Francois\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Noel Frederik\, Patry Angelique\, Ponce Bastien\, Riou Sebastien\, Saudrais Antoine\, Tabellion Thierry\, VAC-IUT-LEMESLES-JASMINE JASMINE\, Van Heel Laetitia\, Yassine Ayman\, Yockell Francis - Réunion info rentrée
+DESCRIPTION;LANGUAGE=fr:Matière : matière à préciser\nEnseignants : Advani Amit\, Andre Pierre\, Bourdon Alexandra\, Cahoreau Christophe\, Canu Richard\, Cardinale Bruno\, Cauchois Alexandre\, David Maxime\, Desson Anne Claire\, Diop Boubacar\, Dupont Jean\, Favreau Alain\, Follet Virginie\, Gaba Harold\, Halidi Kayisi\, Hardy Matthieu\, Hauchecorne Sandrine\, Ihsane Tarik\, Jayet Aurelien\, Khaled Zahraa\, Leber Sylvie\, Lushchenko Marina\, M Boumba M Boumba Riva Vianney\, Marchandise-Ruiz Anaide\, Marye Francois\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Noel Frederik\, Patry Angelique\, Ponce Bastien\, Pytel Steeve\, Riou Sebastien\, Saudrais Antoine\, Tabellion Thierry\, VAC-IUT-LEMESLES-JASMINE JASMINE\, Van Heel Laetitia\, Yassine Ayman\, Yockell Francis\nMémo : Réunion info rentrée\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : matière à préciser<br/>Enseignants : Advani Amit\, Andre Pierre\, Bourdon Alexandra\, Cahoreau Christophe\, Canu Richard\, Cardinale Bruno\, Cauchois Alexandre\, David Maxime\, Desson Anne Claire\, Diop Boubacar\, Dupont Jean\, Favreau Alain\, Follet Virginie\, Gaba Harold\, Halidi Kayisi\, Hardy Matthieu\, Hauchecorne Sandrine\, Ihsane Tarik\, Jayet Aurelien\, Khaled Zahraa\, Leber Sylvie\, Lushchenko Marina\, M Boumba M Boumba Riva Vianney\, Marchandise-Ruiz Anaide\, Marye Francois\, Milcent Montier Caroline\, Millet Mickael\, Mirebeau Marie Helene\, Motte Armelle\, Noel Frederik\, Patry Angelique\, Ponce Bastien\, Pytel Steeve\, Riou Sebastien\, Saudrais Antoine\, Tabellion Thierry\, VAC-IUT-LEMESLES-JASMINE JASMINE\, Van Heel Laetitia\, Yassine Ayman\, Yockell Francis<br/>Mémo : Réunion info rentrée<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260828T142920Z
+UID:Cours-1381234-16-Pytel_Steeve-Index-Education
+DTSTART:20261201T100000Z
+DTEND:20261201T113000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260828T142920Z
+UID:Cours-1381235-18-Pytel_Steeve-Index-Education
+DTSTART:20261215T070000Z
+DTEND:20261215T083000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110150Z
+UID:Cours-1354777-3-Pytel_Steeve-Index-Education
+DTSTART:20260904T130000Z
+DTEND:20260904T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD2 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214754Z
+UID:Cours-1354818-3-Pytel_Steeve-Index-Education
+DTSTART:20260904T090000Z
+DTEND:20260904T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD3 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD3<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215553Z
+UID:Cours-1354890-3-Pytel_Steeve-Index-Education
+DTSTART:20260904T073000Z
+DTEND:20260904T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD4 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215445Z
+UID:Cours-1355052-17-Pytel_Steeve-Index-Education
+DTSTART:20261209T140000Z
+DTEND:20261209T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T103639Z
+UID:Cours-1356892-16-Pytel_Steeve-Index-Education
+DTSTART:20261204T083000Z
+DTEND:20261204T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T103807Z
+UID:Cours-1356893-17-Pytel_Steeve-Index-Education
+DTSTART:20261207T140000Z
+DTEND:20261207T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T154923Z
+UID:Cours-1356894-16-Pytel_Steeve-Index-Education
+DTSTART:20261202T070000Z
+DTEND:20261202T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T103807Z
+UID:Cours-1356895-17-Pytel_Steeve-Index-Education
+DTSTART:20261207T123000Z
+DTEND:20261207T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-4-Pytel_Steeve-Index-Education
+DTSTART:20260907T113000Z
+DTEND:20260907T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-5-Pytel_Steeve-Index-Education
+DTSTART:20260914T113000Z
+DTEND:20260914T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-7-Pytel_Steeve-Index-Education
+DTSTART:20260928T113000Z
+DTEND:20260928T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-8-Pytel_Steeve-Index-Education
+DTSTART:20261005T113000Z
+DTEND:20261005T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-9-Pytel_Steeve-Index-Education
+DTSTART:20261012T113000Z
+DTEND:20261012T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-12-Pytel_Steeve-Index-Education
+DTSTART:20261102T123000Z
+DTEND:20261102T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-14-Pytel_Steeve-Index-Education
+DTSTART:20261116T123000Z
+DTEND:20261116T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214917Z
+UID:Cours-1358012-15-Pytel_Steeve-Index-Education
+DTSTART:20261123T123000Z
+DTEND:20261123T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072459Z
+UID:Cours-1358018-8-Pytel_Steeve-Index-Education
+DTSTART:20261008T060000Z
+DTEND:20261008T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214915Z
+UID:Cours-1358915-4-Pytel_Steeve-Index-Education
+DTSTART:20260907T143000Z
+DTEND:20260907T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110137Z
+UID:Cours-1358919-7-Pytel_Steeve-Index-Education
+DTSTART:20260928T143000Z
+DTEND:20260928T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T104220Z
+UID:Cours-1359017-6-Pytel_Steeve-Index-Education
+DTSTART:20260921T143000Z
+DTEND:20260921T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G1 A  BDMRC BE+ - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 A  BDMRC BE+\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 A  BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T104245Z
+UID:Cours-1359027-6-Pytel_Steeve-Index-Education
+DTSTART:20260923T113000Z
+DTEND:20260923T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G1 A  BDMRC BE+ - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 A  BDMRC BE+\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 A  BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T104220Z
+UID:Cours-1359031-6-Pytel_Steeve-Index-Education
+DTSTART:20260921T130000Z
+DTEND:20260921T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G1 B BDMRC BE+ - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 B BDMRC BE+\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 B BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T104236Z
+UID:Cours-1359033-6-Pytel_Steeve-Index-Education
+DTSTART:20260923T130000Z
+DTEND:20260923T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G1 B BDMRC BE+ - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 B BDMRC BE+\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 B BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T105403Z
+UID:Cours-1359034-14-Pytel_Steeve-Index-Education
+DTSTART:20261118T070000Z
+DTEND:20261118T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T104228Z
+UID:Cours-1359035-6-Pytel_Steeve-Index-Education
+DTSTART:20260922T143000Z
+DTEND:20260922T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110225Z
+UID:Cours-1359037-6-Pytel_Steeve-Index-Education
+DTSTART:20260923T143000Z
+DTEND:20260923T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110112Z
+UID:Cours-1359067-6-Pytel_Steeve-Index-Education
+DTSTART:20260922T113000Z
+DTEND:20260922T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 A MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 A MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 A MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110112Z
+UID:Cours-1359069-6-Pytel_Steeve-Index-Education
+DTSTART:20260925T113000Z
+DTEND:20260925T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 B MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 B MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 B MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110559Z
+UID:Cours-1359070-13-Pytel_Steeve-Index-Education
+DTSTART:20261110T100000Z
+DTEND:20261110T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 A MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 A MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 A MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110559Z
+UID:Cours-1359071-13-Pytel_Steeve-Index-Education
+DTSTART:20261112T083000Z
+DTEND:20261112T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 B MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 B MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 B MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110559Z
+UID:Cours-1359085-13-Pytel_Steeve-Index-Education
+DTSTART:20261110T070000Z
+DTEND:20261110T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 A MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 A MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 A MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T105340Z
+UID:Cours-1359086-13-Pytel_Steeve-Index-Education
+DTSTART:20261109T140000Z
+DTEND:20261109T170000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G1 A  BDMRC BE+ - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 A  BDMRC BE+\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 A  BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T105340Z
+UID:Cours-1359087-13-Pytel_Steeve-Index-Education
+DTSTART:20261110T123000Z
+DTEND:20261110T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G1 B BDMRC BE+ - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 B BDMRC BE+\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 B BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T210759Z
+UID:Cours-1359149-6-Pytel_Steeve-Index-Education
+DTSTART:20260924T113000Z
+DTEND:20260924T130000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T210946Z
+UID:Cours-1359193-9-Pytel_Steeve-Index-Education
+DTSTART:20261016T090000Z
+DTEND:20261016T103000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110653Z
+UID:Cours-1359231-14-Pytel_Steeve-Index-Education
+DTSTART:20261120T100000Z
+DTEND:20261120T113000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T211225Z
+UID:Cours-1359284-15-Pytel_Steeve-Index-Education
+DTSTART:20261124T083000Z
+DTEND:20261124T113000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T210627Z
+UID:Cours-1359301-5-Pytel_Steeve-Index-Education
+DTSTART:20260918T090000Z
+DTEND:20260918T103000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T211339Z
+UID:Cours-1359390-17-Pytel_Steeve-Index-Education
+DTSTART:20261210T123000Z
+DTEND:20261210T153000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TP
+LOCATION;LANGUAGE=fr:IUTC-513
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-513\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-513<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110741Z
+UID:Cours-1359565-13-Pytel_Steeve-Index-Education
+DTSTART:20261113T123000Z
+DTEND:20261113T153000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110741Z
+UID:Cours-1359565-14-Pytel_Steeve-Index-Education
+DTSTART:20261120T123000Z
+DTEND:20261120T153000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110741Z
+UID:Cours-1359565-15-Pytel_Steeve-Index-Education
+DTSTART:20261127T123000Z
+DTEND:20261127T153000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1359570-4-Pytel_Steeve-Index-Education
+DTSTART:20260910T073000Z
+DTEND:20260910T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214638Z
+UID:Cours-1359571-16-Pytel_Steeve-Index-Education
+DTSTART:20261204T070000Z
+DTEND:20261204T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110817Z
+UID:Cours-1359573-16-Pytel_Steeve-Index-Education
+DTSTART:20261204T123000Z
+DTEND:20261204T153000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110817Z
+UID:Cours-1359573-17-Pytel_Steeve-Index-Education
+DTSTART:20261211T123000Z
+DTEND:20261211T153000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T154734Z
+UID:Cours-1359576-17-Pytel_Steeve-Index-Education
+DTSTART:20261211T070000Z
+DTEND:20261211T100000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T154739Z
+UID:Cours-1359577-16-Pytel_Steeve-Index-Education
+DTSTART:20261201T070000Z
+DTEND:20261201T083000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T112238Z
+UID:Cours-1360042-10-Pytel_Steeve-Index-Education
+DTSTART:20261019T113000Z
+DTEND:20261019T130000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T111957Z
+UID:Cours-1360796-7-Pytel_Steeve-Index-Education
+DTSTART:20260929T090000Z
+DTEND:20260929T103000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T111957Z
+UID:Cours-1360796-8-Pytel_Steeve-Index-Education
+DTSTART:20261006T090000Z
+DTEND:20261006T103000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T211110Z
+UID:Cours-1360846-9-Pytel_Steeve-Index-Education
+DTSTART:20261013T143000Z
+DTEND:20261013T160000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T211110Z
+UID:Cours-1360846-14-Pytel_Steeve-Index-Education
+DTSTART:20261117T153000Z
+DTEND:20261117T170000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FA G1 BDMRC - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FA G1 BDMRC<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110208Z
+UID:Cours-1360852-5-Pytel_Steeve-Index-Education
+DTSTART:20260914T143000Z
+DTEND:20260914T160000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110208Z
+UID:Cours-1360852-9-Pytel_Steeve-Index-Education
+DTSTART:20261012T143000Z
+DTEND:20261012T160000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T125043Z
+UID:Cours-1360853-13-Pytel_Steeve-Index-Education
+DTSTART:20261110T153000Z
+DTEND:20261110T170000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110749Z
+UID:Cours-1360855-15-Pytel_Steeve-Index-Education
+DTSTART:20261127T083000Z
+DTEND:20261127T113000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2B MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2B MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2B MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110814Z
+UID:Cours-1360858-16-Pytel_Steeve-Index-Education
+DTSTART:20261130T123000Z
+DTEND:20261130T153000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2A MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2A MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2A MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260826T084338Z
+UID:Cours-1379699-5-Pytel_Steeve-Index-Education
+DTSTART:20260917T060000Z
+DTEND:20260917T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110817Z
+UID:Cours-1361339-16-Pytel_Steeve-Index-Education
+DTSTART:20261201T083000Z
+DTEND:20261201T100000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G2 MMPV B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MMPV B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MMPV B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110817Z
+UID:Cours-1361339-18-Pytel_Steeve-Index-Education
+DTSTART:20261215T083000Z
+DTEND:20261215T100000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G2 MMPV B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MMPV B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MMPV B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110906Z
+UID:Cours-1361343-18-Pytel_Steeve-Index-Education
+DTSTART:20261218T100000Z
+DTEND:20261218T113000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110906Z
+UID:Cours-1361344-18-Pytel_Steeve-Index-Education
+DTSTART:20261218T123000Z
+DTEND:20261218T153000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G2 MMPV B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MMPV B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2 MMPV B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110714Z
+UID:Cours-1361345-14-Pytel_Steeve-Index-Education
+DTSTART:20261117T083000Z
+DTEND:20261117T113000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2B MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2B MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2B MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110714Z
+UID:Cours-1361345-17-Pytel_Steeve-Index-Education
+DTSTART:20261208T083000Z
+DTEND:20261208T113000Z
+SUMMARY;LANGUAGE=fr:RNC appliquée MDEE - <IUT 3EME ANNEE TC> TC3 FI G2A MDEE - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RNC appliquée MDEE\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2A MDEE\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RNC appliquée MDEE<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G2A MDEE<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110814Z
+UID:Cours-1361346-16-Pytel_Steeve-Index-Education
+DTSTART:20261130T160000Z
+DTEND:20261130T173000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260828T142924Z
+UID:Cours-1361347-18-Pytel_Steeve-Index-Education
+DTSTART:20261215T100000Z
+DTEND:20261215T113000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110838Z
+UID:Cours-1361352-17-Pytel_Steeve-Index-Education
+DTSTART:20261210T070000Z
+DTEND:20261210T083000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110906Z
+UID:Cours-1361353-18-Pytel_Steeve-Index-Education
+DTSTART:20261218T083000Z
+DTEND:20261218T100000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110906Z
+UID:Cours-1361356-18-Pytel_Steeve-Index-Education
+DTSTART:20261217T070000Z
+DTEND:20261217T083000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110921Z
+UID:Cours-1361357-21-Pytel_Steeve-Index-Education
+DTSTART:20270108T083000Z
+DTEND:20270108T113000Z
+SUMMARY;LANGUAGE=fr:RCN appli. managt PV - <IUT 3EME ANNEE TC> TC3 FI G3 MMPV - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : RCN appli. managt PV\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : RCN appli. managt PV<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G3 MMPV<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-4-Pytel_Steeve-Index-Education
+DTSTART:20260908T113000Z
+DTEND:20260908T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-5-Pytel_Steeve-Index-Education
+DTSTART:20260915T113000Z
+DTEND:20260915T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-7-Pytel_Steeve-Index-Education
+DTSTART:20260929T113000Z
+DTEND:20260929T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-8-Pytel_Steeve-Index-Education
+DTSTART:20261006T113000Z
+DTEND:20261006T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-9-Pytel_Steeve-Index-Education
+DTSTART:20261013T113000Z
+DTEND:20261013T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-12-Pytel_Steeve-Index-Education
+DTSTART:20261103T123000Z
+DTEND:20261103T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-14-Pytel_Steeve-Index-Education
+DTSTART:20261117T123000Z
+DTEND:20261117T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-16-Pytel_Steeve-Index-Education
+DTSTART:20261201T123000Z
+DTEND:20261201T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165331Z
+UID:Cours-1373506-17-Pytel_Steeve-Index-Education
+DTSTART:20261208T123000Z
+DTEND:20261208T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T103840Z
+UID:Cours-1361773-18-Pytel_Steeve-Index-Education
+DTSTART:20261216T100000Z
+DTEND:20261216T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-518
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-518\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-518<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T103721Z
+UID:Cours-1361774-17-Pytel_Steeve-Index-Education
+DTSTART:20261209T070000Z
+DTEND:20261209T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110528Z
+UID:Cours-1361822-12-Pytel_Steeve-Index-Education
+DTSTART:20261106T070000Z
+DTEND:20261106T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110528Z
+UID:Cours-1361822-13-Pytel_Steeve-Index-Education
+DTSTART:20261113T070000Z
+DTEND:20261113T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260728T110528Z
+UID:Cours-1361822-15-Pytel_Steeve-Index-Education
+DTSTART:20261127T070000Z
+DTEND:20261127T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-4-Pytel_Steeve-Index-Education
+DTSTART:20260911T073000Z
+DTEND:20260911T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-5-Pytel_Steeve-Index-Education
+DTSTART:20260918T073000Z
+DTEND:20260918T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-7-Pytel_Steeve-Index-Education
+DTSTART:20261002T073000Z
+DTEND:20261002T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-8-Pytel_Steeve-Index-Education
+DTSTART:20261009T073000Z
+DTEND:20261009T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-9-Pytel_Steeve-Index-Education
+DTSTART:20261016T073000Z
+DTEND:20261016T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-12-Pytel_Steeve-Index-Education
+DTSTART:20261106T083000Z
+DTEND:20261106T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214949Z
+UID:Cours-1361832-13-Pytel_Steeve-Index-Education
+DTSTART:20261113T083000Z
+DTEND:20261113T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.2 - <IUT 2EME ANNEE TC> TC2 G1 BDMRC BE+ - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.2\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.2<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G1 BDMRC BE+<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204536Z
+UID:Cours-1361880-4-Pytel_Steeve-Index-Education
+DTSTART:20260909T073000Z
+DTEND:20260909T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215445Z
+UID:Cours-1361881-17-Pytel_Steeve-Index-Education
+DTSTART:20261209T123000Z
+DTEND:20261209T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165359Z
+UID:Cours-1361882-15-Pytel_Steeve-Index-Education
+DTSTART:20261124T123000Z
+DTEND:20261124T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1361933-4-Pytel_Steeve-Index-Education
+DTSTART:20260908T143000Z
+DTEND:20260908T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T213414Z
+UID:Cours-1361950-4-Pytel_Steeve-Index-Education
+DTSTART:20260909T060000Z
+DTEND:20260909T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD2 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T213414Z
+UID:Cours-1361950-5-Pytel_Steeve-Index-Education
+DTSTART:20260916T060000Z
+DTEND:20260916T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD2 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T213414Z
+UID:Cours-1361950-7-Pytel_Steeve-Index-Education
+DTSTART:20260930T060000Z
+DTEND:20260930T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD2 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T213414Z
+UID:Cours-1361950-9-Pytel_Steeve-Index-Education
+DTSTART:20261014T060000Z
+DTEND:20261014T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD2 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T214029Z
+UID:Cours-1361951-8-Pytel_Steeve-Index-Education
+DTSTART:20261006T060000Z
+DTEND:20261006T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD2 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD2<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215832Z
+UID:Cours-1361952-5-Pytel_Steeve-Index-Education
+DTSTART:20260918T130000Z
+DTEND:20260918T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD4 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215832Z
+UID:Cours-1361952-7-Pytel_Steeve-Index-Education
+DTSTART:20261002T130000Z
+DTEND:20261002T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD4 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215832Z
+UID:Cours-1361952-8-Pytel_Steeve-Index-Education
+DTSTART:20261009T130000Z
+DTEND:20261009T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD4 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T215832Z
+UID:Cours-1361952-9-Pytel_Steeve-Index-Education
+DTSTART:20261016T130000Z
+DTEND:20261016T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD4 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T220034Z
+UID:Cours-1361953-12-Pytel_Steeve-Index-Education
+DTSTART:20261103T070000Z
+DTEND:20261103T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD4 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD4<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T205031Z
+UID:Cours-1361970-4-Pytel_Steeve-Index-Education
+DTSTART:20260908T073000Z
+DTEND:20260908T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 A MMPV - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 A MMPV\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 A MMPV<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T205031Z
+UID:Cours-1361970-8-Pytel_Steeve-Index-Education
+DTSTART:20261006T073000Z
+DTEND:20261006T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 B MMPV - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T205031Z
+UID:Cours-1361970-12-Pytel_Steeve-Index-Education
+DTSTART:20261103T083000Z
+DTEND:20261103T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 B MMPV - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260727T205031Z
+UID:Cours-1361970-13-Pytel_Steeve-Index-Education
+DTSTART:20261110T083000Z
+DTEND:20261110T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 A MMPV\, <IUT 2EME ANNEE TC> TC2 G3 B MMPV - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 A MMPV\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 A MMPV\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260711T084708Z
+UID:Cours-1361971-7-Pytel_Steeve-Index-Education
+DTSTART:20260929T143000Z
+DTEND:20260929T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 FA BUT2\, <IUT 2EME ANNEE TC> TC2 G3 B MMPV - TP
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 FA BUT2\, &lt\;IUT 2EME ANNEE TC&gt\; TC2 G3 B MMPV<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072452Z
+UID:Cours-1361984-8-Pytel_Steeve-Index-Education
+DTSTART:20261005T130000Z
+DTEND:20261005T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260814T091452Z
+UID:Cours-1369683-16-Pytel_Steeve-Index-Education
+DTSTART:20261202T083000Z
+DTEND:20261202T100000Z
+SUMMARY;LANGUAGE=fr:Ressour.culture num BDMRC - <IUT 3EME ANNEE TC> TC3 FI G1 BDMRC A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressour.culture num BDMRC\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressour.culture num BDMRC<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 3EME ANNEE TC&gt\; TC3 FI G1 BDMRC A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-4-Pytel_Steeve-Index-Education
+DTSTART:20260907T130000Z
+DTEND:20260907T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-5-Pytel_Steeve-Index-Education
+DTSTART:20260914T130000Z
+DTEND:20260914T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-7-Pytel_Steeve-Index-Education
+DTSTART:20260928T130000Z
+DTEND:20260928T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-9-Pytel_Steeve-Index-Education
+DTSTART:20261012T130000Z
+DTEND:20261012T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-12-Pytel_Steeve-Index-Education
+DTSTART:20261102T140000Z
+DTEND:20261102T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-14-Pytel_Steeve-Index-Education
+DTSTART:20261116T140000Z
+DTEND:20261116T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260729T072438Z
+UID:Cours-1369944-15-Pytel_Steeve-Index-Education
+DTSTART:20261123T140000Z
+DTEND:20261123T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP5A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP5A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260826T084338Z
+UID:Cours-1369945-14-Pytel_Steeve-Index-Education
+DTSTART:20261116T153000Z
+DTEND:20261116T170000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.3 - <IUT 2EME ANNEE TC> TC2 G2 MDEE - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.3\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.3<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 2EME ANNEE TC&gt\; TC2 G2 MDEE<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-5-Pytel_Steeve-Index-Education
+DTSTART:20260916T113000Z
+DTEND:20260916T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-7-Pytel_Steeve-Index-Education
+DTSTART:20260930T113000Z
+DTEND:20260930T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-8-Pytel_Steeve-Index-Education
+DTSTART:20261007T113000Z
+DTEND:20261007T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-12-Pytel_Steeve-Index-Education
+DTSTART:20261104T123000Z
+DTEND:20261104T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-14-Pytel_Steeve-Index-Education
+DTSTART:20261118T123000Z
+DTEND:20261118T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-15-Pytel_Steeve-Index-Education
+DTSTART:20261125T123000Z
+DTEND:20261125T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204218Z
+UID:Cours-1374720-16-Pytel_Steeve-Index-Education
+DTSTART:20261202T123000Z
+DTEND:20261202T140000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD5 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD5<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204234Z
+UID:Cours-1374721-3-Pytel_Steeve-Index-Education
+DTSTART:20260904T113000Z
+DTEND:20260904T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD1 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204234Z
+UID:Cours-1374721-5-Pytel_Steeve-Index-Education
+DTSTART:20260918T113000Z
+DTEND:20260918T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD1 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204234Z
+UID:Cours-1374721-7-Pytel_Steeve-Index-Education
+DTSTART:20261002T113000Z
+DTEND:20261002T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD1 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204234Z
+UID:Cours-1374721-8-Pytel_Steeve-Index-Education
+DTSTART:20261009T113000Z
+DTEND:20261009T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD1 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204234Z
+UID:Cours-1374721-9-Pytel_Steeve-Index-Education
+DTSTART:20261016T113000Z
+DTEND:20261016T130000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD1 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260817T165408Z
+UID:Cours-1373507-15-Pytel_Steeve-Index-Education
+DTSTART:20261124T070000Z
+DTEND:20261124T083000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP1A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP1A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204541Z
+UID:Cours-1373508-4-Pytel_Steeve-Index-Education
+DTSTART:20260909T090000Z
+DTEND:20260909T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204458Z
+UID:Cours-1374722-4-Pytel_Steeve-Index-Education
+DTSTART:20260910T060000Z
+DTEND:20260910T073000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TD1 - TD
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1\nSalle : IUTC-503 i\nType : TD\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TD1<br/>Salle : IUTC-503 i<br/>Type : TD<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-5-Pytel_Steeve-Index-Education
+DTSTART:20260916T130000Z
+DTEND:20260916T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-7-Pytel_Steeve-Index-Education
+DTSTART:20260930T130000Z
+DTEND:20260930T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-8-Pytel_Steeve-Index-Education
+DTSTART:20261007T130000Z
+DTEND:20261007T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-12-Pytel_Steeve-Index-Education
+DTSTART:20261104T140000Z
+DTEND:20261104T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-14-Pytel_Steeve-Index-Education
+DTSTART:20261118T140000Z
+DTEND:20261118T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-15-Pytel_Steeve-Index-Education
+DTSTART:20261125T140000Z
+DTEND:20261125T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-16-Pytel_Steeve-Index-Education
+DTSTART:20261202T140000Z
+DTEND:20261202T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204320Z
+UID:Cours-1374723-18-Pytel_Steeve-Index-Education
+DTSTART:20261216T140000Z
+DTEND:20261216T153000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204325Z
+UID:Cours-1374724-5-Pytel_Steeve-Index-Education
+DTSTART:20260916T143000Z
+DTEND:20260916T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204325Z
+UID:Cours-1374724-7-Pytel_Steeve-Index-Education
+DTSTART:20260930T143000Z
+DTEND:20260930T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204325Z
+UID:Cours-1374724-8-Pytel_Steeve-Index-Education
+DTSTART:20261007T143000Z
+DTEND:20261007T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204325Z
+UID:Cours-1374724-12-Pytel_Steeve-Index-Education
+DTSTART:20261104T153000Z
+DTEND:20261104T170000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204325Z
+UID:Cours-1374724-14-Pytel_Steeve-Index-Education
+DTSTART:20261118T153000Z
+DTEND:20261118T170000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204325Z
+UID:Cours-1374724-16-Pytel_Steeve-Index-Education
+DTSTART:20261202T153000Z
+DTEND:20261202T170000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP3B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP3B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-5-Pytel_Steeve-Index-Education
+DTSTART:20260917T073000Z
+DTEND:20260917T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-7-Pytel_Steeve-Index-Education
+DTSTART:20261001T073000Z
+DTEND:20261001T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-8-Pytel_Steeve-Index-Education
+DTSTART:20261008T073000Z
+DTEND:20261008T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-12-Pytel_Steeve-Index-Education
+DTSTART:20261105T083000Z
+DTEND:20261105T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-14-Pytel_Steeve-Index-Education
+DTSTART:20261119T083000Z
+DTEND:20261119T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-15-Pytel_Steeve-Index-Education
+DTSTART:20261126T083000Z
+DTEND:20261126T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-16-Pytel_Steeve-Index-Education
+DTSTART:20261203T083000Z
+DTEND:20261203T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-17-Pytel_Steeve-Index-Education
+DTSTART:20261210T083000Z
+DTEND:20261210T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204341Z
+UID:Cours-1374725-18-Pytel_Steeve-Index-Education
+DTSTART:20261217T083000Z
+DTEND:20261217T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204815Z
+UID:Cours-1374726-4-Pytel_Steeve-Index-Education
+DTSTART:20260909T143000Z
+DTEND:20260909T160000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-5-Pytel_Steeve-Index-Education
+DTSTART:20260917T090000Z
+DTEND:20260917T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-7-Pytel_Steeve-Index-Education
+DTSTART:20261001T090000Z
+DTEND:20261001T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-8-Pytel_Steeve-Index-Education
+DTSTART:20261008T090000Z
+DTEND:20261008T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-12-Pytel_Steeve-Index-Education
+DTSTART:20261105T100000Z
+DTEND:20261105T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-14-Pytel_Steeve-Index-Education
+DTSTART:20261119T100000Z
+DTEND:20261119T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-15-Pytel_Steeve-Index-Education
+DTSTART:20261126T100000Z
+DTEND:20261126T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-16-Pytel_Steeve-Index-Education
+DTSTART:20261203T100000Z
+DTEND:20261203T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-17-Pytel_Steeve-Index-Education
+DTSTART:20261210T100000Z
+DTEND:20261210T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204348Z
+UID:Cours-1374727-18-Pytel_Steeve-Index-Education
+DTSTART:20261217T100000Z
+DTEND:20261217T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204812Z
+UID:Cours-1374728-4-Pytel_Steeve-Index-Education
+DTSTART:20260909T130000Z
+DTEND:20260909T143000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP4A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP4A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-5-Pytel_Steeve-Index-Education
+DTSTART:20260916T073000Z
+DTEND:20260916T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-7-Pytel_Steeve-Index-Education
+DTSTART:20260930T073000Z
+DTEND:20260930T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-9-Pytel_Steeve-Index-Education
+DTSTART:20261014T073000Z
+DTEND:20261014T090000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-12-Pytel_Steeve-Index-Education
+DTSTART:20261104T083000Z
+DTEND:20261104T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-14-Pytel_Steeve-Index-Education
+DTSTART:20261118T083000Z
+DTEND:20261118T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-15-Pytel_Steeve-Index-Education
+DTSTART:20261125T083000Z
+DTEND:20261125T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-17-Pytel_Steeve-Index-Education
+DTSTART:20261209T083000Z
+DTEND:20261209T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204526Z
+UID:Cours-1374729-18-Pytel_Steeve-Index-Education
+DTSTART:20261216T083000Z
+DTEND:20261216T100000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2A - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2A<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-5-Pytel_Steeve-Index-Education
+DTSTART:20260916T090000Z
+DTEND:20260916T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-7-Pytel_Steeve-Index-Education
+DTSTART:20260930T090000Z
+DTEND:20260930T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-8-Pytel_Steeve-Index-Education
+DTSTART:20261007T090000Z
+DTEND:20261007T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-9-Pytel_Steeve-Index-Education
+DTSTART:20261014T090000Z
+DTEND:20261014T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-12-Pytel_Steeve-Index-Education
+DTSTART:20261104T100000Z
+DTEND:20261104T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-14-Pytel_Steeve-Index-Education
+DTSTART:20261118T100000Z
+DTEND:20261118T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-15-Pytel_Steeve-Index-Education
+DTSTART:20261125T100000Z
+DTEND:20261125T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-16-Pytel_Steeve-Index-Education
+DTSTART:20261202T100000Z
+DTEND:20261202T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374730-17-Pytel_Steeve-Index-Education
+DTSTART:20261209T100000Z
+DTEND:20261209T113000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260818T204530Z
+UID:Cours-1374731-4-Pytel_Steeve-Index-Education
+DTSTART:20260910T090000Z
+DTEND:20260910T103000Z
+SUMMARY;LANGUAGE=fr:Ressources culture num.1 - <IUT 1ERE ANNEE TECH DE COMMERCIALISATION> TP2B - TP
+LOCATION;LANGUAGE=fr:IUTC-503 i
+DESCRIPTION;LANGUAGE=fr:Matière : Ressources culture num.1\nEnseignant : Pytel Steeve\nTD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B\nSalle : IUTC-503 i\nType : TP\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : Ressources culture num.1<br/>Enseignant : Pytel Steeve<br/>TD : &lt\;IUT 1ERE ANNEE TECH DE COMMERCIALISATION&gt\; TP2B<br/>Salle : IUTC-503 i<br/>Type : TP<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+LAST-MODIFIED:20260901T125239Z
+UID:Cours-1382951-3-Pytel_Steeve-Index-Education
+DTSTART:20260903T123000Z
+DTEND:20260903T130000Z
+SUMMARY;LANGUAGE=fr:matière à préciser - David Maxime\, Hoellard Emilie\, Millet Mickael\, Motte Armelle - Réunion PF
+DESCRIPTION;LANGUAGE=fr:Matière : matière à préciser\nEnseignants : David Maxime\, Hoellard Emilie\, Millet Mickael\, Motte Armelle\, Pytel Steeve\nMémo : Réunion PF\n
+X-ALT-DESC;FMTTYPE=text/html:Matière : matière à préciser<br/>Enseignants : David Maxime\, Hoellard Emilie\, Millet Mickael\, Motte Armelle\, Pytel Steeve<br/>Mémo : Réunion PF<br/>
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2179-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20260817
+DTEND;VALUE=DATE:20260901
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2180-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261102
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2181-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY;LANGUAGE=fr:Férié
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2182-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20270104
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2183-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20270221
+DTEND;VALUE=DATE:20270301
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2184-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20270328
+DTEND;VALUE=DATE:20270330
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2185-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20270418
+DTEND;VALUE=DATE:20270503
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2186-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270510
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2187-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20270516
+DTEND;VALUE=DATE:20270518
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:HYPERPLANNING
+DTSTAMP:20260901T193401Z
+UID:Ferie-2188-Pytel_Steeve-Index-Education
+DTSTART;VALUE=DATE:20270704
+DTEND;VALUE=DATE:20270815
+SUMMARY;LANGUAGE=fr:Vacances
+END:VEVENT
+END:VCALENDAR
