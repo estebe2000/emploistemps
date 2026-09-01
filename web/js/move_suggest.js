@@ -14,6 +14,27 @@ function _evtBusy(ev, dayIdx, slot) {
     return ev.day_idx === dayIdx && ev.slot_idx === slot;
 }
 
+// Convertit un nom de jour (Lundi..Samedi) en date précise dans la semaine `week`.
+function buildSuggestionDateLabel(week, dayName) {
+    const idx = MOVE_DAYS.indexOf(dayName);
+    if (idx < 0) return dayName || '';
+    return getDayDateLabel(week, idx);
+}
+
+// Retourne la date précise (par ex. "lun. 31 août 2026") du jour dIdx dans la semaine `week`.
+function getDayDateLabel(week, dIdx) {
+    if (typeof getWeekDateRange !== 'function') return MOVE_DAYS[dIdx] || '';
+    try {
+        const r = getWeekDateRange(week || 1);
+        const base = new Date(r.start); // lundi de la semaine
+        const d = new Date(base);
+        d.setDate(d.getDate() + dIdx);
+        const jours = ["dim.","lun.","mar.","mer.","jeu.","ven.","sam."];
+        const mois = ["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+        return `${jours[d.getDay()]} ${d.getDate()} ${mois[d.getMonth()]} ${d.getFullYear()}`;
+    } catch (e) { return MOVE_DAYS[dIdx] || ''; }
+}
+
 // Calcule les créneaux compatibles pour déplacer `ev`.
 // Respecte : groupe libre, enseignant libre, salle dispo.
 function computeMoveSuggestions(ev) {
@@ -32,7 +53,7 @@ function computeMoveSuggestions(ev) {
             if (!freeRooms.length) continue;
             const dayName = MOVE_DAYS[dIdx];
             const isLow = (dayName === "Jeudi" && s >= 3) || (dayName === "Samedi" && s >= 3);
-            suggestions.push({ dIdx, s, dayName, slotTime: MOVE_SLOT_TIMES[s], freeRooms: freeRooms.slice(0, 3), isLow });
+            suggestions.push({ dIdx, s, dayName, dateLabel: getDayDateLabel(ev.week, dIdx), slotTime: MOVE_SLOT_TIMES[s], freeRooms: freeRooms.slice(0, 3), isLow });
         }
     }
     suggestions.sort((a, b) => (a.dIdx * 10 + a.s + (a.isLow ? 100 : 0)) - (b.dIdx * 10 + b.s + (b.isLow ? 100 : 0)));
@@ -55,8 +76,7 @@ function buildMoveMail(ev, dayName, slotIdx, roomId, roomName) {
         "",
         "Proposition de nouveau créneau :",
         "",
-        `• Nouveau créneau : ${dayName} ${MOVE_SLOT_TIMES[slotIdx] || ''}`,
-        `• Salle : ${roomName || roomId}`,
+        `• Nouveau créneau : ${buildSuggestionDateLabel(ev.week, dayName)} ${MOVE_SLOT_TIMES[slotIdx] || ''} - Salle ${roomName || roomId}`,
         "",
         "Merci de confirmer la disponibilité et de mettre à jour l'emploi du temps.",
         "Cordialement."
@@ -79,7 +99,7 @@ function populateMoveModal(ev) {
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.style.cssText = 'text-align:left; justify-content:space-between; width:100%;';
-        btn.innerHTML = `<span style="font-size:0.78rem;">🗓️ ${s.dayName} ${s.slotTime}</span>
+        btn.innerHTML = `<span style="font-size:0.78rem;">🗓️ ${s.dateLabel} · ${s.slotTime}</span>
             <span style="font-size:0.72rem; color:var(--text-muted);">${s.freeRooms.map(r=>r.name).join(', ')}${s.isLow?' · (recours)':''}</span>`;
         btn.onclick = () => {
             document.getElementById('move-target-day').value = s.dayName;
