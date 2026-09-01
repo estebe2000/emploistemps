@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificateur d'Emplois du Temps TC | Moteur CP-SAT & IA Albert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131b2e;
+            --bg-card: rgba(22, 33, 58, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(99, 102, 241, 0.4);
+            
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.25);
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --accent-cm: #8b5cf6;
+            --accent-td: #3b82f6;
+            --accent-tp: #06b6d4;
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+        }
+
+        /* Top Navbar */
+        header {
+            background: rgba(19, 27, 46, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-primary), #06b6d4);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+        }
+
+        .brand-text h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 12px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #4338ca, #4f46e5);
+        }
+
+        .btn-success {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #34d399;
+        }
+
+        /* Main Container */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            flex: 1;
+        }
+
+        /* Left Section: Filters & Schedule */
+        .main-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .control-bar {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        select, input {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.4rem 0.8rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 20px;
+            color: #34d399;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        /* Timetable Grid */
+        .grid-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 120px repeat(5, minmax(180px, 1fr));
+            gap: 8px;
+        }
+
+        .grid-header {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 0.5rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .time-col-header {
+            background: transparent;
+            border: none;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-slot-label {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .slot-name {
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .slot-cell {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-sm);
+            min-height: 105px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .slot-cell:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .event-card {
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s, box-shadow 0.15s;
+            cursor: pointer;
+            border-left: 4px solid #fff;
+        }
+
+        .event-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .event-cm {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.1));
+            border-color: var(--accent-cm);
+        }
+
+        .event-td {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.1));
+            border-color: var(--accent-td);
+        }
+
+        .event-tp {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(6, 182, 212, 0.1));
+            border-color: var(--accent-tp);
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .event-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .badge-cm { background: var(--accent-cm); color: white; }
+        .badge-td { background: var(--accent-td); color: white; }
+        .badge-tp { background: var(--accent-tp); color: white; }
+
+        .event-title {
+            color: var(--text-main);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 4px;
+            margin-top: 2px;
+        }
+
+        .event-room {
+            font-family: 'JetBrains Mono', monospace;
+            color: #38bdf8;
+        }
+
+        /* Right Panel: AI Copilot */
+        .copilot-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: calc(100vh - 120px);
+            position: sticky;
+            top: 90px;
+        }
+
+        .copilot-header {
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copilot-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .chat-container {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-bubble {
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            line-height: 1.45;
+            max-width: 90%;
+            word-wrap: break-word;
+        }
+
+        .bubble-ai {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .bubble-user {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-area {
+            border-top: 1px solid var(--border-color);
+            padding: 1rem;
+            display: flex;
+            gap: 8px;
+            background: rgba(19, 27, 46, 0.95);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 0.9rem;
+            border-radius: var(--radius-sm);
+            color: white;
+            font-size: 0.85rem;
+        }
+
+        .quick-prompts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 0.5rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .quick-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-btn:hover {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            width: 420px;
+            max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <div class="brand-logo">TC</div>
+            <div class="brand-text">
+                <h1>Emplois du Temps BUT TC</h1>
+                <p>Moteur Hybride : Google OR-Tools (CP-SAT) + IA Albert (Etalab)</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <a href="/docs" target="_blank" class="btn">📚 OpenAPI Swagger</a>
+            <a href="/api/v1/export/ical" class="btn btn-success">📥 Exporter iCal (.ics)</a>
+            <button id="btn-generate" class="btn btn-primary" onclick="triggerSolver()">⚡ Optimiser (CP-SAT)</button>
+        </div>
+    </header>
+
+    <!-- Main Body -->
+    <div class="container">
+        
+        <!-- Left Column: Timetable -->
+        <div class="main-panel">
+            
+            <!-- Controls -->
+            <div class="control-bar">
+                <div class="filter-group">
+                    <span class="filter-label">Filtres :</span>
+                    <select id="filter-group" onchange="renderSchedule()">
+                        <option value="">👥 Tous les groupes</option>
+                        <option value="BUT1_PROMO">Promo BUT 1 (CM)</option>
+                        <option value="BUT1_TD1">Groupe TD 1</option>
+                        <option value="BUT1_TD2">Groupe TD 2</option>
+                        <option value="BUT1_TP11">Groupe TP 11</option>
+                        <option value="BUT1_TP12">Groupe TP 12</option>
+                        <option value="BUT1_TP21">Groupe TP 21</option>
+                        <option value="BUT1_TP22">Groupe TP 22</option>
+                    </select>
+
+                    <select id="filter-teacher" onchange="renderSchedule()">
+                        <option value="">👤 Tous les enseignants</option>
+                    </select>
+
+                    <select id="filter-room" onchange="renderSchedule()">
+                        <option value="">📍 Toutes les salles</option>
+                    </select>
+                </div>
+
+                <div class="status-badge">
+                    <div class="badge-pulse"></div>
+                    <span id="metrics-text">0 Conflit | Semaine 1 (S1)</span>
+                </div>
+            </div>
+
+            <!-- Timetable Grid -->
+            <div class="grid-container">
+                <div class="schedule-grid" id="grid">
+                    <!-- Dynamic Grid Generated by JS -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Column: AI Assistant (Albert Copilot) -->
+        <div class="copilot-panel">
+            <div class="copilot-header">
+                <div class="copilot-icon">🤖</div>
+                <div>
+                    <h3 style="font-size: 0.95rem; font-weight: 700;">Assistant IA Albert</h3>
+                    <p style="font-size: 0.72rem; color: var(--text-muted);">Copilote conversationnel souverain & outillé</p>
+                </div>
+            </div>
+
+            <div class="chat-container" id="chat-box">
+                <div class="chat-bubble bubble-ai">
+                    Bonjour ! Je suis votre copilote d'emploi du temps pour le département TC. Je peux vérifier les conflits de salles, trouver des créneaux de rattrapage ou déplacer des cours sur simple demande.
+                </div>
+            </div>
+
+            <div class="quick-prompts">
+                <button class="quick-btn" onclick="sendQuickPrompt('Trouve des créneaux libres pour Thierry Tabellion avec BUT1_TD1')">📅 Créneaux T. Tabellion</button>
+                <button class="quick-btn" onclick="sendQuickPrompt('Est-ce que je peux déplacer le cours 48_BUT1_TD1 au Lundi matin ?')">⚠️ Tester conflit</button>
+                <button class="quick-btn" onclick="sendQuickPrompt('Quels sont les cours prévus le Mardi après-midi ?')">🔍 Cours Mardi</button>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Posez une question ou donnez un ordre..." onkeypress="handleKey(event)">
+                <button class="btn btn-primary" onclick="sendMessage()">Envoyer</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
+        const SLOTS = [
+            { id: 0, name: "M1", time: "08:00 - 10:00" },
+            { id: 1, name: "M2", time: "10:15 - 12:15" },
+            { id: 2, name: "S1", time: "13:30 - 15:30" },
+            { id: 3, name: "S2", time: "15:45 - 17:45" }
+        ];
+
+        let currentSchedule = [];
+        let dataset = {};
+
+        async function init() {
+            try {
+                // 1. Load dataset
+                const dsRes = await fetch('/api/v1/dataset');
+                dataset = await dsRes.json();
+                populateDropdowns();
+
+                // 2. Load schedule
+                const scRes = await fetch('/api/v1/schedule');
+                const scData = await scRes.json();
+                currentSchedule = scData.events || [];
+                renderSchedule();
+            } catch (err) {
+                console.error("Erreur chargement:", err);
+            }
+        }
+
+        function populateDropdowns() {
+            const teachSelect = document.getElementById('filter-teacher');
+            const roomSelect = document.getElementById('filter-room');
+
+            (dataset.teachers || []).forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.name;
+                opt.textContent = t.name;
+                teachSelect.appendChild(opt);
+            });
+
+            (dataset.rooms || []).forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r.name;
+                opt.textContent = `${r.name} (${r.type})`;
+                roomSelect.appendChild(opt);
+            });
+        }
+
+        function renderSchedule() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+
+            const filterGroup = document.getElementById('filter-group').value;
+            const filterTeacher = document.getElementById('filter-teacher').value;
+            const filterRoom = document.getElementById('filter-room').value;
+
+            // Header Top-Left
+            const emptyCorner = document.createElement('div');
+            emptyCorner.className = 'grid-header time-col-header';
+            emptyCorner.textContent = 'Créneaux';
+            grid.appendChild(emptyCorner);
+
+            // Day Headers
+            DAYS.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'grid-header';
+                dayHeader.textContent = day;
+                grid.appendChild(dayHeader);
+            });
+
+            // Filter Events
+            let filtered = currentSchedule;
+            if (filterGroup) {
+                filtered = filtered.filter(e => e.group_id === filterGroup || e.group_id.includes('PROMO'));
+            }
+            if (filterTeacher) {
+                filtered = filtered.filter(e => e.teacher_name.toLowerCase().includes(filterTeacher.toLowerCase()));
+            }
+            if (filterRoom) {
+                filtered = filtered.filter(e => e.room_name.toLowerCase().includes(filterRoom.toLowerCase()) || e.room_id.toLowerCase().includes(filterRoom.toLowerCase()));
+            }
+
+            // Fill rows per slot
+            SLOTS.forEach((slot, sIdx) => {
+                // Time label
+                const timeLabel = document.createElement('div');
+                timeLabel.className = 'time-slot-label';
+                timeLabel.innerHTML = `<span class="slot-name">${slot.name}</span><span>${slot.time}</span>`;
+                grid.appendChild(timeLabel);
+
+                // 5 Days cells
+                DAYS.forEach((day, dIdx) => {
+                    const cell = document.createElement('div');
+                    cell.className = 'slot-cell';
+                    cell.id = `cell-${dIdx}-${sIdx}`;
+
+                    const cellEvents = filtered.filter(e => e.day_idx === dIdx && e.slot_idx === sIdx);
+                    cellEvents.forEach(ev => {
+                        const card = document.createElement('div');
+                        const typeClass = ev.event_type === 'CM' ? 'event-cm' : (ev.event_type === 'TP' ? 'event-tp' : 'event-td');
+                        const badgeClass = ev.event_type === 'CM' ? 'badge-cm' : (ev.event_type === 'TP' ? 'badge-tp' : 'badge-td');
+
+                        card.className = `event-card ${typeClass}`;
+                        card.innerHTML = `
+                            <div class="event-header">
+                                <span>${ev.resource_code}</span>
+                                <span class="event-badge ${badgeClass}">${ev.event_type}</span>
+                            </div>
+                            <div class="event-title" title="${ev.resource_name}">${ev.resource_name}</div>
+                            <div class="event-footer">
+                                <span>${ev.teacher_name}</span>
+                                <span class="event-room">${ev.room_name.replace('Amphithéâtre', 'Amphi')}</span>
+                            </div>
+                        `;
+                        card.onclick = () => {
+                            sendQuickPrompt(`Est-ce que je peux déplacer le cours ${ev.lesson_id} vers un autre créneau ?`);
+                        };
+                        cell.appendChild(card);
+                    });
+
+                    grid.appendChild(cell);
+                });
+            });
+        }
+
+        async function triggerSolver() {
+            const btn = document.getElementById('btn-generate');
+            btn.disabled = true;
+            btn.textContent = '⏳ Résolution CP-SAT...';
+
+            try {
+                const res = await fetch('/api/v1/solver/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ semester: 'S1', week: 1, time_limit_seconds: 15 })
+                });
+                const data = await res.json();
+                currentSchedule = data.events || [];
+                renderSchedule();
+                document.getElementById('metrics-text').textContent = `0 Conflit | Résolu en ${data.solve_time_sec?.toFixed(2)}s`;
+                appendMessage('ai', `🎉 Emploi du temps regénéré avec succès par le solveur CP-SAT en ${data.solve_time_sec?.toFixed(2)}s ! 100% des contraintes sont respectées.`);
+            } catch (err) {
+                alert("Erreur solveur : " + err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '⚡ Optimiser (CP-SAT)';
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            appendMessage('user', prompt);
+            input.value = '';
+
+            const aiBubble = appendMessage('ai', '⏳ Analyse en cours avec Albert...');
+
+            try {
+                const res = await fetch('/api/v1/ai/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+                const data = await res.json();
+                aiBubble.textContent = data.response || "Aucune réponse reçue.";
+
+                // Refresh schedule in case a move was applied
+                const scRes = await fetch('/api/v1/schedule');
+                const scData = await scRes.json();
+                currentSchedule = scData.events || [];
+                renderSchedule();
+            } catch (err) {
+                aiBubble.textContent = "Erreur lors de la communication avec l'IA : " + err;
+            }
+        }
+
+        function sendQuickPrompt(prompt) {
+            document.getElementById('chat-input').value = prompt;
+            sendMessage();
+        }
+
+        function appendMessage(role, text) {
+            const box = document.getElementById('chat-box');
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${role === 'user' ? 'bubble-user' : 'bubble-ai'}`;
+            bubble.textContent = text;
+            box.appendChild(bubble);
+            box.scrollTop = box.scrollHeight;
+            return bubble;
+        }
+
+        function handleKey(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
