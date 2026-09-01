@@ -27,16 +27,25 @@ class LessonToSchedule:
 
 
 class TimetableSolver:
-    def __init__(self, dataset_path: str):
+    def __init__(self, dataset_path: str, constraints_path: Optional[str] = None):
         self.dataset_path = dataset_path
         with open(dataset_path, "r", encoding="utf-8") as f:
             self.data = json.load(f)
+
+        if not constraints_path:
+            constraints_path = os.path.join(os.path.dirname(dataset_path), "constraints.json")
+        
+        self.constraints = {}
+        if os.path.exists(constraints_path):
+            with open(constraints_path, "r", encoding="utf-8") as f:
+                self.constraints = json.load(f)
 
         self.teachers = {t["name"]: t for t in self.data["teachers"]}
         self.resources = {r["code"]: r for r in self.data["resources"]}
         self.rooms = {rm["id"]: rm for rm in self.data["rooms"]}
         self.cohorts = self.data["cohorts"]
         self.calendar = self.data["calendar_config"]
+
 
         self.num_days = len(self.calendar["days"])  # 5 days: Lun..Ven
         self.slots_per_day = len(self.calendar["daily_slots"])  # 4 slots/day
@@ -164,34 +173,65 @@ class TimetableSolver:
                     model.Add(sum(teacher_vars) <= 1)
 
         # HARD CONSTRAINT 4: Group Hierarchy and No Student Overlap
-        # Hierarchy:
-        # BUT1_PROMO includes (BUT1_TD1, BUT1_TD2)
-        # BUT1_TD1 includes (BUT1_TP11, BUT1_TP12)
-        # BUT1_TD2 includes (BUT1_TP21, BUT1_TP22)
-        group_conflicts = {
-            "BUT1_PROMO": ["BUT1_PROMO", "BUT1_TD1", "BUT1_TD2", "BUT1_TP11", "BUT1_TP12", "BUT1_TP21", "BUT1_TP22"],
-            "BUT1_TD1": ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP11", "BUT1_TP12"],
-            "BUT1_TD2": ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP21", "BUT1_TP22"],
-            "BUT1_TP11": ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP11"],
-            "BUT1_TP12": ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP12"],
-            "BUT1_TP21": ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP21"],
-            "BUT1_TP22": ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP22"],
-        }
+        # A student in TP11 is simultaneously in TD1 and PROMO.
+        # So in any slot s, (lessons for PROMO) + (lessons for TD1) + (lessons for TP11) <= 1.
+        student_branches = [
+            ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP11"],
+            ["BUT1_PROMO", "BUT1_TD1", "BUT1_TP12"],
+            ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP21"],
+            ["BUT1_PROMO", "BUT1_TD2", "BUT1_TP22"]
+        ]
 
         for s in slots:
-            for leaf_group in ["BUT1_TP11", "BUT1_TP12", "BUT1_TP21", "BUT1_TP22"]:
-                overlapping_groups = group_conflicts[leaf_group]
-                group_slot_vars = [
+            for branch in student_branches:
+                branch_vars = [
                     var for (li, slot, room), var in x.items()
-                    if slot == s and week_lessons[li].group_id in overlapping_groups
+                    if slot == s and week_lessons[li].group_id in branch
                 ]
-                if group_slot_vars:
-                    model.Add(sum(group_slot_vars) <= 1)
+                if branch_vars:
+                    model.Add(sum(branch_vars) <= 1)
+
+        # HARD CONSTRAINT 5: Teacher Unavailabilities
+        day_names = self.calendar["days"]
+        for unavail in self.constraints.get("teacher_unavailabilities", []):
+            t_name = unavail.get("teacher_name")
+            u_day = unavail.get("day")
+            u_slots = unavail.get("slots", [])
+            if u_day in day_names:
+                d_idx = day_names.index(u_day)
+                for slot_in_day in u_slots:
+                    g_slot = d_idx * self.slots_per_day + slot_in_day
+                    blocked_vars = [
+                        var for (li, slot, room), var in x.items()
+                        if slot == g_slot and week_lessons[li].teacher_name.lower() == t_name.lower()
+                    ]
+                    if blocked_vars:
+                        model.Add(sum(blocked_vars) == 0)
+
+        # HARD CONSTRAINT 6: Room Closures / Reservations
+        for closure in self.constraints.get("room_closures_or_reservations", []):
+            r_id = closure.get("room_id")
+            c_week = closure.get("week")
+            c_day = closure.get("day")
+            c_slots = closure.get("slots", [])
+            # Apply if target_week matches or if closure is weekly
+            if c_week is None or c_week == target_week:
+                if c_day in day_names:
+                    d_idx = day_names.index(c_day)
+                    for slot_in_day in c_slots:
+                        g_slot = d_idx * self.slots_per_day + slot_in_day
+                        blocked_room_vars = [
+                            var for (li, slot, room), var in x.items()
+                            if slot == g_slot and room == r_id
+                        ]
+                        if blocked_room_vars:
+                            model.Add(sum(blocked_room_vars) == 0)
 
         # SOFT CONSTRAINTS / OPTIMIZATION OBJECTIVES:
         # 1. Encourage morning slots (M1, M2) over late afternoon (S2)
         # 2. Keep schedule compact
         objective_terms = []
+
         for (li, s, r_id), var in x.items():
             slot_in_day = s % self.slots_per_day
             # Slight preference for slots 0 (M1), 1 (M2), 2 (S1) over 3 (S2 late afternoon)
