@@ -2,42 +2,38 @@
 
 > Mettre à jour immédiatement chaque tâche terminée (✓). Ajouter toute tâche découverte sous « Discovered During Work ».
 
-## Terminé (reprise du déploiement, session 09/2026)
+## Terminé (sécurité & fondations)
 - [x] **Revue de code initiale** — Memory Bank créé (`memory-bank/`).
-- [x] **1. Faille de sécurité** : retrait du jeton Albert en clair de `assistant/copilot.py` (lecture depuis `ALBERT_API_TOKEN`, garde-fou si absent) ; `.env.example` ; README ; recommandation de **rotation du jeton** (fuite dans git `10b99a4`).
-- [x] **2. Contrat API cassé** : implémentation de `POST /api/v1/schedule/move`, `POST /api/v1/schedule/verify-conflict`, `GET /api/v1/schedule/free-slots` (alignés SDK Go + README).
-- [x] **3. Suite pytest** : `tests/` (`test_conflict.py`, `test_hetd.py`), `conftest.py`, `requirements-dev.txt` ; 10 tests OK ; correction d'une incohérence `raison` → `raisons`.
-- [x] **4. Contraintes HETD** : `max_hours_per_day_teacher` / `max_hours_per_day_student` appliquées au CP-SAT (faisabilité validée).
-- [x] **5. CORS** : restreint à `CORS_ALLOW_ORIGINS` (défaut localhost), `allow_credentials=False`.
-- [x] **8. Procédure de déploiement** : `Dockerfile`, `.dockerignore`, `docker-compose.yml` ; image construite et **conteneur déployé** (`emploistemps-tc`, port 8000) ; **validé de bout en bout dans le conteneur** (health, dataset, schedule, workload, interface, free-slots, verify-conflict, ai/chat protégé, génération CP-SAT).
+- [x] **Faille de sécurité** : retrait du jeton Albert en clair (lecture via `ALBERT_API_TOKEN`), garde-fou si absent, `.env.example`.
+- [x] **Purge de l'historique git (option B)** : `git filter-repo`, force-push, vérifié clone frais (secret absent).
+- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit`.
+- [x] **`.gitignore` renforcé** + `.env` et QR restent locaux (jamais commités).
+- [x] **Contrat API** : `move`, `verify-conflict`, `free-slots` implémentés (alignés SDK Go + README).
+- [x] **Suite pytest** : `tests/` (conflits, HETD, HP sync), 13 tests OK.
+- [x] **CORS restreint** (`CORS_ALLOW_ORIGINS`), **contraintes HETD** appliquées au CP-SAT.
+
+## Terminé (refactor & déploiement)
+- [x] **Refactor backend** : `api/` découpé en routers + storage + schemas + services (aucun > 283 lignes).
+- [x] **Refactor frontend** : CSS/JS extraits (`web/css/style.css`, `web/js/*.js`), `index.html` 578 lignes.
+- [x] **Docker** : image `emploistemps-tc`, conteneur déployé, pilotable **100% par API**.
+- [x] **Assistant IA Albert masqué** dans l'interface ; planning en pleine largeur.
+
+## Terminé (Hyperplanning & interface)
+- [x] **Synchro Hyperplanning** : `hp_sync.py` + sources iCal (BUT1/2/3) + statut temps réel.
+- [x] **Numéros de semaine ISO réels** partout (36..50 ; fin des S1..S15 trompeurs).
+- [x] **Admin enrichi** : service enseignant (plein/demi/custom + bilan HETD), salles éditables (places/info/labo), fermetures par plage de dates, évaluations.
+- [x] **Actions clic-droit → demandes par mail** (déplacer, changer salle, changer enseignant, reprogrammer) sans modification directe.
+- [x] **Politique de déplacement** (gestionnaire EDT : avant jeudi 18h pour la semaine suivante) respectée.
+
+## Terminé (API / intégration)
+- [x] **Génération de textes EDT** : `POST /api/v1/admin/generate-text` (kind: move/room/teacher/defer).
+- [x] **Suggestions exposées en API** : `GET /schedule/suggest-move` et `/schedule/suggest-room` (pour clients externes).
+- [x] **Document d'intégration SkilLHub** : `docs/integration_sibutv3.md` (architecture Docker interne, rôles, workflows, checklist).
 
 ## En cours
-- [ ] (aucune tâche bloquée — service Docker actif)
-
-## Terminé
-- [x] **Push de la version actuelle sur `origin/main`** — 76 fichiers, aucun secret.
-- [x] **Option B : purge de la clé Albert de l'historique git** : `git filter-repo --replace-text`, force-push (`a9629cf...c436906`), vérifié sur clone frais du remote (secret absent). GC + reflog purgés.
-- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit`.
-- [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`.
-- [x] ✅ **IMPORTANT utilisateur** : `.env` et QR restent locaux (jamais commités).
-
-## Hyperplanning (en cours)
-- [x] **Authentification CAS** fonctionnelle (`cas_authenticate`, login en `.env`).
-- [x] **Accès iCal permanent** découvert + **synchro implémentée** :
-  - `scripts/hp_sync.py` (télécharge les iCal, `--import` pour ingérer).
-  - `data/hp_ical_sources.json` (3 promos BUT TC).
-  - Résultat : **2573 cours** synchronisés depuis Hyperplanning, servis par l'API Docker.
-  - Tests `tests/test_hp_sync.py` (3).
-- [ ] Étendre les sources (enseignants, salles, groupes TD/TP) via `scripts/hp_explore.py`.
-- [ ] Planifier la synchro périodique (cron/APScheduler) et/ou au démarrage Docker.
-
-## Terminé
-- [x] **Option B : purge de la clé Albert** de l'historique git (force-push, vérifié clone frais).
-- [x] **Garde-fou anti-fuite** : `scripts/scan_secrets.py` + hook `.githooks/pre-commit`.
-- [x] **`.gitignore` renforcé** : `.env.*` (sauf `.env.example`), `rqcode-*.png`, `*.jar/*.exe/*.dll/*.wsdl`, `**/nbproject/private/`, `data/hp_last_sync.json`.
-- [x] ✅ `.env` et QR restent locaux (jamais commités).
+- [ ] Pont côté SkilLHub (sibutv3) : client `http://edt:8000`, endpoints `me/edt`, vérification des rôles, reproduction de l'interface.
 
 ## Discovered During Work
 - [ ] Révocation + rotation du jeton Albert sur Etalab (obligatoire).
-- [ ] Driver le build du SDK Go : Go non installé localement.
-- [ ] `ai/chat` sans jeton : retourne un message d'avertissement (comportement attendu).
+- [ ] Driver le build du SDK Go (Go non installé localement).
+- [ ] Étendre les sources iCal (enseignants, salles, groupes TD/TP).

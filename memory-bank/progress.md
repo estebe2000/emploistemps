@@ -1,28 +1,33 @@
 # Progress
 
 ## ✅ Ce qui fonctionne
-- **API FastAPI** complète et opérationnelle : démarrage `uvicorn api.main:app`.
-  - `/health`, `/api/v1/dataset`, `/api/v1/teachers`, `/api/v1/resources`, `/api/v1/rooms`, `/api/v1/cohorts`.
-  - `/api/v1/solver/generate` (CP-SAT), `/api/v1/schedule` (filtres), `/api/v1/teachers/workload`.
-  - Administration : `admin/constraints`, `teacher/unavailability`, `room/closure`, `cohort/alternance`, `evaluations`, `teachers/absence`.
-  - Planning : `schedule/deferred`, `schedule/reprogram`, `schedule/quick-action`.
-  - `ai/chat` (copilote Albert), `export/ical`.
-- **Interface web** (`web/index.html`) servie à `/` ; grille, clic-droit, modales, bilan HETD.
-- **Import iCal** → `schedule_result.json` (2840 événements, 6 créneaux/jour, fuseau Europe/Paris).
-- **Extraction dataset** → `dataset_tc.json` (33 enseignants, 15 salles, ressources, cohortes BUT1/2/3).
-- **SDK Go** (`sdk/go`) : client REST complet (health, generate, schedule, workload, quick-action, ai).
+- **API FastAPI** opérationnelle et déployée en Docker (`emploistemps-tc`, port 8000, **pilotable 100% par API**).
+  - Données : `/health`, `/api/v1/dataset`, `/teachers`, `/resources`, `/rooms`, `/cohorts`.
+  - Solveur : `/api/v1/solver/generate` (CP-SAT).
+  - Planning : `/schedule` (filtres teacher/group/room), `verify-conflict`, `move`, `free-slots`, `deferred`, `reprogram`, `quick-action`, `export/ical`.
+  - Admin : `admin/constraints`, `teacher-services`, `rooms`, `teacher/unavailability`, `room/closure`, `cohort/alternance`, `evaluations`, `teachers/absence`, `ical-sources`, `ical-sync` (+ status).
+  - **Textes** : `POST /api/v1/admin/generate-text` (kind: move/room/teacher/defer).
+  - **Suggestions** : `GET /schedule/suggest-move` et `/schedule/suggest-room`.
+- **Interface web** servie à `/` ; grille (largeur complète), clic-droit → demandes par mail (salle/enseignant/déplacement/reprogrammation), admin enrichi (service HETD, salles éditables, fermetures par dates, évaluations, sources iCal, politique de déplacement), **numéros de semaine ISO réels**.
+- **Synchro Hyperplanning** : `hp_sync.py` (iCal BUT1/2/3), statut temps réel.
+- **Assistant IA Albert masqué** dans l'interface.
+- **Refactor** : `api/` en routers + services (aucun > 283 lignes) ; frontend en fichiers (`css/style.css`, `js/*.js`).
+- **Sécurité** : jeton Albert retiré + historiqe purgé ; hook pre-commit anti-fuite ; `.gitignore` renforcé.
+- **Tests** : `tests/` (conflits, HETD, HP sync) — 13 tests OK.
+- **SDK Go** : client REST complet.
+- **Document d'intégration** : `docs/integration_sibutv3.md` (pont SkilLHub).
 
 ## ⏳ Ce qui reste à faire
-3. **Tests** : suite créée (`tests/`, 10 tests OK). Étendre au besoin.
-4. **Contraintes** : `max_hours_per_day_teacher/student` désormais appliquées au CP-SAT (fait).
-5. **Créneaux** : unifier les modèles 4 vs 6 créneaux/jour (solveur vs iCal vs copilote) ou documenter explicitement. *(en attente d'arbitrage)*
-6. **Robustesse** : verrouillage d'accès aux fichiers JSON, gestion globale des erreurs. *(à faire)*
-7. **Déploiement** : choisir et documenter le mode (NSSM / Docker / reverse-proxy), fournir script de démarrage. *(à faire)*
+- [ ] **Pont côté SkilLHub (sibutv3)** : client `http://edt:8000`, endpoints `me/edt` (semaine/jour), vérification des rôles (EDT_MANAGER/PROFESSOR/STUDENT), reproduction de l'interface.
+- [ ] Verrouillage d'accès aux fichiers JSON (course) + gestion globale des erreurs.
+- [ ] Unifier/documenter les modèles 4 vs 6 créneaux (solveur vs iCal).
+- [ ] Rotation du jeton Albert sur Etalab (recommandée malgré la purge).
+- [ ] Étendre les sources iCal (enseignants, salles, groupes TD/TP).
 
 ## Problèmes connus
-- ⚠️ **Jeton Albert présent dans l'historique git** (commit `10b99a4`) → rotation/révocation obligatoire sur Etalab.
-- Incohérence 4 vs 6 créneaux entre moteur CP-SAT et données importées d'iCal (à documenter/unifier).
-- Pas de verrouillage des fichiers JSON (risque de course).
+- Jeton Albert poussé historiquement (purged, rotation conseillée).
+- Incohérence 4 vs 6 créneaux entre moteur CP-SAT et données iCal.
+- Pas de verrouillage des fichiers JSON.
 
 ## Évolution des décisions
-- 09/2026 : reprise du déploiement ; revue de code ; création du Memory Bank ; **sécurité (token) + contrat API + CORS + contraintes HETD + tests** traités.
+- 09/2026 : refactor backend/frontend, Docker, interface enrichie, numéros ISO, demandes par mail, suggestions API, textes API, doc d'intégration SkilLHub.

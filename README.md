@@ -108,6 +108,22 @@ pip install -r requirements-dev.txt
 python -m pytest tests/ -v
 ```
 
+### ⚙️ Pilotage par API
+Le conteneur est **entièrement pilotable par l'API** (déclaration iCal, synchro, contraintes, solveur, textes) :
+- `POST /api/v1/admin/ical-sources` (déclarer les sources)
+- `POST /api/v1/admin/ical-sync` (+ `GET /status`)
+- `POST /api/v1/admin/constraints`, `teacher-services`, `rooms`, `teacher/unavailability`, …
+- `GET /api/v1/schedule?teacher=&group_id=&room=` (EDT filtré)
+- `GET /api/v1/schedule/suggest-move` / `suggest-room` (propositions)
+- `POST /api/v1/admin/generate-text` (`kind`: move | room | teacher | defer → texte de demande)
+- `POST /api/v1/solver/generate` (CP-SAT), `GET /api/v1/export/ical`
+
+### 🔌 Intégration SkilLHub (sibutv3)
+Voir [docs/integration_sibutv3.md](docs/integration_sibutv3.md) : ajouter `emploistemps` comme
+service `edt` dans le docker-compose de SkilLHub (accès interne `http://edt:8000`), mapper
+l'utilisateur authentifié (enseignant `full_name` / étudiant `group_id`) puis appeler l'API
+ci-dessus ; rôles (ADMIN/EDT_MANAGER, PROFESSOR, STUDENT) pour limiter les accès.
+
 ---
 
 ## 🐹 Intégration Go (Golang SDK)

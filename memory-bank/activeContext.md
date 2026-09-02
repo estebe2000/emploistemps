@@ -45,7 +45,15 @@ Reprise du **déploiement** du microservice Emplois du Temps TC. Une **revue de 
 - ✅ Hook pre-commit anti-fuite + `.gitignore` renforcé (`.env`, `rqcode-*.png`, binaires, `data/hp_last_sync.json`).
 
 ## Prochaines étapes (voir TASK.md)
-1. Étendre la liste des sources iCal (enseignants, salles, groupes TD/TP) → `hp_explore.py` + compléter `hp_ical_sources.json`.
-2. Planifier la synchro périodique (cron/Windows Task Scheduler ou APScheduler) et/ou au démarrage Docker.
-3. Durcir (verrou JSON, handler d'erreurs).
+1. **Pont SkilLHub (sibutv3)** : client `http://edt:8000`, endpoints `me/edt` (semaine/jour), vérification des rôles (EDT_MANAGER/PROFESSOR/STUDENT), reproduction de l'interface (voir `docs/integration_sibutv3.md`).
+2. Durcir (verrou JSON, handler d'erreurs).
+3. Étendre les sources iCal (enseignants, salles, groupes TD/TP).
+4. Rotation du jeton Albert sur Etalab.
+
+## État API / intégration (session 09/2026)
+- ✅ Conteneur **pilotable 100% par API** : sources iCal, synchro, contraintes, solveur, textes.
+- ✅ `POST /api/v1/admin/generate-text` (kind: move/room/teacher/defer) → textes de demande par mail.
+- ✅ `GET /schedule/suggest-move` / `suggest-room` → propositions pour clients externes (sibutv3).
+- ✅ Assistant IA masqué ; planning pleine largeur.
+- ✅ Document `docs/integration_sibutv3.md` prêt à remettre au LLM pour le pont côté SkilLHub.
 4. Aligner les modèles 4 vs 6 créneaux (solveur CP-SAT vs iCal).
