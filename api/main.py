@@ -10,7 +10,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from .storage import BASE_DIR
-from .routers import admin, data, solver, schedule, ai
+from .routers import admin, data, solver, schedule, ai, texts
 
 app = FastAPI(
     title="API Gestion Emplois du Temps & Assistant IA (Département TC)",
@@ -52,6 +52,7 @@ app.include_router(data.router)
 app.include_router(solver.router)
 app.include_router(schedule.router)
 app.include_router(ai.router)
+app.include_router(texts.router)
 
 # Fichiers statiques de l'interface (CSS / JS extraits de web/index.html)
 _web_dir = os.path.join(BASE_DIR, "web")
