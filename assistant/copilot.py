@@ -59,21 +59,22 @@ class TimetableCopilot:
         room = cible_salle or target_event["room_id"]
 
         conflits = []
+        from api.services.suggest import are_teachers_conflicting, are_groups_conflicting
 
         # Parcourir les autres cours sur ce créneau cible
         for e in events:
             if e["lesson_id"] == lesson_id:
                 continue
-            if e["day"].lower() == cible_jour.lower() and e["slot_idx"] == cible_creneau_idx:
+            if e.get("day", "").lower() == cible_jour.lower() and e.get("slot_idx") == cible_creneau_idx:
                 # 1. Conflit Enseignant
-                if e["teacher_name"].lower() == teacher.lower():
-                    conflits.append(f"L'enseignant {teacher} a déjà le cours {e['resource_code']} ({e['event_type']}) sur ce créneau.")
+                if are_teachers_conflicting(e.get("teacher_name", ""), teacher):
+                    conflits.append(f"L'enseignant {teacher} a déjà le cours {e.get('resource_name', e.get('resource_code'))} ({e.get('group_id')}) sur ce créneau.")
                 # 2. Conflit Salle
-                if (e.get("room_id") == room or e.get("room_name") == room):
-                    conflits.append(f"La salle {e['room_name']} est déjà occupée par {e['resource_code']} ({e['group_id']}).")
+                if room and (e.get("room_id") == room or e.get("room_name") == room):
+                    conflits.append(f"La salle {e.get('room_name', room)} est déjà occupée par {e.get('resource_name', e.get('resource_code'))} ({e.get('group_id')}).")
                 # 3. Conflit Groupe / Sous-groupe
-                if e["group_id"] == group or "PROMO" in e["group_id"] or "PROMO" in group:
-                    conflits.append(f"Le groupe {group} a déjà un cours programmé ({e['resource_code']}).")
+                if are_groups_conflicting(group, e.get("group_id", ""), matching1=target.get("matching_groups"), matching2=e.get("matching_groups")):
+                    conflits.append(f"Le groupe {group} a déjà le cours programmé : {e.get('resource_name', e.get('resource_code'))} ({e.get('group_id')}).")
 
         if conflits:
             return {
