@@ -174,7 +174,7 @@
 
     <!-- CHANGE ROOM MODAL WITH SMART SUGGESTIONS -->
     <div class="modal-overlay" id="change-room-modal">
-        <div class="admin-modal" style="width: 650px;">
+        <div class="admin-modal" style="width: 700px;">
             <div class="admin-header">
                 <div>
                     <h2 style="font-size: 1.15rem; font-weight: 700;">📍 Changer de Salle & Suggestions</h2>
@@ -182,16 +182,26 @@
                 </div>
                 <button class="btn" onclick="closeChangeRoomModal()">✕</button>
             </div>
-            <div class="admin-body">
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div class="admin-body" style="display:flex; flex-direction:column; gap:12px;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin:0;">
                     💡 Les salles libres et adaptées aux équipements requis (Informatique, Négociation, TD, Amphi) sont mises en avant :
                 </p>
-                <div id="room-suggestions-list" style="display: flex; flex-direction: column; gap: 8px;">
+                <div id="room-suggestions-list" style="display: flex; flex-direction: column; gap: 8px; max-height:220px; overflow-y:auto;">
                     <!-- Populated dynamically with live room status -->
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Nouvelle Salle :</label>
+                    <select id="room-new-slot" style="width: 100%;"></select>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">📧 Texte pour le responsable EDT (copier / coller) :</label>
+                    <textarea id="room-mail-text" rows="7" readonly style="width:100%; font-family:'Courier New',monospace; font-size:0.75rem; background:rgba(0,0,0,0.2); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px; padding:8px;"></textarea>
+                    <button class="btn" onclick="copyRoomMail()" style="margin-top:6px;">📋 Copier le texte</button>
                 </div>
             </div>
             <div class="admin-footer">
                 <button class="btn" onclick="closeChangeRoomModal()">Annuler</button>
+                <button class="btn btn-primary" onclick="confirmRoomChange(document.getElementById('room-new-slot').value)">Valider le changement</button>
             </div>
         </div>
     </div>
@@ -643,5 +653,6 @@
         <script src="/js/rooms_admin.js"></script>
         <script src="/js/move_policy.js"></script>
         <script src="/js/move_suggest.js"></script>
+        <script src="/js/room_suggest.js"></script>
 </body>
 </html>
