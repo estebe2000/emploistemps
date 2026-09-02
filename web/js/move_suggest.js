@@ -326,16 +326,36 @@ function buildMoveMailComplex(ev, targetWeek, dayName, slotIdx, roomId, roomName
 }
 
 // Remplit la modale de déplacement
-function populateMoveModal(ev) {
+async function populateMoveModal(ev) {
     const suggestList = document.getElementById('move-suggest-list');
     if (!suggestList) return;
     window._moveBaseWeek = ev.week || 1;
     if (window._moveTargetWeek === undefined) window._moveTargetWeek = window._moveBaseWeek;
     const tWeek = window._moveTargetWeek;
 
-    const res = computeMoveSuggestions(ev, tWeek);
-    const sug = res.suggestions;
-    const perm = res.permutations;
+    suggestList.innerHTML = '<div style="padding:10px; color:var(--text-muted); font-size:0.8rem;">Calcul des créneaux optimisés en cours...</div>';
+
+    let sug = [];
+    let perm = [];
+
+    try {
+        const res = await fetch(`/api/v1/schedule/suggest-move?lesson_id=${encodeURIComponent(ev.lesson_id)}&target_week=${tWeek}`);
+        if (res.ok) {
+            const data = await res.json();
+            sug = data.suggestions || [];
+            perm = data.permutations || [];
+        } else {
+            const localRes = computeMoveSuggestions(ev, tWeek);
+            sug = localRes.suggestions || [];
+            perm = localRes.permutations || [];
+        }
+    } catch (e) {
+        const localRes = computeMoveSuggestions(ev, tWeek);
+        sug = localRes.suggestions || [];
+        perm = localRes.permutations || [];
+    }
+
+    suggestList.innerHTML = '';
 
     // Bandeau Quotas & Navigation
     const nav = document.createElement('div');
