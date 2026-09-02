@@ -323,6 +323,36 @@
     </div>
 
 
+    <!-- DEFER / REPROGRAMMATION MODAL (demande par mail simple) -->
+    <div class="modal-overlay" id="defer-mail-modal">
+        <div class="admin-modal" style="width: 620px;">
+            <div class="admin-header">
+                <div>
+                    <h2 style="font-size: 1.15rem; font-weight: 700;">⏳ Demande de reprogrammation</h2>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);" id="defer-mail-lesson-title">Préparez le mail de demande au responsable EDT</p>
+                </div>
+                <button class="btn" onclick="closeDeferMailModal()">✕</button>
+            </div>
+            <div class="admin-body" style="display:flex; flex-direction:column; gap:12px;">
+                <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">
+                    Demande de reprogrammation du cours (la date sera fixée ultérieurement par le gestionnaire). Cette action ne modifie pas l'emploi du temps.
+                </p>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">🖊️ Message / précisions :</label>
+                    <textarea id="defer-mail-note" rows="2" placeholder="Ex : à reprogrammer sur un créneau matin si possible…" style="width:100%; font-size:0.78rem;"></textarea>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">📧 Texte à copier / coller :</label>
+                    <textarea id="defer-mail-text" rows="9" readonly style="width:100%; font-family:'Courier New',monospace; font-size:0.75rem; background:rgba(0,0,0,0.2); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px; padding:8px;"></textarea>
+                    <button class="btn" onclick="copyDeferMail()" style="margin-top:6px;">📋 Copier le texte</button>
+                </div>
+            </div>
+            <div class="admin-footer">
+                <button class="btn" onclick="closeDeferMailModal()">Fermer</button>
+            </div>
+        </div>
+    </div>
+
     <!-- WORKLOAD / SERVICES MODAL -->
     <div class="modal-overlay" id="workload-modal">
         <div class="admin-modal" style="width: 1000px;">
@@ -660,5 +690,6 @@
         <script src="/js/move_suggest.js"></script>
         <script src="/js/room_suggest.js"></script>
         <script src="/js/teacher_suggest.js"></script>
+        <script src="/js/defer_suggest.js"></script>
 </body>
 </html>
