@@ -70,30 +70,23 @@ def _iso_week(d: date) -> int:
     return d.isocalendar()[1]
 
 
-def _normalize_name(name: str) -> str:
-    """Nettoie et normalise un nom d'enseignant."""
+def _get_teacher_words(name: str) -> set:
     if not name:
-        return ""
-    n = re.sub(r'\b(m\.|mme|dr|pr|prof)\b\.?', '', name, flags=re.IGNORECASE)
-    return re.sub(r'\s+', ' ', n).strip().lower()
+        return set()
+    clean = re.sub(r'\b(m\.|mme|dr|pr|prof)\b\.?', '', name, flags=re.IGNORECASE)
+    clean = re.sub(r'[^a-zA-Z0-9\sàâäéèêëîïôöùûüçÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ]', ' ', clean).lower()
+    return set(w for w in clean.split() if len(w) >= 3)
 
 
 def are_teachers_conflicting(t1: str, t2: str) -> bool:
     """Vérifie si deux désignations d'enseignants désignent la même personne (ou co-intervention)."""
     if not t1 or not t2:
         return False
-    n1 = _normalize_name(t1)
-    n2 = _normalize_name(t2)
-    if n1 == n2 or n1 in n2 or n2 in n1:
-        return True
-    # Séparation par virgule si liste d'enseignants
-    parts1 = [p.strip() for p in n1.split(',') if p.strip()]
-    parts2 = [p.strip() for p in n2.split(',') if p.strip()]
-    for p1 in parts1:
-        for p2 in parts2:
-            if p1 == p2 or (len(p1) > 3 and p1 in p2) or (len(p2) > 3 and p2 in p1):
-                return True
-    return False
+    s1 = _get_teacher_words(t1)
+    s2 = _get_teacher_words(t2)
+    if not s1 or not s2:
+        return False
+    return bool(s1 & s2)
 
 
 def get_group_hierarchy(group_id: str) -> set:

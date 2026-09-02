@@ -11,22 +11,19 @@ const MOVE_SLOT_TIMES = {
 const MOVE_DAYS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 const MOVE_FORBIDDEN = [("Jeudi_3"), ("Jeudi_4"), ("Jeudi_5"), ("Samedi_3"), ("Samedi_4"), ("Samedi_5")];
 
-function _normTeacher(name) {
-    if (!name) return '';
-    return name.replace(/\b(m\.|mme|dr|pr|prof)\b\.?/gi, '').replace(/\s+/g, ' ').trim().toLowerCase();
+function _getTeacherWords(name) {
+    if (!name) return new Set();
+    const clean = name.replace(/\b(m\.|mme|dr|pr|prof)\b\.?/gi, '').replace(/[^\p{L}\s]/gu, ' ').toLowerCase();
+    return new Set(clean.split(/\s+/).filter(w => w.length >= 3));
 }
 
 function areTeachersConflicting(t1, t2) {
     if (!t1 || !t2) return false;
-    const n1 = _normTeacher(t1);
-    const n2 = _normTeacher(t2);
-    if (n1 === n2 || n1.includes(n2) || n2.includes(n1)) return true;
-    const parts1 = n1.split(',').map(s=>s.trim()).filter(Boolean);
-    const parts2 = n2.split(',').map(s=>s.trim()).filter(Boolean);
-    for (const p1 of parts1) {
-        for (const p2 of parts2) {
-            if (p1 === p2 || (p1.length > 3 && p2.includes(p1)) || (p2.length > 3 && p1.includes(p2))) return true;
-        }
+    const s1 = _getTeacherWords(t1);
+    const s2 = _getTeacherWords(t2);
+    if (!s1.size || !s2.size) return false;
+    for (const w1 of s1) {
+        if (s2.has(w1)) return true;
     }
     return false;
 }

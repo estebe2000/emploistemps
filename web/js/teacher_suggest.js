@@ -45,6 +45,23 @@ function copyTeacherMail() {
     alert('📋 Demande de changement d\'enseignant copiée dans le presse-papiers.');
 }
 
+function _getTeacherTokens(name) {
+    if (!name) return new Set();
+    const clean = name.replace(/\b(m\.|mme|dr|pr|prof)\b\.?/gi, '').replace(/[^\p{L}\s]/gu, ' ').toLowerCase();
+    return new Set(clean.split(/\s+/).filter(w => w.length >= 3));
+}
+
+function _checkTeacherMatch(t1, t2) {
+    if (!t1 || !t2) return false;
+    const s1 = _getTeacherTokens(t1);
+    const s2 = _getTeacherTokens(t2);
+    if (!s1.size || !s2.size) return false;
+    for (const w1 of s1) {
+        if (s2.has(w1)) return true;
+    }
+    return false;
+}
+
 // Analyse la disponibilité de chaque enseignant sur le créneau du cours `ev`
 function getTeachersAvailability(ev) {
     const events = currentSchedule || [];
@@ -53,17 +70,20 @@ function getTeachersAvailability(ev) {
 
     const slotEvents = events.filter(o => {
         if (o.lesson_id === ev.lesson_id) return false;
-        if (evDate && o.date) return o.date === evDate && o.slot_idx === ev.slot_idx;
-        return o.week === ev.week && o.day_idx === ev.day_idx && o.slot_idx === ev.slot_idx;
+        if (o.slot_idx !== ev.slot_idx) return false;
+        if (evDate && o.date) return o.date === evDate;
+        if (ev.week && o.week && ev.day_idx !== undefined && o.day_idx !== undefined) {
+            return o.week === ev.week && o.day_idx === ev.day_idx;
+        }
+        return o.day === ev.day && (o.week === ev.week || (!o.week && !ev.week));
     });
 
     const freeList = [];
     const busyList = [];
 
     allTeachers.forEach(t => {
-        const isCurrent = typeof areTeachersConflicting === 'function' ? areTeachersConflicting(t.name, ev.teacher_name) : (t.name.toLowerCase() === (ev.teacher_name || '').toLowerCase());
-        
-        const conflict = slotEvents.find(o => typeof areTeachersConflicting === 'function' ? areTeachersConflicting(t.name, o.teacher_name) : (t.name.toLowerCase() === (o.teacher_name || '').toLowerCase()));
+        const isCurrent = _checkTeacherMatch(t.name, ev.teacher_name);
+        const conflict = slotEvents.find(o => _checkTeacherMatch(t.name, o.teacher_name));
 
         if (conflict) {
             busyList.push({
