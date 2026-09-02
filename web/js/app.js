@@ -317,10 +317,23 @@
             grid.appendChild(emptyCorner);
 
             // Day Headers
-            DAYS.forEach(day => {
+            DAYS.forEach((day, dIdx) => {
                 const dayHeader = document.createElement('div');
                 dayHeader.className = 'grid-header';
-                dayHeader.textContent = day;
+                let dateStr = '';
+                if (typeof getWeekDateRange === 'function') {
+                    try {
+                        const r = getWeekDateRange(currentWeek);
+                        const base = new Date(r.start);
+                        base.setDate(base.getDate() + dIdx);
+                        const mois = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+                        dateStr = `${base.getDate()} ${mois[base.getMonth()]}`;
+                    } catch(e) {}
+                }
+                dayHeader.innerHTML = `
+                    <div style="font-weight:700; font-size:0.86rem; color:var(--text-main);">${day}</div>
+                    ${dateStr ? `<div style="font-size:0.75rem; color:#60a5fa; font-weight:600; margin-top:2px;">${dateStr}</div>` : ''}
+                `;
                 grid.appendChild(dayHeader);
             });
 
