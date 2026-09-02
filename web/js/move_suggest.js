@@ -386,33 +386,43 @@ async function populateMoveModal(ev) {
     // 1. Propositions directes 100% libres
     if (sug.length > 0) {
         const title = document.createElement('div');
-        title.style.cssText = 'font-size:0.75rem; font-weight:700; color:#4ade80; margin:6px 0 4px;';
+        title.style.cssText = 'font-size:0.78rem; font-weight:700; color:#4ade80; margin:8px 0 6px;';
         title.textContent = `✨ Créneaux 100% libres & optimisés (${sug.length}) :`;
         suggestList.appendChild(title);
 
-        sug.forEach(s => {
+        sug.forEach((s, idx) => {
+            const dayName = s.day || s.dayName || MOVE_DAYS[s.day_idx] || 'Lundi';
+            const sIdx = (s.slot_idx !== undefined) ? s.slot_idx : (s.s !== undefined ? s.s : 0);
+            const dateLabel = s.date_label || s.dateLabel || getDayDateLabel(s.week || tWeek, s.day_idx !== undefined ? s.day_idx : MOVE_DAYS.indexOf(dayName));
+            const slotTime = s.slot_time || s.slotTime || MOVE_SLOT_TIMES[sIdx] || '';
+            const rooms = s.free_rooms || s.freeRooms || [];
+            const badge = s.badge || (s.badge_type === 'CONNECTED' ? '🟢 Enchaînement direct' : (s.badge_type === 'FILL_GAP' ? '🟡 Comble une pause' : (s.badge_type === 'ISOLATED' ? '⚠️ Seul cours du jour' : '⚪ Créneau libre')));
+            const desc = s.desc || s.badge_desc || '';
+
             const btn = document.createElement('button');
             btn.className = 'btn';
-            btn.style.cssText = 'text-align:left; display:flex; flex-direction:column; gap:3px; width:100%; margin-bottom:6px; padding:8px 10px; border-left:3px solid #4ade80;';
+            btn.style.cssText = 'text-align:left; display:flex; flex-direction:column; gap:4px; width:100%; margin-bottom:8px; padding:10px 12px; border-left:4px solid #4ade80; background:rgba(74,222,128,0.05); cursor:pointer;';
             btn.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                    <span style="font-size:0.82rem; font-weight:600;">🗓️ ${s.dateLabel} · ${s.slotTime}</span>
-                    <span style="font-size:0.72rem; font-weight:600; padding:2px 6px; border-radius:4px; background:rgba(74,222,128,0.15); color:#4ade80;">${s.badge}</span>
+                    <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">🗓️ ${dateLabel} · ${slotTime}</span>
+                    <span style="font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px; background:rgba(74,222,128,0.2); color:#4ade80;">${badge}</span>
                 </div>
-                <div style="font-size:0.72rem; color:var(--text-muted); display:flex; justify-content:space-between; width:100%;">
-                    <span>📍 Salles libres : ${s.freeRooms.map(r=>r.name).join(', ')}</span>
-                    <span style="font-size:0.7rem; color:#9ca3af;">${s.desc}</span>
+                <div style="font-size:0.75rem; color:var(--text-muted); display:flex; justify-content:space-between; width:100%; gap:8px;">
+                    <span>📍 Salles : <strong>${rooms.map(r=>r.name || r.id).join(', ') || 'Salle par défaut'}</strong></span>
+                    <span style="font-size:0.72rem; color:#9ca3af; text-align:right;">${desc}</span>
                 </div>
             `;
             btn.onclick = () => {
-                document.getElementById('move-target-day').value = s.dayName;
-                document.getElementById('move-target-slot').value = s.s;
+                document.getElementById('move-target-day').value = dayName;
+                document.getElementById('move-target-slot').value = sIdx;
                 const roomSel = document.getElementById('move-target-room');
-                for (let i = 0; i < roomSel.options.length; i++) {
-                    if (roomSel.options[i].value === s.freeRooms[0].id) { roomSel.selectedIndex = i; break; }
+                if (rooms.length > 0) {
+                    for (let i = 0; i < roomSel.options.length; i++) {
+                        if (roomSel.options[i].value === rooms[0].id) { roomSel.selectedIndex = i; break; }
+                    }
                 }
-                window._moveTargetWeek = s.week;
-                window._selectedSuggestion = s;
+                window._moveTargetWeek = s.week || tWeek;
+                window._selectedSuggestion = { ...s, dayName, s: sIdx, desc, rooms };
                 window._isPermutation = false;
                 refreshMoveMail(ev);
                 suggestList.querySelectorAll('button[data-sug]').forEach(b => b.classList.remove('btn-primary'));
@@ -420,38 +430,54 @@ async function populateMoveModal(ev) {
             };
             btn.setAttribute('data-sug', '1');
             suggestList.appendChild(btn);
+
+            // Sélectionner le 1er créneau par défaut
+            if (idx === 0) {
+                btn.click();
+            }
         });
     }
 
     // 2. Propositions avec permutation
     if (perm.length > 0) {
         const titlePerm = document.createElement('div');
-        titlePerm.style.cssText = 'font-size:0.75rem; font-weight:700; color:#fbbf24; margin:12px 0 4px;';
+        titlePerm.style.cssText = 'font-size:0.78rem; font-weight:700; color:#fbbf24; margin:14px 0 6px;';
         titlePerm.textContent = `🔀 Alternatives avec permutation (${perm.length}) :`;
         suggestList.appendChild(titlePerm);
 
         perm.forEach(p => {
+            const dayName = p.day || p.dayName || MOVE_DAYS[p.day_idx] || 'Lundi';
+            const sIdx = (p.slot_idx !== undefined) ? p.slot_idx : (p.s !== undefined ? p.s : 0);
+            const dateLabel = p.date_label || p.dateLabel || getDayDateLabel(p.week || tWeek, p.day_idx !== undefined ? p.day_idx : MOVE_DAYS.indexOf(dayName));
+            const slotTime = p.slot_time || p.slotTime || MOVE_SLOT_TIMES[sIdx] || '';
+            const cCourse = p.conflicting_course || p.conflictingCourse || {};
+            const rooms = p.target_rooms || p.free_rooms || p.freeRooms || [];
+            const badge = p.badge || "🔀 Permutation";
+            const desc = p.desc || `Décaler : ${cCourse.resource_name || 'Cours'} (${cCourse.teacher_name || ''})`;
+
             const btn = document.createElement('button');
             btn.className = 'btn';
-            btn.style.cssText = 'text-align:left; display:flex; flex-direction:column; gap:3px; width:100%; margin-bottom:6px; padding:8px 10px; border-left:3px solid #fbbf24; background:rgba(245,158,11,0.04);';
+            btn.style.cssText = 'text-align:left; display:flex; flex-direction:column; gap:4px; width:100%; margin-bottom:8px; padding:10px 12px; border-left:4px solid #fbbf24; background:rgba(245,158,11,0.05); cursor:pointer;';
             btn.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-                    <span style="font-size:0.82rem; font-weight:600;">🗓️ ${p.dateLabel} · ${p.slotTime}</span>
-                    <span style="font-size:0.72rem; font-weight:600; padding:2px 6px; border-radius:4px; background:rgba(245,158,11,0.2); color:#fbbf24;">${p.badge}</span>
+                    <span style="font-size:0.85rem; font-weight:700; color:var(--text-main);">🗓️ ${dateLabel} · ${slotTime}</span>
+                    <span style="font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px; background:rgba(245,158,11,0.2); color:#fbbf24;">${badge}</span>
                 </div>
-                <div style="font-size:0.72rem; color:var(--text-muted); width:100%;">
-                    ⚠️ ${p.desc}
+                <div style="font-size:0.75rem; color:#fde68a; width:100%;">
+                    ⚠️ ${desc}
                 </div>
             `;
             btn.onclick = () => {
-                document.getElementById('move-target-day').value = p.dayName;
-                document.getElementById('move-target-slot').value = p.s;
+                document.getElementById('move-target-day').value = dayName;
+                document.getElementById('move-target-slot').value = sIdx;
                 const roomSel = document.getElementById('move-target-room');
-                for (let i = 0; i < roomSel.options.length; i++) {
-                    if (roomSel.options[i].value === p.freeRooms[0].id) { roomSel.selectedIndex = i; break; }
+                if (rooms.length > 0) {
+                    for (let i = 0; i < roomSel.options.length; i++) {
+                        if (roomSel.options[i].value === rooms[0].id) { roomSel.selectedIndex = i; break; }
+                    }
                 }
-                window._moveTargetWeek = p.week;
-                window._selectedSuggestion = p;
+                window._moveTargetWeek = p.week || tWeek;
+                window._selectedSuggestion = { ...p, dayName, s: sIdx, conflictingCourse: cCourse, rooms };
                 window._isPermutation = true;
                 refreshMoveMail(ev);
                 suggestList.querySelectorAll('button[data-sug]').forEach(b => b.classList.remove('btn-primary'));
