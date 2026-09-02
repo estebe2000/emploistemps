@@ -48,6 +48,7 @@ def save_ical_sources(payload: dict):
             "label": s.get("label", "").strip(),
             "file": s.get("file", "").strip(),
             "idICal": s.get("idICal", "").strip(),
+            "param": s.get("param", "").strip() or param,
             "url": s.get("url", "").strip(),
         })
     out = {"version": version, "param": param, "base_url": base, "sources": sources}

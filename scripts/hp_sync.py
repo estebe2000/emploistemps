@@ -38,11 +38,14 @@ def load_sources() -> dict:
 
 
 def build_url(cfg: dict, source: dict, base_url: str) -> str:
+    if source.get("url") and source["url"].strip().startswith("http"):
+        return source["url"].strip()
     version = cfg.get("version", "2022.0.5.0")
-    param = cfg.get("param", "")
+    param = source.get("param") or cfg.get("param", "")
     file = source["file"]
     idical = source["idICal"]
-    return (f"{base_url}/Telechargements/ical/{file}"
+    b = (base_url or cfg.get("base_url") or "https://hplanning.univ-lehavre.fr").rstrip("/")
+    return (f"{b}/Telechargements/ical/{file}"
             f"?version={version}&idICal={idical}&param={param}")
 
 

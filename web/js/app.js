@@ -949,11 +949,63 @@
             document.getElementById('admin-modal').style.display = 'none';
         }
 
-        // Construit l'URL iCal affichable/éditable depuis les champs de config.
+        // Construit ou renvoie l'URL iCal sans risque de coupure
         function buildIcalUrl(base, param, src) {
+            if (src && src.url && src.url.trim().startsWith('http')) {
+                return src.url.trim();
+            }
             const ver = '2022.0.5.0';
             const b = (base || 'https://hplanning.univ-lehavre.fr').replace(/\/+$/, '');
-            return `${b}/Telechargements/ical/${src.file}?version=${ver}&idICal=${encodeURIComponent(src.idICal)}&param=${param}`;
+            const p = (src && src.param) || param || '';
+            const id = src && src.idICal ? encodeURIComponent(src.idICal) : '';
+            const f = (src && src.file) || '';
+            return `${b}/Telechargements/ical/${f}?version=${ver}&idICal=${id}&param=${p}`;
+        }
+
+        // Auto-détection et auto-remplissage lors du collage d'une URL iCal
+        function onIcalUrlChanged(textarea) {
+            const rawUrl = textarea.value.trim();
+            if (!rawUrl) return;
+            const card = textarea.closest('.ical-source');
+            if (!card) return;
+
+            try {
+                const u = new URL(rawUrl);
+                const pathParts = u.pathname.split('/');
+                const fileName = pathParts[pathParts.length - 1] || '';
+                const idICal = u.searchParams.get('idICal') || u.searchParams.get('idical') || '';
+                const param = u.searchParams.get('param') || '';
+
+                const fileInput = card.querySelector('input[data-field="file"]');
+                const idICalInput = card.querySelector('input[data-field="idICal"]');
+                const labelInput = card.querySelector('input[data-field="label"]');
+                const keyInput = card.querySelector('input[data-field="key"]');
+
+                if (fileName && fileInput) fileInput.value = fileName;
+                if (idICal && idICalInput) idICalInput.value = idICal;
+
+                if (labelInput && !labelInput.value) {
+                    if (fileName.includes('1ERE') || fileName.includes('BUT1')) {
+                        labelInput.value = 'BUT1 - 1ère Année Tech de Co';
+                        if (keyInput && keyInput.value === 'SRC') keyInput.value = 'BUT1';
+                    } else if (fileName.includes('2EME') || fileName.includes('BUT2')) {
+                        labelInput.value = 'BUT2 - 2ème Année TC';
+                        if (keyInput && keyInput.value === 'SRC') keyInput.value = 'BUT2';
+                    } else if (fileName.includes('3EME') || fileName.includes('BUT3')) {
+                        labelInput.value = 'BUT3 - 3ème Année TC';
+                        if (keyInput && keyInput.value === 'SRC') keyInput.value = 'BUT3';
+                    }
+                }
+            } catch (err) {
+                // Fallback regex si URL partielle
+                const m = rawUrl.match(/ical\/([^?]+)\.ics\?.*idICal=([^&]+)/);
+                if (m) {
+                    const fileInput = card.querySelector('input[data-field="file"]');
+                    const idICalInput = card.querySelector('input[data-field="idICal"]');
+                    if (fileInput && !fileInput.value) fileInput.value = m[1] + '.ics';
+                    if (idICalInput && !idICalInput.value) idICalInput.value = m[2];
+                }
+            }
         }
 
         async function loadIcalSources() {
@@ -978,15 +1030,18 @@
                         <button class="btn" onclick="removeIcalSourceRow(this)" title="Supprimer">🗑</button>
                     </div>
                     <div style="margin-bottom:8px;">
-                        <label style="font-size:0.75rem; color:var(--text-muted); display:block;">Nom / label</label>
+                        <label style="font-size:0.75rem; color:var(--text-muted); display:block; margin-bottom:4px;">Nom / label de la promo</label>
                         <input type="text" data-field="label" value="${esc(src.label)}" style="width:100%;">
                     </div>
                     <div style="margin-bottom:8px;">
-                        <label style="font-size:0.75rem; color:var(--text-muted); display:block;">URL iCal (lien permanent)</label>
-                        <input type="text" data-field="url" value="${esc(buildIcalUrl(cfg.base_url, cfg.param, src))}" style="width:100%; font-family:monospace; font-size:0.75rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <label style="font-size:0.75rem; color:var(--text-muted);">URL iCal permanente complète (Hyperplanning)</label>
+                            <span style="font-size:0.7rem; color:#60a5fa;">💡 Auto-détection à la saisie</span>
+                        </div>
+                        <textarea data-field="url" rows="2" style="width:100%; font-family:monospace; font-size:0.75rem; word-break:break-all; resize:vertical; background:rgba(0,0,0,0.25); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px; padding:6px 8px;" oninput="onIcalUrlChanged(this)" placeholder="https://hplanning.univ-lehavre.fr/Telechargements/ical/...">${esc(buildIcalUrl(cfg.base_url, cfg.param, src))}</textarea>
                     </div>
-                    <details style="font-size:0.72rem; color:var(--text-muted);">
-                        <summary>Champs avancés (file / idICal / param)</summary>
+                    <details style="font-size:0.72rem; color:var(--text-muted); margin-top:6px;">
+                        <summary style="cursor:pointer;">Champs avancés extraits (file / idICal / key)</summary>
                         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:8px;">
                             <label>key<input type="text" data-field="key" value="${esc(src.key)}" style="width:100%;"></label>
                             <label>idICal<input type="text" data-field="idICal" value="${esc(src.idICal)}" style="width:100%; font-family:monospace;"></label>
@@ -1018,11 +1073,13 @@
                     <label style="font-weight:600; font-size:0.85rem;">🔗 Nouvelle source</label>
                     <button class="btn" onclick="removeIcalSourceRow(this)">🗑</button>
                 </div>
-                <div style="margin-bottom:8px;"><label style="font-size:0.75rem; color:var(--text-muted); display:block;">Nom / label</label>
-                    <input type="text" data-field="label" value="" style="width:100%;"></div>
-                <div style="margin-bottom:8px;"><label style="font-size:0.75rem; color:var(--text-muted); display:block;">URL iCal (lien permanent)</label>
-                    <input type="text" data-field="url" value="" style="width:100%; font-family:monospace; font-size:0.75rem;"></div>
-                <details style="font-size:0.72rem; color:var(--text-muted);"><summary>Champs avancés</summary>
+                <div style="margin-bottom:8px;"><label style="font-size:0.75rem; color:var(--text-muted); display:block; margin-bottom:4px;">Nom / label de la promo</label>
+                    <input type="text" data-field="label" value="" placeholder="Ex: BUT1 Promo" style="width:100%;"></div>
+                <div style="margin-bottom:8px;">
+                    <label style="font-size:0.75rem; color:var(--text-muted); display:block; margin-bottom:4px;">URL iCal permanente complète (Hyperplanning)</label>
+                    <textarea data-field="url" rows="2" style="width:100%; font-family:monospace; font-size:0.75rem; word-break:break-all; resize:vertical; background:rgba(0,0,0,0.25); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px; padding:6px 8px;" oninput="onIcalUrlChanged(this)" placeholder="https://hplanning.univ-lehavre.fr/Telechargements/ical/..."></textarea>
+                </div>
+                <details style="font-size:0.72rem; color:var(--text-muted); margin-top:6px;"><summary style="cursor:pointer;">Champs avancés extraits</summary>
                     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:8px;">
                         <label>key<input type="text" data-field="key" value="SRC" style="width:100%;"></label>
                         <label>idICal<input type="text" data-field="idICal" value="" style="width:100%;"></label>
@@ -1127,14 +1184,42 @@
             const sources = [];
             container.querySelectorAll('.ical-source').forEach(card => {
                 const vals = {};
-                card.querySelectorAll('input[data-field]').forEach(i => vals[i.getAttribute('data-field')] = i.value.trim());
+                card.querySelectorAll('input[data-field], textarea[data-field]').forEach(i => {
+                    vals[i.getAttribute('data-field')] = i.value.trim();
+                });
                 const url = vals.url || '';
-                const m = url.match(/ical\/([^?]+)\.ics\?.*idICal=([^&]+)/);
                 let file = vals.file || '';
                 let idICal = vals.idICal || '';
-                if (m) { if (!file) file = m[1] + '.ics'; if (!idICal) idICal = m[2]; }
+                let srcParam = vals.param || param;
+
+                if (url) {
+                    try {
+                        const u = new URL(url);
+                        const pathParts = u.pathname.split('/');
+                        const fileName = pathParts[pathParts.length - 1] || '';
+                        const id = u.searchParams.get('idICal') || u.searchParams.get('idical');
+                        const p = u.searchParams.get('param');
+                        if (fileName && !file) file = fileName;
+                        if (id && !idICal) idICal = id;
+                        if (p) srcParam = p;
+                    } catch (e) {
+                        const m = url.match(/ical\/([^?]+)\.ics\?.*idICal=([^&]+)/);
+                        if (m) {
+                            if (!file) file = m[1] + '.ics';
+                            if (!idICal) idICal = m[2];
+                        }
+                    }
+                }
+
                 if (!file && !idICal && !url) return;
-                sources.push({ key: vals.key || ('SRC_' + sources.length), label: vals.label, file, idICal, url });
+                sources.push({
+                    key: vals.key || ('SRC_' + (sources.length + 1)),
+                    label: vals.label || vals.key || ('Source ' + (sources.length + 1)),
+                    file: file,
+                    idICal: idICal,
+                    param: srcParam,
+                    url: url
+                });
             });
             const payload = { version: '2022.0.5.0', base_url: base, param, sources };
             try {
