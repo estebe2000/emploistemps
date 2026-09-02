@@ -101,6 +101,25 @@ def get_free_slots(
     return copilot.trouver_creneaux_libres(enseignant=teacher, groupe_id=group_id)
 
 
+@router.get("/schedule/suggest-move")
+def suggest_move(
+    lesson_id: str = Query(..., description="ID de la séance à déplacer"),
+    target_week: Optional[int] = Query(None, description="Semaine cible (défaut: semaine du cours)")
+):
+    """Propose des créneaux compatibles pour déplacer un cours (contraintes + EDT groupe + salle)."""
+    from ..services.suggest import suggest_move as _sm
+    return _sm(lesson_id, target_week)
+
+
+@router.get("/schedule/suggest-room")
+def suggest_room(
+    lesson_id: str = Query(..., description="ID de la séance")
+):
+    """Propose les salles libres/recommandées pour le créneau courant d'une séance."""
+    from ..services.suggest import suggest_room as _sr
+    return _sr(lesson_id)
+
+
 @router.get("/schedule/deferred")
 def get_deferred_lessons():
     """Récupère la liste des cours mis en attente à reprogrammer ultérieurement."""
