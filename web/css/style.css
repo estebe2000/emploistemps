@@ -156,7 +156,7 @@
         /* Main Container */
         .container {
             display: grid;
-            grid-template-columns: 1fr 380px;
+            grid-template-columns: 1fr; /* copilot-panel masqué => toute la largeur au planning */
             gap: 1.5rem;
             padding: 1.25rem 2rem;
             flex: 1;
