@@ -53,22 +53,29 @@ function selectRoomForChange(ev, roomId, roomName) {
     document.getElementById('room-mail-text').value = buildRoomMail(ev, roomId, roomName);
 }
 
-// Surcharge confirmRoomChange (app.js) : régénère aussi le mail avant d'appliquer.
+// Surcharge confirmRoomChange : génère le texte de DEMANDE (mail) et copie.
+// Ne modifie PAS l'emploi du temps (le changement est demandé par mail au gestionnaire).
 const _origCRC = window.confirmRoomChange;
 if (typeof _origCRC === 'function') {
     window.confirmRoomChange = async function (newRoomId) {
         const ev = currentSchedule.find(e => e.lesson_id === selectedLessonId);
-        if (ev) {
-            const sel = document.getElementById('room-new-slot');
-            if (sel) {
-                for (let i=0;i<sel.options.length;i++){
-                    if (sel.options[i].value === newRoomId) { sel.selectedIndex=i; break; }
-                }
+        if (!ev) return;
+        const sel = document.getElementById('room-new-slot');
+        if (sel) {
+            for (let i=0;i<sel.options.length;i++){
+                if (sel.options[i].value === newRoomId) { sel.selectedIndex=i; break; }
             }
-            const name = (sel && sel.options[sel.selectedIndex]) ? sel.options[sel.selectedIndex].text : newRoomId;
-            document.getElementById('room-mail-text').value = buildRoomMail(ev, newRoomId, name);
         }
-        return _origCRC.apply(this, [newRoomId]);
+        const name = (sel && sel.options[sel.selectedIndex]) ? sel.options[sel.selectedIndex].text : newRoomId;
+        document.getElementById('room-mail-text').value = buildRoomMail(ev, newRoomId, name);
+        // Copie automatiquement le texte de demande (le gestionnaire appliquera).
+        const ta = document.getElementById('room-mail-text');
+        if (ta) {
+            ta.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            if (navigator.clipboard) navigator.clipboard.writeText(ta.value).catch(()=>{});
+        }
+        alert('📋 Demande de changement de salle générée (mail copié). Aucun changement appliqué : à envoyer au gestionnaire EDT.');
     };
 }
 
