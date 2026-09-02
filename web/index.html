@@ -309,10 +309,15 @@
                     <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Sélectionner un enseignant :</label>
                     <select id="change-target-teacher" style="width: 100%;"></select>
                 </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">📧 Texte pour le responsable EDT (copier / coller) :</label>
+                    <textarea id="teacher-mail-text" rows="7" readonly style="width:100%; font-family:'Courier New',monospace; font-size:0.75rem; background:rgba(0,0,0,0.2); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px; padding:8px;"></textarea>
+                    <button class="btn" onclick="copyTeacherMail()" style="margin-top:6px;">📋 Copier le texte</button>
+                </div>
             </div>
             <div class="admin-footer">
                 <button class="btn" onclick="closeChangeTeacherModal()">Annuler</button>
-                <button class="btn btn-primary" onclick="confirmChangeTeacher()">Enregistrer le Changement</button>
+                <button class="btn btn-primary" onclick="confirmChangeTeacher(); closeChangeTeacherModal()">📩 Préparer la demande</button>
             </div>
         </div>
     </div>
@@ -654,5 +659,6 @@
         <script src="/js/move_policy.js"></script>
         <script src="/js/move_suggest.js"></script>
         <script src="/js/room_suggest.js"></script>
+        <script src="/js/teacher_suggest.js"></script>
 </body>
 </html>
