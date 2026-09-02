@@ -330,29 +330,41 @@ async function populateMoveModal(ev) {
     const suggestList = document.getElementById('move-suggest-list');
     if (!suggestList) return;
     window._moveBaseWeek = ev.week || 1;
-    if (window._moveTargetWeek === undefined) window._moveTargetWeek = window._moveBaseWeek;
+
+    // Si aucune semaine cible n'est choisie ou si la semaine courante est close, chercher la 1ère semaine ouverte
+    if (window._moveTargetWeek === undefined) {
+        if (typeof window._policyIsWeekOpen === 'function' && !window._policyIsWeekOpen(window._moveBaseWeek)) {
+            const openWeeks = (typeof window._policyOpenWeeks === 'function') ? window._policyOpenWeeks(window._moveBaseWeek) : [];
+            window._moveTargetWeek = openWeeks.length > 0 ? openWeeks[0] : (window._moveBaseWeek + 1);
+        } else {
+            window._moveTargetWeek = window._moveBaseWeek;
+        }
+    }
     const tWeek = window._moveTargetWeek;
+    const isWeekOpen = (typeof window._policyIsWeekOpen === 'function') ? window._policyIsWeekOpen(tWeek) : true;
 
     suggestList.innerHTML = '<div style="padding:10px; color:var(--text-muted); font-size:0.8rem;">Calcul des créneaux optimisés en cours...</div>';
 
     let sug = [];
     let perm = [];
 
-    try {
-        const res = await fetch(`/api/v1/schedule/suggest-move?lesson_id=${encodeURIComponent(ev.lesson_id)}&target_week=${tWeek}`);
-        if (res.ok) {
-            const data = await res.json();
-            sug = data.suggestions || [];
-            perm = data.permutations || [];
-        } else {
+    if (isWeekOpen) {
+        try {
+            const res = await fetch(`/api/v1/schedule/suggest-move?lesson_id=${encodeURIComponent(ev.lesson_id)}&target_week=${tWeek}`);
+            if (res.ok) {
+                const data = await res.json();
+                sug = data.suggestions || [];
+                perm = data.permutations || [];
+            } else {
+                const localRes = computeMoveSuggestions(ev, tWeek);
+                sug = localRes.suggestions || [];
+                perm = localRes.permutations || [];
+            }
+        } catch (e) {
             const localRes = computeMoveSuggestions(ev, tWeek);
             sug = localRes.suggestions || [];
             perm = localRes.permutations || [];
         }
-    } catch (e) {
-        const localRes = computeMoveSuggestions(ev, tWeek);
-        sug = localRes.suggestions || [];
-        perm = localRes.permutations || [];
     }
 
     suggestList.innerHTML = '';
@@ -362,6 +374,7 @@ async function populateMoveModal(ev) {
     nav.style.cssText = 'display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:10px; background:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:6px; padding:6px 10px;';
     const r = (typeof getWeekDateRange === 'function') ? getWeekDateRange(tWeek) : null;
     const wLabel = r ? `Semaine ISO ${r.iso} (${r.label})` : `Semaine ${tWeek}`;
+    const policyMsg = (typeof window._policyMessage === 'function') ? window._policyMessage() : 'Déplacement à demander avant le jeudi 18h pour la semaine suivante.';
     nav.innerHTML = `
         <div style="display:flex; gap:6px; align-items:center;">
             <span style="font-size:0.75rem; color:var(--text-muted);">Semaine cible :</span>
@@ -370,10 +383,18 @@ async function populateMoveModal(ev) {
             <button class="btn" style="padding:2px 8px;" onclick="moveNextWeek()">▶</button>
         </div>
         <div style="font-size:0.72rem; color:var(--text-muted);">
-            ⚖️ Quotas : Max ${window.constraints?.max_hours_per_day_student || 8}h/j étudiants · ${window.constraints?.max_hours_per_day_teacher || 6}h/j prof
+            📌 ${policyMsg}
         </div>
     `;
     suggestList.appendChild(nav);
+
+    if (!isWeekOpen) {
+        const closedCard = document.createElement('div');
+        closedCard.style.cssText = 'color:#fb7185; font-size:0.8rem; padding:12px 14px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:6px; line-height:1.5;';
+        closedCard.innerHTML = `🔒 <strong>Semaine close :</strong> La date limite de soumission (${policyMsg}) est dépassée pour cette semaine. Aucun créneau de déplacement ne peut être accepté.<br><span style="color:#9ca3af; font-size:0.75rem;">👉 Cliquez sur <strong>▶</strong> pour passer à la semaine suivante ouverte.</span>`;
+        suggestList.appendChild(closedCard);
+        return;
+    }
 
     if (!sug.length && !perm.length) {
         const empty = document.createElement('div');
